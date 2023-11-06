@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\add-icon.png" />
+    <None Include="wwwroot\images\add-user-1.png" />
+    <None Include="wwwroot\images\ant-design_usergroup.png" />
+    <None Include="wwwroot\images\arrow-up.png" />
+    <None Include="wwwroot\images\Back.png" />
+    <None Include="wwwroot\images\backgroundsold\rocket.png" />
+    <None Include="wwwroot\images\basket-logo.jpg" />
+    <None Include="wwwroot\images\bx_show-alt.png" />
+    <None Include="wwwroot\images\check-group.png" />
+    <None Include="wwwroot\images\dopdown.png" />
+    <None Include="wwwroot\images\download.png" />
+    <None Include="wwwroot\images\ep_arrow-down-left.png" />
+    <None Include="wwwroot\images\ep_arrow-down.png" />
+    <None Include="wwwroot\images\export.png" />
+    <None Include="wwwroot\images\gren.png" />
+    <None Include="wwwroot\images\group-2.png" />
+    <None Include="wwwroot\images\Group.png" />
+    <None Include="wwwroot\images\heart.png" />
+    <None Include="wwwroot\images\ic_round-favorite-selected.png" />
+    <None Include="wwwroot\images\ic_round-favorite.png" />
+    <None Include="wwwroot\images\log-out.png" />
+    <None Include="wwwroot\images\logo.png" />
+    <None Include="wwwroot\images\logosold\dark-logo.svg" />
+    <None Include="wwwroot\images\logosold\favicon.png" />
+    <None Include="wwwroot\images\logos_whatsapp-icon.png" />
+    <None Include="wwwroot\images\menu-search-icon.png" />
+    <None Include="wwwroot\images\pink.png" />
+    <None Include="wwwroot\images\plus-icon.png" />
+    <None Include="wwwroot\images\productsold\s1.jpg" />
+    <None Include="wwwroot\images\productsold\s11.jpg" />
+    <None Include="wwwroot\images\productsold\s4.jpg" />
+    <None Include="wwwroot\images\productsold\s5.jpg" />
+    <None Include="wwwroot\images\productsold\s7.jpg" />
+    <None Include="wwwroot\images\profileold\user-1.jpg" />
+    <None Include="wwwroot\images\purple.png" />
+    <None Include="wwwroot\images\Sales-Icon.png" />
+    <None Include="wwwroot\images\search-normal.png" />
+    <None Include="wwwroot\images\sip.png" />
+    <None Include="wwwroot\images\twc-logo.png" />
+    <None Include="wwwroot\images\uparrow.png" />
+    <None Include="wwwroot\images\user-1.jpg" />
+    <None Include="wwwroot\images\view.png" />
+    <None Include="wwwroot\images\yellow.png" />
+  </ItemGroup>
+
+</Project>
