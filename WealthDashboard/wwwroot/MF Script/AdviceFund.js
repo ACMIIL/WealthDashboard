@@ -1,0 +1,59 @@
+﻿$(document).ready(function () {
+    MFCategory();
+});
+var GlobalUrl = "https://localhost:7217/api/";
+function MFCategory() {
+    var html = "";
+    $.ajax({
+        type: "GET",
+        url: GlobalUrl + "Accord/GetMFCategory",
+        data: {
+        },
+        success: function (data) {
+            $.each(data.data, function(key,value){
+                html =  '<div class="col-md-2 col-6 mt-4 mb-4">'+
+                    '<button type="button" class="btn box-1" data-Subcategory=' + value.category +' onClick="MFSubCategory(this)" >' +
+                        '<label class="lable3">' + value.category +'</label>' +
+                        '</button>' +
+                        '</div>'
+                $("#CategoryDiv").append(html);
+            });
+        },
+        error: function (data) {
+
+        }
+    });
+}
+function MFSubCategory(data) {
+    $("#MFSubCategoryDiv").html('');
+    var val = data.dataset.subcategory;
+    $.ajax({
+        type: "GET",
+        url: GlobalUrl + "Accord/GetMFSubCategory",
+        data: {
+            Category: val
+        },
+        success: function (data) {
+            $.each(data.data, function (key, value) {
+                var html = '<div class="col-md-4 col-6 mt-3 mb-3">' +
+                    '<div class="card-mf-schemes d-flex ">' +
+                    '<div class="col-md-1 col-1">' +
+                    '<img src="/images/basket-logo.jpg" class="card-mf-icon">' +
+                    '</div>' +
+                    '<div class="col-md-10 col-10">' +
+                    '<div class="card-title-2 font-16 ps-2">' + value.subCategory +'</div>' +
+                    '</div>' +
+                    '<div class="col-md-1 col-1 text-end">' +
+                    '<img src="~/images/ic_round-favorite-selected.png " class="card-mf-heart">' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+                $("#MFSubCategoryDiv").append(html);
+            });
+        },
+        error: function (data) {
+
+        }
+    });
+    
+}
