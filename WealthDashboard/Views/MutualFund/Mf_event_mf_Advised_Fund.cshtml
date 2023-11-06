@@ -1,419 +1,175 @@
-﻿<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BA Dashboard</title>
-    <link rel="" type="image/png" href="" />
-    <link rel="stylesheet" href="~/css/styles.min.css" />
-    <link rel="stylesheet" href="~/css/ba-style.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,500&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <style>
+﻿
+@{
+    ViewData["Title"] = "Mf_event_mf_Advised_Fund";
+    Layout = "~/Views/Shared/_LayoutMF.cshtml";
+}
 
-        table.no-bottom-border {
-            border-bottom: none;
-        }
-
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-            width: 100%;
-            border: 1px solid #ddd;
-            border-radius: 15px;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 10px;
-            padding-left: 20px;
-        }
-    </style>
-</head>
-
-<body id="body-pd" class="body-pd">
-    <div class="l-navbar show" id="nav-bar">
-
-        <div class="header body-pd" id="header">
-            <div class="header_toggle">
-                <a href="javascript:;" id="header-toggle"><img src="~/images/ep_arrow-down.png" class="bx-icon"></a>
+<div class="new-card ps-2">
+    <div class="container-fluid">
+        <div class="row gx-4 border-bottom">
+            <div class="col-md-2 col-6 mt-4 mb-4">
+                <button type="button" class="btn box-1">
+                    <label class="lable3">Fund in focuse</label>
+                </button>
+            </div>
+            <div class="col-md-2 col-6 mt-4 mb-4">
+                <button type="button" class="btn box-1">
+                    <label class="lable3">Equity </label>
+                </button>
+            </div>
+            <div class="col-md-2 col-6 mt-4 mb-4">
+                <button type="button" class="btn box-1">
+                    <label class="lable3"> Hybrid  </label>
+                </button>
+            </div>
+            <div class="col-md-2 col-6 mt-4 mb-4">
+                <div class="box-1">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <a class="form-check-label lable3" for="flexCheckDefault" href="#">
+                        &nbsp; Dept
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-2 col-6 mt-4 mb-4">
+                <button type="button" class="btn box-1">
+                    <label class="lable3"> Hybrid  </label>
+                </button>
+            </div>
+            <div class="col-md-2 col-6 mt-4 mb-4">
+                <button type="button" class="btn box-12">
+                    <label class="lable3"> Hybrid  </label>
+                </button>
             </div>
         </div>
 
-        <nav class="nav margin-top">
-            <div class="">
-                <a href="#" class="nav_logo  mb-3">
-                    <img src="~/images/twc-logo.png" alt="" class="logo1" />
-                </a>
-                <div class="nav_list">
-                    <a href="index.html" class="nav_link  mb-2 mt-2"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
-                    <a href="mutual-fund.html" class="nav_link active mb-2 mt-2"> <i class='bx bxs-briefcase nav_icon'></i> <span class="nav_name">Wealth Prodcuts</span> </a>
-                    <a href="Client-List.html" class="nav_link mb-2 mt-2"> <i class='bx bx-list-ul nav_icon'></i> <span class="nav_name">Client List</span> </a>
-                    <a href="#" class="nav_link  mb-2 mt-2"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">SIP Book</span> </a>
-                    <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-time-five nav_icon'></i> <span class="nav_name">Proposals</span> </a>
-                    <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-sitemap nav_icon'></i> <span class="nav_name">Earnings</span> </a>
-                    <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-group nav_icon'></i> <span class="nav_name">My Team</span> </a>
-                    <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-layer nav_icon'></i> <span class="nav_name">Tracker</span> </a>
-                    <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-cog nav_icon'></i> <span class="nav_name">Rewards</span> </a>
-                    <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-cog nav_icon'></i> <span class="nav_name">My Profile</span> </a>
-                </div>
-            </div>
-            <a href="#" class="nav_link mb-5 mt-0"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
-
-        </nav>
-    </div>
-
-
-    <!--  Sidebar End -->
-    <!--  Main wrapper -->
-    <div class="bg-color" style="min-height: 100vh;">
-        <div class="container-fluid">
-            <!--header mf and login-->
-            <div class="row">
-                <div class="col-12">
-                    <nav class="navbar navbar-expand-lg border-bottom mb-3">
-                        <div class="navbar-collapse ps-3" id="navbarNav">
-                            <div class="col-md-4">
-                                <div class="row text-start">
-                                    <div class="dashbourd-title p-0">
-                                        Mutual Fund
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <input type="search" class="form-control ms-3 menu-search-bar" id="" aria-describedby="" placeholder="Search here..." style="background-color: white;">
-                                    </div>
-                                    <ul class="col-md-5 navbar-nav flex-row  align-items-center justify-content-end">
-                                        <li class="nav-item">
-                                            <a class="nav-link nav-icon-hover ms-4 me-3 bell-icon p-2" href="javascript:void(0)">
-                                                <i class="ti ti-bell-ringing" style="font-size: 22px;"></i>
-                                            </a>
-                                        </li>
-                                        <div class="login-icon d-flex ms-0" style="background-color: white;">
-                                            <img src="~/images/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
-                                        <li class="nav-item dropdown ">
-                                            <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                                               aria-expanded="false">
-                                                <div>
-                                                    <h6>Amit Kumar</h6>
-                                                </div>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                                                <div class="message-body">
-                                                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                                        <i class="ti ti-user fs-6"></i>
-                                                        <p class="mb-0 fs-3">Amit Kumar</p>
-                                                    </a>
-                                                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                                        <i class="ti ti-mail fs-6"></i>
-                                                        <p class="mb-0 fs-3">My Account</p>
-                                                    </a>
-                                                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                                        <i class="ti ti-list-check fs-6"></i>
-                                                        <p class="mb-0 fs-3">My Task</p>
-                                                    </a>
-                                                    <a href="./authentication-login.html" class="btn btn-outline-Delete mx-3 mt-2 d-block">Logout</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                </div>
-
-                                </ul>
-                            </div>
-                        </div>
-                </div>
-                </nav>
-            </div>
-        </div>
-        <!--header mf and login End-->
-        <div class="row">
-            <div class="col-md-12 col-12">
-                <nav class="navbar navbar-expand-lg" style="background-color:#EBDFD7;">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="navbarNav" style="border-bottom: 1px solid #d7d7d7;">
-                            <ul class="navbar-nav">
-                                <li class="nav-item me-4">
-                                    <a class="nav-link mf-sub-tab1 active" aria-current="page" href="mf-sub-event-mf.html">Mutual fund</a>
-                                </li>
-                                <li class="nav-item me-4">
-                                    <a class="nav-link mf-sub-tab1" aria-current="page" href="Equity.html">Equity</a>
-                                </li>
-                                <li class="nav-item me-4">
-                                    <a class="nav-link mf-sub-tab1" href="Fixed-Income.html">Fixed-Income</a>
-                                </li>
-                                <li class="nav-item me-4">
-                                    <a class="nav-link mf-sub-tab1" href="Exotic.html">Exotic</a>
-                                </li>
-                                <li class="nav-item me-4">
-                                    <a class="nav-link mf-sub-tab1" href="Structural.html">Structural</a>
-                                </li>
-                                <li class="nav-item me-4">
-                                    <a class="nav-link mf-sub-tab1" href="iBasket.html">iBasket</a>
-                                </li>
-
-                            </ul>
-                        </div>
+        <div class="row gx-4">
+            <div class="col-md-4 col-6 mt-3 mb-3">
+                <div class="card-mf-schemes d-flex ">
+                    <div class="col-md-1 col-1">
+                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
                     </div>
-                </nav>
-                <div class="py-4">
-                    <a class="calendar-tab-mf me-2" href="mf-event-mf-screener.html">Screener</a>
-                    <a class="calendar-tab-mf  active me-2" href="mf-event-mf-Advised-Fund.html">Advised Funds</a>
-                    <a class="calendar-tab-mf me-2">NFO</a>
-                    <a class="calendar-tab-mf me-2">Global Search</a>
-                    <a class="calendar-tab-mf me-2">Buy/SIP/STP</a>
-                    <a class="calendar-tab-mf me-2">Redemption</a>
-                    <a class="calendar-tab-mf me-2">Goal Planning</a>
-                    <a class="calendar-tab-mf me-2">Calculator</a>
-
-                </div>
-                <div class="new-card ps-2">
-                    <div class="container-fluid">
-                        <div class="row gx-4 border-bottom">
-                            <div class="col-md-2 col-6 mt-4 mb-4">
-                                <button type="button" class="btn box-1">
-                                    <label class="lable3">Fund in focuse</label>
-                                </button>
-                            </div>
-                            <div class="col-md-2 col-6 mt-4 mb-4">
-                                <button type="button" class="btn box-1">
-                                    <label class="lable3">Equity </label>
-                                </button>
-                            </div>
-                            <div class="col-md-2 col-6 mt-4 mb-4">
-                                <button type="button" class="btn box-1">
-                                    <label class="lable3"> Hybrid  </label>
-                                </button>
-                            </div>
-                            <div class="col-md-2 col-6 mt-4 mb-4">
-                                <div class="box-1">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <a class="form-check-label lable3" for="flexCheckDefault" href="#">
-                                        &nbsp; Dept
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-6 mt-4 mb-4">
-                                <button type="button" class="btn box-1">
-                                    <label class="lable3"> Hybrid  </label>
-                                </button>
-                            </div>
-                            <div class="col-md-2 col-6 mt-4 mb-4">
-                                <button type="button" class="btn box-12">
-                                    <label class="lable3"> Hybrid  </label>
-                                </button>
-                            </div>
-                        </div>
-
-
-
-
-
-                        <div class="row gx-4">
-                            <div class="col-md-4 col-6 mt-3 mb-3">
-                                <div class="card-mf-schemes d-flex ">
-                                    <div class="col-md-1 col-1">
-                                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
-                                    </div>
-                                    <div class="col-md-10 col-10">
-                                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
-                                    </div>
-                                    <div class="col-md-1 col-1 text-end">
-                                        <img src="~/images/ic_round-favorite-selected.png " class="card-mf-heart">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-4 col-6 mt-3 mb-3">
-                                <div class="card-mf-schemes d-flex ">
-                                    <div class="col-md-1 col-1">
-                                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
-                                    </div>
-                                    <div class="col-md-10 col-10">
-                                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
-                                    </div>
-                                    <div class="col-md-1 col-1 text-end">
-                                        <img src="~/images/heart.png" class="card-mf-heart">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-4 col-6 mt-3 mb-3">
-                                <div class="card-mf-schemes d-flex ">
-                                    <div class="col-md-1 col-1">
-                                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
-                                    </div>
-                                    <div class="col-md-10 col-10">
-                                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
-                                    </div>
-                                    <div class="col-md-1 col-1 text-end">
-                                        <img src="~/images/heart.png" class="card-mf-heart">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-4 col-6 mt-3 mb-3">
-                                <div class="card-mf-schemes d-flex ">
-                                    <div class="col-md-1 col-1">
-                                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
-                                    </div>
-                                    <div class="col-md-10 col-10">
-                                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
-                                    </div>
-                                    <div class="col-md-1 col-1 text-end">
-                                        <img src="~/images/ic_round-favorite-selected.png " class="card-mf-heart">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-4 col-6 mt-3 mb-3">
-                                <div class="card-mf-schemes d-flex ">
-                                    <div class="col-md-1 col-1">
-                                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
-                                    </div>
-                                    <div class="col-md-10 col-10">
-                                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
-                                    </div>
-                                    <div class="col-md-1 col-1 text-end">
-                                        <img src="~/images/heart.png" class="card-mf-heart">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-4 col-6 mt-3 mb-3">
-                                <div class="card-mf-schemes d-flex ">
-                                    <div class="col-md-1 col-1">
-                                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
-                                    </div>
-                                    <div class="col-md-10 col-10">
-                                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
-                                    </div>
-                                    <div class="col-md-1 col-1 text-end">
-                                        <img src="~/images/heart.png" class="card-mf-heart">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-4 col-6 mt-3 mb-3">
-                                <div class="card-mf-schemes d-flex ">
-                                    <div class="col-md-1 col-1">
-                                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
-                                    </div>
-                                    <div class="col-md-10 col-10">
-                                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
-                                    </div>
-                                    <div class="col-md-1 col-1 text-end">
-                                        <img src="~/images/ic_round-favorite-selected.png " class="card-mf-heart">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-4 col-6 mt-3 mb-3">
-                                <div class="card-mf-schemes d-flex ">
-                                    <div class="col-md-1 col-1">
-                                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
-                                    </div>
-                                    <div class="col-md-10 col-10">
-                                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
-                                    </div>
-                                    <div class="col-md-1 col-1 text-end">
-                                        <img src="~/images/heart.png" class="card-mf-heart">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-4 col-6 mt-3 mb-3">
-                                <div class="card-mf-schemes d-flex ">
-                                    <div class="col-md-1 col-1">
-                                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
-                                    </div>
-                                    <div class="col-md-10 col-10">
-                                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
-                                    </div>
-                                    <div class="col-md-1 col-1 text-end">
-                                        <img src="~/images/heart.png" class="card-mf-heart">
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                    <div class="col-md-10 col-10">
+                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
+                    </div>
+                    <div class="col-md-1 col-1 text-end">
+                        <img src="~/images/ic_round-favorite-selected.png " class="card-mf-heart">
                     </div>
                 </div>
 
             </div>
+            <div class="col-md-4 col-6 mt-3 mb-3">
+                <div class="card-mf-schemes d-flex ">
+                    <div class="col-md-1 col-1">
+                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
+                    </div>
+                    <div class="col-md-10 col-10">
+                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
+                    </div>
+                    <div class="col-md-1 col-1 text-end">
+                        <img src="~/images/heart.png" class="card-mf-heart">
+                    </div>
+                </div>
 
+            </div>
+            <div class="col-md-4 col-6 mt-3 mb-3">
+                <div class="card-mf-schemes d-flex ">
+                    <div class="col-md-1 col-1">
+                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
+                    </div>
+                    <div class="col-md-10 col-10">
+                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
+                    </div>
+                    <div class="col-md-1 col-1 text-end">
+                        <img src="~/images/heart.png" class="card-mf-heart">
+                    </div>
+                </div>
 
+            </div>
+            <div class="col-md-4 col-6 mt-3 mb-3">
+                <div class="card-mf-schemes d-flex ">
+                    <div class="col-md-1 col-1">
+                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
+                    </div>
+                    <div class="col-md-10 col-10">
+                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
+                    </div>
+                    <div class="col-md-1 col-1 text-end">
+                        <img src="~/images/ic_round-favorite-selected.png " class="card-mf-heart">
+                    </div>
+                </div>
 
+            </div>
+            <div class="col-md-4 col-6 mt-3 mb-3">
+                <div class="card-mf-schemes d-flex ">
+                    <div class="col-md-1 col-1">
+                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
+                    </div>
+                    <div class="col-md-10 col-10">
+                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
+                    </div>
+                    <div class="col-md-1 col-1 text-end">
+                        <img src="~/images/heart.png" class="card-mf-heart">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-6 mt-3 mb-3">
+                <div class="card-mf-schemes d-flex ">
+                    <div class="col-md-1 col-1">
+                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
+                    </div>
+                    <div class="col-md-10 col-10">
+                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
+                    </div>
+                    <div class="col-md-1 col-1 text-end">
+                        <img src="~/images/heart.png" class="card-mf-heart">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-6 mt-3 mb-3">
+                <div class="card-mf-schemes d-flex ">
+                    <div class="col-md-1 col-1">
+                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
+                    </div>
+                    <div class="col-md-10 col-10">
+                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
+                    </div>
+                    <div class="col-md-1 col-1 text-end">
+                        <img src="~/images/ic_round-favorite-selected.png " class="card-mf-heart">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-6 mt-3 mb-3">
+                <div class="card-mf-schemes d-flex ">
+                    <div class="col-md-1 col-1">
+                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
+                    </div>
+                    <div class="col-md-10 col-10">
+                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
+                    </div>
+                    <div class="col-md-1 col-1 text-end">
+                        <img src="~/images/heart.png" class="card-mf-heart">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-6 mt-3 mb-3">
+                <div class="card-mf-schemes d-flex ">
+                    <div class="col-md-1 col-1">
+                        <img src="~/images/basket-logo.jpg" class="card-mf-icon">
+                    </div>
+                    <div class="col-md-10 col-10">
+                        <div class="card-title-2 font-16 ps-2">Ace-Largecap</div>
+                    </div>
+                    <div class="col-md-1 col-1 text-end">
+                        <img src="~/images/heart.png" class="card-mf-heart">
+                    </div>
+                </div>
+
+            </div>
         </div>
-
     </div>
-    </div>
-    </div>
+</div>
 
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function (event) {
-
-            const showNavbar = (toggleId, navId, bodyId, headerId) => {
-                const toggle = document.getElementById(toggleId),
-                    nav = document.getElementById(navId),
-                    bodypd = document.getElementById(bodyId),
-                    headerpd = document.getElementById(headerId)
-
-                // Validate that all variables exist
-                if (toggle && nav && bodypd && headerpd) {
-                    toggle.addEventListener('click', () => {
-                        // show navbar
-                        nav.classList.toggle('show')
-                        // change icon
-                        toggle.classList.toggle('bx-x')
-                        // add padding to body
-                        bodypd.classList.toggle('body-pd')
-                        // add padding to header
-                        headerpd.classList.toggle('body-pd')
-                    })
-                }
-            }
-
-            showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
-
-            /*===== LINK ACTIVE =====*/
-            const linkColor = document.querySelectorAll('.nav_link')
-
-            function colorLink() {
-                if (linkColor) {
-                    linkColor.forEach(l => l.classList.remove('active'))
-                    this.classList.add('active')
-                }
-            }
-            linkColor.forEach(l => l.addEventListener('click', colorLink))
-
-            // Your code to run since DOM is loaded and ready
-        });
-
-    </script>
-
-    <script>
-
-        $(document).ready(function () {
-            $(".toggle-button1").click(function () {
-                $(".card-panel2").toggle();
-            });
-        });
-    </script>
-    <!--table navigation scripts-->
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-    <script>new DataTable('#example');</script>
-
-
-
-
-</body>
-
-</html>
