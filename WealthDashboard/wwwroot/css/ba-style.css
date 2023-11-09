@@ -5,7 +5,12 @@
   font-size: 16px;
   font-weight: 500;
 }
-
+.card-bg{
+  background-color: #EBDFD7;
+}
+.card-bg-34{
+  background-color: #ffffffd2;
+}
 
 .sales-icon {
   width: 30px;
@@ -429,10 +434,28 @@ input.form-control.rounded-5.bg-light-gray.pt-2.pb-2 {
   color: #ffffff;
   text-decoration: none;
 }
+.lable4{
+  font-weight: 400;
+  font-size: 13px;
+  color: #000000;
+  text-decoration: none;
+}
+.lable4:hover{
+  font-weight: 400;
+  font-size: 13px;
+  color: #9C7952;
+  text-decoration: none;
+}
 
 .form-check-input:checked {
   background-color: #CAAA86;
   border-color: #d3852c;
+}
+.btn-login-1{
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  background-image: linear-gradient(to top, #E09E64,#A66E3D);
 }
 @media screen and (min-width: 768px) {
   body {
@@ -725,6 +748,7 @@ a#header-toggle {
   font-family: 'Roboto', sans-serif;
   border: none;
   color: #000000;
+  padding-bottom: 19px !important;
 }
 .mf-sub-tab1:hover{
   font-size: 16px;
@@ -734,6 +758,35 @@ a#header-toggle {
   font-family: 'Roboto', sans-serif;
   color: #9C7952 !important;
   border-bottom: 2px solid #927655;
+  padding-bottom: 19px !important;
+}
+.mf-sub-tab1-button{
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 17px;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  color: #000000;
+  border: 1px solid #9C7952;
+  padding: 10px 20px 10px 20px;
+  background: url(../images/filter.png)no-repeat;
+  background-position: 16px 10px;
+  background-size: 12%;
+  border-radius: 10px;
+}
+.mf-sub-tab1-button:hover{
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 17px;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  color: #9C7952 !important;
+  border: 1px solid #9C7952;
+  padding: 10px 20px 10px 20px;
+  background: url(../images/filter.png)no-repeat;
+  background-position: 16px 10px;
+  background-size: 12%;
+  border-radius: 10px;
 }
 
 a.calendar-tab-mf:hover {
@@ -754,6 +807,7 @@ a.calendar-tab-mf:hover {
   font-family: 'Roboto', sans-serif;
   color: #9C7952 !important;
   border-bottom: 2px solid #927655;
+  padding-bottom: 19px !important;
 }
 .tablinks.active{
   font-size: 16px;
@@ -823,6 +877,34 @@ a.calendar-tab-mf:hover {
   color: black;
   font-family: 'Roboto', sans-serif;
 }
+.font-12{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgb(255, 255, 255);
+  font-family: 'Roboto', sans-serif;
+}
+
+.font-a{
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #9C7952 !important;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+.font-12-a{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #9C7952 !important;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
 .font-14{
   font-size: 14px;
   font-weight: 400;
@@ -836,6 +918,20 @@ a.calendar-tab-mf:hover {
   line-height: 20px;
   color: black;
   font-family: 'Roboto', sans-serif;
+}
+.font-16-a{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+}
+.font-17{
+  font-size: 14px;
+  font-weight: 400;
+  color: #7C7C7C;
+  font-family: 'Roboto', sans-serif;
+  line-height: 24px;
 }
 .sgb-checkbox{
   width: 20px;
@@ -882,13 +978,15 @@ a.calendar-tab-mf:hover {
   border-radius: 30px;
   color: white;
 }
-body{
-  padding: 0px;
-  margin: 0px;
-}
+
 .form-title{
   font-weight: 500;
   font-size: 20px;
   line-height: 20px;
   color: white;
+}
+.user-1{
+  width: 108px;
+  height: auto;
+  border-radius: 50px;
 }

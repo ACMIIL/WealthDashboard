@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
     MFCategory();
+    
 });
 var GlobalUrl = "https://localhost:7217/api/";
 function MFCategory() {
@@ -12,12 +13,13 @@ function MFCategory() {
         success: function (data) {
             $.each(data.data, function(key,value){
                 html =  '<div class="col-md-2 col-6 mt-4 mb-4">'+
-                    '<button type="button" class="btn box-1" data-Subcategory=' + value.category +' onClick="MFSubCategory(this)" >' +
+                    '<button type="button" id='+ value.category +' class="btn box-1" data-Subcategory=' + value.category +' onClick="MFSubCategory(this)" >' +
                         '<label class="lable3">' + value.category +'</label>' +
                         '</button>' +
                         '</div>'
                 $("#CategoryDiv").append(html);
             });
+            MFSubCategory('Equity');
         },
         error: function (data) {
 
@@ -26,7 +28,16 @@ function MFCategory() {
 }
 function MFSubCategory(data) {
     $("#MFSubCategoryDiv").html('');
-    var val = data.dataset.subcategory;
+    var val = "";
+    if (data == "Equity") {
+        val = "Equity";
+    }
+    else {
+        val = data.dataset.subcategory;
+    }
+
+    
+
     $.ajax({
         type: "GET",
         url: GlobalUrl + "Accord/GetMFSubCategory",
@@ -49,6 +60,9 @@ function MFSubCategory(data) {
                     '</div>' +
                     '</div>';
                 $("#MFSubCategoryDiv").append(html);
+
+                $('.active').removeClass('active'); // remove existing active
+                $('#'+val).addClass('active'); // set current link as active
             });
         },
         error: function (data) {
@@ -57,3 +71,4 @@ function MFSubCategory(data) {
     });
     
 }
+
