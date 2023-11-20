@@ -3,6 +3,7 @@
 
 });
 var GlobalUrl = "https://localhost:7217/api/";
+var CommonWebsiteURL = "http://localhost:52206/";
 function SMFCategory() {
     var html = "";
     $.ajax({
@@ -84,64 +85,94 @@ function ShowFilter() {
     
 }
 
+function updateContent(fundName, fundDetails) {
+    // Removed console.log statements
+
+    // Display fund name in both a div and an input
+    $("#fundNameDisplayDiv").text(fundName);
+    $("#fundNameDisplayInput").val(fundName);
+}
+
+function GetInvestNow(event, value) {
+    const ISIN = event.currentTarget.id;
+    sessionStorage.setItem("ISIN", ISIN);
+    sessionStorage.setItem("FolioNo", null);
+
+    // Save the clicked data in sessionStorage for later use
+    sessionStorage.setItem("selectedFund", encodeURIComponent(JSON.stringify(value)));
+
+    // Update the content dynamically
+    updateContent(value.accordSchemeName, value);
+
+    // Set fundNameDisplayInput value
+    $("#fundNameDisplayInput").val(value.accordSchemeName);
+
+    window.location.href = CommonWebsiteURL + 'MutualFund/SIPFund';
+}
+
 function SchemeDetails(data) {
     $("#scrtbody").html('');
-    var SchemeSubCategory = data.dataset.schemedetail;
-    GetReturnArrays = "";
-    var content = '';
-    var datas = '';
-    //if (Category != "null") {
-    //    var URL = CommonURL + "api/MFUsers/GetRecommendation",
-    //        datas = {
-    //            Category: Category,
-    //            SubCategory: SchemeSubCategory
-    //        }
-    //} else {
-    var URL = GlobalUrl + "MFUsers/GetInvestNowDetail"
-    datas = {
+
+    const SchemeSubCategory = data.dataset.schemedetail;
+    let URL = GlobalUrl + "MFUsers/GetInvestNowDetail";
+    let datas = {
         SubCategory: SchemeSubCategory
-    }
-        //}
-    //}
+    };
 
-    $.ajax(
-        {
-            type: "GET",
-            url: URL,
-            data: datas,
-            success: function (data) {
-                //var NoOfCount = data.data.length;
-                //$("#NoOfScheme").html(NoOfCount);
-                //$("#FundNo").html(NoOfCount);
-
-                //Rearrangedata(data, "60");
-                //GetReturnArrays = data;
-                $.each(data.data, function (key, val) {
-                    var html = '<tr>' +
-                        '<td class="font-14">' + val.accordSchemeName + '</td>' +
-                        '<td>' +
-                        '<span><img src="/images/Group.png" class="star"></span>' +
-                        '<span><img src="/images/Group.png" class="star"></span>' +
-                        '<span><img src="/images/Group.png" class="star"></span>' +
-                        '<span><img src="/images/Group.png" class="star"></span>' +
-                        '<span><img src="/images/group-2.png" class="star"></span>' +
-                        '</td>' +
-                        '<td class="text-success">' + val.fiveyrret + '%</td>' +
-                        '<td class="text-success">' + val.thirdyrret + '%</td>' +
-                        '<td class="text-success">' + val.oneYrret + '%</td>' +
-                        '<td class="text-success">' + val.threeMonthret + '%</td>' +
-                        '<td class="font-14">' + val.aum + 'Cr</td>' +
-                        '</tr>';
+    $.ajax({
+        type: "GET",
+        url: URL,
+        data: datas,
+        success: function (data) {
+            try {
+                // Handle success
+                $("#scrtbody").html('');
+                data.data.forEach((value) => {
+                    const html = `
+                        <tr>
+                            <td>
+                                <a href="#" id="${value.isin}" data-fundname="${value.accordSchemeName}" 
+                                    onClick="GetInvestNow(event, ${JSON.stringify(value).replace(/"/g, '&quot;')})"
+                                    class="card-link-group">
+                                    <strong>${value.accordSchemeName}</strong>
+                                </a>
+                            </td>
+                            <td>
+                                <span>${Array(5).fill('<img src="/images/Group.png" class="star">').join('')}</span>
+                            </td>
+                            <td class="text-success">${value.fiveyrret}%</td>
+                            <td class="text-success">${value.thirdyrret}%</td>
+                            <td class="text-success">${value.oneYrret}%</td>
+                            <td class="text-success">${value.threeMonthret}%</td>
+                            <td class="font-14">${value.aum}Cr</td>
+                        </tr>`;
                     $("#scrtbody").append(html);
                 });
-                
-
-            },
-            error: function (data) {
-                console.log(data);
+            } catch (error) {
+                console.error(error);
             }
-        });
+        },
+        error: function (error) {
+            console.error(error);
+        }
+    });
 }
+
+//function GetInvestNow(event, value) {
+//    const ISIN = event.currentTarget.id;
+//    localStorage.setItem("ISIN", ISIN);
+//    localStorage.setItem("FolioNo", null);
+//    window.location.href = CommonWebsiteURL + 'MutualFund/SIPFund';
+//}
+
+
+//function GetInvestNow(event, value) {
+//    console.log("GetInvestNow called");
+//    const ISIN = event.currentTarget.id;
+//    localStorage.setItem("ISIN", ISIN);
+//    localStorage.setItem("FolioNo", null);
+//    window.location.href = CommonWebsiteURL + 'MutualFund/SIPFund';
+//}
 function Rearrangedata(data, Return) {
     var sortedData = [];
     if (Return == "1") {

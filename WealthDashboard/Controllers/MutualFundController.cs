@@ -36,5 +36,18 @@ namespace WealthDashboard.Controllers
         {
             return View();
         }
+
+        [Route("MutualFund/LumpsumFund")]
+        public IActionResult MFadvisedfundLumpsum()
+        {
+            return View();
+        }
+
+        [Route("MutualFund/SIPFund")]
+        public IActionResult MFadvisedfundSIP()
+        {
+
+            return View();
+        }
     }
 }
