@@ -182,8 +182,9 @@
                             <div class="col-md-6 col-12">
                                 <!-- Mutual Fund Cart -->
                                 <div class="col-md-12 col-12 font-18 margin-top-12">Mutual Fund Cart</div>
-                            
-                                <input type="text" class="form-control" id="fundNameDisplayInput" placeholder="Scheme" readonly>
+                                @* <h2>@ViewData["Title"]</h2> *@
+                                <p><strong>@ViewData["FundName"]</strong></p>
+                                @* <input type="text" class="form-control" id="fundNameDisplayInput" placeholder="Scheme" readonly> *@
                                 <!-- Section 1 -->
                                 <div class="row gx-4" id="additionalContent2">
                                     <div class="col-md-12">
@@ -233,9 +234,15 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12 mt-4">
-                                            <button type="button" class="btn btn-Add-Scheme col-md-4">Add Scheme</button>
+                                            <button type="button" class="btn btn-Add-Scheme col-md-4" id="addSchemeBtn">Add Scheme</button>
                                             <button type="button" class="btn btn-buy-now col-md-4">Buy Now</button>
                                         </div>
+                                        <div id="searchBar" style="display: none;">
+                                            <input type="text" class="form-control" placeholder="Search for a scheme" id="searchInput">
+                                            <div id="schemeDropdown"></div>
+                                            <div id="searchResults"></div>
+                                        </div>
+
                                     </div>
                                 </div>
 
@@ -424,6 +431,72 @@
         });
 
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // On Add Scheme button click
+            $("#addSchemeBtn").click(function () {
+                // Toggle the visibility of the search bar
+                $("#searchBar").toggle();
+
+                // If the search bar is visible, fetch the data
+                if ($("#searchBar").is(":visible")) {
+                    fetchSchemeData();
+                }
+            });
+
+            // Array to store the fetched data
+            var schemeDataArray = [];
+
+            // Fetch scheme data
+            function fetchSchemeData() {
+                // Call the API to get the scheme data
+                $.ajax({
+                    url: "https://localhost:7217/api/GlobalSearch/GetGlobalSearchDeatils",
+                    method: "GET",
+                    success: function (response) {
+                        // Store the fetched data in the array
+                        schemeDataArray = response.data;
+
+                        // Initialize autocomplete
+                        initializeAutocomplete();
+                    },
+                    error: function (error) {
+                        console.error("Error fetching scheme data:", error);
+                    }
+                });
+            }
+
+            // Initialize autocomplete
+            function initializeAutocomplete() {
+                $("#searchInput").autocomplete({
+                    source: function (request, response) {
+                        // Filter data based on the first eight letters entered by the user
+                        var filteredResults = schemeDataArray.filter(function (result) {
+                            return result.schemeName.toLowerCase().startsWith(request.term.toLowerCase().substring(0, 8));
+                        });
+
+                        // Map the filtered results to label and value
+                        var mappedResults = filteredResults.map(function (result) {
+                            return { label: result.schemeName, value: result.schemeName };
+                        });
+
+                        response(mappedResults);
+                    },
+                    select: function (event, ui) {
+                        // On selection, display details or perform other actions
+                        displaySchemeDetails(ui.item.value);
+                    }
+                });
+            }
+
+            // Function to display scheme details
+            function displaySchemeDetails(selectedScheme) {
+                // Implement your logic to display details based on the selected scheme
+                console.log("Selected Scheme: ", selectedScheme);
+            }
+        });
+    </script>
 
     <script>
 
@@ -437,6 +510,9 @@
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script>new DataTable('#example');</script>
 
 
@@ -445,7 +521,7 @@
 </body>
 
 </html>
-<script src="~/MF Script/InsertSIPandLumsum.js"></script>
-<script src="~/MF Script/screener.js"></script>
+@* <script src="~/MF Script/InsertSIPandLumsum.js"></script>
+<script src="~/MF Script/screener.js"></script> *@
 
 

@@ -1,28 +1,23 @@
 ﻿@{
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
     <title>TWC</title>
     <link rel="canonical" href="" />
     <meta content="" name="description">
     <meta content="" name="keywords">
-
     <!-- Favicons -->
     <link href="" rel="icon">
     <link href="" rel="apple-touch-icon">
-
     <!-- Google Fonts -->
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link href="https://chhotaniveshgold.com/assets/vendor/boxicons/css/boxicons.min.css"> -->
-   
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
     <!-- Vendor CSS Files -->
     <link href="~/css/slick.css" rel="stylesheet">
@@ -32,34 +27,35 @@
     <link href="~/css/bootstrap.css" rel="stylesheet">
     <link href="~/css/ba-style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        input::placeholder {
+            color: rgb(255, 255, 255) !important;
+        }
+
+        input.form-control {
+            background-color: black;
+            color: white;
+        }
+
+        input:focus {
+            background-color: black !important;
+            color: white !important;
+            border: 1px solid white !important;
+            box-shadow: none !important;
+        }
+    </style>
 </head>
-<style>
-    input::placeholder {
-        color: rgb(255, 255, 255) !important;
-    }
-
-    input.form-control {
-        background-color: black;
-        color: white;
-    }
-
-    input:focus {
-        background-color: black !important;
-        color: white !important;
-        border: 1px solid white !important;
-        box-shadow: none !important;
-    }
-</style>
 
 <body>
 
-    <!-- ======= Hero Section ======= -->
     <section class="background-twc-banner d-flex justify-content-center align-items-center" style="height:100vh">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mx-auto">
                     <div class="row ">
-                        <div class="col-md-12  card login-form-1 px-5">
+                        <div class="col-md-12 card login-form-1 px-5">
                             <div class="row mx-auto">
                                 <img src="~/images/twc-logo.png" alt="" title="" class="img-fluid mt-5 mb-4">
                             </div>
@@ -76,7 +72,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12 mt-3 mb-5">
-                                    <a type="button" onclick="SendOtp()" id="SendOTPButton" class="btn btn-login-1 col-md-12" >Send OTP</a>
+                                    <a href="#" id="SendOTPButton" class="btn btn-login-1 col-md-12" onclick="sendOtp()">Send OTP </a>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -84,17 +81,9 @@
                 </div>
             </div>
         </div>
+    </section>
 
-    </section><!-- End Hero -->
-    <!-- Vendor JS Files -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/slick.js"></script>
-    <script src="js/slick.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-
-    <!-- Template Main JS File -->
-    <script src="js/main.js"></script>
+    <script src="~/Loginjs/Login.js"></script>
 </body>
 
 </html>
-<script src="~/Loginjs/Login.js"></script>

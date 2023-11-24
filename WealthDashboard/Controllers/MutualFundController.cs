@@ -44,10 +44,15 @@ namespace WealthDashboard.Controllers
         }
 
         [Route("MutualFund/SIPFund")]
-        public IActionResult MFadvisedfundSIP()
+        public IActionResult MFadvisedfundSIP(string fundName)
         {
+           
+            ViewData["FundName"] = fundName;
 
             return View();
         }
     }
+
+
+
 }

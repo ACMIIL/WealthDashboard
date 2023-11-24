@@ -107,7 +107,7 @@ function GetInvestNow(event, value) {
     // Set fundNameDisplayInput value
     $("#fundNameDisplayInput").val(value.accordSchemeName);
 
-    window.location.href = CommonWebsiteURL + 'MutualFund/SIPFund';
+    window.location.href = CommonWebsiteURL + 'MutualFund/SIPFund?fundName=' + value.accordSchemeName +'';
 }
 
 function SchemeDetails(data) {
@@ -298,3 +298,4 @@ function Rearrangedata(data, Return) {
 
     $("#SchemeDetails").html(content);
 }
+
