@@ -119,11 +119,10 @@ function SendOTPAgent(phoneNumber) {
         data: {},
     })
         .done(function (data) {
-            if (data.data && data.data !== "") {
-                localStorage.setItem("Token", data.data);
+            if (data.code = '200' && data.message == "OTP sent successfully.") {
                 showSuccessMessage("OTP sent successfully.", '/images/twc-logo.png', 90, 40);
                 setTimeout(function () {
-                    window.location.href = `${RedirectBaseURL}/login/login`;
+                    window.location.href = `${RedirectBaseURL}/login/OTPVerify`;
                 }, 5000);
             } else {
                 throw new Error("Something went wrong.");
@@ -152,19 +151,15 @@ $("#Submitbutton").click(function () {
         data: JSON.stringify({
             mobile: phoneNumber,
             mobileOTP: MobileOTP,
-            token: TokenID
+            // token: TokenID
         }),
     })
         .done(function (data) {
-            if (data.data == "Verification successful.") {
+            if (data.data == "OTP Verified") {
                 showSuccessMessage("OTP verified successfully", '/images/twc-logo.png', 90, 40);
 
                 // Add the token to the request headers
-                $.ajaxSetup({
-                    headers: {
-                        'Authorization': 'Bearer ' + TokenID
-                    }
-                });
+
 
                 setTimeout(function () {
                     // Redirect to the new page
@@ -223,7 +218,6 @@ function ResendOTP(phoneNumber) {
     })
         .done(function (data) {
             if (data.data && data.data !== "") {
-                localStorage.setItem("Token", data.data);
                 showSuccessMessage("OTP sent successfully.", '/images/twc-logo.png', 90, 40);
                 setTimeout(function () {
                     //window.location.href = "Login/Login";

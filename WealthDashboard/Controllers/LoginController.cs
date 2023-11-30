@@ -4,11 +4,11 @@ namespace WealthDashboard.Controllers
 {
     public class LoginController : Controller
     {
-        public IActionResult Login()
+        public IActionResult OTPVerify()
         {
             return View();
         }
-        public IActionResult LoginWithMobile()
+        public IActionResult Login()
         {
             return View();
         }
