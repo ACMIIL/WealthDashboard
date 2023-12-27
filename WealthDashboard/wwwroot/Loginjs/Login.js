@@ -3,6 +3,7 @@
     return '';
 };
 
+
 $(document).ready(function () {
     $("#VerifyMobile").val(localStorage.getItem("phoneNumber"));
 });
@@ -163,7 +164,7 @@ $("#Submitbutton").click(function () {
 
                 setTimeout(function () {
                     // Redirect to the new page
-                    window.location.href = `${RedirectBaseURL}/mutualFund/Screener`;
+                    window.location.href = `${RedirectBaseURL}/PMSandAFI/PMS`;
                 }, 5000);
             } else {
                 showErrorMessage("Invalid OTP. Please try again.");
