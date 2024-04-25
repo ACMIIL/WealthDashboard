@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewData["Title"] = "CartDetail";
+    Layout = "~/Views/Shared/_LayoutMF.cshtml";
+}
+<style>
+.card-title h5 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #6E4B4B;
+    padding-left: 10px;
+}
+.card-title h6 {
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+    padding-left: 10px;
+}
+.mf-card{
+    padding:15px 15px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.card-details{
+    margin-top:10px;
+}
+.card-details h5 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    padding-left: 10px;
+}
+.card-details h6 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4E4E4E;
+    padding-left: 10px;
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container">
+    <div class="row" id="GetCartDetails">
+     
+    </div>
+    <div class="row pt-4" id="cartorderbtndiv" style="">
+
+        <div class="row">
+            <div class="col-md-2 col-12">
+                <a class="btn btn-primary btn-buy-now col-md-12" id="ConfirmOrder">Confirm Order</a>
+            </div>
+            <div class="col-md-2 col-12 text-start">
+                <a class="btn btn-primary btn-Add-Scheme  col-md-12" href="Screener" id="CartInvestMore">Invest More</a>
+            </div>
+            @* <div class="col-md-4 col-12 pt-2">
+                <a href="/Home/Emandate" class="text-decoration-underline fontlabel1">Register Auto Pay Or Emandate</a>
+            </div> *@
+        </div>
+    </div>
+    
+
+    <div class="modal fade" id="Otpmodal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-popup1">
+            <div class="modal-content mt-4">
+                <div class="modal-body text-center">
+                    <span class="pull-right close" style="position: relative;top: -11px;right: -6px;" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-close" style="font-size:22px;" data-dismiss="modal-dialog" aria-hidden="true"></i>
+                    </span>
+                    <div class="modal-body p-0" id="transactiondetails">
+                        <div class="FaFolio-title">Kindly verify the transaction details by submitting the OTP</div>
+                        <div class="FaFolio-description m-top20" id="amt1" style="display:none;">
+                            Investment Amount Rs. <span id="totalamt1"></span>
+                        </div>
+                        <div class="FaFolio-description m-top20" id="ramt1" style="display:none;">
+                            Redemption Amount <span id="totalamt11"></span>
+                        </div>
+                        <div class="FaFolio-description m-top20" id="unit1" style="display:none;">
+                            Redemption Units <span id="totalamt21"></span>
+                        </div>
+                        @*  <div class="FaFolio-description2 mt-3 border ps-2 pe-2 pt-2 pb-2 col-md-7 mx-auto mb-4">
+                        Enter OTP sent on Mobile no. <span id="FMobileNumber">9811897184</span> &amp; Email ID <span id="FEmailID">Jaydeepshukla7@gmail.com</span>
+                        </div>*@
+
+                        <div class="row m-0 pt-2" id="FirstDiv" style="display:none;">
+                            <div class="col-md-3 ps-0 pt-2">
+                                <label class="mb-number1"><span id="FirstHolderNo"></span></label>
+                            </div>
+                            <div class="col-md-3 ps-0">
+                                <input type="number" maxlength="6" id="FirstOtp" placeholder="Enter OTP" class="form-control" autocomplete="off" onkeypress="if(this.value.length==6) return false;">
+                                <label id="errorFirstOtp" style="color: #f00; font-size: 12px; font-weight:400;"></label>
+                            </div>
+                            <div class="col-md-2 ps-0 pt-2">
+                                <button class="verify-list" id="FirstOTPVerify">Verify</button>
+                            </div>
+                            <div class="col-md-1 pe-0 ps-0 pt-2">
+                                <a href="javascript:;" class="text-decoration-underline" id="firstresendcartotp" onclick="Resendotpcart(1)" style="display:none">Resend</a>
+                            </div>
+                            <div class="col-md-3 ps-0 pt-2" id="firsttimercartdiv">
+                                <label class="timer-number">Resend in <span id="firsttimercart"></span></label>
+                            </div>
+                        </div>
+
+                        <div class="row m-0 pt-2" id="SecondDiv" style="display:none;">
+                            <div class="col-md-3 ps-0 pt-2">
+                                <label class="mb-number1"><span id="SecondHolderNo"></span></label>
+                            </div>
+                            <div class="col-md-3 ps-0">
+                                <input type="number" maxlength="6" id="SecondOtp" placeholder="Enter OTP" class="form-control" autocomplete="off" onkeypress="if(this.value.length==6) return false;">
+                                <label id="errorFirstOtp" style="color: #f00; font-size: 12px; font-weight:400;"></label>
+                            </div>
+                            <div class="col-md-2 ps-0 pt-2">
+                                <button class="verify-list" id="SecondOTPVerify">Verify</button>
+                            </div>
+                            <div class="col-md-1 pe-0 ps-0 pt-2">
+                                <a href="javascript:;" class="text-decoration-underline" id="secondresendcartotp" onclick="Resendotpcart(2)" style="display:none">Resend</a>
+                            </div>
+                            <div class="col-md-3 ps-0 pt-2" id="secondtimercartdiv">
+                                <label class="timer-number">Resend in <span id="secondtimercart"></span></label>
+                            </div>
+                        </div>
+                        <div class="row m-0 pt-2" id="ThirdDiv" style="display:none;">
+                            <div class="col-md-3 ps-0 pt-2">
+                                <label class="mb-number1"><span id="ThirdHolderNo"></span></label>
+                            </div>
+                            <div class="col-md-3 ps-0">
+                                <input type="number" maxlength="6" id="TherdOTP" placeholder="Enter OTP" class="form-control" autocomplete="off" onkeypress="if(this.value.length==6) return false;">
+                                <label id="errorFirstOtp" style="color: #f00; font-size: 12px; font-weight:400;"></label>
+                            </div>
+                            <div class="col-md-2 ps-0 pt-2">
+                                <button class="verify-list" id="ThirdOTPVerify">Verify</button>
+                            </div>
+                            <div class="col-md-1 pe-0 ps-0 pt-2">
+                                <a href="javascript:;" class="text-decoration-underline" id="thirdresendcartotp" onclick="Resendotpcart(3)" style="display:none">Resend</a>
+                            </div>
+                            <div class="col-md-3 ps-0 pt-2" id="thirdtimercartdiv">
+                                <label class="timer-number">Resend in <span id="thirdtimercart"></span></label>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mx-auto mt-3">
+                            <button class="btn btn-primary btn-buy-now FaFolio_button" id="AllVerifyOTP">Submit</button>
+                        </div>
+                        @* <div class=" mt-3">
+                        <div class="otp-measage" style="display:flex; justify-content:center">
+                        <p id="didnt">Didn't Received OTP?</p> &nbsp; <a href="#" class="otp-link" id="firstresentotp" style="display: none;">Resend OTP</a>
+                        <p id="resendp" style="display: block;">resend in&nbsp;23&nbsp;seconds</p>
+                        </div>
+                        </div>*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hiddenmandateamt" />
+    <input type="hidden" id="UCC" />
+    <input type="hidden" id="AccountNo" />
+    <input type="hidden" id="panNo" />
+</div>
+<script src="~/mf script/cartdetails.js"></script>
