@@ -43,10 +43,20 @@ namespace WealthDashboard.Controllers
             return View();
         }
 
-        [Route("MutualFund/SIPFund")]
+        [Route("MutualFund/InvestNow")]
         public IActionResult MFadvisedfundSIP()
         {
 
+            return View();
+        }
+        [Route("MutualFund/FundDetails")]
+        public IActionResult FundDetails()
+        {
+            return View();
+        }
+        [Route("MutualFund/CartDetail")]
+        public IActionResult CartDetail()
+        {
             return View();
         }
     }
