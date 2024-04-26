@@ -63,6 +63,53 @@ namespace WealthDashboard.Controllers
                 return Json(ex.Message);
             }
         }
+
+
+        [HttpPost]
+        public async Task<JsonResult> AuthenticationInsert([FromBody] AuthenticationInsert authenticationInsert)
+        {
+            var AuthenticationSentOTPDetails = await _orderAuthentication.AuthenticationInsert(authenticationInsert);
+            if (authenticationInsert.TransactionType == "Redeem")
+            {
+                var SentAuthenticationOTP = await _orderAuthentication.SentAuthenticationOTP(new SentAuthenticationOTPModel()
+                {
+                    UCC = authenticationInsert.UCC,
+                    TransactionType = string.Empty,
+                    SchemeName = string.Empty,
+                    SchemeCode = string.Empty,
+                    Option = "1",
+                    CommonOrderID = AuthenticationSentOTPDetails
+
+                });
+
+                return Json(SentAuthenticationOTP);
+            }
+            else
+            {
+                var SentAuthenticationOTP = await _orderAuthentication.SentAuthenticationOTP(new SentAuthenticationOTPModel()
+                {
+                    UCC = authenticationInsert.UCC,
+                    TransactionType = string.Empty,
+                    SchemeName = string.Empty,
+                    SchemeCode = string.Empty,
+                    Option = "5",
+                    CommonOrderID = AuthenticationSentOTPDetails
+
+                });
+
+                return Json(SentAuthenticationOTP);
+            }
+
+
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> UpdateResendOTP([FromBody] RsendOTP resendotp)
+        {
+            var getCheckOutsideDPdata = await _orderAuthentication.UpdateResendOTP(resendotp);
+            return Json(getCheckOutsideDPdata);
+
+        }
         #endregion
     }
 }

@@ -96,5 +96,115 @@ namespace WealthDashboard.Models.OrderAuthentication
                 return null;
             }
         }
+        public async Task<long> AuthenticationInsert(AuthenticationInsert authenticationInsert)
+        {
+            long CommonId = 0;
+
+            try
+            {
+                var requestContent = new StringContent
+                (
+                              JsonConvert.SerializeObject(authenticationInsert),
+                              Encoding.UTF8,
+                              StaticValues.ApplicationJsonMediaType
+                );
+
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Clear();
+                //client.DefaultRequestHeaders.Accept
+                //    .Add(new MediaTypeWithQualityHeaderValue(StaticValues.ApplicationJsonMediaType));
+                client.BaseAddress = new Uri(_appSetting.MFAPIBaseURL);
+                //Sending request to find web api REST service using HttpClient  
+                HttpResponseMessage response = await client
+                                   .PostAsync(APIUrl.AuthenticationInsert, requestContent);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var objResponse = await response.Content.ReadAsStringAsync();
+                    var getResult = JsonConvert.DeserializeObject<ResultModel>(Convert.ToString(objResponse));
+                    CommonId = Convert.ToInt64(getResult.Data.ToString());
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+            return CommonId;
+        }
+        public async Task<SentAuthenticationOTPDEtailsModel> SentAuthenticationOTP(SentAuthenticationOTPModel sentAuthenticationOTPModel)
+        {
+            SentAuthenticationOTPDEtailsModel sentAuthenticationOTPDEtailsModel = new();
+            try
+            {
+                var requestContent = new StringContent
+                (
+                              JsonConvert.SerializeObject(sentAuthenticationOTPModel),
+                              Encoding.UTF8,
+                              StaticValues.ApplicationJsonMediaType
+                );
+
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Clear();
+                //client.DefaultRequestHeaders.Accept
+                //    .Add(new MediaTypeWithQualityHeaderValue(StaticValues.ApplicationJsonMediaType));
+                client.BaseAddress = new Uri(_appSetting.MFAPIBaseURL);
+                //Sending request to find web api REST service using HttpClient  
+                HttpResponseMessage response = await client
+                                   .PostAsync(APIUrl.SentAuthenticationOTP, requestContent);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var objResponse = await response.Content.ReadAsStringAsync();
+                    var getResult = JsonConvert.DeserializeObject<ResultModel>(Convert.ToString(objResponse));
+                    sentAuthenticationOTPDEtailsModel = JsonConvert.DeserializeObject<SentAuthenticationOTPDEtailsModel>(Convert.ToString(getResult.Data));
+                    return sentAuthenticationOTPDEtailsModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+            return sentAuthenticationOTPDEtailsModel;
+        }
+        public async Task<ResultResendotp> UpdateResendOTP(RsendOTP resendotp)
+        {
+            ResultModel getResult = new ResultModel();
+            ResultResendotp resultResendotp = new();
+            string URL = string.Empty;
+
+            try
+            {
+                var requestContent = new StringContent
+                (
+                              JsonConvert.SerializeObject(resendotp),
+                              Encoding.UTF8,
+                              StaticValues.ApplicationJsonMediaType
+                );
+
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Clear();
+                //client.DefaultRequestHeaders.Accept
+                //    .Add(new MediaTypeWithQualityHeaderValue(StaticValues.ApplicationJsonMediaType));
+                client.BaseAddress = new Uri(_appSetting.MFAPIBaseURL);
+                //Sending request to find web api REST service using HttpClient  
+                HttpResponseMessage response = await client
+                                   .PostAsync(APIUrl.Updateresendotp, requestContent);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var objResponse = await response.Content.ReadAsStringAsync();
+                    getResult = JsonConvert.DeserializeObject<ResultModel>(Convert.ToString(objResponse));
+                    resultResendotp = JsonConvert.DeserializeObject<ResultResendotp>(Convert.ToString(getResult.Data));
+                }
+
+                //return Msg;
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+            return resultResendotp;
+        }
     }
 }

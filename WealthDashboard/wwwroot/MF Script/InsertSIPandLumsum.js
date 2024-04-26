@@ -2,7 +2,7 @@
 $(document).ready(function () {
 
     $("#BACode").val('RC4048');
-    $("#UCC").val('3010098');
+    $("#UCC").val(UCC);
     Checkmandate();
     GetInvestNowDetails(sessionStorage.ISIN);
 
@@ -24,44 +24,44 @@ $(document).ready(function () {
 
 function GetInvestNowDetails(ISIN) {
 
-    var data = JSON.parse(decodeURIComponent(sessionStorage.selectedFund));
-    $("#fundNameDisplayInput").val(data.schemeName);
-    $("#MinAmount").html(data.sipMinInstallmentAmt);
-    $("#Multiples").html(data.sipMultiplierAmt);
-    $("#MinInstallments").html(data.sipMinInstallmentNo);
-    $("#LumpsumMinAmount").html(data.minPurchaseAmt);
-    $("#LumpsumMultiples").html(data.purchaseAmtMultiplier);
-    GetSIPDates(data.sipDates)
-    //var content = '';
-    //$.ajax(
-    //    {
-    //        type: "GET",
-    //        url: GlobalUrl + "MFUsers/GetInvestNowDetailByID",
-    //        data: {
-    //            ISIN: ISIN
-    //        },
-    //        success: function (data) {
-    //            //content = content + '<img src="../assets/AMCLogo/' + data.data.amcCode + '.jpg" style="width: 70px; height: 70px;"> ' +
-    //            //    '<h2 class="mt-4" style="font-size: 24px;" class="mt-4"><span id="SchemeName">' + data.data.schemeName + '</span></h2>' +
-    //            //    '<hr>' +
-    //            //    '<p class="small"><img src="../assets/images/icons/warning-swal.fire.png" style="width:14px;filter: invert(1);margin-top: -3px;"> Investment transactions completed after 02:00 PM are submitted to Mutual Fund Company for further processing on the next business day.</p>';
+    //var data = JSON.parse(decodeURIComponent(sessionStorage.selectedFund));
+    //$("#fundNameDisplayInput").val(data.schemeName);
+    //$("#MinAmount").html(data.sipMinInstallmentAmt);
+    //$("#Multiples").html(data.sipMultiplierAmt);
+    //$("#MinInstallments").html(data.sipMinInstallmentNo);
+    //$("#LumpsumMinAmount").html(data.minPurchaseAmt);
+    //$("#LumpsumMultiples").html(data.purchaseAmtMultiplier);
+    //GetSIPDates(data.sipDates)
+    var content = '';
+    $.ajax(
+        {
+            type: "GET",
+            url: GlobalUrl + "MFUsers/GetInvestNowDetailByID",
+            data: {
+                ISIN: ISIN
+            },
+            success: function (data) {
+                //content = content + '<img src="../assets/AMCLogo/' + data.data.amcCode + '.jpg" style="width: 70px; height: 70px;"> ' +
+                //    '<h2 class="mt-4" style="font-size: 24px;" class="mt-4"><span id="SchemeName">' + data.data.schemeName + '</span></h2>' +
+                //    '<hr>' +
+                //    '<p class="small"><img src="../assets/images/icons/warning-swal.fire.png" style="width:14px;filter: invert(1);margin-top: -3px;"> Investment transactions completed after 02:00 PM are submitted to Mutual Fund Company for further processing on the next business day.</p>';
 
 
-    //            // GetInvestNowDeatils.push({ Details: data.data })
-    //            $("#fundNameDisplayInput").val(data.data.schemeName);
-    //            $("#MinAmount").html(data.data.sipMinInstallmentAmt);
-    //            $("#Multiples").html(data.data.sipMultiplierAmt);
-    //            $("#MinInstallments").html(data.data.sipMinInstallmentNo);
-    //            $("#LumpsumMinAmount").html(data.data.minPurchaseAmt);
-    //            $("#LumpsumMultiples").html(data.data.purchaseAmtMultiplier);
-    //            GetSIPDates(data.data.sipDates)
+                // GetInvestNowDeatils.push({ Details: data.data })
+                $("#fundNameDisplayInput").val(data.data.schemeName);
+                $("#MinAmount").html(data.data.sipMinInstallmentAmt);
+                $("#Multiples").html(data.data.sipMultiplierAmt);
+                $("#MinInstallments").html(data.data.sipMinInstallmentNo);
+                $("#LumpsumMinAmount").html(data.data.minPurchaseAmt);
+                $("#LumpsumMultiples").html(data.data.purchaseAmtMultiplier);
+                GetSIPDates(data.data.sipDates)
 
-    //            $("#DisplatSchemeDetails").html(content);
-    //        },
-    //        error: function (data) {
-    //            console.log(data);
-    //        }
-    //    });
+                $("#DisplatSchemeDetails").html(content);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
 }
 function GetSIPDates(SIPDates) {
     const date1 = new Date();
