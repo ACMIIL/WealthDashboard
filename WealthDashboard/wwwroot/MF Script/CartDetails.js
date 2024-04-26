@@ -10,8 +10,12 @@ var ListOrderId = [];
 var arrindex = [];
 var CartDetails = [];
 var AllOTPDetails = [];
+var TotalAmount = 0;
 var countdowndiv;
 var sameentry;
+var auth1;
+var auth2;
+var auth3;
 function GetCartUserDetails() {
     var content = '';
     var PaymentMode = "";
@@ -56,7 +60,7 @@ function GetCartUserDetails() {
                                     <div class="col-md-3 col-3">
                                         <div class="d-flex">
                                             <button id="${value.srNo}" style="cursor:pointer;" onClick="DeleteCartOrder()" type="button" class="btn "><i style="font-size:24px;"  class="fa">&#xf014;</i></button>
-                                            <button style="cursor:pointer;" type="button" class="btn "><img src="/images/edit.png" alt="Alternate Text" style="font-size:24px;" /></button>
+                                            <button id="${value.isin}" style="cursor:pointer;" onClick="GetInvestNow(event)" type="button" class="btn "><img src="/images/edit.png" alt="Alternate Text" style="font-size:24px;" /></button>
                                         </div>
                                     </div>
                                 </div>
@@ -105,6 +109,7 @@ function GetCartUserDetails() {
                             </div>
                         </div>`;
                     //</div>`;
+                    $("#confrmorddiv").show();
                     $("#GetCartDetails").append(html);
                 });
 
@@ -181,7 +186,7 @@ function GetHolderCount() {
             },
             success: function (data) {
                 if (data.code == 200) {
-                    SentMessage()
+                    SentMessage();
                     HolderCount.push(data.data);
                     if (data.data == "1") {
                         $("#FirstDiv").show();
@@ -219,7 +224,7 @@ function SentMessage() {
             data: JSON.stringify(redata),
             contentType: "application/json",
             success: function (data) {
-                //AllOTPDetails.push(data);
+                AllOTPDetails.push(data);
                 $("#FirstHolderNo").html(data.fMobileNumber);
                 $("#SecondHolderNo").html(data.sMobileNumber);
                 $("#ThirdHolderNo").html(data.tMobileNumber);
@@ -231,21 +236,7 @@ function SentMessage() {
         });
 }
 
-function verifyOtp() {
-    $.ajax({
-        type: "POST",
-        url: "",
-        data: {
 
-        },
-        success: function (data) {
-
-        },
-        error: function (data) {
-
-        }
-    });
-}
 
 function InsertBseOrder() {
 
@@ -400,6 +391,174 @@ function getpersonaldetail() {
         })
 }
 
+function OTPValidation(data) {
+    var holder = data.dataset.holder;
+    var enteredotp = data.value;
+    if (enteredotp.length == 6) {
+        $.ajax({
+            type: "POST",
+            url: "https://localhost:7217/api/OrderAuthentication/Authenticate2FAOTP?ucc=" + $("#UCC").val() + "&holderno=" + holder + "&OTP=" + enteredotp + "",
+            data: {
+            },
+            success: function (data) {
+                if (holder == "1") {
+                    if (data.data = "1") {
+                        auth1 = true;
+                        $("#FirstOTPVerify").show();
+                        document.getElementById('firsttimercartdiv').style.display = 'none';
+                        document.getElementById('firstresendcartotp').style.display = 'none';
+                        $('#FirstOtp').attr("disabled", "disabled");
+                    }
+                }
+                if (holder == "2") {
+                    if (data.data = "1") {
+                        auth2 = true;
+                        $("#SecondOTPVerify").show();
+                        document.getElementById('secondtimercartdiv').style.display = 'none';
+                        document.getElementById('secondresendcartotp').style.display = 'none';
+                        $('#SecondOtp').attr("disabled", "disabled");
+                    }
+                }
+                if (holder == "3") {
+                    if (data.data = "1") {
+                        auth3 = true;
+                        $("#ThirdOTPVerify").show();
+                        document.getElementById('thirdtimercartdiv').style.display = 'none';
+                        document.getElementById('thirdresendcartotp').style.display = 'none';
+                        $('#TherdOTP').attr("disabled", "disabled");
+                    }
+                }
+            },
+            error: function (data) {
+
+            }
+        });
+    }
+}
+
+$("#AllVerifyOTP").click(function () {
+    if (HolderCount[0] == "3") {
+        if (auth1 != true) {
+            swal.fire("Kindly verify the OTP for 1st Holder ");
+            return false;
+        }
+        if (auth2 != true) {
+            swal.fire("Kindly verify the OTP for 2nd Holder");
+            return false;
+        }
+        if (auth3 != true) {
+            swal.fire("Kindly verify the OTP for 3rd Holder");
+            return false;
+        }
+    }
+    if (HolderCount[0] == "2") {
+        if (auth1 != true) {
+            swal.fire("Kindly verify the OTP for 1st Holder ");
+            return false;
+        }
+        if (auth2 != true) {
+            swal.fire("Kindly verify the OTP for 2nd Holder");
+            return false;
+        }
+
+    }
+    if (HolderCount[0] == "1") {
+        if (auth1 != true) {
+            swal.fire("Kindly verify the OTP for 1st Holder ");
+            return false;
+        }
+    }
+    arrindex = [];//clear arrray
+
+    $("#Otpmodal").hide();
+    $('#plz_wait').modal('show');
+
+    InsertBseOrder();
+
+});
+
+function Resendotpcart(holders) {
+    var commonOrderID = AllOTPDetails[0].commonOrderID;
+    var transactionType = CartDetails[0][0].transactionType;
+    Resendcountdowndiv = holders;
+    var mobileNo = "";
+    var Email = "";
+    //if resend otp
+    if (Resendcountdowndiv == "1") {
+        mobileNo = $("#FirstHolderNo").html();
+        Email = AllOTPDetails[0].fEmailID;
+        document.getElementById('firstresendcartotp').style.display = 'none';
+    }
+    if (Resendcountdowndiv == "2") {
+        Email = AllOTPDetails[0].sEmailID
+        mobileNo = $("#SecondHolderNo").html();
+        document.getElementById('secondresendcartotp').style.display = 'none';
+    }
+    if (Resendcountdowndiv == "3") {
+        Email = AllOTPDetails[0].tEmailID
+        mobileNo = $("#ThirdHolderNo").html();
+        document.getElementById('thirdresendcartotp').style.display = 'none';
+    }
+
+    var data = {
+        "CommonOrderID": JSON.stringify(commonOrderID),
+        "Holders": JSON.stringify(holders),
+        "TransactionType": "",
+        "UCC": document.getElementById('UCC').value,
+        "emailId": Email,
+        "mobileNo": mobileNo
+    }
+
+    $.ajax
+        ({
+            type: "POST",
+            url: CommonWebsiteURL + "OrderAuthentication/UpdateResendOTP",
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            success: function (data) {
+                if (data.holder == "1") {
+                    const newotp = { "fholdOTP": data.holdOTP };
+                    const result = mergeObjects(AllOTPDetails[0], newotp);//replace value on same key
+                    AllOTPDetails[0] = result;
+                }
+                if (data.holder == "2") {
+                    const newotp = { "sHoldOTP": data.holdOTP };
+                    const result2 = mergeObjects(AllOTPDetails[0], newotp);//replace value on same key
+                    AllOTPDetails[0] = result2;
+                }
+                if (data.holder == "3") {
+                    const newotp = { "tHoldOTP": data.holdOTP };
+                    const result3 = mergeObjects(AllOTPDetails[0], newotp);//replace value on same key
+                    AllOTPDetails[0] = result3;
+                }
+                if (Resendcountdowndiv == "1") {
+                    FirstResendtimer(30);
+                }
+                if (Resendcountdowndiv == "2") {
+                    SecondResendtimer(30);
+                }
+                if (Resendcountdowndiv == "3") {
+                    ThirdResendtimer(30);
+                }
+            },
+            error: function (data) {
+
+            }
+        })
+}
+function mergeObjects(obj1, obj2) {
+    // Create new object to prevent overwriting the original.
+    const merged = Object.assign({}, obj1);
+
+    for (const key of Object.keys(obj2)) {
+        if (key in merged) {
+            merged[key] = obj2[key];
+        }
+    };
+
+    return merged;
+}
+
 function checksamepaymentgatway() {
     sameentry = true;
     $.each(CartDetails[0], function (index, value) {
@@ -442,15 +601,108 @@ function timer(remaining) {
         return;
     }
     if (countdowndiv == "1") {
-        document.getElementById('firstresendcartotp').style.display = 'block';
+        if (auth1 != true) {
+            document.getElementById('firstresendcartotp').style.display = 'block';
+        }
     }
     if (countdowndiv == "2") {
-        document.getElementById('firstresendcartotp').style.display = 'block';
-        document.getElementById('secondresendcartotp').style.display = 'block';
+        if (auth1 != true) {
+            document.getElementById('firstresendcartotp').style.display = 'block';
+        }
+        if (auth2 != true) {
+            document.getElementById('secondresendcartotp').style.display = 'block';
+        }
     }
     if (countdowndiv == "3") {
-        document.getElementById('firstresendcartotp').style.display = 'block';
-        document.getElementById('secondresendcartotp').style.display = 'block';
-        document.getElementById('thirdresendcartotp').style.display = 'block';
+        if (auth1 != true) {
+            document.getElementById('firstresendcartotp').style.display = 'block';
+        }
+        if (auth2 != true) {
+            document.getElementById('secondresendcartotp').style.display = 'block';
+        }
+        if (auth3 != true) {
+            document.getElementById('thirdresendcartotp').style.display = 'block';
+        }
+        
     }
+}
+
+function FirstResendtimer(remaining) {
+    var m = Math.floor(remaining / 60);
+    var s = remaining % 60;
+    m = m < 10 ? '0' + m : m;
+    s = s < 10 ? '0' + s : s;
+    document.getElementById('firsttimercart').innerHTML = m + ':' + s;
+    remaining -= 1;
+    if (remaining >= 0 && timerOn) {
+        setTimeout(function () {
+            FirstResendtimer(remaining);
+        }, 1000);
+        return;
+    }
+    if (!timerOn) {
+        return;
+    }
+    document.getElementById('firstresendcartotp').style.display = 'block';
+}
+
+function SecondResendtimer(remaining) {
+    var m = Math.floor(remaining / 60);
+    var s = remaining % 60;
+    m = m < 10 ? '0' + m : m;
+    s = s < 10 ? '0' + s : s;
+    document.getElementById('secondtimercart').innerHTML = m + ':' + s;
+    remaining -= 1;
+    if (remaining >= 0 && timerOn) {
+        setTimeout(function () {
+            SecondResendtimer(remaining);
+        }, 1000);
+        return;
+    }
+    if (!timerOn) {
+        // Do validate stuff here
+        return;
+    }
+    // Do timeout stuff here
+    document.getElementById('secondresendcartotp').style.display = 'block';
+}
+
+function ThirdResendtimer(remaining) {
+    var m = Math.floor(remaining / 60);
+    var s = remaining % 60;
+    m = m < 10 ? '0' + m : m;
+    s = s < 10 ? '0' + s : s;
+    document.getElementById('thirdtimercart').innerHTML = m + ':' + s;
+    remaining -= 1;
+    if (remaining >= 0 && timerOn) {
+        setTimeout(function () {
+            ThirdResendtimer(remaining);
+        }, 1000);
+        return;
+    }
+    if (!timerOn) {
+        // Do validate stuff here
+        return;
+    }
+    // Do timeout stuff here
+    document.getElementById('thirdresendcartotp').style.display = 'block';
+}
+
+function GetInvestNow(event) {
+    sessionStorage.clear();
+    const ISIN = event.currentTarget.id;
+    const values = event.currentTarget.dataset.encschemdetails;
+    sessionStorage.setItem("ISIN", ISIN);
+    sessionStorage.setItem("FolioNo", null);
+
+    // Save the clicked data in sessionStorage for later use
+    sessionStorage.setItem("selectedFund", values); 
+
+    // Update the content dynamically
+    //updateContent(value.schemeName, value);
+
+    // Set fundNameDisplayInput value
+    // $("#fundNameDisplayInput").val(value.schemeName);
+
+    window.location.href = CommonWebsiteURL + 'MutualFund/InvestNow';
 }

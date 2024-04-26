@@ -46,7 +46,7 @@
     <div class="row pt-4" id="cartorderbtndiv" style="">
 
         <div class="row">
-            <div class="col-md-2 col-12">
+            <div class="col-md-2 col-12" id="confrmorddiv" style="display:none">
                 <a class="btn btn-primary btn-buy-now col-md-12" id="ConfirmOrder">Confirm Order</a>
             </div>
             <div class="col-md-2 col-12 text-start">
@@ -81,16 +81,18 @@
                         Enter OTP sent on Mobile no. <span id="FMobileNumber">9811897184</span> &amp; Email ID <span id="FEmailID">Jaydeepshukla7@gmail.com</span>
                         </div>*@
 
-                        <div class="row m-0 pt-2" id="FirstDiv" style="display:none;">
+                        <div class="row m-0 pt-2" id="FirstDiv">
                             <div class="col-md-3 ps-0 pt-2">
                                 <label class="mb-number1"><span id="FirstHolderNo"></span></label>
                             </div>
                             <div class="col-md-3 ps-0">
-                                <input type="number" maxlength="6" id="FirstOtp" placeholder="Enter OTP" class="form-control" autocomplete="off" onkeypress="if(this.value.length==6) return false;">
+                                <input type="text" maxlength="6" id="FirstOtp" placeholder="Enter OTP" onchange="OTPValidation(this)" data-holder="1" class="form-control" autocomplete="off" onkeypress="if(this.value.length==6) return false;">
+                                
                                 <label id="errorFirstOtp" style="color: #f00; font-size: 12px; font-weight:400;"></label>
                             </div>
                             <div class="col-md-2 ps-0 pt-2">
-                                <button class="verify-list" id="FirstOTPVerify">Verify</button>
+                                <i class="fa fa-check" id="FirstOTPVerify" style="font-size:25px;color:green; display:none;"></i>
+                                @* <button class="verify-list" id="FirstOTPVerify">Verify</button> *@
                             </div>
                             <div class="col-md-1 pe-0 ps-0 pt-2">
                                 <a href="javascript:;" class="text-decoration-underline" id="firstresendcartotp" onclick="Resendotpcart(1)" style="display:none">Resend</a>
@@ -105,11 +107,12 @@
                                 <label class="mb-number1"><span id="SecondHolderNo"></span></label>
                             </div>
                             <div class="col-md-3 ps-0">
-                                <input type="number" maxlength="6" id="SecondOtp" placeholder="Enter OTP" class="form-control" autocomplete="off" onkeypress="if(this.value.length==6) return false;">
+                                <input type="number" maxlength="6" id="SecondOtp" placeholder="Enter OTP" onchange="OTPValidation(this)" data-holder="2" class="form-control" autocomplete="off" onkeypress="if(this.value.length==6) return false;">
                                 <label id="errorFirstOtp" style="color: #f00; font-size: 12px; font-weight:400;"></label>
                             </div>
                             <div class="col-md-2 ps-0 pt-2">
-                                <button class="verify-list" id="SecondOTPVerify">Verify</button>
+                                <i class="fa fa-check" id="SecondOTPVerify" style="font-size:25px;color:green; display:none;"></i>
+                                @* <button class="verify-list" id="SecondOTPVerify">Verify</button> *@
                             </div>
                             <div class="col-md-1 pe-0 ps-0 pt-2">
                                 <a href="javascript:;" class="text-decoration-underline" id="secondresendcartotp" onclick="Resendotpcart(2)" style="display:none">Resend</a>
@@ -123,11 +126,13 @@
                                 <label class="mb-number1"><span id="ThirdHolderNo"></span></label>
                             </div>
                             <div class="col-md-3 ps-0">
-                                <input type="number" maxlength="6" id="TherdOTP" placeholder="Enter OTP" class="form-control" autocomplete="off" onkeypress="if(this.value.length==6) return false;">
+                                <input type="number" maxlength="6" id="TherdOTP" placeholder="Enter OTP" class="form-control" onchange="OTPValidation(this)" data-holder="3" autocomplete="off" onkeypress="if(this.value.length==6) return false;">
                                 <label id="errorFirstOtp" style="color: #f00; font-size: 12px; font-weight:400;"></label>
                             </div>
                             <div class="col-md-2 ps-0 pt-2">
-                                <button class="verify-list" id="ThirdOTPVerify">Verify</button>
+                                <i class="fa fa-check" id="ThirdOTPVerify" style="font-size:25px;color:green; display:none;"></i>
+
+                                @* <button class="verify-list" id="ThirdOTPVerify">Verify</button> *@
                             </div>
                             <div class="col-md-1 pe-0 ps-0 pt-2">
                                 <a href="javascript:;" class="text-decoration-underline" id="thirdresendcartotp" onclick="Resendotpcart(3)" style="display:none">Resend</a>
