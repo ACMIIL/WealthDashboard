@@ -397,7 +397,7 @@ function OTPValidation(data) {
     if (enteredotp.length == 6) {
         $.ajax({
             type: "POST",
-            url: "https://localhost:7217/api/OrderAuthentication/Authenticate2FAOTP?ucc=" + $("#UCC").val() + "&holderno=" + holder + "&OTP=" + enteredotp + "",
+            url: GlobalUrl + "OrderAuthentication/Authenticate2FAOTP?ucc=" + $("#UCC").val() + "&holderno=" + holder + "&OTP=" + enteredotp + "",
             data: {
             },
             success: function (data) {
