@@ -1,0 +1,173 @@
+﻿@{
+    Layout = "_WPLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>TWP</title>
+    <link rel="canonical" href="" />
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="" rel="icon">
+    <link href="" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Template Main CSS File -->
+    <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
+</head>
+
+<body ng-app="main" ng-controller="myController">
+    
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class=" background-twc-banner">
+        <div class="container">
+            <header id="header" class="pb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center mb-4">
+                            <a href="index.html">
+                                <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="row">
+                <div class="col-md-12 mx-auto">
+                    <div class="row">
+                        <!--mob img div -->
+                        <div class="col-md-5 d-none d-md-block">
+                            <div class="row">
+                                <div class="mx-auto">
+                                    <img src="~/wpregimages/twc-mobile.png" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <!--End == mob img div -->
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class=" mx-auto card login-form">
+                                   
+                                    <div class="row mb-1">
+                                        <div class="col-md-12 col-12 text-center">
+                                            <h5 class="form-title">
+                                                <strong> Confirm your Personal Details </strong>
+                                            </h5>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-md-12 col-12 text-start"
+                                             style=" color: #CAAA86;">
+                                            <label class="font-label-1"> Name :</label><span class="p-0" style="color: #fff;"> {{data[0].MA_Name}} </span>
+                                        </div>
+                                        <div class="col-md-12 col-12 text-start">
+                                            <label class="font-label-1" style="color: #CAAA86;">Mobile</label>
+                                            <!-- <input type="text" class="form-control" name="password" value="Amit Ashok Kumar"> -->
+                                            <span class="p-0"> {{mobile}} </span>
+                                        </div>
+
+                                        <div class="col-md-12 col-12 text-start">
+                                            <label class="font-label-1" style="color: #CAAA86;"> Date Of Birth</label>
+                                            <!-- <input type="text" class="form-control" name="password" value="HDFC00145754"> -->
+                                            <span class="p-0">
+                                                {{data[0].DateOfBirth| date}}
+                                            </span>
+                                        </div>
+
+                                        <div class="col-md-12 col-12 text-start">
+                                            <label class="font-label-1" style="color: #CAAA86;"> Pincode</label>
+                                            <!-- <input type="text" class="form-control" name="password" value="123456789"> -->
+                                            <span class="p-0">{{data[0].Pincode}} </span>
+                                        </div>
+
+                                        <div class="col-md-12 col-12 text-start">
+                                            <label class="font-label-1" style="color: #CAAA86;"> Adresss</label>
+                                            <!-- <input type="text" class="form-control" name="password" value="123456789"> -->
+                                            <span class="p-0">{{data[0].Permanent_Address}} </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 mt-3"
+                                         <div class="col-md-6 col-12 text-start">
+                                            <label class="font-label-1" style="color: #CAAA86;"> Email </label>
+                                            <span class="p-0">{{data[0].Email}}</span>
+
+                                            <span style="cursor: pointer;color:green" class="ps-2">Verified Email</span>
+                                            <span style="cursor: pointer;color:rgb(206, 44, 44)" class="ps-2"> Email is not Verify </span>
+                                        </div>
+
+
+                                        <div class="col-md-6 col-12 text-start">
+                                            <a (click)="showemailtextbox()" style="cursor: pointer;color:green;"> <i class="fa fa-edit ps-5"></i> Edit </a>
+                                            <a (click)="sendOtp()" style="cursor: pointer;color:green;margin-left:5px">  </a>
+                                            <a (click)="cancelEmailEdit()" style="cursor: pointer;color:green;margin-left:5px"> Cancel </a>
+                                        </div>
+
+                                         <div class="col-md-12">
+                                            <label class="font-label-1" style="color: #CAAA86;"> OTP</label>
+                                            <!-- <input type="text" class="form-control" name="password" value="123456789"> -->
+                                            @* <input id="otp" name="otp" #otp value=""   class="email-style-edit inp font-label-1"> *@
+                                            <div style="color: brown;">
+                                            </div>
+                                        </div>
+                                    </div>
+                               
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col-md-12 text-center">
+                                            <button class="btn btn-primary btn-submit-popup1 btn-sm" >Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section><!-- End Hero -->
+    <!-- ======= Footer ======= -->
+    <!--<footer id="footer" class="pt-2 pb-2">
+        <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 text-center">
+                <a href="mailto:customerservices@acm.co.in" class="link1">customerservice@acm.co.in</a>
+            </div>
+        </div>
+        </div>
+    </footer>-->
+    <!-- End Footer -->
+
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/js/wpregistration/jquery.min.js"></script>
+    <script src="~/js/wpregistration/bootstrap.bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="~/js/wpregistration/main.js"></script>
+    <script src="~/angularjs/toast/angular.min.js"></script>
+    <script src="~/angularjs/toast/angular-animate.min.js"></script>
+    <link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
+    <script src="~/angularjs/tosters/toaster.js"></script>
+    <script src="~/js/wpregistration/ekyc/personaldetails.js"></script>
+</body>
+
+</html>
+

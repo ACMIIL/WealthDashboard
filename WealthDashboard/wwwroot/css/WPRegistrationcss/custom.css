@@ -1,0 +1,177 @@
+.login-form {
+    background-color: #0E1D22;
+    border: 4px solid #CAAA86;
+    border-radius: 10px;
+    color: white;
+    padding:20px;
+}
+.form-subtitle {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: center;
+}
+.golden{
+    color: #AA8861;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    line-height: 16px;
+    font-size: 14px;
+
+}
+.golden2{
+    color: #AA8861;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    line-height: 14px;
+    font-size: 14px;
+}
+.form-textbox{
+    width: 300px;
+    border-left: NONE;
+    BORDER: none;
+    background-color: #0E1D22;
+    border-bottom: 1px solid white;
+    color: white;
+    border-radius: 0px;
+    padding-left: 20px;
+}
+
+
+/*text-box css*/
+.floating-text-area{
+    width: 333px;
+    height: 44px !important;
+    background-color: #0E1D22;
+    border: 0 0 0 1px !important;
+    border: none;
+    border-bottom: 2px solid #CAAA86;
+    border-radius: 0px;
+    margin-top: 10px;
+    font-size: 17px !important;
+    padding-bottom: 0px !important;
+}
+.padding-left-form{
+    padding-left: 132px;
+}
+.checkbox-label{
+    font-size: 14px !important;
+    color: white;
+    width: 322px; /* Adjust the width as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.checkbox-label-2{
+    font-size: 14px !important;
+    color: white;
+    width: 352px; /* Adjust the width as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.date-icon{
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 303px;
+    cursor: pointer;
+}
+.done-icon{
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 303px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+.orangetext{
+    color: #FF7F0B;
+    font-size: 14px !important;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+}
+.mobile-number-textarea {
+    background-color: #0E1D22;
+    border: 0 0 0 1px !important;
+    border: none;
+    border-bottom: 2px solid #CAAA86;
+    border-radius: 0px;
+    margin-top: -11px;
+    font-size: 17px !important;
+    padding-bottom: 0px !important;
+    width: 34%;
+    padding-left: 10px !important;
+}
+.flag-icon {
+    position: absolute;
+    margin-top: 16px;
+    margin-left: -165px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+.mobile-number-otp{
+    width: 35%;
+    height: 44px !important;
+    background-color: #0E1D22;
+    border: 0 0 0 1px !important;
+    border: none;
+    border-bottom: 2px solid #CAAA86;
+    border-radius: 0px;
+    margin-top: 10px;
+    font-size: 17px !important;
+    padding-bottom: 0px !important;
+    margin-left: 196px;
+}
+.box{
+    width: 290px;
+    height: 125PX;
+    border: 1px dotted white;
+    margin-left: 150px !important;
+}
+.lable-signature{
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+.btn-submit-digilocker {
+    background-image: linear-gradient(to bottom, #CAAA86, #9C7952);
+    padding: 5px !important;
+    font-family: 'Roboto', sans-serif !important;
+    width: 71% !important;
+    font-size: 18px !important;
+    border-radius: 8px;
+}
+.btn-submit-popup1{
+    background-image: linear-gradient(to bottom, #CAAA86, #9C7952);
+    padding: 10px !important;
+    font-family: 'Roboto', sans-serif !important;
+    width: 30% !important;
+    font-size: 14px !important;
+    border-radius: 8px;
+    color: white;
+}
+.btn-submit-popup2{
+    /* background-image: linear-gradient(to bottom, #CAAA86, #9C7952); */
+    background-color: #0E1D22;
+    border: 1px solid #CAAA86;
+    padding: 10px !important;
+    font-family: 'Roboto', sans-serif !important;
+    width: 30% !important;
+    font-size: 14px !important;
+    border-radius: 8px;
+    color: white;
+}
+
+.btn-submit-popup2:hover{
+    background-color: #0E1D22 !important;
+    border: 1px solid #CAAA86 !important;
+    padding: 10px !important;
+    font-family: 'Roboto', sans-serif !important;
+    width: 30% !important;
+    font-size: 14px !important;
+    border-radius: 8px !important;
+    color: white !important;
+}
+
