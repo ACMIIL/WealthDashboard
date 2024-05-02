@@ -51,6 +51,6 @@ namespace WealthDashboard.Controllers.WP
         {
             return View(_configuration);
         }
-        
+         
     }
 }
