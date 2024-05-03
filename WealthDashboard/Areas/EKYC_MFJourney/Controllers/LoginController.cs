@@ -180,7 +180,7 @@ namespace WealthDashboard.Areas.EKYC_MFJourney.Controllers
                 smt.Send(msg);
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
-                var otp = _loginManager.SaveEmailDetails(EmailID, mobile, "AccountOpen", EmailID, StrFromAddress, msg.Body, StrEmailOTP, "Keyur");
+                var otp = _loginManager.SaveEmailDetails(EmailID, mobile, "AccountOpen", EmailID, StrFromAddress, msg.Body, StrEmailOTP, "EKYCtwc");
             }
             catch (Exception ex)
             {
