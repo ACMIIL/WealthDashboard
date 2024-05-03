@@ -17,8 +17,12 @@ builder.Services.AddTransient<IPrimaryDetailsManager, PrimaryDetailsManager>();
 //Added By MF_journey
 builder.Services.AddEkycServices();
 
-builder.Services.Configure<AppSetting>(builder.Configuration.GetSection("AppSetting"));
+builder.Services.Configure<Appsetting>(builder.Configuration.GetSection("AppSetting"));
+
+
 builder.Services.Configure<Connection>(builder.Configuration.GetSection("ConnectionStrings"));
+builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
+
 Log.Logger = new LoggerConfiguration()
             .Enrich.FromLogContext()
             .WriteTo.File(@"D:\TWCEKYC_CLogs\mylog.txt", rollingInterval: RollingInterval.Day)
@@ -47,7 +51,6 @@ app.UseEndpoints(endpoints =>
       areaName: "EKYC_MFJourney",
       pattern: "{area:exists}/{controller}/{action}/{id?}"
     );
-
     //endpoints.MapControllerRoute(
     //  name: "EKYC_MFJourney",
     //  pattern: "{area:exists}/{controller}/{action}/{id?}"
@@ -57,10 +60,5 @@ app.UseEndpoints(endpoints =>
     pattern: "{controller=Login}/{action=Login}/{id?}");
 });
 
-
-
-//app.MapControllerRoute(
-//    name: "default",
-//    pattern: "{controller=Login}/{action=Login}/{id?}");
 
 app.Run();

@@ -9,7 +9,7 @@ using StaticValues = WealthDashboard.Areas.EKYC_MFJourney.Models.Common.StaticVa
 
 namespace WealthDashboard.Areas.EKYC_MFJourney.Models.LoginManager
 {
-    public class LoginManager :ILoginManager
+    public class LoginManager : ILoginManager
     {
         #region global variable
         private readonly ILogger<LoginManager> _logger;
@@ -127,7 +127,7 @@ namespace WealthDashboard.Areas.EKYC_MFJourney.Models.LoginManager
                     sqlCmd.Parameters.AddWithValue("@EmailBody", " ");
                     sqlCmd.Parameters.AddWithValue("@OTPEmail", " ");
                     sqlCmd.Parameters.AddWithValue("@OTPMobile", mOTPEMailsMobileDetailsModel.OTPMobile);
-                    sqlCmd.Parameters.AddWithValue("@EntryBy", "EKYC_3.0");
+                    sqlCmd.Parameters.AddWithValue("@EntryBy", "EKYCtwc");
 
                     using (SqlDataReader reader = sqlCmd.ExecuteReader())
                     {

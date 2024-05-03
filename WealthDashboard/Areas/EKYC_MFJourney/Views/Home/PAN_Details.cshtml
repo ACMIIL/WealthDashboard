@@ -1,0 +1,1096 @@
+﻿@model WealthDashboard.Areas.EKYC_MFJourney.Models.Login.UCCTempModel;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>TWC</title>
+    <link rel="canonical" href="" />
+    <!-- Favicons -->
+    <link href="" rel="icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Template Main CSS File -->
+    <link href="~/content/css/style.css" rel="stylesheet" />
+    <link href="~/content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/content/css/custom.css" rel="stylesheet" />
+
+    <style>
+        .input-group-icon {
+            position: relative;
+        }
+
+            .input-group-icon .input-group-text {
+                position: absolute;
+                right: 0;
+                cursor: pointer;
+            }
+
+        .alert {
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            .closebtn:hover {
+                color: black;
+            }
+
+        .form-control:focus {
+            background-color: transparent !important;
+        }
+
+        .form-control {
+            background-color: transparent !important;
+        }
+    </style>
+
+
+</head>
+<body>
+    @Html.HiddenFor(m => m.BACode, new { id = "BACode" })
+    @Html.HiddenFor(m => m.EncBACode, new { id = "EncBACode" })
+    @Html.HiddenFor(m => m.RegistrationId, new { id = "RegistrationId" })
+    @Html.HiddenFor(m => m.UCC, new { id = "UCC" })
+    @Html.HiddenFor(m => m.MobileNumber, new { id = "hiddenmobileno" })
+    <input type="hidden" id="EncRegistrationId" value="@Model.EncRegistrationId" />
+    <input type="hidden" id="EncUCC" value="@Model.EncUCC" />
+    <input type="hidden" id="hiddenpanname" />
+    <input type="hidden" id="hiddengender" />
+    <input type="hidden" id="hiddenAdharno" />
+    <input type="hidden" id="hiddenpermanantaddress" />
+    <input type="hidden" id="hiddendist" />
+    <input type="hidden" id="hiddenstate" />
+    <input type="hidden" id="hiddenpincode" />
+
+
+    <!-- ======= Hero Section ======= -->
+    <section class="background-twc-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-12 my-auto">
+                    <!--mobile logo div start-->
+                    <div class="row">
+                        <div class="col-12 my-auto d-md-none d-block">
+                            <div class="mob-logo text-center mb-5">
+                                <img src="~/content/images/twc-logo.png" alt="The Wealth Company">
+                            </div>
+                        </div>
+                    </div>
+                    <!--mobile logo div end-->
+                    <!--PAN Details start-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="login-form">
+                                <div class="container ">
+                                    <div class="row gx-5">
+                                        <!--Sign Up start-->
+                                        <div class="col-md-12 col-12 text-center">
+                                            <h4 class="form-title"> PAN Details</h4>
+                                            <h6 class="subheading">Enter your PAN card number </h6>
+                                        </div>
+                                        <!--Sign Up end-->
+                                        <!--pan details start-->
+                                        <div class="container">
+                                            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+                                                <div class="col-md-3 col-12">
+                                                    <div class="mr-60">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control floating-text-area" id="txtPAN" style="color: white;" placeholder="HERFK4578G" onkeyup="opendobfield(event)" maxlength="10">
+                                                            <label for="txtPAN">PAN Card Number</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12">
+                                                    <div class="mr-60">
+                                                        <div class="form-floating">
+                                                            <input type="date" class="form-control floating-text-area" id="PanDob" style="color: white;" placeholder="31-12-1995" onchange="getCVLKRADATA();">
+                                                            <label for="PanDob" style="color: #FFFFFF;">Date of Birth</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span id="checkCVLKRAAadharPenidng" style="display:none ; color:green">CVL Data fetch Successfully but aadhar number not found.</span>
+                                                    <span id="checkCVLKRADatalabel" style="display:none ; color:green">KRA successfully completed</span>
+                                                    <span id="checkCVLKRADataFailedlabel" style="display:none ; color:red">CVL KRA details are not present.</span>
+                                                    <div>
+                                                        <div class="col-md-12"> <strong id="Panalert"></strong></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12" id="divdigioButton" style="display:none;">
+                                                    <div class="mt-2">
+                                                        <button type="button" class=" btn-validate" onclick="OpenDigiLockerAPI();">Validate Via Digilocker</button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12 form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                                    <label class="form-check-label checkbox-label" for="flexCheckChecked">
+                                                        I authorize to fetch/update my KYC details from/to KRAs / CKYCR / Digilocker.
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--pan details End-->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--PAN Details end-->
+                    <!--Personal Details start-->
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <div class="login-form">
+                                <div class="container ">
+                                    <div class="row gx-5">
+                                        <!--Sign Up start-->
+                                        <div class="col-md-12 col-12 text-center">
+                                            <h4 class="form-title"> Personal Details</h4>
+                                            <h6 class="subheading">Enter your personal Details number  </h6>
+                                        </div>
+                                        <!--Sign Up end-->
+                                        <!--pan details start-->
+                                        <div class="container">
+                                            <!--Marital Status-->
+                                            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+                                                <div class="col-md-3 col-12">
+                                                    <div class="radio">
+                                                        <p class="Radio-text">Marital Status</p>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="btnradio1" value="32" autocomplete="off">
+                                                            <label class="form-check-label" for="btnradio1">Single</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="btnradio2" value="31" autocomplete="off">
+                                                            <label class="form-check-label" for="btnradio2">Married</label>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-4 col-12">
+                                                    <div class="radio">
+                                                        <p class="Radio-text">Gender</p>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="btnradio1Male" value="18" autocomplete="off">
+                                                            <label class="form-check-label" for="btnradio1Male">Male</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="btnradioFemale" value="19" autocomplete="off">
+                                                            <label class="form-check-label" for="btnradioFemale">Female</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="btnradioOthers" value="84" autocomplete="off">
+                                                            <label class="form-check-label" for="btnradioOthers">Others</label>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-2 col-12">
+                                                    <div class="radio">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control floating-text-area" id="txtFatherspouce" onkeypress="allowcharwithoutspace(event)" style="color: white;    margin: 5px 0px; " placeholder="HERFK4578G">
+                                                            <label for="txtFatherspouce">Father/Spouse Name</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12">
+                                                    <div class="radio pl-50">
+                                                        <p class="Radio-text">Select Relation</p>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox" name="inlineRadioOptions3" id="btnradioFather" value="38">
+                                                            <label class="form-check-label" for="btnradioFather">Father</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox" name="inlineRadioOptions3" id="btnradioSpouse" value="60">
+                                                            <label class="form-check-label" for="btnradioSpouse">Spouse</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!--Marital Status-->
+                                            <!--Net Worth-->
+                                            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+                                                <div class="col-md-3 col-12">
+                                                    <div class="radio">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control floating-text-area" id="txtNetworth" style="color: white;margin: 0px;width: 85%">
+                                                            <label for="txtNetworth">Networth</label>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-4 col-12">
+                                                    <div class="radio">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control floating-text-area" id="txtEmailid" onchange="CheckEmailDeclarationWithUCC();" style="color: white;margin: 0px;width: 75%;" placeholder="HERFK4578G">
+                                                            <label for="txtEmailid">Verify Email Id</label>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        @*   <span id="Selflabel" class="msghide" style="display:none ; color:red">Self Already Present</span>
+                                                        <span id="spouselabel" class="msghide" style="display:none ; color:red">Spouse Already Present</span>
+                                                        <span id="Parentlabel" class="msghide" style="display:none ; color:red">Parents Already Present</span>
+                                                        <span id="childlabel" class="msghide" style="display:none ; color:red">childrens Already Present</span> *@
+                                                        <span id="otpsendemail" class="msghide" style="display:none ; color:green">OTP sent successfully.</span>
+                                                        <span id="verify" class="msghide" style="display:none ; color:green">Email Verified</span>
+                                                        <span id="invalid" class="msghide" style="display:none ; color:red">Invalid OTP</span>
+                                                        <span id="invalidEmail" class="msghide" style="display:none ; color:red">Please Enter Valid Email Id</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-5 col-12">
+
+
+
+                                                    <form action="" method="post" class="d-flex">
+                                                        <input type="text" class="form-control " id="txtotpno" onkeyup="CheckOTP();" maxlength="6" onkeypress="isNumberKey(event)" placeholder="1 4 5 4 4 5 ">
+                                                        <div class="counterPass">
+                                                            <div class="" id="timer"></div>
+                                                        </div>
+                                                        @* <span class="right-number"><img src="~/content/images/right.png" alt="" style="width: 20px;"></span> *@
+                                                    </form>
+
+                                                    <div class="col-md-12 col-12 text-center mb-3" style="display:none;">
+
+                                                        <input type="radio" class="btn-check" name="inlineRadioOptions4" id="btnradioself" value="118" autocomplete="off" onchange="CheckMobileDeclarationWithUCC();" checked>
+                                                        <label class="btn btn-decl-inactive" for="option1"><img src="~/content/images/self.png" class="declimg"> Self</label>
+
+                                                        <input type="radio" class="btn-check" name="inlineRadioOptions4" id="btnradioParent" value="117" autocomplete="off" onchange="CheckMobileDeclarationWithUCC()">
+                                                        <label class="btn btn-decl-inactive" for="option2"><img src="~/content/images/parents-3.png" class="declimg"> Parents</label>
+
+                                                        <input type="radio" class="btn-check" name="inlineRadioOptions4" id="btnradioChildren" value="116" autocomplete="off" onchange="CheckMobileDeclarationWithUCC()">
+                                                        <label class="btn btn-decl-inactive" for="option3"><img src="~/content/images/parents-2.png" class="declimg"> Children</label>
+
+                                                        <input type="radio" class="btn-check" name="inlineRadioOptions4" id="btnradioSpouse" value="119" autocomplete="off" onchange="CheckMobileDeclarationWithUCC()">
+                                                        <label class="btn btn-decl-inactive" for="option4"><img src="~/content/images/parents.png" class="declimg"> Spouse</label>
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <div class="row">
+                                                            <div class="col-md-12 col-6 text-end">
+                                                                <div class="text-start" id="reentereotpdiv">
+                                                                    <a class="resend-otp pb-3" style="font-size: 14px !important; display:none ;cursor:pointer" id="Resendotp" onclick="CheckEmailDeclarationWithUCC();">Resend OTP</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="input-group-append">
+                                                            <span id="checkmark" style="display:none" class="input-group-text iconInput">
+                                                                <i class="fas fa-check"></i>
+                                                            </span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <!--Net Worth End-->
+                                            <!--Select Annual Income -->
+                                            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+                                                <div class="col-md-12 col-12">
+                                                    <div class="radio">
+                                                        <p class="Radio-text">Select Annual Income</p>
+                                                        <div class="form-check form-check-inline mr-40">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions5" id="btnradio1lac" value="44" checked>
+                                                            <label class="form-check-label" for="upto1">Upto 1 lakh</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline mr-40">
+                                                            <input class="form-check-input " type="radio" name="inlineRadioOptions5" id="btnradio5lac" value="45">
+                                                            <label class="form-check-label" for="upto5">1 Lakh - 5 Lakhs</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline  mr-40">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions5" id="btnradio10lac" value="46">
+                                                            <label class="form-check-label" for="upto10">5 Lakh - 10 Lakhs</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline  mr-40">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions5" id="btnradio15lac" value="47">
+                                                            <label class="form-check-label" for="upto10">10 Lakhs - 15 Lakhs</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline mr-40  ">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions5" id="btnradio25lac" value="48">
+                                                            <label class="form-check-label" for="upto25">Above 25 Lakhs</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Select Annual Income end-->
+                                            <!--Investment Experience -->
+                                            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="radio">
+                                                        <p class="Radio-text">Investment Experience</p>
+                                                        <div class="form-check form-check-inline ">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions6" value="39" id="btnradio6Months" checked>
+                                                            <label class="form-check-label" for="btnradio6Months">0-6 Months</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline ">
+                                                            <input class="form-check-input " type="radio" name="inlineRadioOptions6" id="btnradio12Months" value="40">
+                                                            <label class="form-check-label" for="btnradio12Months">6-12 Months</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline  ">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions6" id="btnradio24Months" value="41">
+                                                            <label class="form-check-label" for="btnradio24Months">12-24 Months</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline   ">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions6" id="btnradio36Months" value="42">
+                                                            <label class="form-check-label" for="btnradio36Months">24-36 Months</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline   ">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions6" id="btnradioaboveMonths" value="43">
+                                                            <label class="form-check-label" for="btnradioaboveMonths">36 Months and above</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12" style="display:none;">
+                                                    <div class="radio">
+                                                        <p class="Radio-text">Select Educational Qualification</p>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions7" id="pg" value="option1">
+                                                            <label class="form-check-label" for="pg">Post Graduate</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input " type="radio" name="inlineRadioOptions7" id="g" value="option2">
+                                                            <label class="form-check-label" for="g">Graduate</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions7" id="ug" value="option2">
+                                                            <label class="form-check-label" for="ug">Under Graduate</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions7" id="ssc" value="option2">
+                                                            <label class="form-check-label" for="ssc">10th Std</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions7" id="belowssc" value="option2">
+                                                            <label class="form-check-label" for="belowssc">Below 10th Std</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions7" id="eduother" value="option2">
+                                                            <label class="form-check-label" for="eduother">Others</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Investment Experience end-->
+                                            <!--Occupation -->
+                                            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="radio">
+                                                        <p class="Radio-text">Occupation</p>
+                                                        <div class="form-check form-check-inline ">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions8" id="btnradioPrivate" value="26" autocomplete="off" checked>
+                                                            <label class="form-check-label" for="btnradioPrivate">Private Sector</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline ">
+                                                            <input class="form-check-input " type="radio" name="inlineRadioOptions8" id="btnradioPublic" value="25" autocomplete="off">
+                                                            <label class="form-check-label" for="btnradioPublic">Public Sector</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline   ">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions8" id="btnradioProfessional" value="24" autocomplete="off">
+                                                            <label class="form-check-label" for="btnradioProfessional">Professional</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline   ">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions8" id="btnradioSelfEmployed" value="131" autocomplete="off">
+                                                            <label class="form-check-label" for="btnradioSelfEmployed">Self-Employed</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline   ">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions8" id="btnradioStudent" value="29" autocomplete="off">
+                                                            <label class="form-check-label" for="btnradioStudent">Student</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline   ">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions8" id="btnradioOccuOthers" value="30" autocomplete="off">
+                                                            <label class="form-check-label" for="btnradioOccuOthers">Others</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Occupation end-->
+                                            <div class="col-md-12 text-center col-12  mb-3">
+                                                @* <a href="" class="btn rounded btn-savecon" onclick="PanandPersonalSubmit()">SAVE & COUNTINUE</a>*@
+                                                <button class="btn rounded btn-savecon" onclick="PanandPersonalSubmit()">SAVE & COUNTINUE</button>
+                                            </div>
+                                            <div class="col-md-4 pt-2"> <strong id="Allmessage" class="ps-2 font-14"></strong></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Personal Details end-->
+                </div>
+            </div>
+        </div>
+
+    </section><!-- End Hero -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <!-- Template Main JS File -->
+
+    <script src="~/digiojs/digio.js"></script>
+    <script src="~/twc_ekyc_js/ekyc_commom.js"></script>
+
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+
+        (function () {
+            "use strict";
+            var CONSTANTS = {
+                VERSION: '10.0',
+                ENVIRONMENTS: {
+                    STAGE: "stage",
+                    SANDBOX: "sandbox",
+                    PRODUCTION: "production"
+                },
+                SIGN_METHODS: {
+                    OTP: "otp",
+                    BIOMETRIC: "biometric"
+                },
+                URLS: {
+                    //STAGE : "http://localhost:8082",
+                    //STAGE : "https://ext.digio.in",
+                    //SANDBOX: "https://ext.digio.in",
+                    PRODUCTION: "https://api.digio.in",
+                    API_MANDATE_SUFFIX: "/#/enach-mandate-direct",
+                    ESIGN_SUFFIX: "/#/gateway/login"
+                },
+                EXCEPTIONS: {
+                    MISSING_CONSTRUCTOR_CONFIG: {
+                        message: "Digio constructor requires configuration options for initialization."
+                    },
+                    INVALID_ENVIRONMENT: {
+                        message: "Provided environment value is invalid."
+                    },
+                    INVALID_METHOD: {
+                        message: "Provided signing method value is invalid."
+                    },
+                    INVALID_DOCUMENT_ID: {
+                        message: "Provided document id is invalid."
+                    },
+                    INVALID_IDENTIFIER: {
+                        message: "Provided email id or mobile number is invalid."
+                    },
+                    INVALID_REDIRECT_URL: {
+                        message: "Provided redirect url string is invalid."
+                    },
+                    INVALID_ERROR_URL: {
+                        message: "Provided error url string is invalid."
+                    },
+                    INVALID_LOGO_URL: {
+                        message: "Provided logo url is invalid."
+                    },
+                    INVALID_CALLBACK_METHOD: {
+                        message: "Provided callback method is not a function or is invalid."
+                    },
+                    INVALID_IFRAME_INVOCATION: {
+                        message: "Provided iframe invocation value is invalid or not a boolean."
+                    },
+                    INVALID_REDIRECTION_APPROACH_INVOCATION: {
+                        message: "Provided redirection approach value is invalid or not a boolean."
+                    },
+                    INVALID_AUTH_TYPE: {
+                        message: "Provided auth type is invalid."
+                    }
+                },
+                THEME: {
+                    PRIMARY_COLOR: "#2979BF",
+                    SECONDARY_COLOR: "#FFFFFF"
+                },
+                CLOSE_BTN_BASE64: "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAA60lEQVR42tXUPQqEMBAFYO+kYGFhYeFaWAm2qYyFlxBsraxELCzF1ip4Br2CR5klCyuLyeRni4UNTPf4ILxhHOfv3jzPMAwD6HJd1wFjTJ2r6xpc131NWZZoOMuyKzeOozzXtu0VUqGf2HuWZRHRKIqE4B2VYXwIISI4TZM0zIdSChjmeR5s2yb/dt/3KIph67qqizFFjTBT1ArTlcQnz3M7DCtAt1JfY8aoDaZFi6JQFqAqqmkaEU3TVNsmhlZVJYLHcUAQBNrVuKNxHMN5nvJv7/sOYRiC7/vKPePnjWNJkuCY7QOAx08O9BNR9VtE5qAr5wAAAABJRU5ErkJggg=="
+            };
+
+            var DigioException = function (err) {
+                this.message = err.message;
+                this.name = "DigioException";
+            };
+
+            DigioException.prototype.toString = function () {
+                return this.name + ': "' + this.message + '"';
+            };
+
+            var digioService = {
+                validateIdentifier: function (identifier) {
+                    if (!identifier) {
+                        throw new DigioException(CONSTANTS.EXCEPTIONS.INVALID_IDENTIFIER);
+                    }
+                },
+                validateDocumentId: function (docId) {
+                    if (!docId) {
+                        throw new DigioException(CONSTANTS.EXCEPTIONS.INVALID_DOCUMENT_ID + " : Id Missing");
+                    }
+                    if (Array.isArray(docId)) {
+                        if (docId.length === 0) {
+                            throw new DigioException(CONSTANTS.EXCEPTIONS.INVALID_DOCUMENT_ID + " : Array Is Empty");
+                        }
+                        else {
+                            for (var i = 0; i < docId.length; i++) {
+                                if (!docId[i]) {
+                                    throw new DigioException(CONSTANTS.EXCEPTIONS.INVALID_DOCUMENT_ID + " : At Array Index = " + i);
+                                }
+                            }
+                        }
+                    }
+                },
+                generateUrl: function (base_url, base_suffix, doc_id, txn_id, identifier, token_id, extendedConfig) {
+                    var url = base_url + base_suffix;
+                    url += "/" + doc_id;
+                    url += "/" + txn_id;
+                    url += "/" + identifier;
+
+                    var params = [];
+                    var dlmtr = "&";
+
+                    if (token_id) {
+                        params.push("token_id=" + token_id);
+                    }
+                    if (extendedConfig.ver) {
+                        params.push("sdkver=" + extendedConfig.ver);
+                    }
+                    if (extendedConfig.logo) {
+                        params.push("logo=" + encodeURIComponent(extendedConfig.logo));
+                    }
+                    if (extendedConfig.redirectUrl) {
+                        params.push("redirect_url=" + encodeURIComponent(extendedConfig.redirectUrl));
+                    }
+                    if (extendedConfig.errorUrl) {
+                        params.push("error_url=" + encodeURIComponent(extendedConfig.errorUrl));
+                    }
+                    if (extendedConfig.method) {
+                        params.push("method=" + encodeURIComponent(extendedConfig.method));
+                    }
+                    if (extendedConfig.isIframe) {
+                        params.push("is_iframe=" + encodeURIComponent(extendedConfig.isIframe));
+                    }
+                    if (extendedConfig.docs) {
+                        params.push("docs=" + encodeURIComponent(extendedConfig.docs));
+                    }
+                    if (extendedConfig.theme) {
+                        params.push("theme=" + encodeURIComponent(JSON.stringify(extendedConfig.theme)));
+                    }
+
+                    if (extendedConfig.otherParams) {
+                        for (var param in extendedConfig.otherParams) {
+                            params.push(param + "=" + extendedConfig.otherParams[param]);
+                        }
+                    }
+
+                    if (params.length) {
+                        url += "?" + params.join(dlmtr);
+                    }
+
+                    return url;
+                },
+                detectIE: function () {
+                    var ua = window.navigator.userAgent,
+                        msie = ua.indexOf('MSIE ');
+                    if (msie > 0) return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+                    var trident = ua.indexOf('Trident/');
+                    if (trident > 0) {
+                        var rv = ua.indexOf('rv:');
+                        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10)
+                    }
+                    var edge = ua.indexOf('Edge/');
+                    return edge > 0 && parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10)
+                }
+            };
+
+            var digioHandle = window.Digio = function (t) {
+                if (!t) {
+                    throw new DigioException(CONSTANTS.EXCEPTIONS.MISSING_CONSTRUCTOR_CONFIG);
+                }
+                if (t.callback) {
+                    if (typeof t.callback !== "function") {
+                        throw new DigioException(CONSTANTS.EXCEPTIONS.INVALID_CALLBACK_METHOD);
+                    }
+                    this.callback = t.callback;
+                }
+                if (t.environment) {
+                    if (t.environment.toLowerCase() === CONSTANTS.ENVIRONMENTS.STAGE.toLowerCase() ||
+                        t.environment.toLowerCase() === CONSTANTS.ENVIRONMENTS.SANDBOX.toLowerCase() ||
+                        t.environment.toLowerCase() === CONSTANTS.ENVIRONMENTS.PRODUCTION.toLowerCase()) {
+                        this.environment = t.environment;
+                    }
+                    else {
+                        throw new DigioException(CONSTANTS.EXCEPTIONS.INVALID_ENVIRONMENT);
+                    }
+                }
+                if (t.logo) {
+                    if (typeof t.logo !== "string") {
+                        throw new DigioException(CONSTANTS.EXCEPTIONS.INVALID_LOGO_URL);
+                    }
+                    this.logo = t.logo;
+                }
+                if (t.method) {
+                    if (t.method === CONSTANTS.SIGN_METHODS.OTP || t.method === CONSTANTS.SIGN_METHODS.BIOMETRIC) {
+                        this.method = t.method;
+                    }
+                    else {
+                        throw new DigioException(CONSTANTS.EXCEPTIONS.INVALID_METHOD);
+                    }
+                }
+                if (t.redirect_url) {
+                    if (typeof t.redirect_url !== "string") {
+                        throw new DigioException(CONSTANTS.EXCEPTIONS.INVALID_REDIRECT_URL);
+                    }
+                    this.redirectUrl = t.redirect_url;
+                }
+                if (t.error_url) {
+                    if (typeof t.error_url !== "string") {
+                        throw new DigioException(CONSTANTS.EXCEPTIONS.INVALID_ERROR_URL);
+                    }
+                    this.errorUrl = t.error_url;
+                }
+                if (t.is_iframe) {
+                    if (typeof t.is_iframe !== "boolean") {
+                        throw new DigioException(CONSTANTS.EXCEPTIONS.INVALID_IFRAME_INVOCATION);
+                    }
+                    this.isIframe = t.is_iframe;
+                }
+                if (t.is_redirection_approach) {
+                    if (typeof t.is_redirection_approach !== "boolean") {
+                        throw new DigioException(CONSTANTS.EXCEPTIONS.INVALID_REDIRECTION_APPROACH_INVOCATION);
+                    }
+                    this.isRedirectionApproach = t.is_redirection_approach;
+                }
+                if (t.theme) {
+                    this.theme = {};
+                    if (t.theme.primaryColor) {
+                        this.theme.PRIMARY_COLOR = t.theme.primaryColor;
+                    }
+                    else {
+                        this.theme.PRIMARY_COLOR = CONSTANTS.THEME.PRIMARY_COLOR;
+                    }
+                    if (t.theme.secondaryColor) {
+                        this.theme.SECONDARY_COLOR = t.theme.secondaryColor;
+                    }
+                    else {
+                        this.theme.SECONDARY_COLOR = CONSTANTS.THEME.SECONDARY_COLOR;
+                    }
+                }
+                else {
+                    this.theme = CONSTANTS.THEME;
+                }
+                for (var env in CONSTANTS.ENVIRONMENTS) {
+                    digioHandle.prototype.URL[CONSTANTS.ENVIRONMENTS[env]] = CONSTANTS.URLS[env];
+                }
+                this.otherParams = {};
+                for (var param in t) {
+                    if (!this.otherParams[param] && param.startsWith("dg_")) {
+                        this.otherParams[param.substring(3, param.length)] = t[param];
+                    }
+                }
+            };
+
+            digioHandle.prototype = {
+                version: CONSTANTS.VERSION,
+                environment: CONSTANTS.ENVIRONMENTS.STAGE,
+                method: CONSTANTS.SIGN_METHODS.OTP,
+                URL: {},
+                logo: null,
+                redirectUrl: null,
+                errorUrl: null,
+                isIframe: false,
+                isRedirectionApproach: false,
+                documentId: null,
+                txnId: null,
+                popup: null,
+                lastState: null,
+                resultCaptured: false,
+                result: null,
+                iFrameId: null,
+                iFrameObj: null,
+                theme: {},
+
+                callback: function (msg) {
+
+                },
+                getLoadingHtml: function (themecolor) {
+                    var theme = this.theme;
+                    var style = "<style>@@-webkit-keyframes placeHolderShimmer{0%{background-position: -1000px 0}100%{background-position: 1000px 0}}@@keyframes placeHolderShimmer{0%{background-position: -1000px 0}100%{background-position: 1000px 0}}.animated-background{z-index: 999;-webkit-animation-duration: 20s; animation-duration: 20s; -webkit-animation-fill-mode: forwards; animation-fill-mode: forwards; -webkit-animation-iteration-count: infinite; animation-iteration-count: infinite; -webkit-animation-name: placeHolderShimmer; animation-name: placeHolderShimmer; -webkit-animation-timing-function: linear; animation-timing-function: linear; background: transparent; background: -webkit-gradient(linear, left top, right top, color-stop(28%, transparent), color-stop(68%, " + theme.SECONDARY_COLOR + "14), color-stop(92%, transparent)); background: -webkit-linear-gradient(left, transparent 28%, #" + theme.SECONDARY_COLOR + "14 68%, transparent 92%); background: linear-gradient(to right, transparent 28%, #" + theme.SECONDARY_COLOR + "14 68%, transparent 92%); -webkit-background-size: 100% 100%; background-size: 100% 100%; height: 100%; width : 100%; top : 0; position: absolute;}</style>";
+
+                    var html = style + "<div class='animated-background'></div><div style=\"background: " + theme.PRIMARY_COLOR + ";position: relative; height: 100%; width: 100%;\"><div style=\"position: absolute;width: 100%;height: 20px;top: 20%;text-align: center;color: " + theme.SECONDARY_COLOR + ";font-weight: 300;font-family: Helvetica;\"> Live paperless with Digio </div><div style=\"position: absolute;width: 100%;height: 20px;top: calc(50% - 20px);text-align: center;font-weight: 300;color: " + theme.SECONDARY_COLOR + ";font-family: Helvetica;font-size: 85%;\"> Please wait... </div><div style=\"position: absolute;width: 100%;height: 20px;top: calc(50%);text-align: center;color: " + theme.SECONDARY_COLOR + ";font-weight: 300;font-family: Helvetica;font-size: 85%;\"> Preparing your document </div><div style=\"position: absolute;bottom: 7px;width: 100%;font-family: Helvetica;color: " + theme.SECONDARY_COLOR + ";font-size: 65%; text-align: center; font-weight : 300;\"> Licensed application for <br/> Aadhaar eSign and Digital Signature Certificates </div></div>";
+                    return html;
+                },
+                reset: function () {
+                    this.result = null;
+                    this.popup = null;
+                    this.interval = null;
+                    this.resultCaptured = false;
+                    this.lastState = null;
+                    this.iFrameId = null;
+                    this.iFrameObj = null;
+                },
+                receiveMessage: function (event) {
+                    var data;
+                    try {
+                        data = JSON.parse(event.data);
+                    }
+                    catch (e) {
+                        data = event.data;
+                    }
+                    if (typeof data !== 'object') {
+                        return;
+                    }
+                    if (data !== undefined && data.action !== undefined && data.action === 'close' && data.popup !== undefined && data.popup === 'iframe') {
+                        this.cancel();
+                    }
+                    if ((data !== undefined && data.txn_id !== undefined && data.txn_id === this.txnId + "-state") && (event.origin === this.URL[this.environment])) {
+                        if (data.hasOwnProperty('current_state')) {
+                            var current_state = data.current_state;
+                            this.lastState = current_state;
+                            if (current_state.hasOwnProperty('success') &&
+                                current_state.hasOwnProperty('result') && current_state.success === true) {
+                                this.resultCaptured = true;
+                                this.result = current_state.result;
+                            }
+                        }
+                    }
+                    else if ((data !== undefined && data.txn_id !== undefined && data.txn_id === this.txnId) && (event.origin === this.URL[this.environment])) {
+                        if (data.hasOwnProperty('message')) {
+                            this.result = data;
+                            this.resultCaptured = true;
+                            if (this.isIframe) {
+                                this.popup.close();
+                                this.iFrameObj.closed = true;
+                                document.body.removeChild(document.getElementById('parent' + this.iFrameId));
+                            }
+                            else {
+                                this.popup.close();
+                            }
+                            return this;
+                        }
+                    }
+                },
+                init: function () {
+                    this.reset();
+                    var isIE = digioService.detectIE(),
+                        newWidth = Math.max(isIE ? 0.4 * window.innerWidth : 0.35 * screen.width, 450),
+                        newHeight = Math.max(isIE ? 0.9 * window.innerHeight : 0.7 * screen.height, 630),
+                        left = isIE ? 0.25 * window.innerWidth : 0.33 * screen.width,
+                        top = 0.15 * (isIE ? window.innerHeight : screen.height);
+                    top = (isIE ? window.innerHeight : screen.height) * 0.03;
+                    var that = this;
+                    if (this.isRedirectionApproach) {
+                        if (this.redirectUrl) {
+                            this.isRedirectionApproach = true;
+                        } else {
+                            this.isRedirectionApproach = false;
+                        }
+                    }
+                    else if (this.isIframe) {
+                        let isLaptop = ((navigator.userAgent.indexOf("Macintosh") > -1) || (navigator.userAgent.indexOf("Windows") > -1) || (navigator.userAgent.indexOf("Linux") > -1) || (navigator.userAgent.indexOf("Ubuntu") > -1));
+                        this.iFrameId = "digio-ifm-" + Date.now();
+
+                        var iframeContainer = document.createElement('div');
+                        iframeContainer.setAttribute('id', 'parent' + this.iFrameId);
+                        iframeContainer.style.cssText = "position: absolute; min-width: 450px; overflow: auto; z-index : 999999; width : 100%; height : 100%; " +
+                            "background : rgba(0,0,0,0.6); left: 0; top : 0; " +
+                            " text-align:center;";
+                        document.body.appendChild(iframeContainer);
+
+                        var iframeWrapper = document.createElement('div');
+                        iframeWrapper.setAttribute('id', 'wrapper' + this.iFrameId);
+                        if (isLaptop) {
+                            iframeWrapper.style.cssText = "position: absolute; min-width: 450px; overflow: auto; z-index : 999999; width : " + newWidth +
+                                "px; height : " + newHeight + "px; background : white; left: calc(50% - " + newWidth / 2 + "px); top : " + top + "px; " +
+                                "text-align:center; border-radius: 5px;";
+                        }
+                        else {
+                            iframeWrapper.style.cssText = "width:80%; overflow : auto; padding-top : 50%; z-index : 999999; height : 90%; background : white; margin: auto; top : " + top + "px; " +
+                                "text-align:center; border-radius: 5px;";
+                        }
+                        iframeContainer.appendChild(iframeWrapper);
+
+                        var closeIframeBtn = document.createElement('img');
+                        if (isLaptop) {
+                            closeIframeBtn.style.cssText = "position: absolute;right: 5px;height: 14px;width: 14px;top: 7px;cursor: pointer;";
+                        }
+                        else {
+                            closeIframeBtn.style.cssText = "position: absolute;height: 14px;width: 14px;top: 7px;cursor: pointer;";
+                        }
+                        closeIframeBtn.setAttribute('src', "data:image/gif;base64," + CONSTANTS.CLOSE_BTN_BASE64);
+                        closeIframeBtn.onclick = function () {
+                            var iframe = window.document.getElementById('parent' + that.iFrameId);
+                            iframe.parentNode.removeChild(iframe);
+                            that.popup = null;
+                        };
+                        iframeWrapper.appendChild(closeIframeBtn);
+
+                        var centreTextEl = document.createElement('span');
+                        centreTextEl.style.cssText = "position: absolute; left: calc(50% - 50px); width : 100px; top: 8px; font-size: 12px; color: gray; text-decoration: underline;";
+                        centreTextEl.innerHTML = "<span>Powered By <a href='https://www.digio.in' target='_blank' style='color: #0261b0'>Digio</a></span>";
+                        iframeWrapper.appendChild(centreTextEl);
+
+                        var contentLoader = document.createElement('div');
+                        contentLoader.style.cssText = "position: absolute; height: calc(100% - 40px) ;width: 100%; top : 40px; left : 0; margin : 0;z-index: 9999999;";
+                        contentLoader.innerHTML = that.getLoadingHtml(that.logo, true);
+                        contentLoader.setAttribute('id', "dgo-ldr-" + this.iFrameId);
+                        iframeWrapper.appendChild(contentLoader);
+
+                        var iframe = document.createElement('iframe');
+                        if (isLaptop) {
+                            iframe.style.cssText = "position: absolute; min-width: 450px; overflow: auto; z-index : 999999; width : 100%; height : calc(100% - 40px); background : white; left: 0; top : 40px; " +
+                                "border: 0; text-align:center;";
+                        }
+                        else {
+                            iframe.style.cssText = "width:60%; z-index : 999999; height : calc(100% - 40px); background : white; margin : auto; top : 40px; " +
+                                "border: 0; text-align:center; transform : scale(1.6)";
+                        }
+                        iframe.setAttribute('id', this.iFrameId);
+                        iframe.setAttribute('src', '');
+                        iframe.setAttribute("allow", "geolocation *; microphone *; camera *;");
+                        iframeWrapper.appendChild(iframe);
+                        this.iFrameObj = iframe;
+                        this.popup = iframe.contentWindow || window.frames[window.frames.length - 1];
+                        this.isIframe = true;
+                    }
+                    else {
+                        this.popup = window.open('', '', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=1,width=' + newWidth + ',height=' + newHeight + ',top=' + top + ', left=' + left);
+                        this.popup.document.body.style.margin = 0;
+                        this.popup.document.body.style.padding = 0;
+                        this.popup.document.body.innerHTML = that.getLoadingHtml(that.logo, false);
+                    }
+                    try {
+                        window.addEventListener("message", function (e) {
+                            that.receiveMessage(e);
+                        }, false
+                        );
+                    }
+                    catch (e) {
+                        window.attachEvent("onmessage", function (e) {
+                            that.receiveMessage(e);
+                        });
+                    }
+                    var interval = window.setInterval(function () {
+                        var resObj = {};
+                        try {
+                            if (that.isIframe && that.iFrameObj.closed) {
+                                if (interval !== undefined) {
+                                    window.clearInterval(interval);
+                                }
+                                if (that.resultCaptured) {
+                                    if (self.lastState !== undefined) {
+                                        if (self.lastState.hasOwnProperty('result')) {
+                                            delete self.lastState.result;
+                                        }
+                                        self.result.last_state = self.lastState;
+                                    }
+                                    that.callback(that.result);
+                                }
+                                else {
+                                    resObj = { "digio_doc_id": that.documentId, "error_code": "CANCELLED", "message": "Signing cancelled" };
+                                    if (that.lastState !== undefined) {
+                                        resObj.last_state = that.lastState;
+                                    }
+                                    that.callback(resObj);
+                                }
+                            }
+                            else if (that.popup == null || that.popup.closed) {
+                                if (interval !== undefined) {
+                                    window.clearInterval(interval);
+                                }
+                                if (that.resultCaptured) {
+                                    if (self.lastState !== undefined) {
+                                        if (self.lastState.hasOwnProperty('result')) {
+                                            delete self.lastState.result;
+                                        }
+                                        self.result.last_state = self.lastState;
+                                    }
+                                    that.callback(that.result);
+                                }
+                                else {
+                                    resObj = { "digio_doc_id": that.documentId, "error_code": "CANCELLED", "message": "Signing cancelled" };
+                                    if (that.lastState !== undefined) {
+                                        resObj.last_state = that.lastState;
+                                    }
+                                    that.callback(resObj);
+                                }
+                            }
+                        }
+                        catch (e) {
+                            throw e;
+                        }
+                    }, 1000);
+                },
+                getOptionValues: function (option) {
+                    option = option.toUpperCase();
+                    if (CONSTANTS.hasOwnProperty(option)) {
+                        return Object.values(CONSTANTS[option]);
+                    }
+                },
+                submit: function (ids, identifier, token_id) {
+                    try {
+                        digioService.validateDocumentId(ids);
+                        digioService.validateIdentifier(identifier);
+
+                        if (Array.isArray(ids)) {
+                            return this.esign(ids, identifier, token_id);
+                        }
+                        else if (typeof ids === "string" && ids.slice(0, 3) === 'ENA' && ids.slice(ids.length - 2, ids.length) === 'AP') {
+                            return this.enachApiSign(ids, identifier, token_id);
+                        }
+                        else {
+                            return this.esign(ids, identifier, token_id);
+                        }
+                    }
+                    catch (err) {
+                        console.error(err);
+                    }
+                },
+                enachApiSign: function (id, identifier, token_id) {
+                    this.documentId = id;
+                    this.txnId = Math.random().toString(36).slice(2);
+
+                    var extendedConfig = {
+                        ver: this.version,
+                        logo: this.logo,
+                        redirectUrl: this.redirectUrl,
+                        errorUrl: this.errorUrl,
+                        method: this.method,
+                        isIframe: this.isIframe,
+                        theme: this.theme
+                    };
+
+                    if (this.otherParams && Object.keys(this.otherParams).length > 0) {
+                        extendedConfig.otherParams = this.otherParams;
+                    }
+
+                    var url = CONSTANTS.URLS.API_MANDATE_SUFFIX;
+                    if (token_id) {
+                        url = CONSTANTS.URLS.ESIGN_SUFFIX;
+                    }
+
+                    var assign_url = digioService.generateUrl(this.URL[this.environment], url, this.documentId, this.txnId, identifier, token_id, extendedConfig);
+
+                    if (this.isRedirectionApproach) {
+                        return window.location.assign(assign_url);
+                    }
+
+                    if (this.isIframe) {
+                        var ldr = document.getElementById("dgo-ldr-" + this.iFrameId);
+                        ldr.parentNode.removeChild(ldr);
+                    }
+                    if (this.popup === undefined) {
+                        this.init();
+                    }
+
+                    this.popup.location = assign_url;
+                },
+                esign: function (ids, identifier, token_id) {
+
+                    digioService.validateDocumentId(ids);
+                    digioService.validateIdentifier(identifier);
+                    if (typeof ids === "string" && ids.slice(0, 3) === 'ENA' && ids.slice(ids.length - 2, ids.length) === 'AP') {
+                        return this.enachApiSign(ids, identifier);
+                    }
+
+                    var primaryId = null;
+                    if (Array.isArray(ids)) {
+                        ids.map(function (id) {
+                            return id.toString();
+                        });
+                        primaryId = ids.shift();
+                    }
+                    else {
+                        primaryId = ids.toString();
+                    }
+
+                    this.documentId = primaryId;
+                    this.txnId = Math.random().toString(36).slice(2);
+
+                    var extendedConfig = {
+                        ver: this.version,
+                        logo: this.logo,
+                        redirectUrl: this.redirectUrl,
+                        errorUrl: this.errorUrl,
+                        method: this.method,
+                        isIframe: this.isIframe,
+                        theme: this.theme
+                    };
+
+                    if (Array.isArray(ids)) {
+                        extendedConfig.docs = ids;
+                    }
+
+                    var url = digioService.generateUrl(this.URL[this.environment], CONSTANTS.URLS.ESIGN_SUFFIX, this.documentId, this.txnId, identifier, token_id, extendedConfig);
+
+                    if (this.isRedirectionApproach) {
+                        return window.location.assign(url);
+                    }
+
+                    if (this.isIframe) {
+                        var ldr = document.getElementById("dgo-ldr-" + this.iFrameId);
+                        ldr.parentNode.removeChild(ldr);
+                    }
+                    if (this.popup === undefined) {
+                        this.init();
+                    }
+
+                    this.popup.location = url;
+                },
+                cancel: function () {
+                    var that = this;
+                    if (that.popup !== undefined) {
+                        try {
+                            if (!that.isIframe) {
+                                that.popup.close();
+                            }
+                            else {
+                                var iframe = window.document.getElementById('parent' + that.iFrameId);
+                                iframe.parentNode.removeChild(iframe);
+                                that.popup = null;
+                            }
+                        }
+                        catch (e) {
+                            that.popup = null;
+                        }
+                    }
+                }
+            };
+
+            String.prototype.format = function (args) {
+                var str = this;
+                return str.replace(String.prototype.format.regex, function (item) {
+                    var intVal = parseInt(item.substring(1, item.length - 1));
+                    var replace;
+                    if (intVal >= 0) {
+                        replace = args[intVal];
+                    } else if (intVal === -1) {
+                        replace = "{";
+                    } else if (intVal === -2) {
+                        replace = "}";
+                    } else {
+                        replace = "";
+                    }
+                    return replace;
+                });
+            };
+
+            String.prototype.format.regex = new RegExp("{-?[0-9]+}", "g");
+
+        })();
+    </script>
+
+
+</body>
+
+</html>
+
