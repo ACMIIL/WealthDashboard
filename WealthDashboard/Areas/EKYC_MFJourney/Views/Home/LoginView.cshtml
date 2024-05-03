@@ -1,0 +1,166 @@
+﻿@model WealthDashboard.Areas.EKYC_MFJourney.Models.Login.UCCTempModel;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>TWC</title>
+    <link rel="canonical" href="" />
+    <!-- Favicons -->
+    <link href="" rel="icon">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Template Main CSS File -->
+
+    <link href="~/content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/content/css/style.css" rel="stylesheet" />
+    <link href="~/content/css/custom.css" rel="stylesheet" />
+    <style>
+        .form-control:focus {
+            background-color: transparent !important;
+        }
+
+        .form-control {
+            background-color: transparent !important;
+        }
+    </style>
+</head>
+<body>
+    @Html.HiddenFor(m => m.BACode, new { id = "BACode" })
+    @Html.HiddenFor(m => m.EncBACode, new { id = "EncBACode" })
+    @Html.HiddenFor(m => m.SourceType, new { id = "Source" })
+    <!-- ======= Hero Section ======= -->
+    <section class="background-twc-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-none d-md-block">
+                    <img src="~/content/images/twc-mobile.png" class="w-75">
+                </div>
+                <div class="col-md-6 col-12 my-auto">
+                    <!--mobile logo div start-->
+                    <div class="row">
+                        <div class="col-12 my-auto d-md-none d-block">
+                            <div class="mob-logo text-center mb-5">
+                                <img src="~/content/images/twc-logo.png" alt="The Wealth Company">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-12 mx-auto">
+                            <div class="login-form">
+                                <div class="row">
+                                    <!--Sign Up start-->
+                                    <div class="col-md-12 col-12 text-center">
+                                        <h4 class="form-title"> Sign Up </h4>
+                                        <h6 class="form-subtitle">Thank you for get back to TWC EKYC.</h6>
+                                    </div>
+                                    <!--Sign Up end-->
+                                    <!--Enter your 10-digit mobile number start-->
+                                    <div class="col-md-12 col-12 mt-3">
+                                        <div class="custom-px-5">
+                                            <form action="" method="post">
+                                                <div class=" mb-2">
+                                                    <input type="text" class="form-control" id="txtMobileNumber" onkeyup="isNumbereventandotp(event);" maxlength="10" placeholder="Enter your 10-digit mobile number">
+                                                </div>
+                                            </form>
+                                            <div class="mb-3" style="display:none;">
+                                                <div class="row">
+                                                    <div class="col-md-6 text-start">
+                                                        <h6 class="Errormsg">
+                                                            Enter correct mobile number.
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Enter your 10-digit mobile number end-->
+                                    <!--Decleration start-->
+                                    @*         <div id="ALLSegments" style="display:none;">
+                                    <div class="col-md-12 col-12 text-center mb-3">
+
+                                    <input type="radio" class="btn-check" class="btn-check" name="btnAnnualIncome" id="btnradioself" value="118" autocomplete="off" onchange="CheckMobileDeclarationWithUCC();" checked>
+                                    <label class="btn btn-decl-inactive" for="btnradioself"><img src="~/content/images/self.png" class="declimg"> Self</label>
+
+                                    <input type="radio" class="btn-check" name="btnAnnualIncome" id="btnradioParent" value="117" autocomplete="off" onchange="CheckMobileDeclarationWithUCC123();">
+                                    <label class="btn btn-decl-inactive" for="btnradioParent"><img src="~/content/images/parents-3.png" class="declimg"> Parents</label>
+
+                                    <input type="radio" class="btn-check" name="btnAnnualIncome" id="btnradioChildren" value="116" autocomplete="off" onchange="CheckMobileDeclarationWithUCC123();">
+                                    <label class="btn btn-decl-inactive" for="btnradioChildren"><img src="~/content/images/parents-2.png" class="declimg"> Children</label>
+
+                                    <input type="radio" class="btn-check" name="btnAnnualIncome" id="btnradioSpouse" value="119" autocomplete="off" onchange="CheckMobileDeclarationWithUCC123();">
+                                    <label class="btn btn-decl-inactive" for="btnradioSpouse"><img src="~/content/images/parents.png" class="declimg"> Spouse</label>
+                                    </div>
+                                    </div> *@
+                                </div>
+                                <div class="col-md-12 col-12 mx-auto">
+                                    <span id="Allmessage" class="send-msg"></span>
+                                </div>
+                                <!--Decleration end-->
+                                <!--Enter OTP start-->
+                                <div class="col-md-12 col-12">
+                                    <div class="custom-px-5">
+                                        <form action="" method="post" class="d-flex">
+                                            <input type="text" class="form-control " id="txtOTP" onkeypress="isNumberKey(event);" onkeyup="CheckOTP();" maxlength="10" placeholder="Enter OTP">
+                                            <span class="right-number">01:00</span>
+                                        </form>
+                                        <div class="counterPass">
+                                            <div class="" id="timer"></div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="row">
+                                                <div class="col-md-6 col-6 text-start" style="display:none;">
+                                                    <h6 class="otpsend">
+                                                        otp send successfully
+                                                    </h6>
+                                                </div>
+                                                <div class="col-md-6 col-6 text-end">
+                                                    <h6 class="Resend">
+                                                        Resend OTP
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Enter OTP end-->
+                            </div>
+                            <div class="col-md-12 text-center col-12  mb-3" style="display:none;">
+                                <a href="enterotp.html" class="btn rounded btn-submit">Submit</a>
+                            </div>
+                            <!--Already have an account?-->
+                            <div class="col-md-12 text-center">
+                                <h6 class="Resend">
+                                    Already have an account?<a href="#" target="_blank" id="Resendotp" onclick="ResendOTP();" class="btn-sign_in">Sign In</a>
+                                </h6>
+
+                            </div>
+                            <!--Already have an account?-->
+                        </div>
+                    </div>
+                </div>
+                <!--main contain end-->
+            </div>
+        </div>
+        </div>
+
+    </section><!-- End Hero -->
+
+
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="~/twc_ekyc_js/ekyc_commom.js"></script>
+    <script src="~/twc_ekyc_js/clientlogin.js"></script>
+    <!-- Vendor JS Files -->
+    <!-- Template Main JS File -->
+    @*  <script src="~/content/js/jquery.min.js"></script> *@
+    <script src="~/content/js/bootstrap.bundle.js"></script>
+    <script src="~/content/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
