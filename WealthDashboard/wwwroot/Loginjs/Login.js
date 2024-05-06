@@ -95,7 +95,7 @@ function SendOtp() {
     }
 
     $.ajax({
-        url: `${BaseURL}/api/AgentLogin/CheckUser?MobileNo=${phoneNumber}`,
+        url: `${BaseURL}/AgentLogin/CheckUser?MobileNo=${phoneNumber}`,
         method: "POST",
         data: {},
     })
@@ -116,7 +116,7 @@ function SendOTPAgent(phoneNumber) {
 
     $.ajax({
         type: "POST",
-        url: `${BaseURL}/api/AgentLogin/UpdateOTP?Mobile=${phoneNumber}`,
+        url: `${BaseURL}/AgentLogin/UpdateOTP?Mobile=${phoneNumber}`,
         data: {},
     })
         .done(function (data) {
@@ -147,7 +147,7 @@ $("#Submitbutton").click(function () {
 
     $.ajax({
         method: "POST",
-        url: `${BaseURL}/api/AgentLogin/VerifyOTP`,
+        url: `${BaseURL}/AgentLogin/VerifyOTP`,
         contentType: 'application/json',
         data: JSON.stringify({
             mobile: phoneNumber,
@@ -214,7 +214,7 @@ function ResendOTP(phoneNumber) {
 
     $.ajax({
         type: "POST",
-        url: `${BaseURL}/api/AgentLogin/UpdateOTP?Mobile=${phoneNumber}`,
+        url: `${BaseURL}/AgentLogin/UpdateOTP?Mobile=${phoneNumber}`,
         data: {},
     })
         .done(function (data) {

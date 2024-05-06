@@ -7,16 +7,16 @@
 
     public class APIUrl
     {
-        public const string InvestNowDetailInsert = "api/MFUsers/UserCartDetailInsert";
-        public const string CreateSrNo = "api/BSEOrderMaster/CreateSrNo";
+        public const string InvestNowDetailInsert = "MFUsers/UserCartDetailInsert";
+        public const string CreateSrNo = "BSEOrderMaster/CreateSrNo";
 
-        public const string AuthenticationInsert = "api/OrderAuthentication/InsertAuthMaster";
-        public const string SentAuthenticationOTP = "api/OrderAuthentication/SentAuthenticationOTP";
-        public const string Updateresendotp = "api/OrderAuthentication/UpdateResentOTP";
-        public const string InsertBSECraeteOrder = "api/BSEOrderMaster/InsertBSECraeteOrder";
-        public const string RedeemInsert = "api/BSEOrderMaster/InsertRedeemOrder";
-        public const string SendSWPOrder = "api/BSEOrderMaster/SendSwpOrder";
-        public const string LoginV1 = "api/LoginV1";
-        public const string SecurityV2 = "api/SecurityV2";
+        public const string AuthenticationInsert = "OrderAuthentication/InsertAuthMaster";
+        public const string SentAuthenticationOTP = "OrderAuthentication/SentAuthenticationOTP";
+        public const string Updateresendotp = "OrderAuthentication/UpdateResentOTP";
+        public const string InsertBSECraeteOrder = "BSEOrderMaster/InsertBSECraeteOrder";
+        public const string RedeemInsert = "BSEOrderMaster/InsertRedeemOrder";
+        public const string SendSWPOrder = "BSEOrderMaster/SendSwpOrder";
+        public const string LoginV1 = "LoginV1";
+        public const string SecurityV2 = "SecurityV2";
     }
 }

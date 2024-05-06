@@ -2,15 +2,15 @@
     .controller('myController', function ($scope, toaster, $location, $window, $http) {
         getdata()
 
-        // api/user/GetDigioLockerUserPersonalDetails
-        $scope.userId = localStorage.getItem('userId')
+        // user/GetDigioLockerUserPersonalDetails
+       // $scope.userId = localStorage.getItem('userId')
         $scope. mobile = localStorage.getItem('Mnumber');
         $scope.data = [];
         function getdata() {
-            $scope.userId = localStorage.getItem('userId')
+           // localStorage.getItem('userId')
             $scope.mobile = localStorage.getItem('Mnumber');
             $http({
-                url: BaseURL + "user/GetDigioLockerUserPersonalDetails?userId=" + $scope.userId,
+                url: BaseURL + "user/GetDigioLockerUserPersonalDetails?userId=" + userId,
                 method: "GET",
                 Headers: {},
                 data: {}
@@ -22,6 +22,33 @@
         }
 
 
+        $scope.gotoNext = function () {
+            UpdateStatus();
+            //window.location.assign('/WPRegistration/qrbankverification');
+
+            // window.location.assign('/WPRegistration/UploadChequeBankverification');
+        }
+
+
+        function UpdateStatus() {
+            
+            $http({
+                url: BaseURL + "User/UpdateUserStatus?userId=" + userId + "&status=4",
+                method: 'GET',
+                headers: {},
+                data: {}
+            }).then(function (response) {
+
+                var result = response;
+
+                if (result.data.code === 200) {
+                    window.location.assign('/WPRegistration/qrbankverification');
+                }
+
+            })
+
+
+        }
 
 
 

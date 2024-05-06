@@ -730,7 +730,7 @@ input.width-3.w-12.h-12.bg-gray-100.border-0.outline-none.focus\:bg-gray-200.tex
 
 /*=======vikram css==========*/
 .bg-background-1{
-    background: url("../images/cangrachulation.png") no-repeat;
+    background: url("..~/wpregimages/cangrachulation.png") no-repeat;
     background-size: contain;
 }
 .succes-text1 {
@@ -830,7 +830,7 @@ input.width-3.w-12.h-12.bg-gray-100.border-0.outline-none.focus\:bg-gray-200.tex
   
  }
  .list-style-group-1 li{
-  background: url(../images/checkmark.png) scroll 2px 5px  no-repeat;
+  background: url(..~/wpregimages/checkmark.png) scroll 2px 5px  no-repeat;
   background-size: 4%;
   padding-left: 30px;
   font-size: 13px;
@@ -847,7 +847,7 @@ input.width-3.w-12.h-12.bg-gray-100.border-0.outline-none.focus\:bg-gray-200.tex
 }
 
  .done1{
-	background: url(../images/done1.png) no-repeat !important;
+	background: url(..~/wpregimages/done1.png) no-repeat !important;
     background-position: 97% 9px !important;
 	background-size:6% !important;
 }
@@ -879,7 +879,7 @@ input.width-3.w-12.h-12.bg-gray-100.border-0.outline-none.focus\:bg-gray-200.tex
     text-align: start !important;
   }
   .info-circle2{
-    background: url(../images/info-circle.png) no-repeat !important;
+    background: url(..~/wpregimages/info-circle.png) no-repeat !important;
     background-position: 1% 5px !important;
     background-size: 2.2% !important;
     padding-left: 40px !important;
@@ -905,12 +905,12 @@ input.width-3.w-12.h-12.bg-gray-100.border-0.outline-none.focus\:bg-gray-200.tex
     height: auto;
   }
   .delete-1{
-    background: url(../images/delete-1.png) no-repeat !important;
+    background: url(..~/wpregimages/delete-1.png) no-repeat !important;
     background-position: 95% 12px !important;
     background-size: 10% !important;
   }
   .share-1{
-    background: url(../images/share-1.png) no-repeat !important;
+    background: url(..~/wpregimages/share-1.png) no-repeat !important;
     background-position: 22% 12px !important;
     background-size: 10% !important;
   }
@@ -1040,13 +1040,13 @@ input.width-3.w-12.h-12.bg-gray-100.border-0.outline-none.focus\:bg-gray-200.tex
 }
 
 .file-view{
-	background: url(../images/bi_upload.svg) no-repeat !important;
+	background: url(..~/wpregimages/bi_upload.svg) no-repeat !important;
     background-position: 95% 13px !important;
 	background-size:6% !important;
 }
 
 .select-arrow{
-	 background: url(../images/min_down-line.svg) no-repeat !important;
+	 background: url(..~/wpregimages/min_down-line.svg) no-repeat !important;
    background-position: 97% 10px !important;
    background-size: 8% !important;
 }

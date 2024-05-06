@@ -2,6 +2,8 @@
     Layout = "_WPLayout";
 }
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,145 +26,171 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link href="https://chhotaniveshgold.com/assets/vendor/boxicons/css/boxicons.min.css"> -->
     <!-- Vendor CSS Files -->
-
-
     <!-- Template Main CSS File -->
     <link href="~/css/wpregistrationcss/slick.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/slick-theme.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
+
+
+    <style>
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            /* Change the color of the calendar icon */
+            color: blue;
+        }
+    </style>
+
+
+
+
 </head>
+
+
 
 
 <body>
 
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class=" background-twc-banner" style="height: 780px;" ng-app="main" ng-controller="myController">
-        <div class="container">
-            <header id="header" class="pb-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 text-center mb-4">
-                            <a href="index.html">
-                                <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <div class="row">
-                <div class="col-md-12 mx-auto">
-                    <div class="row">
-                        <div class="col-md-5 d-none d-md-block">
-                            <div class="row">
-                                <div class="mx-auto">
-                                    <img src="~/wpregimages/twc-mobile.png" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="row ">
-                                <div class="col-md-12 mx-auto card login-form">
-                                    <div class="row mx-auto mt-5 mb-2">
-                                        <img src="~/wpregimages/form-logo.png" alt="" title="" class="img-fluid text-center" style="width:55px;height: 31px;">
-                                    </div>
-                                    <div class="row mb-1">
-                                        <div class="form-title text-center">
-                                            PAN Card Details
-                                        </div>
-                                        <div class="text-center">
-                                            <label class="form-subtitle "><span class="golden">Enter your PAN card number </span></label>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 padding-left-form">
-                                        <div class="form-floating">
-                                          @*   <input type="text" ng-model="pan" ng-change="transformToUpper();checkPanDetails($event)"  class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="HERFK4578G"> *@
-                                            <input type="text" ng-model="pan" ng-change="transformToUpper();CheckPanCorrect()" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="HERFK4578G">
+    <div ng-app="main" ng-controller="myController">
 
 
-                                            <label for="floatingInput" style="color: #CAAA86;">Permanent Account Number</label>
-                                            <span class="text-success1 small mt-2" style="font-size: 12px !important;">Wow, your PAN is already KYC verified, this will reduce your A/C<br>opening time.</span>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                      
-                                            <span><img src="~/wpregimages/date-icon.png" class="date-icon"></span>
-                                            <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
-                                         @*    <input type="date" ng-model="date" ng-blur="checkDate(date)" ng-change="checkDate(date)" /> *@
-
-
-                                            <label for="floatingInput" style="color: #CAAA86;">Date Of Birth</label>
-
-                                        </div>
-                                        <div class="form-check ps-4 ms-3">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                            <label class="form-check-label checkbox-label" for="flexCheckChecked">
-                                                I authorize to fetch/update my KYC details from/to KRAs / CKYCR / Digilocker.
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 row mb-3">
-                                        <div class="col-md-12 text-center col-12 mt-2 mb-4">
-                                            <button  class="btn rounded btn-submit" data-bs-toggle="modal" data-bs-target="#pandetails">Submit</button>
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section><!-- End Hero -->
-    <!-- ======= Footer ======= -->
-    <!--<footer id="footer" class="pt-2 pb-2">
-        <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-12 text-center">
-                <a href="mailto:customerservices@acm.co.in" class="link1">customerservice@acm.co.in</a>
-            </div>
-        </div>
-        </div>
-    </footer>-->
-    <!-- End Footer -->
-    <!-- Modal declaration -->
-    <div class="modal fade" id="pandetails" tabindex="-1" aria-labelledby="declarationModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
-        <div class="modal-dialog NeedHelpModal">
-            <div class="modal-content" style="background-color: #0E1D22;">
-                <div class="modal-body pb-0 ps-4 pe-4">
-                    <div class="col-md-12 col-4">
+        <!-- ======= Hero Section ======= -->
+        <section id="hero" class=" background-twc-banner" style="height: 780px;">
+            <div class="container">
+                <header id="header" class="pb-5">
+                    <div class="container">
                         <div class="row">
-                            <div class="col-12 text-end">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="col-md-12 text-center mb-4">
+                                <a href="index.html">
+                                    <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
+                                </a>
                             </div>
-                            <div class="col-12">
-                                <h6 style="color: white;">
-                                    Hi, <span class="golden">PRATIK J KURALE</span>
-                                </h6>
-                                <p style="color: white;">Kindly verify the below details before proceeding</p>
-                                <ul>
-                                    <li style="color: white;">
-                                        Your name(as per IT records) <br>
-                                        <span class="golden2">Pratik J Kurale</span>
-                                    </li>
-                                    <li style="color: white;">
-                                        Date of Birth entered by you <br>
-                                        <span class="golden2">1993-12-31</span>
-                                    </li>
-                                </ul>
-                                <p class="mb-1" style="color: white;"> Note:</p>
-                                <ul>
-                                    <li style="color: white;">PAN number and DOB should be of the person whose account you wish to open</li>
-                                    <li style="color: white;">Once confirmed, DOB cannot be modified online, under any circumstance</li>
-                                </ul>
+                        </div>
+                    </div>
+                </header>
+                <div class="row">
+                    <div class="col-md-12 mx-auto">
+                        <div class="row">
+                            <div class="col-md-5 d-none d-md-block">
+                                <div class="row">
+                                    <div class="mx-auto">
+                                        <img src="~/wpregimages/twc-mobile.png" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row ">
+                                    <div class="col-md-12 mx-auto card login-form">
+                                        <div class="row mx-auto mt-5 mb-2">
+                                            <img src="~/wpregimages/form-logo.png" alt="" title="" class="img-fluid text-center" style="width:55px;height: 31px;">
+                                        </div>
+                                        <div class="row mb-1">
+                                            <div class="form-title text-center">
+                                                PAN Card Details
+                                            </div>
+                                            <div class="text-center">
+                                                <label class="form-subtitle "><span class="golden">Enter your PAN card number </span></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3 padding-left-form">
+                                            <div class="form-floating">
+                                                @*   <input type="text" ng-model="pan" ng-change="transformToUpper();checkPanDetails($event)"  class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="HERFK4578G"> *@
+                                                <input type="text" ng-model="pan" id="inputPAN"
+                                                       oninput="this.value = this.value.toUpperCase();removeWhitespace(this)"
+                                                       maxlength="10" ng-keyup="displayDate()" ng-change="CHeckPanNumber()"
+                                                       class="form-control floating-text-area" style="color: white;" placeholder="HERFK4578G">
 
+
+                                                <label for="inputPAN" style="color: #CAAA86;">Permanent Account Number</label>
+                                                <div ng-if="panCorrectMessage" class="text-success1 small mt-2" style="font-size: 12px !important;">Wow, your PAN is already KYC verified, this will reduce your A/C<br>opening time.</div>
+
+
+                                                @*  <div ng-if="pan==''" style="color: rgb(212, 25, 25);font-size:small;">Pan is required</div> *@
+                                                <div ng-if="isPanFormateCorrect" style="color: rgb(212, 25, 25);font-size:small;">Invalid PAN number format.</div>
+
+                                            </div>
+                                            <div class="form-floating mb-3" ng-if="isPanDateVisible">
+
+                                                @* <span><img src="~/wpregimages/date-icon.png" class="date-icon"></span> *@
+                                                <input type="date" ng-model="pandate" class="form-control floating-text-area" id="mydate" style="color: white;" placeholder="31-12-1995">
+                                                <div style="color: rgb(212, 25, 25);font-size:small;">{{isvalidDate}}</div>
+
+
+                                                <label for="floatingInput" style="color: #CAAA86;">Date Of Birth</label>
+
+                                            </div>
+                                            <div class="form-check ps-4 ms-3">
+                                                <input class="form-check-input" ng-change="check(x)" ng-model="x.isChecked" type="checkbox" value="" id="flexCheckChecked" checked>
+                                                <label class="form-check-label checkbox-label" for="flexCheckChecked">
+                                                    I authorize to fetch/update my KYC details from/to KRAs / CKYCR / Digilocker.
+                                                </label>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3 row mb-3">
+                                            <div class="col-md-12 text-center col-12 mt-2 mb-4">
+                                                <button ng-disabled="isDisabled" class="btn rounded btn-submit"   ng-click="PanDetails()">Next</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="row mx-5 ps-5">
-                                <div class="col-md-12 d-flex mt-3 mb-4">
-                                    <button href="" class="btn rounded btn-submit-popup1 me-4">Change Details</button>
-                                    <a href="twc-digilocker.html" class="btn rounded btn-submit-popup2">Confirm</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- End Hero -->
+        <!-- ======= Footer ======= -->
+        <!--<footer id="footer" class="pt-2 pb-2">
+            <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-12 text-center">
+                    <a href="mailto:customerservices@acm.co.in" class="link1">customerservice@acm.co.in</a>
+                </div>
+            </div>
+            </div>
+        </footer>-->
+        <!-- End Footer -->
+        <!-- Modal declaration -->
+        <div class="modal fade" id="pandetailspopup" tabindex="-1" aria-labelledby="declarationModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+            <div class="modal-dialog NeedHelpModal">
+                <div class="modal-content" style="background-color: #0E1D22;">
+                    <div class="modal-body pb-0 ps-4 pe-4">
+                        <div class="col-md-12 col-4">
+                            <div class="row">
+                                <div class="col-12 text-end">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="col-12">
+                                    <h6 style="color: white;">
+                                        Hi, <span class="golden">{{Name}}</span>
+                                    </h6>
+                                    <p style="color: white;">Kindly verify the below details before proceeding</p>
+                                    <ul>
+                                        <li style="color: white;">
+                                            Your name(as per IT records) <br>
+                                            <span class="golden2">{{Name}}</span>
+                                        </li>
+                                        <li style="color: white;">
+                                            Date of Birth entered by you <br>
+                                            <span class="golden2">{{DOB}}</span>
+                                        </li>
+                                    </ul>
+                                    <p class="mb-1" style="color: white;"> Note:</p>
+                                    <ul>
+                                        <li style="color: white;">PAN number and DOB should be of the person whose account you wish to open</li>
+                                        <li style="color: white;">Once confirmed, DOB cannot be modified online, under any circumstance</li>
+                                    </ul>
+                                    <p ng-if="Name==''" style="color: rgb(212, 25, 25);font-size:small;">Pan number and date of birth not matched !</p>
+                                </div>
+                                <div class="row mx-5 ps-5">
+                                    <div class="col-md-12 d-flex mt-3 mb-4">
+                                        <button href="" class="btn rounded btn-submit-popup1 me-4" ng-click="RefreshPage()">Change Details</button>
+                                        <button data-bs-dismiss="modal"  ng-click="PanDetailnext()" class="btn rounded btn-submit-popup2">Confirm</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -170,9 +198,8 @@
                 </div>
             </div>
         </div>
+
     </div>
-
-
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
@@ -183,17 +210,44 @@
     <script src="~/js/wpregistration/bootstrap.bundle.min.js"></script>
     <!---for Angular js---->
 
-        <script src="~/angularjs/toast/angular.min.js"></script>
+    <script src="~/angularjs/toast/angular.min.js"></script>
     <script src="~/angularjs/toast/angular-animate.min.js"></script>
     <link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
     <script src="~/angularjs/tosters/toaster.js"></script>
     <!-- Template Main JS File -->
 
+
     <script src="~/js/wpregistration/main.js"></script>
 
     <script src="~/js/wpregistration/panverification/verifypan.js"></script>
 
+    <script>
 
+        function removeWhitespace(input) {
+            input.value = input.value.replace(/\s/g, '');
+        }
+    </script>
+    <script>
+        // Get today's date
+
+        var minDate = new Date(1900, 0, 1);
+        var maxDate = new Date();
+        maxDate.setFullYear(maxDate.getFullYear() - 18);
+
+        var today = maxDate.toISOString().split('T')[0];
+
+        // Set max attribute for the input field
+        //  document.getElementById('mydate').setAttribute('max', today);
+        // Wait for the document to be fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            var inputDate = document.getElementById('mydate');
+            if (inputDate) {
+                inputDate.setAttribute('max', today);
+            } else {
+                console.error('Input element with ID "myDate" not found.');
+            }
+        });
+    </script>
 </body>
 
 </html>

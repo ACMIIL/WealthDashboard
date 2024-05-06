@@ -1,3 +1,10 @@
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
 .login-form {
     background-color: #0E1D22;
     border: 4px solid #CAAA86;
@@ -43,7 +50,7 @@
 
 /*text-box css*/
 .floating-text-area{
-    width: 333px;
+   width:100%;
     height: 44px !important;
     background-color: #0E1D22;
     border: 0 0 0 1px !important;
@@ -67,9 +74,7 @@
 .checkbox-label-2{
     font-size: 14px !important;
     color: white;
-    width: 352px; /* Adjust the width as needed */
-    overflow: hidden;
-    text-overflow: ellipsis;
+    
 }
 .date-icon{
     position: absolute;
@@ -174,4 +179,69 @@
     border-radius: 8px !important;
     color: white !important;
 }
+
+.UploadFileName {
+    color: #d0a989;
+    font-size: 12px !important;
+    padding-left: 0 !important;
+    margin-top: 15px !important;
+    padding: 21px;
+}
+.l1 {
+    color: #d0a989;
+    font-size: 15px;
+    /* margin: 5px; */
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0rem 0.75rem;
+    overflow: hidden;
+    text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    border: 1px solid transparent;
+    transform-origin: 0 0;
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.continueonmob {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.date-icon1 {
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 263px;
+    cursor: pointer;
+}
+.or {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.DrawSignature {
+    width: 310px;
+    height: 105px;
+    border: 1px dotted #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+}
+.DrawSignature p{
+  margin:0;
+}
+.date-icon2 {
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 360px;
+    cursor: pointer;
+}
+
 

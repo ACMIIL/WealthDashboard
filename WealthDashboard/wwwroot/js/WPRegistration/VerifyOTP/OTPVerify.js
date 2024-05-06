@@ -1,8 +1,8 @@
 ﻿angular.module('main', ['ngAnimate', 'toaster'])
 
     .controller('myController', function ($scope, toaster, $window, $http, $interval) {
-        var baseUrl = "https://localhost:7222/";
-        //var  baseUrl="https://devwealthmaapi.investmentz.com/";
+     //   var BaseURL = "https://localhost:7222/";
+        //var  BaseURL="https://devwealthmaapi.investmentz.com/";
         $scope.MobileNumber = [];
         $scope.display = '';
         $scope.resendOtp = false;
@@ -15,7 +15,7 @@
 
             var mobile = localStorage.getItem('Mnumber');
             $http({
-                url: baseUrl + "api/User/MobileSendOTP?parameter=" + mobile + "&updateMobile=none&Otptype=1",
+                url: BaseURL + "User/MobileSendOTP?parameter=" + mobile + "&updateMobile=none&Otptype=1",
                 method: "POST",
                 Headers: {},
                 data: {}
@@ -34,7 +34,7 @@
             var userId = localStorage.getItem('userId')
 
             $http({
-                url: baseUrl + "api/user/MobileVerifyOtp?Userid=" + userId + "&MobileOtp=" + Otp,
+                url: BaseURL + "user/MobileVerifyOtp?Userid=" + userId + "&MobileOtp=" + Otp,
                 method: "GET",
                 Headers: {},
                 data: {}
@@ -57,7 +57,7 @@
         function Getuserstapes(userId) {
           
             $http({
-                url: baseUrl + "api/User/GetUserDetails?userId=" + userId,
+                url: BaseURL + "User/GetUserDetails?userId=" + userId,
                 method: "GET",
                 headers: {}, // lowercase 'headers'
                 data: {}
@@ -65,17 +65,17 @@
                 if (response.data.code === 200) {
                     var status = response.data.data.status;
                     var host = window.location.hostname;
-                    var baseurl1 = "";
+                    var BaseURL1 = "";
                     // Check if the host is localhost or 127.0.0.1
                     if (host === "localhost" || host === "127.0.0.1") {
-                        baseurl1 = "http://localhost:52206/"
+                        BaseURL1 = "http://localhost:52206/"
                     }
                     else {
-                        baseurl1 = baseUrl1 + "WPRegistration/CreateSession?userid=" + userId
+                        BaseURL1 = BaseURL1 + "WPRegistration/CreateSession?userid=" + userId
                     }
 
                     $http({
-                        url:   "http://localhost:52206/WPRegistration/CreateSession?userid=" + userId,
+                        url: "http://localhost:52206/WPRegistration/CreateSession?userid=" + userId,
                         method: "GET",
                         headers: {}, // lowercase 'headers'
                         data: {}
