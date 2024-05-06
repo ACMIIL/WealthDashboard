@@ -1,11 +1,11 @@
 ﻿angular.module('main', ['ngAnimate', 'toaster'])
     .controller('myController', function ($scope, toaster, $location, $window, $http) {
 
-        $scope.userId = localStorage.getItem('userId')
+        //$scope.userId = localStorage.getItem('userId')
 
     $scope.Digio=function()
         {
-            debugger
+
 
         var mobile = localStorage.getItem('Mnumber');
             var Agentsrno = localStorage.getItem('srno')
@@ -47,7 +47,7 @@
                     digio.submit(response.data.data.data.id, response.data.data.data.customer_identifier, response.data.data.data.access_token.id);
                     var reqParam = response.data.data.data.id + "/" + response.data.data.data.reference_id + "/" + response.data.data.data.customer_identifier;
                     var CommonPageURL = "https://maregistration.wealthcompany.in/";
-                    // var ResposnseURL = "https://app.digio.in/#/gateway/login/" + reqParam + "?redirect_url='https://localhost:7222/api/DigioAPI/CebtralizeDigilockerresponse?RegistrationId=4221F97B-BF03-448C-B353-56F980189922'";
+                    // var ResposnseURL = "https://app.digio.in/#/gateway/login/" + reqParam + "?redirect_url='https://localhost:7222/DigioCebtralizeDigilockerresponse?RegistrationId=4221F97B-BF03-448C-B353-56F980189922'";
 
 
 
@@ -85,9 +85,9 @@
                 toastr.error(data.message, 'Digio Locker Error');
             }
             else {
-                var userId = localStorage.getItem('userId');
+              //  var userId = localStorage.getItem('userId');
 
-                //api/DigioAPI/CebtralizeDigilockerresponse
+                //DigioCebtralizeDigilockerresponse
                 $http({
                     url: BaseURL + "DigioAPI/CebtralizeDigilockerresponse?RegistrationId=" + userId,
                     method: "Get",
@@ -96,9 +96,9 @@
                 }).then(function (response) {
 
                     if (response.data.code = '200') {
-                        //api/User/UpdateUserStatus
+                        //User/UpdateUserStatus
                         $http({
-                            url: BaseURL + "User/UpdateUserStatus?userId=" + userId + "&status=" + 4,
+                            url: BaseURL + "User/UpdateUserStatus?userId=" + userId + "&status=" + 3,
                             method: "GET",
                             Headers: {},
                             data: {}

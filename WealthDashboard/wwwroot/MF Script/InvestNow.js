@@ -7,7 +7,7 @@ function GetInvestNowDetails(ISIN) {
     $.ajax(
         {
             type: "GET",
-            url: CommonURL + "api/MFUsers/GetInvestNowDetailByID",
+            url: CommonURL + "MFUsers/GetInvestNowDetailByID",
             data: {
                 ISIN: ISIN
             },

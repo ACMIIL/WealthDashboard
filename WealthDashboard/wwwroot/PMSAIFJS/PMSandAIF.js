@@ -34,7 +34,7 @@
 
 //    $.ajax({
 //        method: "POST",
-//        url: `${BaseURL}api/PMSandAIF/InsertPMS&AIFLeads`,
+//        url: `${BaseURL}PMSandAIF/InsertPMS&AIFLeads`,
 //        contentType: 'application/json',
 //        data: JSON.stringify({
 //            full_Name: full_Name,

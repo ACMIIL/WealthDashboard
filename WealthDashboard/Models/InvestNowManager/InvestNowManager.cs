@@ -83,7 +83,7 @@ namespace WealthDashboard.Models.InvestNowManager
                 //    .Add(new MediaTypeWithQualityHeaderValue(StaticValues.ApplicationJsonMediaType));
                 client.BaseAddress = new Uri(_appSetting.MFAPIBaseURL);
                 //Sending request to find web api REST service using HttpClient  
-                string url = _appSetting.MFAPIBaseURL + "api/BSEOrderMaster/CreateSrNo?UCC=" + ucc + "";
+                string url = _appSetting.MFAPIBaseURL + "BSEOrderMaster/CreateSrNo?UCC=" + ucc + "";
                 HttpResponseMessage response = await client
                                    .GetAsync(url);
 

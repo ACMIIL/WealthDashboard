@@ -1,6 +1,8 @@
 ﻿@{
     Layout = "_WPLayout";
 }
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +21,9 @@
 
     <!-- Google Fonts -->
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link href="https://chhotaniveshgold.com/assets/vendor/boxicons/css/boxicons.min.css"> -->
     <!-- Vendor CSS Files -->
@@ -30,13 +34,19 @@
     <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
+
+
 </head>
 
 
 <body>
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class=" background-twc-banner" style="height: 900px;">
+
+    <section id="hero" class=" background-twc-banner" style="height: 900px;" ng-app="main" ng-controller="myController">
+
+
+
         <div class="container">
             <header id="header" class="pb-5">
                 <div class="container">
@@ -75,37 +85,101 @@
                                     </div>
                                     <div class="row mb-3 padding-left-form">
                                         <div class="form-floating mb-2">
-                                            <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="HERFK4578G">
+                                            <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" ng-model="ARNNUMBER" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="8" placeholder="HERFK4578G">
                                             <label for="floatingInput" style="color: #CAAA86;">Enter ARN Number</label>
+
                                         </div>
-                                        <div class="form-floating mb-2">
-                                         
-                                            <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
-                                            <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
-                                            <label for="floatingInput" style="color: #CAAA86;">Upload ARN Card</label>
+                                        <div ng-if="isvalied">
+                                            <div style="color: rgb(212, 25, 25);font-size:small;">
+                                                Please Enter ARN
+                                                Number
+                                            </div>
+
                                         </div>
+                                        <!----------Upload ARN Number------->
+
                                         <div class="form-floating mb-2">
-                                            <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="HERFK4578G">
+                                            <span>
+                                                <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputarn()" style="cursor: pointer;">
+                                                <input type="file" id="fileInputarn" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'arn')">
+                                            </span>
+                                            <input readonly type="text" class="floating-text-area UploadFileName" ng-model="arnFileName" style="color: white;">
+                                            <label for="fileInputarn" class="l1">Upload ARN Card</label>
+                                        </div>
+                                        <span ng-if="arnsize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+                                        @*     <div ng-if="((!arnFileName && fileType === 'arn')" style="color: darkred; font-size: small;">
+                                        Please Upload ARN File
+                                        </div> *@
+
+                                        <!----------------->
+
+
+                                        <div class="form-floating mb-2">
+                                            <input type="text" class="form-control floating-text-area" ng-model="gstNo" id="floatingInput" style="color: white;" placeholder="HERFK4578G">
                                             <label for="floatingInput" style="color: #CAAA86;">Enter GST Number</label>
                                         </div>
+                                        <!------------Upload GST Number----->
+
                                         <div class="form-floating mb-2">
-                                            <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
-                                            <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
-                                            <label for="floatingInput" style="color: #CAAA86;">Upload GST Number</label>
+                                            <span>
+                                                <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputgst()" style="cursor: pointer;">
+                                                <input type="file" id="fileInputgst" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'gst')">
+                                            </span>
+                                            <input readonly type="text" class="floating-text-area UploadFileName" ng-model="gstFileName" style="color: white;">
+                                            <label for="fileInputgst" class="l1">Upload GST Number</label>
                                         </div>
+                                        <span ng-if="gstsize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+
+
+                                        @*      <div class="form-floating mb-2">
+                                        <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
+                                        <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
+                                        <label for="floatingInput" style="color: #CAAA86;">Upload GST Number</label>
+                                        </div> *@
+
+                                        <!----------------->
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
+                                            <input type="text" class="form-control floating-text-area" ng-model="PMSNo" id="floatingInput" style="color: white;" placeholder="31-12-1995">
                                             <label for="floatingInput" style="color: #CAAA86;">Enter PMS Distribution Number</label>
                                         </div>
-                                        <div class="form-floating mb-3">
-                                            <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
-                                            <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
-                                            <label for="floatingInput" style="color: #CAAA86;">Upload PMS Distribution Certificate</label>
+
+                                        @*             <div class="form-floating mb-2">
+                                        <span>
+                                        <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputPMS()" style="cursor: pointer;">
+                                        <input type="file" id="fileInputPMS" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'pms')">
+                                        </span>
+                                        <input readonly type="text" class="floating-text-area UploadFileName" ng-model="PMSFileName" style="color: white;">
+                                        <label for="fileInputPMS" class="l1">Upload PMS Distribution Certificate</label>
                                         </div>
+                                        <span ng-if="pmssize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span> *@
+
+
+                                        <!-------Upload PMS File---------->
+
+                                        <div class="form-floating mb-2">
+                                            <span>
+                                                <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputpms()" style="cursor: pointer;">
+                                                <input type="file" id="fileInputpms" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'pms')">
+                                            </span>
+                                            <input readonly type="text" class="floating-text-area UploadFileName" ng-model="pmsFileName" style="color: white;">
+                                            <label for="fileInputpms" class="l1">Upload PMS Distribution Certificate</label>
+                                        </div>
+                                        <span ng-if="pmssize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+
+
+
+                                        @*                               <div class="form-floating mb-3">
+                                        <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
+                                        <input readonly type="text" class="form-control floating-text-area" ng-model="gstFileName" style="color: white;" placeholder="31-12-1995">
+                                        <label for="fileInputgst" style="color: #CAAA86;">Upload PMS Distribution Certificate</label>
+                                        </div>
+                                        <span ng-if="pmssize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span> *@
                                     </div>
                                     <div class="row mb-3 row mb-3 ms-2">
                                         <div class="col-md-12 text-center col-12 mt-2 mb-4">
-                                            <a href="twc-link-bank-account-QR-code.html" class="btn rounded btn-submit">Submit</a>
+                                            @*   <a href="twc-link-bank-account-QR-code.html" class="btn rounded btn-submit">Submit</a> *@
+                                            <button ng-click="SubmitDetails()" class="btn rounded btn-submit">Next</button>
+
                                         </div>
                                     </div>
                                 </div>
@@ -181,9 +255,46 @@
     <!-- Template Main JS File -->
 
     <script src="~/js/wpregistration/main.js"></script>
+    <!---For Angular js-->
+    <script src="~/angularjs/toast/angular.min.js"></script>
+    <script src="~/angularjs/toast/angular-animate.min.js"></script>
+    <link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
+    <script src="~/angularjs/tosters/toaster.js"></script>
+    <!-----Js File-->
 
+    <script src="~/js/wpregistration/arndetails/arndetails.js"></script>
 
     <script>
+
+        $(document).ready(function () {
+            toastr.options = {
+                'closeButton': true,
+                'debug': false,
+                'newestOnTop': false,
+                'progressBar': false,
+                'positionClass': 'toast-top-right',
+                'preventDuplicates': false,
+                'showDuration': '1000',
+                'hideDuration': '1000',
+                'timeOut': '5000',
+                'extendedTimeOut': '1000',
+                'showEasing': 'swing',
+                'hideEasing': 'linear',
+                'showMethod': 'fadeIn',
+                'hideMethod': 'fadeOut',
+            }
+        });
+
+        // Toast Position
+        $('#position').click(function (event) {
+            var pos = $('input[name=position]:checked', '#positionForm').val();
+            toastr.options.positionClass = "toast-" + pos;
+            toastr.options.preventDuplicates = false;
+            toastr.info('This sample position', 'Toast Position')
+        });
+
+
+
         $('.multiple-items').slick({
             arrows: true,
             dots: true,

@@ -17,7 +17,7 @@ function SchemeDetails_globalsearch() {
 
     $.ajax(
         {
-            url: CommonApiURL + "api/GlobalSearch/GetGlobalSearchDeatils",
+            url: CommonApiURL + "GlobalSearch/GetGlobalSearchDeatils",
             type: "GET",
             data: {
 

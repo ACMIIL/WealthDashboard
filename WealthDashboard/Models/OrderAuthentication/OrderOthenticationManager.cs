@@ -65,7 +65,7 @@ namespace WealthDashboard.Models.OrderAuthentication
             try
             {
                 PaymentrequestModel paymentrequestModel = new PaymentrequestModel();
-                string mStrUrl = String.Format("https://mfpaymentapi.investmentz.com/api/v1/PayRequestAPI/Create");
+                string mStrUrl = String.Format("https://mfpaymentapi.investmentz.com/v1/PayRequestCreate");
                 
                     Dictionary<string, string> values9 = new Dictionary<string, string>();
                 using (WebClient client2 = new WebClient())

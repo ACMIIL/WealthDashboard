@@ -2,8 +2,8 @@
     //SMFCategory();
     SchemeDetails();
 });
-//var GlobalUrl = "https://localhost:7217/api/";
-var GlobalUrl = "https://investinmfapi.investmentz.com/api/";
+//var GlobalUrl = "https://localhost:7217/";
+var GlobalUrl = "https://investinmfapi.investmentz.com/";
 var CommonWebsiteURL = "http://localhost:52206/";
 function SMFCategory() {
     var html = "";
@@ -118,7 +118,7 @@ function SchemeDetails() {
 
     //const SchemeSubCategory = data.dataset.schemedetail;
     let URL = GlobalUrl + "MFUsers/GetScreenerData";
-    //let URL = "https://localhost:7217/api/MFUsers/GetScreenerData";
+    //let URL = "https://localhost:7217/MFUsers/GetScreenerData";
     //let datas = {
     //    SubCategory: SchemeSubCategory
     //};

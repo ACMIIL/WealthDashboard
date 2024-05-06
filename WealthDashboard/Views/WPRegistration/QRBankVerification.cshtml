@@ -34,148 +34,155 @@
 
 
 <body>
-
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class=" background-twc-banner" style="height: 780px;">
-        <div class="container">
-            <!-- <header id="header" class="pb-5">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-12 text-center mb-4">
-                    <a href="index.html">
-                      <img src="images/twc-logo.png" alt="" title="" class="img-fluid">
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </header> -->
-            <div class="row mt-4">
-                <div class="col-md-12 mx-auto">
+    <div ng-app="main" ng-controller="myController">
+        <!-- ======= Hero Section ======= -->
+        <section id="hero" class=" background-twc-banner" style="height: 780px;">
+            <div class="container">
+                <!-- <header id="header" class="pb-5">
+                  <div class="container">
                     <div class="row">
-                        <div class="col-md-5 mt-5 pt-5 d-none d-md-block">
-                            <div class="row">
-                                <div class="mx-auto">
-                                    <img src="~/wpregimages/twc-mobile.png" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="row ">
-                                <div class="col-md-11 ms-0 mx-auto card login-form">
-
-                                    <div class="row mb-1 mt-5">
-                                        <div class="form-title text-center">
-                                            Link Your Bank Account
-                                        </div>
-                                        <div class="text-center">
-                                            <label class="form-subtitle "><span class="golden">Scan Your QR Code from UPI </span></label>
-                                        </div>
-                                    </div>
-                                    <div class="row mx-auto mt-4 mb-2">
-                                        <img src="~/wpregimages/scanner.png" alt="" title="" class="img-fluid text-center" style="width:200px;height:180px;">
-                                    </div>
-                                    <div class="row mb-3 padding-left-form">
-                                        <div class="form-floating mb-3">
-                                          
-                                            <span><img src="~/wpregimages/done1.png" class="done-icon"></span>
-                                            <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
-                                            <label for="floatingInput" style="color: #CAAA86;">Bank Account Number</label>
-                                        </div>
-                                        <div class="form-floating mb-2">
-                                            <span><img src="~/wpregimages/done1.png" class="done-icon"></span>
-                                            <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
-                                            <label for="floatingInput" style="color: #CAAA86;">IFSC Code</label>
-                                        </div>
-                                        <div>
-                                            <label class="orangetext" for="flexCheckChecked">
-                                                Kotak Mahindra Bank, Andheri East, Mumbai -400058
-                                            </label>
-                                        </div>
-                                        <div class="mt-2 checkbox-label-2">
-                                            Note: This bank will serve as your default bank for all future transactions.
-                                        </div>
-
-                                    </div>
-                                    <div class="row mb-3 row mb-3 ms-2">
-                                        <div class="col-md-12 text-center col-12 mt-2 mb-4">
-                                            <a href="twc-link-bank-account-upload-cheque.html" class="btn rounded btn-submit">Submit</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      <div class="col-md-12 text-center mb-4">
+                        <a href="index.html">
+                          <img src="images/twc-logo.png" alt="" title="" class="img-fluid">
+                        </a>
+                      </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-    </section><!-- End Hero -->
-    <!-- ======= Footer ======= -->
-    <!--<footer id="footer" class="pt-2 pb-2">
-        <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-12 text-center">
-                <a href="mailto:customerservices@acm.co.in" class="link1">customerservice@acm.co.in</a>
-            </div>
-        </div>
-        </div>
-    </footer>-->
-    <!-- End Footer -->
-    <!-- Modal declaration -->
-    <div class="modal fade" id="declaration" tabindex="-1" aria-labelledby="declarationModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
-        <div class="modal-dialog NeedHelpModal">
-            <div class="modal-content ">
-                <div class="modal-body pb-0 ps-4 pe-4">
-                    <div class="col-md-12 col-4 text-center">
+                  </div>
+                </header> -->
+                <div class="row mt-4">
+                    <div class="col-md-12 mx-auto">
                         <div class="row">
-                            <div class="col-12 text-end">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="col-md-5 mt-5 pt-5 d-none d-md-block">
+                                <div class="row">
+                                    <div class="mx-auto">
+                                        <img src="~/wpregimages/twc-mobile.png" class="img-fluid">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <h4>Mobile No Common Declaration</h4>
-                                <p>Select the relationship with the entered mobile number.</p>
+                            <div class="col-md-7">
+                                <div class="row ">
+                                    <div class="col-md-11 ms-0 mx-auto card login-form">
+
+                                        <div class="row mb-1 mt-5">
+                                            <div class="form-title text-center">
+                                                Link Your Bank Account
+                                            </div>
+                                            <div class="text-center">
+                                                <label class="form-subtitle "><span class="golden">Scan Your QR Code from UPI </span></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mx-auto mt-4 mb-2">
+                                            <img src="~/wpregimages/scanner.png" alt="" title="" class="img-fluid text-center" style="width:200px;height:180px;">
+                                        </div>
+                                        <div class="row mb-3 padding-left-form">
+                                            <div class="form-floating mb-3">
+
+                                                <span><img src="~/wpregimages/done1.png" class="done-icon"></span>
+                                                <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
+                                                <label for="floatingInput" style="color: #CAAA86;">Bank Account Number</label>
+                                            </div>
+                                            <div class="form-floating mb-2">
+                                                <span><img src="~/wpregimages/done1.png" class="done-icon"></span>
+                                                <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
+                                                <label for="floatingInput" style="color: #CAAA86;">IFSC Code</label>
+                                            </div>
+                                            <div>
+                                                <label class="orangetext" for="flexCheckChecked">
+                                                    Kotak Mahindra Bank, Andheri East, Mumbai -400058
+                                                </label>
+                                            </div>
+                                            <div class="mt-2 checkbox-label-2">
+                                                Note: This bank will serve as your default bank for all future transactions.
+                                            </div>
+
+                                        </div>
+                                        <div class="row mb-3 row mb-3 ms-2">
+                                            <div class="col-md-12 text-center col-12 mt-2 mb-4">
+                                                <a href="twc-link-bank-account-upload-cheque.html" class="btn rounded btn-submit">Submit</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- End Hero -->
+        <!-- ======= Footer ======= -->
+        <!--<footer id="footer" class="pt-2 pb-2">
+            <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-12 text-center">
+                    <a href="mailto:customerservices@acm.co.in" class="link1">customerservice@acm.co.in</a>
+                </div>
+            </div>
+            </div>
+        </footer>-->
+        <!-- End Footer -->
+        <!-- Modal declaration -->
+        <div class="modal fade" id="declaration" tabindex="-1" aria-labelledby="declarationModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+            <div class="modal-dialog NeedHelpModal">
+                <div class="modal-content ">
+                    <div class="modal-body pb-0 ps-4 pe-4">
+                        <div class="col-md-12 col-4 text-center">
+                            <div class="row">
+                                <div class="col-12 text-end">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="col-12">
+                                    <h4>Mobile No Common Declaration</h4>
+                                    <p>Select the relationship with the entered mobile number.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-6 col-6 mobile-mb3 mb-4">
+                                <button type="button" class="btn btn-tab1 active" id="">Self</button>
+                            </div>
+                            <div class="col-md-6 col-6 mobile-mb3 mb-4">
+                                <button type="button" class="btn btn-tab1" id="">Spouse</button>
+                            </div>
+                            <div class="col-md-6 col-6 mobile-mb3 mb-4">
+                                <button type="button" class="btn btn-tab1" id="">Dependent Child</button>
+                            </div>
+                            <div class="col-md-6 col-6 mobile-mb3 mb-4">
+                                <button type="button" class="btn btn-tab1" id="">Dependent Parent</button>
+                            </div>
+
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6 col-12 mx-auto"><a href="" class="btn btn-primary btn-submit btn-sm">SUBMIT</a></div>
+                        </div>
 
                     </div>
-                    <div class="row mt-4">
-                        <div class="col-md-6 col-6 mobile-mb3 mb-4">
-                            <button type="button" class="btn btn-tab1 active" id="">Self</button>
-                        </div>
-                        <div class="col-md-6 col-6 mobile-mb3 mb-4">
-                            <button type="button" class="btn btn-tab1" id="">Spouse</button>
-                        </div>
-                        <div class="col-md-6 col-6 mobile-mb3 mb-4">
-                            <button type="button" class="btn btn-tab1" id="">Dependent Child</button>
-                        </div>
-                        <div class="col-md-6 col-6 mobile-mb3 mb-4">
-                            <button type="button" class="btn btn-tab1" id="">Dependent Parent</button>
-                        </div>
-
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6 col-12 mx-auto"><a href="" class="btn btn-primary btn-submit btn-sm">SUBMIT</a></div>
-                    </div>
-
                 </div>
             </div>
         </div>
+
+
+
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     </div>
-
-
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
     <!-- Vendor JS Files -->
     <script src="~/js/wpregistration/jquery.min.js"></script>
     <script src="~/js/wpregistration/slick.js"></script>
     <script src="~/js/wpregistration/slick.min.js"></script>
     <script src="~/js/wpregistration/bootstrap.bundle.min.js"></script>
+
+    <!---for Angular js---->
+
+    <script src="~/angularjs/toast/angular.min.js"></script>
+    <script src="~/angularjs/toast/angular-animate.min.js"></script>
+    <link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
+    <script src="~/angularjs/tosters/toaster.js"></script>
     <!-- Template Main JS File -->
 
     <script src="~/js/wpregistration/main.js"></script>
 
-
+    <script src="~/js/wpregistration/bankverification/bankverification.js"></script>
     <script>
         $('.multiple-items').slick({
             arrows: true,
@@ -233,7 +240,7 @@
             inputField.style.cssText = "text-shadow: 0 0 0 gray;"; // Input field text styling. This css hides the text caret
             inputField.id = 'otp-field' + i; // Don't remove
             inputField.maxLength = 1; // Sets individual field length to 1 char
-            element.appendChild(inputField); // Adds the input field to the parent div (OTPInput)
+            //element.appendChild(inputField); // Adds the input field to the parent div (OTPInput)
         }
 
         /*  This is for switching back and forth the input box for user experience */
@@ -248,6 +255,7 @@
                         }
                     } else {
                         inputs[i].value = '';
+
                     }
 
                 } else if (event.key === "ArrowLeft" && i !== 0) {
@@ -259,6 +267,7 @@
                     inputs[i].value = ''; // Bug Fix: allow user to change a random otp digit after pressing it
                     setTimeout(function () {
                         inputs[i].setAttribute("type", "number");
+
                     }, 1000); // Hides the text after 1 sec
                 }
             });

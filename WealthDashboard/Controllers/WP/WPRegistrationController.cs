@@ -40,17 +40,45 @@ namespace WealthDashboard.Controllers.WP
         {
             return View(_configuration);
         }
-       
-        public JsonResult CreateSession( string userid)
+
+        public IActionResult SelfieVerification()
+        {
+            return View(_configuration);
+        }
+
+        public IActionResult SignatureVerification()
+        {
+            return View(_configuration);
+        }
+
+        public IActionResult QRBankDetails()
+        {
+            return View(_configuration);
+        }
+
+        public JsonResult CreateSession(string userid)
         {
             // Set session variable
-            HttpContext.Session.SetString("UserId", userid );
+            HttpContext.Session.SetString("UserId", userid);
             return Json(1);
         }
+
         public IActionResult PersonalDetails()
         {
             return View(_configuration);
         }
-         
+
+        public IActionResult Thankyou()
+        {
+            return View(_configuration);
+        }
+        public IActionResult QRFail()
+        {
+            return View(_configuration);
+        }
+        public IActionResult PanyDrop()
+        { return View(_configuration); }
+
+
     }
 }

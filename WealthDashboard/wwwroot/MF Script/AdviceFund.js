@@ -2,8 +2,8 @@
     MFCategory();
     
 });
-//var GlobalUrl = "https://localhost:7217/api/";
-var GlobalUrl = "https://investinmfapi.investmentz.com/api/";
+//var GlobalUrl = "https://localhost:7217/";
+var GlobalUrl = "https://investinmfapi.investmentz.com/";
 function MFCategory() {
     var html = "";
     $.ajax({
