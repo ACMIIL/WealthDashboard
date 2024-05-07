@@ -1,0 +1,142 @@
+﻿ <!-- ======= Hero Section ======= -->
+@{
+    Layout = "_WPLayout";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>TWP</title>
+    <link rel="canonical" href="" />
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="" rel="icon">
+    <link href="" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link href="https://chhotaniveshgold.com/assets/vendor/boxicons/css/boxicons.min.css"> -->
+    <!-- Vendor CSS Files -->
+    <link href="~/css/wpregistrationcss/slick.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/slick-theme.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
+</head>
+
+
+<body ng-app="main" ng-controller="myController">
+<div>
+<section id="hero" class=" background-twc-banner" style="height:100vh">
+    <div class="container">
+        <header id="header" class="pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center mb-4">
+                        <a href="index.html">
+                                    <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <div class="row">
+                    <!--mob img div -->
+                    <div class="col-md-5 mt-5">
+                        <div class="row">
+                            <div class="mx-auto">
+                                        <img src="~/wpregimages/twc-mobile.png" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <!--End == mob img div -->
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-12 ms-0 mx-auto card login-form">
+                                <div class="row mx-auto mt-5 mb-2">
+                                            <img src="~/wpregimages/bank3.png" class="img-fluid">
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="text-center">
+                                        <h5 class="form-title text-center">
+                                            <strong>
+                                               Oops,Transaction failed! Please try again with other payment options.
+                                            </strong>
+                                        </h5>
+                                    </div>
+                                </div>
+@* 
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p class="text-success text-center">
+                                            <b>
+                                                        <img src="~/wpregimages/icon-park-solid_success.svg"> Bank account
+                                                details fetched successfully
+                                            </b>
+                                        </p>
+                                    </div>
+                                </div> *@
+                                <div class="container bg-light p-5 text-center">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-4 col-4 mx-auto-Mobile">
+                                                        <a href="#" ng-click="GotoQRScanner()">Scan QR Code</a>
+                                            </div>
+
+                                            <div class="col-md-4 col-4 mx-auto-Mobile">
+                                                        <a href="#" ng-click="GotoPennyDrop()">Pany Drop</a>
+                                            </div>
+                                            <div class="col-md-4 col-4 mx-auto-Mobile">
+                                                        <a href="#" ng-click="GotoUploadCheque()">Upload Check </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12 col-12 mx-auto-Mobile text-center">
+                                                    <span class="text-danger">{{result.msg}}</span><br>
+                                                    <span class="text-danger">{{result.msgdesc}}</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section><!-- End Hero -->
+
+    </div>
+
+
+
+    <script src="~/js/wpregistration/jquery.min.js"></script>
+    <script src="~/js/wpregistration/bootstrap.bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="~/js/wpregistration/main.js"></script>
+
+    <!---for Angular js---->
+
+    <script src="~/angularjs/toast/angular.min.js"></script>
+    <script src="~/angularjs/toast/angular-animate.min.js"></script>
+    <link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
+    <script src="~/angularjs/tosters/toaster.js"></script>
+    <script src="~/js/wpregistration/qrfail/qrfail.js"></script>
+</body>
+</html>
