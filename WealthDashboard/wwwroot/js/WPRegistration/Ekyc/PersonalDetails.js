@@ -31,6 +31,7 @@
 
 
         function UpdateStatus() {
+
             
             $http({
                 url: BaseURL + "User/UpdateUserStatus?userId=" + userId + "&status=4",
