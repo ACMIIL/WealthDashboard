@@ -21,6 +21,13 @@ builder.Services.Configure<Appsetting>(builder.Configuration.GetSection("AppSett
 builder.Services.Configure<Connection>(builder.Configuration.GetSection("ConnectionStrings"));
 builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
 
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(10);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 Log.Logger = new LoggerConfiguration()
             .Enrich.FromLogContext()
             .WriteTo.File(@"D:\TWCEKYC_CLogs\mylog.txt", rollingInterval: RollingInterval.Day)
@@ -35,7 +42,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 var app = builder.Build();
-
+app.UseSession();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
