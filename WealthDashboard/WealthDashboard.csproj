@@ -61,12 +61,14 @@
     <PackageReference Include="SweetAlert" Version="1.0.0" />
 
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.1" />
 
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\EKYC_MFJourney\Data\" />
+    <Folder Include="Areas\WP_Registration\Data\" />
+    <Folder Include="Areas\WP_Registration\Models\" />
     <Folder Include="Views\PMSandAIF\" />
     <Folder Include="wwwroot\pdf\" />
   </ItemGroup>

@@ -1,0 +1,153 @@
+﻿@{
+    Layout = "_WPLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>TWP</title>
+    <link rel="canonical" href="" />
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="" rel="icon">
+    <link href="" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Toastr -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Template Main CSS File -->
+    <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- ======= Hero Section ======= -->
+    <section id="" class=" background-twc-banner" ng-app="main" ng-controller="myController">
+        <div class="container">
+            <header id="header" class="pb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center mb-4">
+                            <a href="index.html">
+                                <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="row">
+                <div class="col-md-12 mx-auto">
+                    <div class="row">
+                        <div class="col-md-5 d-none d-md-block">
+                            <div class="row">
+                                <div class="mx-auto">
+                                    <img src="~/wpregimages/twc-mobile.png" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card login-form">
+                                        <div class="row mb-1 mt-3">
+                                            <div class=" text-center">
+                                                <h5 class="form-title">Signature Verification</h5>
+                                                <label class="form-subtitle "><span class="golden">Upload Signature  </span></label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
+                                            <div class="col-md-8 mx-auto">
+                                                <div class="form-floating mb-2">
+ 
+                                                    <span>
+                                                        <img src="~/wpregimages/upload-icon.png" class="date-icon2" ng-click="clickFileInputarn()" style="cursor: pointer;">
+                                                        <input type="file" id="fileInput" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'signature')">
+                                                    </span>
+                                                    <input readonly type="text" class="floating-text-area UploadFileName" ng-model="arnFileName" style="color: white;">
+                                                    <label for="fileInput" class="l1">Upload Signature</label>
+                                                </div>
+                                                <span ng-if="imagesize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+                                            </div>
+                                            <div class="col-md-12 text-center  mt-2">
+                                                <h5 class="or">OR</h5>
+                                            </div>
+                                            <div class="col-md-12" style="margin-left: 97px;">
+                                                <button ng-click="clearCanvas()" class="btn rounded btn-submit col-md-12 col-12 mb-2">Clear Signature</button>
+                                            </div>
+                                            <div class="col-md-12 d-flex justify-content-center mt-2">
+                                                <div class="">
+                                                    <canvas id="signatureCanvas" width="390" height="200" style="border:1px solid #fff;background-color: #fff;border-radius:10px;"></canvas>
+                                                    <br>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-4">
+                                            <div class="col-md-12 " style="margin-left: 97px;">
+                                                <button ng-click="uploadSignature()" class="btn rounded btn-submit col-md-12 col-12">Next</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section><!-- End Hero -->
+    <!-- ======= Footer ======= -->
+    <!--<footer id="footer" class="pt-2 pb-2">
+        <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 text-center">
+                <a href="mailto:customerservices@acm.co.in" class="link1">customerservice@acm.co.in</a>
+            </div>
+        </div>
+        </div>
+    </footer>-->
+    <!-- End Footer -->
+
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/js/wpregistration/jquery.min.js"></script>
+    <script src="~/js/wpregistration/bootstrap.bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="~/js/wpregistration/main.js"></script>
+    <!---For Angular js-->
+    <script src="~/angularjs/toast/angular.min.js"></script>
+    <script src="~/angularjs/toast/angular-animate.min.js"></script>
+    <link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
+    <script src="~/angularjs/tosters/toaster.js"></script>
+    <!-----Js File-->
+
+    <script src="~/js/wpregistration/signature/signatureverify.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</body>
+
+</html>

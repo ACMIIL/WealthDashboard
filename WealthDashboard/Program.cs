@@ -18,8 +18,6 @@ builder.Services.AddTransient<IPrimaryDetailsManager, PrimaryDetailsManager>();
 builder.Services.AddEkycServices();
 
 builder.Services.Configure<Appsetting>(builder.Configuration.GetSection("AppSetting"));
-
-
 builder.Services.Configure<Connection>(builder.Configuration.GetSection("ConnectionStrings"));
 builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
 
@@ -29,7 +27,13 @@ Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Debug()
             .CreateLogger();
 builder.Host.UseSerilog();
-
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = ".WP.Session";
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -42,6 +46,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
+
+
 
 app.UseEndpoints(endpoints =>
 {
@@ -58,7 +65,14 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllerRoute(
     name: "default",
     pattern: "{controller=Login}/{action=Login}/{id?}");
-});
 
+
+    endpoints.MapAreaControllerRoute(
+           name: "WP_Registration",
+           areaName : "WP_Registration",
+           pattern: "{area:exists}/{controller}/{action}/{id?}"
+         );
+});
+//
 
 app.Run();
