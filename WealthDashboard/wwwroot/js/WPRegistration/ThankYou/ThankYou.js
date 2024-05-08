@@ -66,12 +66,16 @@
                 data: {}
             }).then(function (res) {
                 if (res.data.message === "MA Registration PDF Genrated Successfully Please Check Genrated PDF file.") {
-                    toastr.success(res.data.message,'Title Success!');
+                    toastr.success(res.data.message, 'Title Success!');
                     //toaster.success(res.data.message,'Title Success!');
-                    //setTimeout(() => {
-                    //    window.location.assign('/MutualFund/Main');
-                    //}, 3000);
+                    setTimeout(() => {
+                        window.location.assign('/Home/Index');
+                    }, 3000);
 
+                }
+                else {
+                    toastr.error('Something went wrong', 'PDF Download!');
+                    window.location.assign('/Home/Index');
                 }
             }).catch(function (error) {
                 console.error('Error occurred:', error);

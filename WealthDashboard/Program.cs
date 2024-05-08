@@ -17,25 +17,9 @@ builder.Services.AddTransient<IPrimaryDetailsManager, PrimaryDetailsManager>();
 //Added By MF_journey
 builder.Services.AddEkycServices();
 
-
-var mvcBuilder = builder.Services.AddRazorPages();
-mvcBuilder.AddRazorRuntimeCompilation();
-
-builder.Services.AddHttpContextAccessor();
-
-var app = builder.Build();
-=======
 builder.Services.Configure<Appsetting>(builder.Configuration.GetSection("AppSetting"));
 builder.Services.Configure<Connection>(builder.Configuration.GetSection("ConnectionStrings"));
 builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
-
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromMinutes(10);
-    options.Cookie.HttpOnly = true;
-    options.Cookie.IsEssential = true;
-});
-
 
 Log.Logger = new LoggerConfiguration()
             .Enrich.FromLogContext()
@@ -51,7 +35,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 var app = builder.Build();
-app.UseSession();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -85,7 +69,7 @@ app.UseEndpoints(endpoints =>
 
     endpoints.MapAreaControllerRoute(
            name: "WP_Registration",
-           areaName : "WP_Registration",
+           areaName: "WP_Registration",
            pattern: "{area:exists}/{controller}/{action}/{id?}"
          );
 });

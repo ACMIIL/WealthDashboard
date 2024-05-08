@@ -12,7 +12,7 @@
         $scope.CheckOtp = false;
         $scope.VerifyEmailID = '';
         function getdata() {
-            userId ='1BE51D13-BAD8-44A6-8842-C71C5E83E175'
+           // userId ='1BE51D13-BAD8-44A6-8842-C71C5E83E175'
             $scope.mobile = localStorage.getItem('Mnumber');          
             $http({
                 url: BaseURL + "user/GetDigioLockerUserPersonalDetails?userId=" + userId,
@@ -85,7 +85,7 @@
                     $scope.ResndOTP = true;
                     $scope.VerifyEmailID = Emailid
 
-                    window.location.assign('/WP_Registration/WPRegistration/qrbankverification');
+                   // window.location.assign('/WP_Registration/WPRegistration/qrbankverification');
                     //window.location.assign('/WP_Registration/WPRegistration/Panydrop');
 
                 }
@@ -141,7 +141,8 @@
             }).then(function (response) {
                 var result = response;
                 if (result.data.code === 200) {
-                    window.location.assign('/WPRegistration/qrbankverification');
+                    window.location.assign('/WP_Registration/WPRegistration/qrbankverification')
+                  //  window.location.assign('/WPRegistration/qrbankverification');
                 }
             })
 
