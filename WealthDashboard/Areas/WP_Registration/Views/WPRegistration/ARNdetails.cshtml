@@ -1,0 +1,401 @@
+﻿@{
+    Layout = "_WPLayout";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>TWP</title>
+    <link rel="canonical" href="" />
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="" rel="icon">
+    <link href="" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link href="https://chhotaniveshgold.com/assets/vendor/boxicons/css/boxicons.min.css"> -->
+    <!-- Vendor CSS Files -->
+    <link href="~/css/wpregistrationcss/slick.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/slick-theme.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
+
+
+</head>
+
+
+<body>
+
+    <!-- ======= Hero Section ======= -->
+
+    <section id="hero" class=" background-twc-banner" style="height: 900px;" ng-app="main" ng-controller="myController">
+
+
+
+        <div class="container">
+            <header id="header" class="pb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center mb-4">
+                            <a href="index.html">
+                                <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="row">
+                <div class="col-md-12 mx-auto">
+                    <div class="row">
+                        <div class="col-md-5 mt-5 pt-5 d-none d-md-block">
+                            <div class="row">
+                                <div class="mx-auto">
+                                    <img src="~/wpregimages/twc-mobile.png" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="row ">
+                                <div class="col-md-11 ms-0 mx-auto card login-form">
+                                    <div class="row mx-auto mt-5 mb-2">
+                                        <img src="~/wpregimages/form-logo.png" alt="" title="" class="img-fluid text-center" style="width:55px;height: 31px;">
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div class="form-title text-center">
+                                            ARN Card Details
+                                        </div>
+                                        <div class="text-center">
+                                            <label class="form-subtitle "><span class="golden">lorem impum lorem impum lorem impum   </span></label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 padding-left-form">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" ng-model="ARNNUMBER" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="8" placeholder="HERFK4578G">
+                                            <label for="floatingInput" style="color: #CAAA86;">Enter ARN Number</label>
+
+                                        </div>
+                                        <div ng-if="isvalied">
+                                            <div style="color: rgb(212, 25, 25);font-size:small;">
+                                                Please Enter ARN
+                                                Number
+                                            </div>
+
+                                        </div>
+                                        <!----------Upload ARN Number------->
+
+                                        <div class="form-floating mb-2">
+                                            <span>
+                                                <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputarn()" style="cursor: pointer;">
+                                                <input type="file" id="fileInputarn" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'arn')">
+                                            </span>
+                                            <input readonly type="text" class="floating-text-area UploadFileName" ng-model="arnFileName" style="color: white;">
+                                            <label for="fileInputarn" class="l1">Upload ARN Card</label>
+                                        </div>
+                                        <span ng-if="arnsize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+                                        @*     <div ng-if="((!arnFileName && fileType === 'arn')" style="color: darkred; font-size: small;">
+                                        Please Upload ARN File
+                                        </div> *@
+
+                                        <!----------------->
+
+
+                                        <div class="form-floating mb-2">
+                                            <input type="text" class="form-control floating-text-area" ng-model="gstNo" id="floatingInput" style="color: white;" placeholder="HERFK4578G">
+                                            <label for="floatingInput" style="color: #CAAA86;">Enter GST Number</label>
+                                        </div>
+                                        <!------------Upload GST Number----->
+
+                                        <div class="form-floating mb-2">
+                                            <span>
+                                                <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputgst()" style="cursor: pointer;">
+                                                <input type="file" id="fileInputgst" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'gst')">
+                                            </span>
+                                            <input readonly type="text" class="floating-text-area UploadFileName" ng-model="gstFileName" style="color: white;">
+                                            <label for="fileInputgst" class="l1">Upload GST Number</label>
+                                        </div>
+                                        <span ng-if="gstsize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+
+
+                                        @*      <div class="form-floating mb-2">
+                                        <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
+                                        <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
+                                        <label for="floatingInput" style="color: #CAAA86;">Upload GST Number</label>
+                                        </div> *@
+
+                                        <!----------------->
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control floating-text-area" ng-model="PMSNo" id="floatingInput" style="color: white;" placeholder="31-12-1995">
+                                            <label for="floatingInput" style="color: #CAAA86;">Enter PMS Distribution Number</label>
+                                        </div>
+
+                                        @*             <div class="form-floating mb-2">
+                                        <span>
+                                        <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputPMS()" style="cursor: pointer;">
+                                        <input type="file" id="fileInputPMS" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'pms')">
+                                        </span>
+                                        <input readonly type="text" class="floating-text-area UploadFileName" ng-model="PMSFileName" style="color: white;">
+                                        <label for="fileInputPMS" class="l1">Upload PMS Distribution Certificate</label>
+                                        </div>
+                                        <span ng-if="pmssize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span> *@
+
+
+                                        <!-------Upload PMS File---------->
+
+                                        <div class="form-floating mb-2">
+                                            <span>
+                                                <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputpms()" style="cursor: pointer;">
+                                                <input type="file" id="fileInputpms" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'pms')">
+                                            </span>
+                                            <input readonly type="text" class="floating-text-area UploadFileName" ng-model="pmsFileName" style="color: white;">
+                                            <label for="fileInputpms" class="l1">Upload PMS Distribution Certificate</label>
+                                        </div>
+                                        <span ng-if="pmssize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+
+
+
+                                        @*                               <div class="form-floating mb-3">
+                                        <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
+                                        <input readonly type="text" class="form-control floating-text-area" ng-model="gstFileName" style="color: white;" placeholder="31-12-1995">
+                                        <label for="fileInputgst" style="color: #CAAA86;">Upload PMS Distribution Certificate</label>
+                                        </div>
+                                        <span ng-if="pmssize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span> *@
+                                    </div>
+                                    <div class="row mb-3 row mb-3 ms-2">
+                                        <div class="col-md-12 text-center col-12 mt-2 mb-4">
+                                            @*   <a href="twc-link-bank-account-QR-code.html" class="btn rounded btn-submit">Submit</a> *@
+                                            <button ng-click="SubmitDetails()" class="btn rounded btn-submit">Next</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section><!-- End Hero -->
+    <!-- ======= Footer ======= -->
+    <!--<footer id="footer" class="pt-2 pb-2">
+        <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 text-center">
+                <a href="mailto:customerservices@acm.co.in" class="link1">customerservice@acm.co.in</a>
+            </div>
+        </div>
+        </div>
+    </footer>-->
+    <!-- End Footer -->
+    <!-- Modal declaration -->
+    <div class="modal fade" id="declaration" tabindex="-1" aria-labelledby="declarationModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+        <div class="modal-dialog NeedHelpModal">
+            <div class="modal-content ">
+                <div class="modal-body pb-0 ps-4 pe-4">
+                    <div class="col-md-12 col-4 text-center">
+                        <div class="row">
+                            <div class="col-12 text-end">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="col-12">
+                                <h4>Mobile No Common Declaration</h4>
+                                <p>Select the relationship with the entered mobile number.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6 col-6 mobile-mb3 mb-4">
+                            <button type="button" class="btn btn-tab1 active" id="">Self</button>
+                        </div>
+                        <div class="col-md-6 col-6 mobile-mb3 mb-4">
+                            <button type="button" class="btn btn-tab1" id="">Spouse</button>
+                        </div>
+                        <div class="col-md-6 col-6 mobile-mb3 mb-4">
+                            <button type="button" class="btn btn-tab1" id="">Dependent Child</button>
+                        </div>
+                        <div class="col-md-6 col-6 mobile-mb3 mb-4">
+                            <button type="button" class="btn btn-tab1" id="">Dependent Parent</button>
+                        </div>
+
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6 col-12 mx-auto"><a href="" class="btn btn-primary btn-submit btn-sm">SUBMIT</a></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/js/wpregistration/jquery.min.js"></script>
+    <script src="~/js/wpregistration/slick.js"></script>
+    <script src="~/js/wpregistration/slick.min.js"></script>
+    <script src="~/js/wpregistration/bootstrap.bundle.min.js"></script>
+    <!-- Template Main JS File -->
+
+    <script src="~/js/wpregistration/main.js"></script>
+    <!---For Angular js-->
+    <script src="~/angularjs/toast/angular.min.js"></script>
+    <script src="~/angularjs/toast/angular-animate.min.js"></script>
+    <link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
+    <script src="~/angularjs/tosters/toaster.js"></script>
+    <!-----Js File-->
+
+    <script src="~/js/wpregistration/arndetails/arndetails.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            toastr.options = {
+                'closeButton': true,
+                'debug': false,
+                'newestOnTop': false,
+                'progressBar': false,
+                'positionClass': 'toast-top-right',
+                'preventDuplicates': false,
+                'showDuration': '1000',
+                'hideDuration': '1000',
+                'timeOut': '5000',
+                'extendedTimeOut': '1000',
+                'showEasing': 'swing',
+                'hideEasing': 'linear',
+                'showMethod': 'fadeIn',
+                'hideMethod': 'fadeOut',
+            }
+        });
+
+        // Toast Position
+        $('#position').click(function (event) {
+            var pos = $('input[name=position]:checked', '#positionForm').val();
+            toastr.options.positionClass = "toast-" + pos;
+            toastr.options.preventDuplicates = false;
+            toastr.info('This sample position', 'Toast Position')
+        });
+
+
+
+        $('.multiple-items').slick({
+            arrows: true,
+            dots: true,
+            number: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        dots: false
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: false
+                    }
+                }
+
+            ]
+        });
+
+    </script>
+
+
+
+    <script>
+        /* This creates all the OTP input fields dynamically. Change the otp_length variable  to change the OTP Length */
+        const $otp_length = 6;
+
+        const element = document.getElementById('OTPInput');
+        for (let i = 0; i < $otp_length; i++) {
+            let inputField = document.createElement('input'); // Creates a new input element
+            inputField.className = "w-12 h-12 bg-gray-100 border-0 outline-none focus:bg-gray-200 text-center focus:border-blue-400 focus:shadow-outline";
+            // Do individual OTP input styling here;
+            inputField.style.cssText = "text-shadow: 0 0 0 gray;"; // Input field text styling. This css hides the text caret
+            inputField.id = 'otp-field' + i; // Don't remove
+            inputField.maxLength = 1; // Sets individual field length to 1 char
+            element.appendChild(inputField); // Adds the input field to the parent div (OTPInput)
+        }
+
+        /*  This is for switching back and forth the input box for user experience */
+        const inputs = document.querySelectorAll('#OTPInput > *[id]');
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].addEventListener('keydown', function (event) {
+                if (event.key === "Backspace") {
+
+                    if (inputs[i].value == '') {
+                        if (i != 0) {
+                            inputs[i - 1].focus();
+                        }
+                    } else {
+                        inputs[i].value = '';
+                    }
+
+                } else if (event.key === "ArrowLeft" && i !== 0) {
+                    inputs[i - 1].focus();
+                } else if (event.key === "ArrowRight" && i !== inputs.length - 1) {
+                    inputs[i + 1].focus();
+                } else if (event.key != "ArrowLeft" && event.key != "ArrowRight") {
+                    inputs[i].setAttribute("type", "text");
+                    inputs[i].value = ''; // Bug Fix: allow user to change a random otp digit after pressing it
+                    setTimeout(function () {
+                        inputs[i].setAttribute("type", "number");
+                    }, 1000); // Hides the text after 1 sec
+                }
+            });
+            inputs[i].addEventListener('input', function () {
+                inputs[i].value = inputs[i].value.toUpperCase(); // Converts to Upper case. Remove .toUpperCase() if conversion isnt required.
+                if (i === inputs.length - 1 && inputs[i].value !== '') {
+                    return true;
+                } else if (inputs[i].value !== '') {
+                    inputs[i + 1].focus();
+                }
+            });
+
+        };
+
+
+    </script>
+
+
+
+</body>
+
+</html>

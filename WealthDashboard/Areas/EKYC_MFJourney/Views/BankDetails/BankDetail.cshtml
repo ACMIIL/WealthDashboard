@@ -1,0 +1,202 @@
+﻿@model WealthDashboard.Areas.EKYC_MFJourney.Models.Login.UCCTempModel;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>TWC</title>
+    <link rel="canonical" href="" />
+
+    <link href="" rel="icon">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link href="~/content/css/style.css" rel="stylesheet" />
+    <link href="~/content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/content/css/custom.css" rel="stylesheet" />
+
+</head>
+<body>
+    <input type="hidden" id="ClientName" value="@Model.ClientName" />
+    <input type="hidden" id="RegistrationId" value="@Model.RegistrationId" />
+    <input type="hidden" id="EncRegistrationId" value="@Model.EncRegistrationId" />
+    <input type="hidden" id="UCC" value="@Model.UCC" />
+    <input type="hidden" id="ifscMasterId" />
+    <input type="hidden" id="bankCode" />
+    <input type="hidden" id="ifscCode" />
+    <input type="hidden" id="micrCode" />
+    <input type="hidden" id="fuzzy_match_result" />
+    <input type="hidden" id="fuzzy_match_score" />
+    <input type="hidden" id="BenificiaryName" />
+    <input type="hidden" id="pennyverify" />
+    <input type="hidden" id="hiddpanstatus" />
+
+    @* <li id="bankvarifi" class="a"><a href="#"><img src="~/content/images/bank-verification-color.png" class="Tab-icon"> &nbsp;<span>Bank Verification</span></a></li> *@
+    <!-- ======= Hero Section ======= -->
+    <section class="background-twc-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-12 my-auto">
+                    <!--mobile logo div start-->
+                    <div class="row">
+                        <div class="col-12 my-auto d-md-none d-block">
+                            <div class="mob-logo text-center mb-5">
+                                <img src="~/content/images/twc-logo.png" alt="The Wealth Company">
+                            </div>
+                        </div>
+                    </div>
+                    <!--mobile logo div end-->
+                    <!--Bank Details start-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="login-form">
+                                <div class="container mob-padding-2">
+                                    <div class="row gx-5">
+                                        <!--Sign Up start-->
+                                        <div class="col-md-12 col-12 text-center">
+                                            <h4 class="form-title"> Bank Details</h4>
+                                            <h6 class="subheading">Enter your personal Details number </h6>
+                                        </div>
+                                        <!--Sign Up end-->
+                                        <!--Bank Details start-->
+                                        <div class="container">
+                                            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+                                                <div class="col-md-3 col-12">
+                                                    <div class="mr-60">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control floating-text-area" id="AccountNumber" onkeypress="isNumberKey(event)" style="color: white;" placeholder="0000000000000000" maxlength="16">
+                                                            <label for="AccountNumber">Account Number</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12">
+                                                    <div class="mr-60">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control floating-text-area" id="IFSCCode" style="color: white;" placeholder="HERFK4578G">
+                                                            <label for="IFSCCode">IFSC Code</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12">
+                                                    <div class="mt-2 tc">
+                                                        <button type="button" class=" btn-validate" id="PennyDrop">Validate Using Penny Drop </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 col-12 mb-3" id="Bankdetailsdiv" style="display:none" ,"overflow-x: auto;">
+                                                    <h4>Bank Details Verified</h4>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <p>Account Holder Name:<span id="AccountHolderName">&nbsp;</span></p>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <p>Bank Name:<span id="bankName">&nbsp;</span></p>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <p>Branch Name:<span id="branchName">&nbsp;</span></p>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <p>Bank Address: <span id="bankAddress">&nbsp;</span></p>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4 col-12">
+                                                                <p>Bank City: <span id="bankCity"> &nbsp;</span></p>
+                                                            </div>
+                                                            <div class="col-md-4 col-12">
+                                                                <p>Bank State: <span id="bankState" style="color: #0D1D54 !important;"> </span></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!--Bank Details End-->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Bank Details end-->
+                    <!--Upload Documents start-->
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <div class="login-form">
+                                <div class="container px-4  mob-padding-2">
+                                    <div class="row gx-5">
+                                        <!--Sign Up start-->
+                                        <div class="col-md-12 col-12 text-center">
+                                            <h4 class="form-title"> Upload Documents</h4>
+                                            <h6 class="subheading">Enter your Upload Documents number  </h6>
+                                        </div>
+                                        <!--Sign Up end-->
+                                        <!--pan details start-->
+                                        <div class="container">
+                                            <!--Enter DP ID Start-->
+                                            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mt-10 justify-content-center">
+                                                <div class="col-md-3 col-12">
+                                                    <div class="radio">
+                                                        <label class="Radio-text m-0" style="font-size: 12px;">Attach signature</label>
+                                                        <div class="upload-btn-wrapper">
+                                                            <label for="signatureUpload" class="file-input-label file-input-lable-1"><img src="~/content/images/uploadicon.png" alt=""> <span class="upload">Upload</sp></label>
+                                                            <input type="file" class="form-control" id="signatureUpload" name="upload" onchange="signcheck()" />
+                                                            <span id="signaturemsg" style="display:none ; color:green">Document uploaded. </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12 d-none d-md-block" id="CHequproof" style="display:none">
+                                                    <div class="radio">
+                                                        <label class="Radio-text m-0" style="font-size: 12px;">Attach cancel Cheque</label>
+                                                        <div class="upload-btn-wrapper">
+                                                            <label for="chequeUpload" class="file-input-label file-input-lable-1"><img src="~/content/images/uploadicon.png" alt=""> <span class="upload">Upload</sp></label>
+                                                            <input type="file" class="form-control" id="chequeUpload" name="upload" onchange="chequecheck()" />
+                                                            <span id="chequeUploadmsg" style="display:none ; color:green">Document uploaded.</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 text-center col-12 mt-4 mb-3">
+                                                <a href="" class="btn rounded btn-savecon">SAVE & COUNTINUE</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="redirectModal" tabindex="-1" role="dialog" aria-labelledby="redirectModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="redirectModalLabel">Redirecting to Penny drop</h5>
+                    </div>
+                    <div class="modal-body">
+                        Please wait...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section><!-- End Hero -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="js/main.js"></script>
+
+    <script src="~/twc_ekyc_js/bankdetail.js"></script>
+    <script src="~/twc_ekyc_js/imageupload.js"></script>
+    <script src="~/twc_ekyc_js/ekyc_commom.js"></script>
+</body>
+
+</html>
+

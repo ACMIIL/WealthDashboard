@@ -1,0 +1,408 @@
+﻿@model WealthDashboard.Areas.EKYC_MFJourney.Models.Login.UCCTempModel;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>TWC</title>
+    <link rel="canonical" href="" />
+    <!-- Favicons -->
+    <link href="" rel="icon">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Template Main CSS File -->
+    <link href="~/content/css/style.css" rel="stylesheet" />
+    <link href="~/content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/content/css/custom.css" rel="stylesheet" />
+    <style>
+        .form-control:focus {
+            background-color: transparent !important;
+        }
+
+        .form-control {
+            background-color: transparent !important;
+        }
+    </style>
+
+</head>
+<body>
+    <input type="hidden" id="RegistrationId" value="@Model.RegistrationId" />
+    <input type="hidden" id="EncRegistrationId" value="@Model.EncRegistrationId" />
+    <input type="hidden" id="UCC" value="@Model.UCC" />
+    <!-- ======= Hero Section ======= -->
+    <section class="background-twc-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-12 my-auto">
+                    <!--mobile logo div start-->
+                    <div class="row">
+                        <div class="col-12 my-auto d-md-none d-block">
+                            <div class="mob-logo text-center mb-5">
+                                <img src="~/content/images/twc-logo.png" alt="The Wealth Company" />
+                            </div>
+                        </div>
+                    </div>
+                    <!--mobile logo div end-->
+                    <!--Nominee Details start-->
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <div class="login-form">
+                                <div class="container mob-padding-2">
+                                    <div class="row gx-5">
+                                        <!--Sign Up start-->
+                                        <div class="col-md-12 col-12 text-center">
+                                            <h4 class="form-title"> Nominee Details</h4>
+                                            <h6 class="subheading">Enter your personal Details number  </h6>
+                                        </div>
+                                        <div class="container">
+
+                                            <!--Nominee Name Start-->
+                                            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mt-10">
+
+                                                <div class="col-md-3 col-12">
+                                                    <div class="radio">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control floating-text-area enterid" id="txtFristNomineeName" onkeypress="allowchar(event);" placeholder="FIRST NAME">
+                                                            <label for="txtFristNomineeName">Nominee Name</label>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-3 col-12">
+                                                    <div class="radio">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control floating-text-area enterid" id="txtFristNomineeLastName" onkeypress="allowchar(event);" placeholder="Amit">
+                                                            <label for="txtFristNomineeLastName">Last Name</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12">
+                                                    <div class="mr-60">
+                                                        <div class="form-floating">
+                                                            <input type="date" class="form-control floating-text-area" onkeydown="return false" id="txtNomineeDOB" placeholder="01-01-1991" oninput="CheckMinorFirstNominee();">
+                                                            <label for="txtNomineeDOB" style="color: #FFFFFF;">Date of Birth</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!--Nominee Name End-->
+                                            <!--Relation with Nominee -->
+                                            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mt-10">
+                                                <div class="col-md-9 col-12">
+                                                    <div class="radio">
+                                                        <p class="Radio-text">Relation with Nominee </p>
+                                                        <div class="form-check form-check-inline me-4">
+                                                            <input class="form-check-input" type="radio" name="btnRelation" id="btnRelationFather" value="136" autocomplete="off" checked>
+                                                            <label class="form-check-label" for="btnRelationFather">Father</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline me-4">
+                                                            <input class="form-check-input " type="radio" name="btnRelation" id="btnRelationMother" value="137" autocomplete="off">
+                                                            <label class="form-check-label" for="btnRelationMother"">Mother</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline  me-4">
+                                                            <input class="form-check-input" type="radio" name="btnRelation" id="btnRelationBrother" value="138" autocomplete="off">
+                                                            <label class="form-check-label" for="btnRelationBrother">Brother</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline   me-4">
+                                                            <input class="form-check-input" type="radio" name="btnRelation" id="btnRelationSister" value="139" autocomplete="off">
+                                                            <label class="form-check-label" for="btnRelationSister">GrandParent</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline   me-4">
+                                                            <input class="form-check-input" type="radio" name="btnRelation" id="btnRelationSpouse" value="60" autocomplete="off">
+                                                            <label class="form-check-label" for="btnRelationSpouse">Grand Father</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline   me-4">
+                                                            <input class="form-check-input" type="radio" name="btnRelation" id="btnRelationGrandFather" value="option2">
+                                                            <label class="form-check-label" for="btnRelationGrandFather">Grand Mother</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 col-12">
+                                                    <div class="radio">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control floating-text-area enterid per_img" id="PercentageAllocation" onkeypress="isNumberKey(event);" placeholder="100%">
+                                                            <label for="PercentageAllocation">Percentage</label>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <!--Relation with Nominee end-->
+                                            <!--note-->
+                                            <div class="row g-2 g-lg-3 mt-10 ps-2 row row-cols-2 row-cols-lg-5">
+                                                <div class="col-md-3 col-12 form-check" id="divFirstNomineeSameAsAddress">
+                                                    <input class="form-check-input" type="checkbox" value="" id="FNSameAsAddress" onclick="GetClientFirstPerAddressDetails();">
+                                                    <label class="form-check-label checkbox-label" for="flexCheckChecked">
+                                                        Same Address as Client
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-6 col-12 form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="FNSecurityRes" onclick="FNSecurityRes();">
+                                                    <label class="form-check-label checkbox-label" for="FNSecurityRes">
+                                                        Residual Securites
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <!--Note End-->
+                                            <!--Address Line 1* Start-->
+                                            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mt-10">
+                                                <div class="col-md-8 col-8 mt-4">
+                                                    <div class="radio">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control floating-text-area enterid3" id="FNAddressDetails" placeholder="44475585855558">
+                                                            <label for="FNAddressDetails">Address Line 1*</label>
+                                                            <input type="text" class="form-control floating-text-area enterid3" id="FNPincode" onkeypress="isNumberKey(event);" onchange="GetNomineePincodeDetails();" placeholder="Enter Pin-Code">
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>    
+                                                <div class="col-md-4 col-4 mt-4">
+                                                    <div class="radio">
+                                                        <div class="form-floating">
+                                                            <label for="exampleFormControlInput1" class="form-label text-start w-100 sub-heading">City*</label>
+                                                            <select class="form-select form-select-lg mb-3" id="ddlFirstNomineeCity" aria-label=".form-select-lg example">
+                                                            @* <option value="1">City 1</option>
+                                                                <option value="2">City 2</option>
+                                                                <option value="3">City 3</option>
+                                                                <option value="4">City 4</option>
+                                                                <option value="5">City 5</option>
+                                                                <option value="6">City 6</option> *@
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                 
+                                            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mt-10">
+                                                <div class="col-md-8 col-8 mt-4">
+                                                    <div class="radio">
+                                                        <div class="form-floating">
+                                                            <label for="exampleFormControlInput1" class="form-label text-start w-100 sub-heading">State*</label>
+
+                                                            <select class="form-select form-select-lg mb-3" id="FNState" aria-label=".form-select-lg example">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>    
+                                                <div class="col-md-4 col-4 mt-4">
+                                                    <div class="radio">
+                                                        <div class="form-floating">
+                                                            <label for="exampleFormControlInput1" class="form-label text-start w-100 sub-heading">Country*</label>
+
+                                                            <select class="form-select form-select-lg mb-3" id="FNCountry" aria-label=".form-select-lg example">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Address Line 1* End-->
+                                            <!--Nominee Name Start-->
+                                          @*   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mt-10">
+
+                                                <div class="col-md-3 col-12">
+                                                    <div class="radio">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control floating-text-area enterid" id="floatingInput" placeholder="44475585855558">
+                                                            <label for="floatingInput">Nominee Name</label>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-3 col-12">
+                                                    <div class="radio">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control floating-text-area enterid" id="floatingInput" placeholder="44475585855558">
+                                                            <label for="floatingInput">Last Name</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12">
+                                                    <div class="mr-60">
+                                                        <div class="form-floating"> 
+                                                            <input type="date" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
+                                                            <label for="floatingInput" style="color: #FFFFFF;">Date of Birth</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div> *@
+                                            <div id="div1stNomineeGuardianDetails" style="display:none">
+                                                <div class="row mt-2 mb-2">
+                                                    <div class="col-md-12 mb-3">
+                                                        <div class="accordion-title">Nominee Guardian Details</div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-md-12 mb-4">
+                                                        <label class="form-label sub-heading mb-2">Relation with Client</label><br>
+                                                        <div class="d-flex flex-md-wrap flex-wrap">
+                                                            <div class="me-2 mb-2">
+                                                                <input type="radio" class="form-check-input" name="btnGRelation" id="btnGRelationFather" value="38" autocomplete="off" checked>
+                                                                <label class="form-check-label" for="btnGRelationFather">Father</label>
+                                                            </div>
+                                                            <div class="me-2 mb-2">
+                                                                <input type="radio" class="form-check-input" name="btnGRelation" id="btnGRelationMother" value="37" autocomplete="off">
+                                                                <label class="form-check-label" for="btnGRelationMother">Mother</label>
+                                                            </div>
+                                                            <div class="me-2 mb-2">
+                                                                <input type="radio" class="form-check-input" name="btnGRelation" id="btnGRelationBrother" value="63" autocomplete="off">
+                                                                <label class="form-check-label" id="abc" for="btnGRelationBrother">Brother</label>
+                                                            </div>
+                                                            <div class="me-2 mb-2">
+                                                                <input type="radio" class="form-check-input" name="btnGRelation" id="btnGRelationSister" value="64" autocomplete="off">
+                                                                <label class="form-check-label" id="abc" for="btnGRelationSister">Sister</label>
+                                                            </div>
+                                                            <div class="me-2 mb-2">
+                                                                <input type="radio" class="form-check-input" name="btnGRelation" id="btnGRelationGrandFather" value="67" autocomplete="off">
+                                                                <label class="form-check-label" id="abc" for="btnGRelationGrandFather">Grand Father</label>
+                                                            </div>
+                                                            <div class="me-2 mb-2">
+                                                                <input type="radio" class="form-check-input" name="btnGRelation" id="btnGRelationGrandMother" value="68" autocomplete="off">
+                                                                <label class="form-check-label" id="abc" for="btnGRelationGrandMother">Grand Mother</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4 mb-2">
+                                                        <div class="input-group">
+                                                            <label for="exampleFormControlInput1" class="form-label text-start w-100 sub-heading">Guardian Name*</label>
+                                                            <input type="text" class="form-control col-md-10 mb-3 w-100" id="GuardianName" onkeypress="allowchar(event);" placeholder="First Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-2">
+                                                        <div class="input-group">
+                                                            <label for="exampleFormControlInput1" class="form-label text-start w-100 sub-heading">Last Name</label>
+                                                            <input type="text" class="form-control col-md-10 mb-3 w-100" id="GLastName" onkeypress="allowchar(event);" placeholder="Last Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-2">
+                                                        <div class="input-group">
+                                                            @* <label for="exampleFormControlInput1" class="form-label text-start w-100 sub-heading">Date of Birth*</label> *@
+                                                            @* <input type="date" class="form-control col-md-10 mb-3 w-100" id="txtFGDOB" placeholder="08/01/1991"> *@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-check mb-4">
+                                                    <input class="form-check-input" type="checkbox" value="" id="GAddressCheck" onclick="GuardianFirstPerAddressDetails();">
+                                                    <label class="form-check-label authorize" for="flexCheckDefault">
+                                                        Same Address as Client
+                                                    </label>
+                                                </div>
+                                                <div class="row mb-1">
+                                                    <div class="col-md-12 mb-2">
+                                                        <div class="input-group">
+                                                            <label for="exampleFormControlInput1" class="form-label text-start w-100 sub-heading">Address</label>
+                                                            <input type="text" class="form-control col-md-10 mb-3 w-100" id="GuardianAddress" placeholder="Flat no / House no">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-2">
+                                                        <div class="input-group">
+                                                            <label for="exampleFormControlInput1" class="form-label text-start w-100 sub-heading">Pin-Code*</label>
+                                                            <input type="text" class="form-control col-md-10 mb-3 w-100" id="FGPincode" onkeypress="isNumberKey(event);" onchange="FGuardianPincode();" placeholder="Enter Pin-Code">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-2">
+                                                        <div class="input-group">
+                                                            <label for="exampleFormControlInput1" class="form-label text-start w-100 sub-heading">City*</label>
+                                                            <select class="form-select form-select-lg mb-3" id="FGCity" aria-label=".form-select-lg example">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-2">
+                                                        <div class="input-group">
+                                                            <label for="exampleFormControlInput1" class="form-label text-start w-100 sub-heading">State*</label>
+                                                            <select class="form-control col-md-10 mb-3 w-100" id="FGState" aria-label=".form-select-lg example"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-2">
+                                                        <div class="input-group">
+                                                            <label for="exampleFormControlInput1" class="form-label text-start w-100 sub-heading">Country*</label>
+                                                            <select class="form-control col-md-10 mb-3 w-100" id="FGCountry" aria-label=".form-select-lg example"></select>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <!--Nominee Name End-->
+                                            <div class="col-md-12 text-center col-12  mb-3 mt-3"> 
+                                                @* <button class="btn rounded btn-adnom" id="btnSndNominee" onclick="OpenSecondNominee();"> Add Nominee</button> *@
+                                                <button class="btn rounded btn-savecon" id="btnsecnom" onclick="SaveNomineeDetails();"> Save & Continue</button> 
+                                            </div>
+                                            <div class="col-md-4 pt-2"> <strong id="Allmessage" class="ps-2 font-14"></strong></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Personal Details end-->
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </section><!-- End Hero -->
+    <div class="modal fade" id="declaration" tabindex="-1" aria-labelledby="declarationModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+        <div class="modal-dialog NeedHelpModal">
+            <div class="modal-content ">
+                <div class="modal-body pb-0 ps-4 pe-4">
+                    <div class="col-md-12 col-4 text-center">
+                        <div class="row">
+                            <div class="col-12 text-end">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="col-12">
+                                <h4>Mobile No Common Declaration</h4>
+                                <p>Select the relationship with the entered mobile number.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6 col-6 mobile-mb3 mb-4">
+                            <button type="button" class="btn btn-tab1 active" id="">Self</button>
+                        </div>
+                        <div class="col-md-6 col-6 mobile-mb3 mb-4">
+                            <button type="button" class="btn btn-tab1" id="">Spouse</button>
+                        </div>
+                        <div class="col-md-6 col-6 mobile-mb3 mb-4">
+                            <button type="button" class="btn btn-tab1" id="">Dependent Child</button>
+                        </div>
+                        <div class="col-md-6 col-6 mobile-mb3 mb-4">
+                            <button type="button" class="btn btn-tab1" id="">Dependent Parent</button>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-12 mx-auto"><a href="" class="btn btn-primary btn-submit btn-sm">SUBMIT</a></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="~/content/js/bootstrap.bundle.js"></script>
+    <script src="~/content/js/bootstrap.bundle.min.js"></script> 
+
+    <!-- Template Main JS File --> 
+    <script src="~/content/js/main.js"></script> 
+    <script src="~/twc_ekyc_js/ekyc_commom.js"></script>
+    <script src="~/twc_ekyc_js/ekyc_nomineedetails.js"></script>
+</body>
+
+</html>
+

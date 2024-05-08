@@ -1,9 +1,10 @@
 ﻿$(document).ready(function () {
-    SMFCategory();
-
+    //SMFCategory();
+    SchemeDetails();
 });
-var GlobalUrl = "https://localhost:7217/api/";
-var CommonWebsiteURL = "http://localhost:52206/";
+//var GlobalUrl = "https://localhost:7217/api/";
+//var GlobalUrl = "https://investinmfapi.investmentz.com/api/";
+//var CommonWebsiteURL = "http://localhost:52206/";
 function SMFCategory() {
     var html = "";
     $.ajax({
@@ -93,36 +94,39 @@ function updateContent(fundName, fundDetails) {
     $("#fundNameDisplayInput").val(fundName);
 }
 
-function GetInvestNow(event, value) {
+function GetInvestNow(event) {
+    sessionStorage.clear();
     const ISIN = event.currentTarget.id;
+    //const values = event.currentTarget.dataset.encschemdetails;
     sessionStorage.setItem("ISIN", ISIN);
     sessionStorage.setItem("FolioNo", null);
 
     // Save the clicked data in sessionStorage for later use
-    sessionStorage.setItem("selectedFund", encodeURIComponent(JSON.stringify(value)));
+    //sessionStorage.setItem("selectedFund", values);  ``
 
     // Update the content dynamically
-    updateContent(value.accordSchemeName, value);
+    //updateContent(value.schemeName, value);
 
     // Set fundNameDisplayInput value
-    $("#fundNameDisplayInput").val(value.accordSchemeName);
+   // $("#fundNameDisplayInput").val(value.schemeName);
 
-    window.location.href = CommonWebsiteURL + 'MutualFund/SIPFund';
+    window.location.href = CommonWebsiteURL + 'MutualFund/InvestNow';
 }
 
-function SchemeDetails(data) {
+function SchemeDetails() {
     $("#scrtbody").html('');
 
-    const SchemeSubCategory = data.dataset.schemedetail;
-    let URL = GlobalUrl + "MFUsers/GetInvestNowDetail";
-    let datas = {
-        SubCategory: SchemeSubCategory
-    };
+    //const SchemeSubCategory = data.dataset.schemedetail;
+    let URL = GlobalUrl + "MFUsers/GetScreenerData";
+    //let URL = "https://localhost:7217/api/MFUsers/GetScreenerData";
+    //let datas = {
+    //    SubCategory: SchemeSubCategory
+    //};
 
     $.ajax({
         type: "GET",
         url: URL,
-        data: datas,
+        data: {},
         success: function (data) {
             try {
                 // Handle success
@@ -131,14 +135,12 @@ function SchemeDetails(data) {
                     const html = `
                         <tr>
                             <td>
-                                <a href="#" id="${value.isin}" data-fundname="${value.accordSchemeName}" 
-                                    onClick="GetInvestNow(event, ${JSON.stringify(value).replace(/"/g, '&quot;')})"
+                                <a href="#" id="${value.isin}" data-fundname="${value.schemeName}" 
+                                data-encschemdetails="${encodeURIComponent(JSON.stringify(value)) }"
+                                    onClick="GetInvestNow(event)"
                                     class="card-link-group">
-                                    <strong>${value.accordSchemeName}</strong>
+                                    <strong>${value.schemeName}</strong>
                                 </a>
-                            </td>
-                            <td>
-                                <span>${Array(5).fill('<img src="/images/Group.png" class="star">').join('')}</span>
                             </td>
                             <td class="text-success">${value.fiveyrret}%</td>
                             <td class="text-success">${value.thirdyrret}%</td>

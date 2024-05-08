@@ -4,6 +4,7 @@
 });
 //var GlobalUrl = "https://localhost:7217/api/";
 var GlobalUrl = "https://investinmfapi.investmentz.com/api/";
+
 function MFCategory() {
     var html = "";
     $.ajax({
@@ -53,7 +54,7 @@ function MFSubCategory(data) {
                     '<img src="/images/basket-logo.jpg" class="card-mf-icon">' +
                     '</div>' +
                     '<div class="col-md-10 col-10">' +
-                    '<div class="card-title-2 font-16 ps-2">' + value.subCategory +'</div>' +
+                    '<a class="card-title-2 font-16 ps-2" style="cursor: pointer;" data-schemedetail=' + JSON.stringify(value.subCategory) + ' onclick="redirecttofunddetail(this)">' + value.subCategory +'</a>' +
                     '</div>' +
                     '<div class="col-md-1 col-1 text-end">' +
                     '<img src="~/images/ic_round-favorite-selected.png " class="card-mf-heart">' +
@@ -71,5 +72,11 @@ function MFSubCategory(data) {
         }
     });
     
+}
+
+function redirecttofunddetail(data) {
+    const SchemeSubCategory = data.dataset.schemedetail;
+    localStorage.setItem("Subcategory", SchemeSubCategory);
+    window.location.href = "FundDetails";
 }
 

@@ -40,246 +40,178 @@
 </head>
 
 <body id="body-pd" class="body-pd">
-    <div class="l-navbar show" id="nav-bar">
-
-        <div class="header body-pd" id="header">
-            <div class="header_toggle">
-                <a href="javascript:;" id="header-toggle"><img src="~/images/ep_arrow-down.png" class="bx-icon"></a>
-            </div>
-        </div>
-
-        <nav class="nav margin-top">
-            <div class="">
-                <a href="#" class="nav_logo  mb-3">
-                    <img src="~/images/twc-logo.png" alt="" class="logo1" />
-                </a>
-                <div class="nav_list">
-                    <a href="index.html" class="nav_link  mb-2 mt-2"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
-                    <a  class="nav_link active mb-2 mt-2"> <i class='bx bxs-briefcase nav_icon'></i> <span class="nav_name">Wealth Prodcuts</span> </a>
-                    <a  class="nav_link mb-2 mt-2"> <i class='bx bx-list-ul nav_icon'></i> <span class="nav_name">Client List</span> </a>
-                    <a href="#" class="nav_link  mb-2 mt-2"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">SIP Book</span> </a>
-                    <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-time-five nav_icon'></i> <span class="nav_name">Proposals</span> </a>
-                    <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-sitemap nav_icon'></i> <span class="nav_name">Earnings</span> </a>
-                    <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-group nav_icon'></i> <span class="nav_name">My Team</span> </a>
-                    <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-layer nav_icon'></i> <span class="nav_name">Tracker</span> </a>
-                    <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-cog nav_icon'></i> <span class="nav_name">Rewards</span> </a>
-                    <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-cog nav_icon'></i> <span class="nav_name">My Profile</span> </a>
-                </div>
-            </div>
-            <a href="#" class="nav_link mb-5 mt-0"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
-
-        </nav>
-    </div>
 
 
+    <input type="hidden" id="UCC" />
+    <input type="hidden" id="BACode" />
+    <input type="hidden" id="hiddenmandateamt" />
     <!--  Sidebar End -->
     <!--  Main wrapper -->
     <div class="bg-color" style="min-height: 100vh;">
-        <div class="container-fluid">
-            <!--header mf and login-->
-            <div class="row">
-                <div class="col-12">
-                    <nav class="navbar navbar-expand-lg border-bottom mb-3">
-                        <div class="navbar-collapse ps-3" id="navbarNav">
-                            <div class="col-md-4">
-                                <div class="row text-start">
-                                    <div class="dashbourd-title p-0">
-                                        Mutual Fund
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <input type="search" class="form-control ms-3 menu-search-bar" id="" aria-describedby="" placeholder="Search here..." style="background-color: white;">
-                                    </div>
-                                    <ul class="col-md-5 navbar-nav flex-row  align-items-center justify-content-end">
-                                        <li class="nav-item">
-                                            <a class="nav-link nav-icon-hover ms-4 me-3 bell-icon p-2" href="javascript:void(0)">
-                                                <i class="ti ti-bell-ringing" style="font-size: 22px;"></i>
-                                            </a>
-                                        </li>
-                                        <div class="login-icon d-flex ms-0" style="background-color: white;">
-                                            <img src="~/images/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
-                                        <li class="nav-item dropdown ">
-                                            <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                                               aria-expanded="false">
-                                                <div>
-                                                    <h6>Amit Kumar</h6>
-                                                </div>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                                                <div class="message-body">
-                                                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                                        <i class="ti ti-user fs-6"></i>
-                                                        <p class="mb-0 fs-3">Amit Kumar</p>
-                                                    </a>
-                                                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                                        <i class="ti ti-mail fs-6"></i>
-                                                        <p class="mb-0 fs-3">My Account</p>
-                                                    </a>
-                                                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                                        <i class="ti ti-list-check fs-6"></i>
-                                                        <p class="mb-0 fs-3">My Task</p>
-                                                    </a>
-                                                    <a href="./authentication-login.html" class="btn btn-outline-Delete mx-3 mt-2 d-block">Logout</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                </div>
-
-                                </ul>
-                            </div>
-                        </div>
-                </div>
-                </nav>
-            </div>
-        </div>
-        <!--header mf and login End-->
         <div class="row">
             <div class="col-md-12 col-12">
-                <nav class="navbar navbar-expand-lg" style="background-color:#EBDFD7;">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="navbarNav" style="border-bottom: 1px solid #d7d7d7;">
-                            <ul class="navbar-nav">
-                                <li class="nav-item me-4">
-                                    <a class="nav-link mf-sub-tab1 active" aria-current="page" >Mutual fund</a>
-                                </li>
-                                <li class="nav-item me-4">
-                                    <a class="nav-link mf-sub-tab1" aria-current="page" >Equity</a>
-                                </li>
-                                <li class="nav-item me-4">
-                                    <a class="nav-link mf-sub-tab1" >Fixed-Income</a>
-                                </li>
-                                <li class="nav-item me-4">
-                                    <a class="nav-link mf-sub-tab1" href="Exotic.html">Exotic</a>
-                                </li>
-                                <li class="nav-item me-4">
-                                    <a class="nav-link mf-sub-tab1" >Structural</a>
-                                </li>
-                                <li class="nav-item me-4">
-                                    <a class="nav-link mf-sub-tab1" >iBasket</a>
-                                </li>
 
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <div class="py-4">
-                    <a class="calendar-tab-mf me-2" href="">Screener</a>
-                    <a class="calendar-tab-mf  active me-2" href="AdvicedFund">Advised Funds</a>
-                    <a class="calendar-tab-mf me-2">NFO</a>
-                    <a class="calendar-tab-mf me-2">Global Search</a>
-                    <a class="calendar-tab-mf me-2">Buy/SIP/STP</a>
-                    <a class="calendar-tab-mf me-2">Redemption</a>
-                    <a class="calendar-tab-mf me-2">Goal Planning</a>
-                    <a class="calendar-tab-mf me-2">Calculator</a>                     
-                </div>
                 <div class="new-card p-4">
                     <div class="container-fluid">
                         <div class="row">
                             <!--first coloum-->
-                            <div class="col-md-6 col-12">
+                            <div class="col-md-6 col-12 card">
                                 <!-- Mutual Fund Cart -->
-                                <div class="col-md-12 col-12 font-18 margin-top-12">Mutual Fund Cart</div>
-                            
-                                <input type="text" class="form-control" id="fundNameDisplayInput" placeholder="Scheme" readonly>
+                                <div class="font-18 margin-top-12">Mutual Fund Cart</div>
+
+                                <input type="text" class="form-control" style="font-weight: bold;" id="fundNameDisplayInput" readonly>
+                                <div class="col-md-12 mt-4">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+                                        @* <a class="form-check-label font-14-500" name="inlineRadio1" for="inlineRadio1">SIP</a> *@
+                                        <label class="form-check-label font-14-500" name="inlineRadio1" for="inlineRadio1">SIP</label>
+                                    </div>
+                                    <div class="form-check form-check-inline ms-5">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        @* <a class="form-check-label font-14-500" name="inlineRadio2" for="inlineRadio2">Lumpsum</a> *@
+                                        <label class="form-check-label font-14-500" name="inlineRadio2" for="inlineRadio2">Lumpsum</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4" id="paymentmodediv">
+                                    @* <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="RadioOptions" id="PaymentGatewayLumpsum" value="option1" checked>
+                                        <label class="form-check-label font-14-500" name="PaymentGatewayLumpsum" for="PaymentGatewayLumpsum"> Payment Gateway</label>
+                                    </div>
+                                    <div class="form-check form-check-inline ms-5">
+                                        <input class="form-check-input" type="radio" name="RadioOptions" id="MandateLumpsum" value="option2">
+                                        <label class="form-check-label font-14-500" name="MandateLumpsum" for="MandateLumpsum">Mandate</label>
+                                    </div> *@
+                                </div>
                                 <!-- Section 1 -->
                                 <div class="row gx-4" id="additionalContent2">
-                                    <div class="col-md-12">
-                                        <div class="row mt-4">
-                                            <div class="col-md-1 p-0 border-bottom-1">
-                                                <!-- Remove the image tag here -->
-                                            </div>
-                                            <div class="col-md-10 mt-1 border-bottom-1">
-                                                <div class="font-15 mb-4"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mt-4">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
-                                            <a class="form-check-label font-14-500" for="inlineRadio1" href="mf-advised-fund-sip.html">SIP</a>
-                                        </div>
-                                        <div class="form-check form-check-inline ms-5">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                            <a class="form-check-label font-14-500" for="inlineRadio2" href="mf-advised-fund-Lumpsum.html">Lumpsum</a>
-                                        </div>
-                                    </div>
                                     <div class="row">
                                         <div class="col-md-6 mt-4">
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">Amount<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control " id="exampleFormControlInput1" placeholder="Amount">
+                                                <label for="exampleFormControlInput1" class="form-label">Frequency <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example" id="Frequency">
+                                                    <option selected>select Frequency</option>
+                                                    @* <option value="1">DAILY</option> *@
+                                                    <option selected value="MONTHLY">MONTHLY</option>
+                                                    @* <option value="3">QUARTERLY</option> *@
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mt-4">
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">Tenure <span class="text-danger">*</span></label>
-                                                <select class="form-select" aria-label="Default select example" id="tenureField">
-                                                    <option selected>select Tenure</option>
-                                                    <option value="1">1 year</option>
-                                                    <option value="2">2 year</option>
-                                                    <option value="3">3 year</option>
+                                                <label for="exampleFormControlInput1" class="form-label">Amount<span class="text-danger">*</span> (Min Rs.<span id="MinAmount"></span>, in multiples of <span id="Multiples"></span>)</label>
+                                                <input type="text" class="form-control " id="SIPMinAmt" placeholder="Amount">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mt-2">
+                                            <div class="mb-3">
+                                                <label for="sipDateField" class="form-label">SIP Start Date <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example" id="SIPDate">
+                                                    
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mt-2">
                                             <div class="mb-3">
-                                                <label for="sipDateField" class="form-label">SIP Date <span class="text-danger">*</span></label>
-                                                <input type="date" class="form-control" id="sipDateField">
+                                                <label for="exampleFormControlInput1" class="form-label">No. installment (Min. <span id="MinInstallments"></span> Months Installments) <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="SIPMinInstallmentNo">
                                             </div>
                                         </div>
+                                        @* <div class="col-md-6 mt-2">
+                                            <div class="mb-3">
+                                                <label for="sipDateField" class="form-label">SIP End Date <span class="text-danger">*</span></label>
+                                                <input type="date" class="form-control">
+                                            </div>
+                                        </div> *@
+                                        <div class="col-md-6 mt-2">
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Transaction mode <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example" id="tenureField">
+                                                    <option selected>Demat</option>
+                                                    <option value="1">Physical</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        @* <div class="col-md-12 mt-2">
+                                            <div class="mb-3">
+                                                <label for="sipDateField" class="form-label">Remark</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div> *@
+                                        
+                                        
+
                                     </div>
                                     <div class="row">
+                                        <div class="col-md-12 mt-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                                <label class="form-check-label" for="flexCheckChecked">
+                                                    EUIN Declaration
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="TermsChk" checked>
+                                                <label class="form-check-label" for="flexCheckChecked">
+                                                    I agree to
+                                                </label>
+                                            </div>
+                                        </div>
                                         <div class="col-md-12 mt-4">
-                                            <button type="button" class="btn btn-Add-Scheme col-md-4">Add Scheme</button>
-                                            <button type="button" class="btn btn-buy-now col-md-4">Buy Now</button>
+                                            @* <button type="button" class="btn btn-Add-Scheme col-md-4">Add Scheme</button> *@
+                                            <button id="SendSIPdataCart" type="button" class="btn btn-buy-now col-md-4">Buy Now</button>
                                         </div>
                                     </div>
+
+
                                 </div>
 
                                 <!-- Section 2 -->
                                 <div class="row gx-4" id="additionalContent">
-                                    <div class="col-md-12">
-                                        <div class="row mt-4">
-                                            <div class="col-md-1 p-0 border-bottom-1">
-                                                <!-- Remove the image tag here -->
-                                            </div>
-                                            <div class="col-md-10 mt-1 border-bottom-1">
-                                                <div class="font-15 mb-4">ICICI Prudential Bluechip Fund Direct Growth</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mt-4">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
-                                            <label class="form-check-label font-14-500" for="inlineRadio1">SIP</label>
-                                        </div>
-                                        <div class="form-check form-check-inline ms-5">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                            <label class="form-check-label font-14-500" for="inlineRadio2">Lumpsum</label>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="row">
                                         <div class="col-md-6 mt-4">
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1" class="form-label">Amount<span class="text-danger">*</span></label>
-                                                <input type="number" class="form-control " id="exampleFormControlInput1" placeholder="Amount">
+                                                <input type="text" class="form-control " id="LumpsumAmt" placeholder="Amount">
                                             </div>
+                                        </div>
+                                        <div class="col-md-6 mt-4">
+                                            <label for="exampleFormControlInput1" class="form-label">Transaction mode <span class="text-danger">*</span></label>
+                                            <select class="form-select" aria-label="Default select example" id="tenureField">
+                                                <option selected>Demat</option>
+                                                <option value="1">Physical</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12 mt-4">
-                                            <button type="button" class="btn btn-Add-Scheme col-md-4">Add Scheme</button>
-                                            <button type="button" class="btn btn-buy-now col-md-4">Buy Now</button>
+                                            <div class="col-md-12 mt-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        EUIN Declaration
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mt-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        I agree to
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            @* <button type="button" class="btn btn-Add-Scheme col-md-4">Add Scheme</button> *@
+                                            <button type="button" id="SendlumpsumdataCart" class="btn btn-buy-now col-md-4">Buy Now</button>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Mutual Fund scheme -->
                             </div>
                             <!--Second coloum-->
-                            <div class="col-md-6 col-12">
+                            @* <div class="col-md-6 col-12">
                                 <div class="card px-4 py-3">
                                     <div class="row mb-4">
                                         <div class="col-md-12 col-12 font-18">Select Payment Mode</div>
@@ -345,7 +277,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> *@
                         </div>
                     </div>
                 </div>
@@ -440,7 +372,7 @@
     <script>new DataTable('#example');</script>
 
 
-    
+
 
 </body>
 
