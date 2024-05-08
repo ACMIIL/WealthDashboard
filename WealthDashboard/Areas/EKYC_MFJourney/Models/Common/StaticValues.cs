@@ -3,7 +3,7 @@
     public class StaticValues
     {
         public const string ApplicationJsonMediaType = "application/json";
-        public const string DigioUrl = "/api/DigioKYC/DigioWorkTemplate";
+        public const string DigioUrl = "api/DigioKYC/DigioWorkTemplate";
         public const string CntrlzDigiSuccRespoUrl = "/api/DigioKYC/DigioKYCResponse?ResponseId=";
         public const string InsertUpdateBank = "/api/ClientBankDetails/InsertOrUpdateClientBankDetails";
         public const string personalDetailurl = "/api/ClientPersonalDetails/InsertOrUpdateClientpersonalDetails";
