@@ -17,6 +17,14 @@ builder.Services.AddTransient<IPrimaryDetailsManager, PrimaryDetailsManager>();
 //Added By MF_journey
 builder.Services.AddEkycServices();
 
+
+var mvcBuilder = builder.Services.AddRazorPages();
+mvcBuilder.AddRazorRuntimeCompilation();
+
+builder.Services.AddHttpContextAccessor();
+
+var app = builder.Build();
+=======
 builder.Services.Configure<Appsetting>(builder.Configuration.GetSection("AppSetting"));
 builder.Services.Configure<Connection>(builder.Configuration.GetSection("ConnectionStrings"));
 builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
@@ -27,6 +35,7 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
 
 Log.Logger = new LoggerConfiguration()
             .Enrich.FromLogContext()

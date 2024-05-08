@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewData["Title"] = "MFtransaction";
+    Layout = "~/Views/Shared/_LayoutMF.cshtml";
+}
+
+<div class="col-xxl-9" style="font-size: 9pt;">
+    <div class="card card-height-100">
+        <div class="card-body p-0">
+            <div class="bg-light-subtle border-top-dashed border border-start-0 border-end-0 border-bottom-dashed py-3 px-4">
+                <div class="row align-items-center">
+                    <div id="transactionReport">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="rejected" role="dialog">
+    <div class="modal-dialog modalbox-popup">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="right: 25%;width: 155%;margin-top: 15%;">
+            <div class="modal-header">
+                <h4 class="modal-title">Status</h4>
+                <p><span id="date"></span></p>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Client Code -</strong> <span id="ClientCode"></span> </p>
+                        <p><strong>Scheme Code -</strong> <span id="Schemecode"></span></p>
+                        <p><strong>ISIN -</strong> <span id="ISIN"></span></p>
+                        <p><strong>Settlement -</strong> <span id="Settlement"></span></p>
+                        <p><strong>Order Type -</strong> <span id="OrderType"></span></p>
+                        <p><strong>Demat / Physical -</strong> <span id="DP"></span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Client Name -</strong> <span id="ClientName"></span></p>
+                        <p><strong>Folio No -</strong> <span id="FolioNo"></span> </p>
+                        <p><strong>Transaction Type -</strong> <span id="TransctionType"></span></p>
+                        <p><strong>SUB BR Code -</strong> <span id="SUBCode"></span></p>
+                        <p><strong>EUIN -</strong> <span id="EUIN"></span></p>
+
+                    </div>
+                    <div class="col-md-12">
+                        <p><strong>Rejection Reason -</strong><span id="Rejection"></span></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered ressponsivebox" id="Order_Reject">
+
+                            <tr>
+                                <td>Mobile</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>10000.00</td>
+                            </tr>
+                            <tr>
+                                <td>Mobile</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>10000.00</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="~/MF Script/Transaction.js"></script>
