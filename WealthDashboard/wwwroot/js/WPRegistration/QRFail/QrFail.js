@@ -54,7 +54,7 @@
         }
 
         $scope.GotoPennyDrop = function () {
-            window.location.assign('/WP_Registration/WPRegistration/SelfieVerification');
+            window.location.assign('/WP_Registration/WPRegistration/Panydrop');
         }
 
         $scope.GotoUploadCheque = function () {

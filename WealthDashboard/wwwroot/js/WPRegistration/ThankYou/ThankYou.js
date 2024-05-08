@@ -1,5 +1,5 @@
 ﻿angular.module('main', ['ngAnimate', 'toaster'])
-    .controller('myController', function ($scope, $location, $window, $http, $interval,) {
+    .controller('myController', function ($scope, $location, $window, $http, $interval, toaster) {
 
        // var BaseURL = "https://localhost:7222/";
         //var  BaseURL="https://devwealthmaapi.investmentz.com/";
@@ -11,10 +11,10 @@
         function ngOnInit() {
 
             if ($scope.userId === null || $scope.userId === undefined) {
-                window.location.assign('/');
+                window.location.assign('/wp_registration/wpregistration/index');
             }
             else {
-                updateStatus()
+                updateStatus();
             }
 
         }
@@ -28,13 +28,7 @@
             }).then(function (res) {
                 if (res.data.code == "200") {
 
-           
-
-                        sendMail();
-
-                    
-                
-                   
+                    DownloadPDF();
                 }
 
             }).catch(function (error) {
@@ -53,30 +47,37 @@
             }).then(function (res) {
                 if (res.data.code == "200") {
 
-                    SendDataToAcmiil();
+                    setTimeout(() => {
+                        window.location.assign('/MutualFund/Main');
+                    }, 3000); 
+
                 }
             }).catch(function (error) {
                 console.error('Error occurred:', error);
             });
         }
 
-        function SendDataToAcmiil(){
+        function DownloadPDF() {
 
             $http({
-                url: BaseURL + "user/EmailSent?userid=" + $scope.userId,
-                method: "GET",
+                url: BaseURL + "PDF/GenerateMaRegistrationForm?UserID=" + $scope.userId,
+                method: "POST",
                 headers: {},
                 data: {}
             }).then(function (res) {
-                if (res.data.code == "200") {
+                if (res.data.message === "MA Registration PDF Genrated Successfully Please Check Genrated PDF file.") {
+                    toastr.success(res.data.message,'Title Success!');
+                    //toaster.success(res.data.message,'Title Success!');
+                    //setTimeout(() => {
+                    //    window.location.assign('/MutualFund/Main');
+                    //}, 3000);
 
-                   // window.location.href = 'https://madashboard.wealthcompany.in/';
                 }
             }).catch(function (error) {
                 console.error('Error occurred:', error);
             });
-
         }
-
+        
+       
     });
 
