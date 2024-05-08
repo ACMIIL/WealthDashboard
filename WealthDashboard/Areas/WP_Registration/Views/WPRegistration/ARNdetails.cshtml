@@ -34,7 +34,16 @@
     <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
-
+    <style>
+        .fa-done{
+            font-size: 24px;
+            color: green;
+            display: flex;
+            position: absolute;
+            top: 17px;
+            right: 13px;
+        }
+    </style>
 
 </head>
 
@@ -43,7 +52,7 @@
 
     <!-- ======= Hero Section ======= -->
 
-    <section id="hero" class=" background-twc-banner" style="height: 900px;" ng-app="main" ng-controller="myController">
+    <section  class=" background-twc-banner"  ng-app="main" ng-controller="myController">
 
 
 
@@ -174,6 +183,24 @@
                                         <label for="fileInputgst" style="color: #CAAA86;">Upload PMS Distribution Certificate</label>
                                         </div>
                                         <span ng-if="pmssize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span> *@
+                                        <div class="form-floating mb-3">
+
+                                            <input type="text" class=" floating-text-area UploadFileName" ng-model="User" ng-change="CheckUserID(User)" style="color: white;" maxlength="15">
+                                            <i ng-if="valid" class="fa fa-check-circle fa-done"></i>
+         
+                                   
+
+                                            <label  style="color: #CAAA86;">User ID</label>
+                                        </div>
+                                        <span ng-if="invalid" style="color: darkred; font-size: small;">User ID already exists </span>
+                                        <span ng-if="Characters" style="color: darkred; font-size: small;">Userid must be at least 5 characters</span>
+                                      
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class=" floating-text-area UploadFileName" style="color: white;" ng-model="Passwords" ng-change="Pass(Passwords)" maxlength="15">
+                                            <i ng-if="Passvalid" class="fa fa-check-circle fa-done"></i>
+                                            <label  style="color: #CAAA86;">Password</label>
+                                        </div>
+                                        <span ng-if="Characterspass" style="color: darkred; font-size: small;">Password must be at least 5 characters</span>
                                     </div>
                                     <div class="row mb-3 row mb-3 ms-2">
                                         <div class="col-md-12 text-center col-12 mt-2 mb-4">
@@ -249,17 +276,18 @@
 
     <!-- Vendor JS Files -->
     <script src="~/js/wpregistration/jquery.min.js"></script>
-    <script src="~/js/wpregistration/slick.js"></script>
     <script src="~/js/wpregistration/slick.min.js"></script>
+    <script src="~/js/wpregistration/slick.js"></script>
+
     <script src="~/js/wpregistration/bootstrap.bundle.min.js"></script>
+    <script src="~/js/wpregistration/bootstrap.bundle.js"></script>
     <!-- Template Main JS File -->
 
     <script src="~/js/wpregistration/main.js"></script>
     <!---For Angular js-->
     <script src="~/angularjs/toast/angular.min.js"></script>
     <script src="~/angularjs/toast/angular-animate.min.js"></script>
-    <link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
-    <script src="~/angularjs/tosters/toaster.js"></script>
+
     <!-----Js File-->
 
     <script src="~/js/wpregistration/arndetails/arndetails.js"></script>
