@@ -1,0 +1,92 @@
+.btn-login{
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    border-right: 1px solid #ffffff;
+    border-radius: 0px;
+}
+.readmore{
+    height: 60px;
+    line-height: 56px;
+    float: left;
+    color: #e9a33e !important;
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    position: relative;
+    border: 2px solid #ebcfa7;
+    padding: 0 40px;
+    box-shadow: 0 0 20px rgba(235, 207, 167, 0.4);
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    -ms-transition: 0.25s ease-in-out;
+    -o-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+}
+.readmore:hover{
+    height: 60px;
+    line-height: 56px;
+    float: left;
+    color: #ffffff !important;
+    background-color: #ebcfa7;
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    position: relative;
+    border: 2px solid #ebcfa7;
+    padding: 0 40px;
+    box-shadow: 0 0 20px rgba(235, 207, 167, 0.4);
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    -ms-transition: 0.25s ease-in-out;
+    -o-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+}
+.aum{
+    color: #E09E64;
+    font-size: 18px;
+    font-weight: 600;
+}
+.custom-fc{
+    display: block;
+    width: 100%;
+    height: 63px;
+    padding: .375rem .75rem;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.custom-fc:focus {
+    color: #495057;
+    background-color: transparent;
+    border-color: #F1F1F1;
+    outline: none;
+    box-shadow: 0 0 0 -2.8rem rgba(0,123,255,.25);
+}
+.get-cl{
+    width: 145px;
+    height: 42px;
+    float: left;
+    color: #e9a33e !important;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid #ebcfa7;
+    box-shadow: 0 0 20px rgba(235, 207, 167, 0.4);
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    -ms-transition: 0.25s ease-in-out;
+    -o-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+}
+.bw{
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
