@@ -1,0 +1,149 @@
+﻿
+@{
+    ViewData["Title"] = "MFportfoliosummary";
+    Layout = "~/Views/Shared/_LayoutMF.cshtml";
+}
+<link rel="stylesheet" href="~/css/Custom.css" />
+
+<style>
+    .mbtn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 3px;
+        background-color: #007bff;
+        color: #ffffff;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .mbtn:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="row">
+    <div class="col-xxl-9">
+        <div class="card card-height-100">
+            <div class="card-body p-0">
+                <div class="bg-light-subtle border-top-dashed border border-start-0 border-end-0 border-bottom-dashed py-3 px-4">
+                    <div class="row align-items-center">
+                        <div class="col-4">
+                            <div class="d-flex flex-wrap gap-4 align-items-center">
+                                <div>
+                                    <p class="text-muted text-uppercase fw-medium mb-0">Current Valuation</p>
+                                    <h3 class="fs-19"><span id="CurrentAmt"></span>&nbsp;<small class="badge bg-success-subtle text-danger" id="absper"><i class="ri-arrow-right-up-line align-bottom"></i><span id="AbsRetrunPercent"></span></small></h3>
+                                </div>
+                            </div>
+                        </div><!-- end col -->
+                        <div class="col-8">
+                            <div class="d-flex">
+                                <div class="d-flex justify-content-end text-end flex-wrap gap-4 ms-auto">
+                                    <div class="pe-3">
+                                        <h6 class="mb-2 text-muted">Invested</h6>
+                                        <h5 class="text-success mb-0" id="inamt"><span id="InvestedAmt"></span></h5>
+                                    </div>
+                                    <div class="pe-3">
+                                        <h6 class="mb-2 text-muted">P&L</h6>
+                                        <h5 class="text-danger mb-0" id="cramt"><span id="AbsReturnAmt"></span></h5>
+                                    </div>
+                                    <div class="pe-2">
+                                        <h6 class="mb-2 text-muted">Day Change</h6>
+                                        <h5 class="text-success mb-0" id="totdaychg"><span id="TotalOneDayChanges"></span></h5>
+                                    </div>
+                                    <div class="pe-2">
+                                        <h6 class="mb-2 text-muted">Day Change(%)</h6>
+                                        <h5 class="text-danger mb-0" id="perdaychg"><span id="TotalPercent"></span></h5>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-2 text-muted">CAGR</h6>
+                                        <h5 class="text-danger mb-0" id="cagr"><span id="GetCAGR"></span></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                </div>
+            </div><!-- end cardbody -->
+        </div><!-- end card -->
+    </div>
+</div>
+
+
+<div class="col-xxl-9">
+    <div class="card card-height-100">
+        <div class="card-body p-0">
+            <div class="bg-light-subtle border-top-dashed border border-start-0 border-end-0 border-bottom-dashed py-3 px-4">
+                <div class="row align-items-center">
+                    <div id="portfolioReport">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="chargeModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: white !important;">
+                <div class="row">
+                    <div class="col-md-11">
+                        <span style="font-size: 1.5em;">
+                            Scheme Details
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span>Scheme Name</span>
+                        <h6 id="schemeName">Mirae Asset ELSS Tax Saver Fund Reg (G)</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <span>Category</span>
+                        <h6 id="category">Equity: ELSS</h6>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <span>ISIN No.</span>
+                        <h6 id="isin">INF769K01DK3</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <span>Folio No.</span>
+                        <h6 id="folioNo">78856818866</h6>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <span>CAGR</span>
+                        <h6 id="scagr">23.38</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <span>Purchase Date</span>
+                        <h6 id="purchaseDate">2022-04-18T18:30:00Z</h6>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <span>Day Change</span>
+                        <h6 id="dayChange">100</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <span>Day Change(%)</span>
+                        <h6 id="dayChangePer">1.0</h6>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/MF Script/PortfolioReport.js"></script>

@@ -49,5 +49,25 @@ namespace WealthDashboard.Controllers
 
             return View();
         }
+
+        [Route("MutualFund/PortfolioSummary")]
+        public IActionResult MFportfoliosummary()
+        {
+
+            return View();
+        }
+
+        [Route("MutualFund/Transaction")]
+        public IActionResult MFtransaction()
+        {
+
+            return View();
+        }
+
+        [Route("MutualFund/NFO")]
+        public IActionResult MFNFO()
+        {
+            return View();
+        }
     }
 }
