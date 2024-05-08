@@ -20,20 +20,29 @@
 
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <!-- <link href="https://chhotaniveshgold.com/assets/vendor/boxicons/css/boxicons.min.css"> -->
+    <!---for toaster--->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Toastr -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
+
+
+
+
+    <link href="~/css/wpregistrationcss/slick.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/slick-theme.css" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
     <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
+
+
+
+
 </head>
 
 <body>
@@ -86,18 +95,91 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
+
     <script src="~/js/wpregistration/jquery.min.js"></script>
+    <script src="~/js/wpregistration/slick.js"></script>
+    <script src="~/js/wpregistration/slick.min.js"></script>
     <script src="~/js/wpregistration/bootstrap.bundle.min.js"></script>
-    <!-- Template Main JS File -->
-    <script src="~/js/wpregistration/main.js"></script>
-    <!---For Angular js-->
+    <!---for Angular js---->
+
     <script src="~/angularjs/toast/angular.min.js"></script>
     <script src="~/angularjs/toast/angular-animate.min.js"></script>
     <link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
     <script src="~/angularjs/tosters/toaster.js"></script>
+    <script src="~/js/wpregistration/main.js"></script>
     <!-----Js File-->
     <script src="~/js/wpregistration/thankyou/thankyou.js"></script>
 
+    <script>
+
+        $(document).ready(function () {
+            toastr.options = {
+                'closeButton': true,
+                'debug': false,
+                'newestOnTop': false,
+                'progressBar': false,
+                'positionClass': 'toast-top-right',
+                'preventDuplicates': false,
+                'showDuration': '1000',
+                'hideDuration': '1000',
+                'timeOut': '5000',
+                'extendedTimeOut': '1000',
+                'showEasing': 'swing',
+                'hideEasing': 'linear',
+                'showMethod': 'fadeIn',
+                'hideMethod': 'fadeOut',
+            }
+        });
+
+        // Toast Position
+        $('#position').click(function (event) {
+            var pos = $('input[name=position]:checked', '#positionForm').val();
+            toastr.options.positionClass = "toast-" + pos;
+            toastr.options.preventDuplicates = false;
+            toastr.info('This sample position', 'Toast Position')
+        });
+
+        $('.multiple-items').slick({
+            arrows: true,
+            dots: true,
+            number: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        dots: false
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: false
+                    }
+                }
+
+            ]
+        });
+    </script>
+   
 </body>
 
 </html>

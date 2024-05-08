@@ -2,24 +2,31 @@
     .controller('myController', function ($scope, $location, $http) {
         $scope.isvalied = false;
         $scope.arnFileName = '';
-        // var BaseURL = "https://localhost:7222/";
-        //var  BaseURL="https://devwealthmaapi.investmentz.com/";
-       // var userId = localStorage.getItem('userId')
-        //  var userId = 'DD9FCCC1-5813-478E-85B0-B4EC903A7064';
+        $scope.invalid = false;
         $scope.appPanNo = localStorage.getItem('appPanNo')
-        //  $scope.appPanNo = 'ARLPY9715A'
         $scope.SubmitDetails = function () {
 
             if ($scope.ARNNUMBER == null || $scope.ARNNUMBER == '' || $scope.ARNNUMBER == undefined) {
 
                 toastr.error('Please Enter ARN Number', 'ARN Number !');
-            }
-            else if ($scope.arnFileName == null || $scope.arnFileName == '' || $scope.arnFileName == undefined) {
+            } else if ($scope.arnFileName == null || $scope.arnFileName == '' || $scope.arnFileName == undefined) {
 
                 toastr.error('Please Upload ARN File', 'ARN File !');
-            }
-            else {
+            } else if ($scope.User == null || $scope.User == '' || $scope.User == undefined) {
 
+                toastr.error('Userid is required', 'Error!');
+            }
+            else if ($scope.Characters == true) {
+                $scope.Characters = true
+
+            }
+            else if ($scope.Passwords == null || $scope.Passwords == '' || $scope.Passwords == undefined) {
+
+                toastr.error('Password is required', 'Error!');
+            }  else if ($scope.Characterspass == true) {
+                $scope.Characterspass = true
+            } else {
+                 
                 localStorage.setItem('ARNNo', "ARN-" + $scope.ARNNUMBER);
                 localStorage.setItem('GSTNumber', $scope.gstNo);
                 localStorage.setItem('PMSNumber', $scope.PMSNo);
@@ -34,11 +41,15 @@
                 formData.append('PMSNumber', $scope.PMSNo);
                 formData.append('PMSFile', $scope.pmsImage);
                 formData.append('PMSName', $scope.pmsFileName);
+                formData.append('Loginid', $scope.User);
+                formData.append('Password', $scope.Passwords);
 
                 $http({
                     url: BaseURL + "User/AddARNDetails",
                     method: "POST",
-                    headers: { 'Content-Type': undefined },
+                    headers: {
+                        'Content-Type': undefined
+                    },
                     transformRequest: angular.identity,
                     data: formData
                 }).then(function (response) {
@@ -51,7 +62,7 @@
                         }).then(function (res) {
                             if (res.data.code == "200") {
 
-                                CheckPanConfirmation(userId)                             
+                                CheckPanConfirmation(userId)
                             }
                         });
                     } else {
@@ -76,19 +87,18 @@
 
                 if (res.data.code == "200") {
 
-                   
-                    if (res.data.data.appPanNo == 'null' || res.data.data.appPanNo == undefined || res.data.data.appPanNo=='') {
+
+                    if (res.data.data.appPanNo == 'null' || res.data.data.appPanNo == undefined || res.data.data.appPanNo == '') {
                         window.location.assign('/WP_Registration/WPRegistration/DigiLocker');
                     } else {
                         window.location.assign('/WP_Registration/WPRegistration/PersonalDetails');
                     }
-                }
-                else {
+                } else {
                     toastr.error('500Internal Server Error!', 'Fetching Details!');
                 }
 
             });
-       
+
         }
         $scope.allowNumbers = function (event) {
             var charCode = event.which || event.keyCode;
@@ -172,5 +182,53 @@
             }
 
         };
-    });
+        $scope.CheckUserID = function (value) {
+            if (value == '') {
+                $scope.valid = false
+                $scope.invalid = false
+                $scope.Characters = false
+            } else if (value.length < 5) {
 
+                $scope.valid = false
+                $scope.invalid = false
+                $scope.Characters = true
+            } else {
+                $http({
+                    url: BaseURL + "Account/CheckUserID?userId=" + value,
+                    method: "GET",
+                    headers: {}, // lowercase 'headers'
+                    data: {}
+                }).then(function (res) {
+
+                    if (res.data.code == "200") {
+                        if (res.data.data.check == false) {
+                            $scope.invalid = false
+                            if (value.length > 4) {
+                                $scope.valid = true
+                                $scope.Characters = false
+                            }
+                        } else if (res.data.data.check == true) {
+                            $scope.valid = false
+                            $scope.invalid = true
+
+                        }
+                    }
+
+                });
+            }
+        };
+
+        $scope.Pass = function (Rigor) {
+            if (Rigor == '') {
+                $scope.Passvalid = false
+                $scope.Characterspass = false
+            } else if (Rigor.length < 5) {
+                $scope.Passvalid = false
+                $scope.Characterspass = true
+            } else {
+                $scope.Passvalid = true
+                $scope.Characterspass = false
+            }
+
+        }
+    });

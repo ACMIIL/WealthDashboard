@@ -21,6 +21,9 @@
     <!-- Google Fonts -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     <!-- Template Main CSS File -->
     <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
@@ -29,9 +32,9 @@
 </head>
 
 <body ng-app="main" ng-controller="myController">
-    
+
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class=" background-twc-banner">
+    <section class=" background-twc-banner">
         <div class="container">
             <header id="header" class="pb-5">
                 <div class="container">
@@ -59,7 +62,7 @@
                         <div class="col-md-7">
                             <div class="row">
                                 <div class=" mx-auto card login-form">
-                                   
+
                                     <div class="row mb-1">
                                         <div class="col-md-12 col-12 text-center">
                                             <h5 class="form-title">
@@ -105,29 +108,42 @@
                                             <label class="font-label-1" style="color: #CAAA86;"> Email </label>
                                             <span class="p-0">{{data[0].Email}}</span>
 
-                                            <span style="cursor: pointer;color:green" class="ps-2">Verified Email</span>
-                                            <span style="cursor: pointer;color:rgb(206, 44, 44)" class="ps-2"> Email is not Verify </span>
+
+
+                                          <input type="text" ng-if="!data[0].Email" id="Mailid" class="form-control mobile-number-textarea ps-0" style="color: white;width:187px;" ng-keyup="checkEmail()" maxlength="30">
+
+                                            <span ng-if="!data[0].Email"  id="notVerify" style="color:rgb(206, 44, 44);" class="ps-2"> Email is not Verify </span>
+                                             <span ng-if="data[0].Email != null && data[0].Email != '' && data[0].Email != undefined" style="color:green" class="ps-2">Verified Email</span>
+                                              <span ng-if="CheckEmailPattern" style="color:rgb(206, 44, 44)" class="ps-2"> Invalid Email </span>
                                         </div>
 
 
                                         <div class="col-md-6 col-12 text-start">
-                                            <a (click)="showemailtextbox()" style="cursor: pointer;color:green;"> <i class="fa fa-edit ps-5"></i> Edit </a>
+                                             <a ng-click="EmailOtpVerify()" ng-if="sendOTP" style="cursor: pointer;color:green;"> <i class="fa fa-hand-pointer-o"></i>SendOTP</a>
+                                               <a ng-click="EmailOtpVerify()" ng-if="ResndOTP" style="cursor: pointer;color:green;"> <i class="fa fa-hand-pointer-o"></i>ResendOTP</a>
+                                            @*   <a (click)="showemailtextbox()" style="cursor: pointer;color:green;"> <i class="fa fa-edit ps-5"></i> Edit </a> *@
                                             <a (click)="sendOtp()" style="cursor: pointer;color:green;margin-left:5px">  </a>
-                                            <a (click)="cancelEmailEdit()" style="cursor: pointer;color:green;margin-left:5px"> Cancel </a>
+                                            @*  <a (click)="cancelEmailEdit()" style="cursor: pointer;color:green;margin-left:5px"> Cancel </a> *@
                                         </div>
 
                                          <div class="col-md-12">
-                                            <label class="font-label-1" style="color: #CAAA86;"> OTP</label>
+                                             <div ng-if="OpenOTPbox">
+                                              <label ng-if="!data[0].Email" class="font-label-1" style="color: #CAAA86;"> OTP</label>
+                                             <input type="text"  id="OtpInput" class="form-control mobile-number-textarea ps-0" style="color: white;width:187px;"  ng-model="InputOTP" ng-change="EnterOTP()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="4">
+                                             <a ng-click="OtpVerify()" ng-if="VerifyOTP" style="cursor: pointer;color:green;"> <i class="fa fa-hand-pointer-o"></i>VerifyOTP</a>
+
+                                             </div>
+
                                             <!-- <input type="text" class="form-control" name="password" value="123456789"> -->
                                             @* <input id="otp" name="otp" #otp value=""   class="email-style-edit inp font-label-1"> *@
                                             <div style="color: brown;">
                                             </div>
                                         </div>
                                     </div>
-                               
+
                                     <div class="row mb-3 mt-3">
                                         <div class="col-md-12 text-center">
-                                            <button class="btn btn-primary btn-submit-popup1 btn-sm" ng-click="gotoNext()">Next</button>
+                                            <button class="btn btn-primary btn-submit-popup1 btn-sm" ng-disabled="!isValidOTP" ng-click="gotoNext()">Next</button>
                                         </div>
                                     </div>
                                 </div>
@@ -164,8 +180,7 @@
     <script src="~/js/wpregistration/main.js"></script>
     <script src="~/angularjs/toast/angular.min.js"></script>
     <script src="~/angularjs/toast/angular-animate.min.js"></script>
-    <link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
-    <script src="~/angularjs/tosters/toaster.js"></script>
+
     <script src="~/js/wpregistration/ekyc/personaldetails.js"></script>
 
 </body>
