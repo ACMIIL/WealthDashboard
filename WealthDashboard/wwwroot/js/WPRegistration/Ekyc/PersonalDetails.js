@@ -78,11 +78,16 @@
             }).then(function (response) {
                 var result = response;
                 if (result.data.code === 200) {
+
                     this.toastr.success('Please check the OTP send in your EmailId,', 'Title Success!');
 
                     $scope.sendOTP = false;
                     $scope.ResndOTP = true;
                     $scope.VerifyEmailID = Emailid
+
+                    window.location.assign('/WP_Registration/WPRegistration/qrbankverification');
+                    //window.location.assign('/WP_Registration/WPRegistration/Panydrop');
+
                 }
 
             })
