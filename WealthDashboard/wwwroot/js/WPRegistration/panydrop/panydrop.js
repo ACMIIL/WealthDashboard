@@ -1,44 +1,21 @@
 ﻿angular.module('main', ['ngAnimate', 'toaster'])
     .controller('myController', function ($scope, toaster, $location, $window, $http) {
-        getdata()
-
-        // user/GetDigioLockerUserPersonalDetails
-       // $scope.userId = localStorage.getItem('userId')
-        $scope. mobile = localStorage.getItem('Mnumber');
+       
+        $scope.mobile = localStorage.getItem('Mnumber');
         $scope.data = [];
+        $scope.ADDRESS = '';
         $scope.accountno = '';
         $scope.customerName = '';
         $scope.IFSCCode = '';
-        $scope.AccountType = 1;
-        GetUserDetails();
-        $scope.gotoNext = function () {
-            UpdateStatus();
-            //window.location.assign('/WP_Registration/WPRegistration/qrbankverification');
+        var bankdetails = [];
+        var Bankdata = [];
+        $scope.isDisabled = true;
+        $scope.invalidname = false;
+        $scope.invalidAcc = false;
+        $scope.invalidIFSC = false;
+       
 
-            // window.location.assign('/WP_Registration/WPRegistration/UploadChequeBankverification');
-        }
-
-
-        function UpdateStatus() {
-            
-            $http({
-                url: BaseURL + "User/UpdateUserStatus?userId=" + userId + "&status=4",
-                method: 'GET',
-                headers: {},
-                data: {}
-            }).then(function (response) {
-
-                var result = response;
-
-                if (result.data.code === 200) {
-                    window.location.assign('/WP_Registration/WPRegistration/qrbankverification');
-                }
-
-            })
-
-
-        }
-
+        
         $scope.GetBankDetails = function () {
 
             $http({
@@ -55,7 +32,7 @@
 
                     Bankdata = {
                         UserId: userId,
-                        BankAccountTypeId: $scope.AccountType,
+                        BankAccountTypeId: 1,
                         BankName: bankdetails.BANK,
                         IFSCCODE: bankdetails.IFSC,
                         BankBranchName: bankdetails.BRANCH,
@@ -69,9 +46,11 @@
                     }
 
                     $scope.ADDRESS = Bankdata.Bank_Address
+                    $scope.isDisabled = false;
                 }
                 else {
-                    alert('Data not found');
+                    $scope.ADDRESS = 'Invalid IFSC Code'
+                    $scope.isDisabled = true;
                 }
 
 
@@ -97,9 +76,31 @@
             }
             
 
-            Bankdata.BankAccountTypeId = $scope.AccountType;
+           
+            $http({
+                url: BaseURL + "DigioAPI/CentralizeValidatePennyDropAcc?RegistrationId=" + userId + "&IfscCode=" + $scope.IFSCCode + "&AccountNo=" + $scope.accountno + "&ClientName=" + $scope.customerName,
+                method: 'GET',
+                headers: {},
+                data: {}
+            }).then(function (response) {
 
+                
+                if (response.status == "200" && response.data.data.data.verified == true) {
 
+                    SaveBankDetails();
+                   
+                }
+                else {
+                    toastr.error('500Internal Server Error!', 'Something went wrong!');
+
+                }
+            }).catch(function (error) {
+                console.error('Error occurred (UpdateUserBankAccountTypeStatus): ', error);
+            });
+        }
+
+      
+        function SaveBankDetails() {
             $http({
                 url: BaseURL + 'user/UpdateUserBankAccountTypeStatus',
                 method: 'POST',
@@ -110,8 +111,7 @@
 
                 var result = response;
                 if (result.data.code === 200) {
-                    uploadCancelCheque();
-
+                    window.location.assign('/WP_Registration/WPRegistration/selfieVerification');
                 }
                 else {
                     toastr.error('500Internal Server Error!', 'Bank Details Update!');
@@ -120,35 +120,40 @@
             }).catch(function (error) {
                 console.error('Error occurred (UpdateUserBankAccountTypeStatus): ', error);
             });
+
+
+
         }
 
-        function GetUserDetails() {
-            // api/User/GetUserDetails
+        $scope.changeacc = function () {
+            var acc = $scope.accountno;
+           
+            if (acc.length < 1) {
+               
+                $scope.invalidAcc = 1;
+            }
+           
+        };
+        
+        $scope.changename = function () {
+         
+            var name = $scope.customerName;
+           
+           
+            if (name.length < 1) {
+                $scope.invalidname = 1
+            }
+         
 
-            $http({
-                url: BaseURL + 'User/GetUserDetails?userId =' + userId,
-                method: 'Get',
-                headers: {},
+        };
 
-                data: Bankdata
-            }).then(function (response) {
+        $scope.changeifsc = function () {
+           
+            var ifsc = $scope.IFSCCode;
+          
+           if (ifsc.length < 1) {
+                $scope.invalidIFSC = 1
+            }
 
-                var result = response;
-                if (result.data.code === 200) {
-                   // uploadCancelCheque();
-                    var fullName = response.data.firstName + ' ' + response.data.middleName + ' ' + response.data.lastName;
-                    $scope.customerName = fullName;
-                }
-                else {
-                    toastr.error('500Internal Server Error!', 'Bank Details Update!');
-
-                }
-            }).catch(function (error) {
-                console.error('Error occurred (UpdateUserBankAccountTypeStatus): ', error);
-            });
-        }
-
-
-
-
+        };
     });

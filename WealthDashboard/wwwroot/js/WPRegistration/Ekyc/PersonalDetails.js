@@ -43,8 +43,8 @@
                 var result = response;
 
                 if (result.data.code === 200) {
-                    window.location.assign('/WP_Registration/WPRegistration/qrbankverification');
-                   // window.location.assign('/WP_Registration/WPRegistration/Panydrop');
+                    //window.location.assign('/WP_Registration/WPRegistration/qrbankverification');
+                    window.location.assign('/WP_Registration/WPRegistration/Panydrop');
                 }
 
             })
