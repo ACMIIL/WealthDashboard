@@ -68,10 +68,10 @@
                     var BaseURL1 = "";
                     // Check if the host is localhost or 127.0.0.1
                     if (host === "localhost" || host === "127.0.0.1") {
-                        BaseURL1 = SessionURL + "WP_Registration/WPRegistration/CreateSession?userid=" + userId;
+                        BaseURL1 = SessionURL + "CreateSession?userid=" + userId;
                     }
                     else {
-                        BaseURL1 = ApplicationURL + "WP_Registration/WPRegistration/CreateSession?userid=" + userId;
+                        BaseURL1 = ApplicationURL + "CreateSession?userid=" + userId;
                     }
 
                     $http({
