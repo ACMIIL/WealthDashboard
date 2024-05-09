@@ -390,8 +390,8 @@
                     $scope.inputType = ($scope.inputType === 'text') ? 'password' : 'text';
                 };
 
-                $scope.register = function () {
-                    if ($scope.selectedColor == 'wp') {
+                $scope.register = function (value) {
+                    if (value == 'wp') {
                         window.location.assign('/WP_Registration/WPRegistration/index')
                     }
                     else {
