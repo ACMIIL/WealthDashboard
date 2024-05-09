@@ -45,7 +45,7 @@
   button:hover {
     background-color: #c0560f; /* Warna button saat hover */
   }
-  .registration a{
+.registration a {
     font-size: 14px;
     font-weight: 400;
     color: rgb(230, 132, 34);
@@ -54,8 +54,27 @@
     margin-top: 10px;
     cursor: pointer;
     text-decoration: none;
-  }
-  
+    
+}
+/*input .pw{
+    background-image: url('../../images/eye.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}*/
+.eye-o {
+    position: absolute;
+    top: 149px;
+    right: 30px;
+    width: 30px;
+    height: 18px;
+}
+.eye-c {
+    position: absolute;
+    top: 149px;
+    right: 30px;
+    width: 30px;
+    height: 18px;
+}
   
   
   
