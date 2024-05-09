@@ -3,7 +3,7 @@
     public class StaticValues
     {
         public const string ApplicationJsonMediaType = "application/json";
-        public const string DigioUrl = "api/DigioKYC/DigioWorkTemplate";
+        public const string DigioUrl = "/api/DigioKYC/DigioWorkTemplate";
         public const string CntrlzDigiSuccRespoUrl = "/api/DigioKYC/DigioKYCResponse?ResponseId=";
         public const string InsertUpdateBank = "/api/ClientBankDetails/InsertOrUpdateClientBankDetails";
         public const string personalDetailurl = "/api/ClientPersonalDetails/InsertOrUpdateClientpersonalDetails";
@@ -24,9 +24,9 @@
 
 
         //selfie
-        public const string SelfieUrl = "api/DigioSelfie/SelfieWorkTemplate";
-        public const string SelfieResponseUrl = "api/DigioSelfie/SelfieResponse?ResponseId=";
-        public const string DigioSelfieFileDownload = "api/DigioSelfie/GetselfieMedia?FileId=";
+        public const string SelfieUrl = "/api/DigioSelfie/SelfieWorkTemplate";
+        public const string SelfieResponseUrl = "/api/DigioSelfie/SelfieResponse?ResponseId=";
+        public const string DigioSelfieFileDownload = "/api/DigioSelfie/GetselfieMedia?FileId=";
 
 
         //Stored Procedure

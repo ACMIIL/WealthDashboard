@@ -82,16 +82,18 @@
                                                 <div class="col-md-3 col-12">
                                                     <div class="mr-60">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control floating-text-area" id="IFSCCode" style="color: white;" placeholder="HERFK4578G" onkeyup="GetBankDetailByIFSC();">
+                                                            <input type="text" class="form-control floating-text-area" id="IFSCCode" style="color: white;" placeholder="HERFK4578G" >
                                                             <label for="IFSCCode">IFSC Code</label>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @* <div class="col-md-3 col-12">
+                                                <div class="col-md-3 col-12">
                                                 <div class="mt-2 tc">
                                                 <button type="button" class=" btn-validate" id="PennyDrop">Validate Using Penny Drop </button>
+                                                        <!--<span id="Pennysuccess" class="msghide" style="display:none ; color:green">Verified by penny drop Successfully..</span>-->
+                                                        <strong id="Pennysuccess" class="ps-5"></strong>
                                                 </div>
-                                                </div> *@
+                                                </div>
 
                                                 <div class="col-md-12 col-12 mb-3" id="Bankdetailsdiv" style="display:none" ,"overflow-x: auto;">
                                                     <h4>Bank Details Verified</h4>
@@ -143,7 +145,7 @@
                                         <div class="container">
                                             <!--Enter DP ID Start-->
                                             <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mt-10 justify-content-center">
-                                                <div class="col-md-3 col-12">
+                                                <div class="col-md-3 ">
                                                     <div class="radio">
                                                         <label class="Radio-text m-0" style="font-size: 12px;">Attach signature</label>
                                                         <div class="upload-btn-wrapper">
@@ -153,15 +155,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div id="CHequproof" style="display:none">
-                                                    <div class="col-md-3 col-12 d-none d-md-block">
-                                                        <div class="radio">
-                                                            <label class="Radio-text m-0" style="font-size: 12px;">Attach cancel Cheque</label>
-                                                            <div class="upload-btn-wrapper">
-                                                                <label for="chequeUpload" class="file-input-label file-input-lable-1"><img src="~/content/images/upload-icon.png" /> <span class="upload">Upload</span></label>
-                                                                <input type="file" class="form-control" id="chequeUpload" name="upload" onchange="chequecheck()" />
-                                                                <span id="chequeUploadmsg" style="display:none ; color:green">Document uploaded.</span>
-                                                            </div>
+                                                <div class="col-md-3  d-none d-md-block" id="CHequproof" style="display:none">
+                                                    <div class="radio">
+                                                        <label class="Radio-text m-0" style="font-size: 12px;">Attach cancel Cheque</label>
+                                                        <div class="upload-btn-wrapper">
+                                                            <label for="chequeUpload" class="file-input-label file-input-lable-1"><img src="~/content/images/upload-icon.png" /> <span class="upload">Upload</span></label>
+                                                            <input type="file" class="form-control" id="chequeUpload" name="upload" onchange="chequecheck()" />
+                                                            <span id="chequeUploadmsg" style="display:none ; color:green">Document uploaded.</span>
                                                         </div>
                                                     </div>
                                                 </div>
