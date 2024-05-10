@@ -1,9 +1,9 @@
 ﻿
 var CommonPageURL = "http://localhost:52206/EKYC_MFJourney/";
-var CommonAPIURL = "https://uatmfaccopenapi.wealthcompany.in/";
+var CommonAPIURL = "https://localhost:44394/";
 var ApprovedePDFPath = "D:\\WelcomeDesk_ApprovedPDF\\";
 //var CentralAPIURL = "https://devdigio.investmentz.com";
-var CentralAPIURL = "https://uatmfaccopenapi.wealthcompany.in/";
+var CentralAPIURL = "https://localhost:44394/";
 var DirectClient = "RC5555";
 
 function isNumberKey(e) {                   

@@ -95,14 +95,14 @@ function GetQRBankData() {
                 $("#Bankdetailsdiv").show();
             }
             else {
-                $('#AccountNumber').val(data.data.accountNo).prop('readonly', false);
-                $('#IFSCCode').val(data.data.ifsC_Code).prop('readonly', false);
-                $("#PennyDrop").show();
-                $("#flush-collapse3").show();
-                $("#Bankdetailsdiv").hide();
+                //$('#AccountNumber').val(data.data.accountNo).prop('readonly', false);
+                //$('#IFSCCode').val(data.data.ifsC_Code).prop('readonly', false);
+                //$("#PennyDrop").show();
                 //$("#flush-collapse3").show();
-                //showDynamicMessage('Please Enter Account No And IFSC Code.', 4000, 'red', 'Pennysuccess');
-                //$("#CHequproof").show();
+                //$("#Bankdetailsdiv").hide();
+                $("#flush-collapse3").show();
+                showDynamicMessage('Please Enter Account No And IFSC Code.', 4000, 'red', 'Pennysuccess');
+                $("#CHequproof").show();
                 return;
             }
         },
@@ -280,8 +280,9 @@ function pennydropfunction() {
                 $("#fuzzy_match_score").val(data.data.fuzzy_match_score);
                 $("#fuzzy_match_result").val(data.data.fuzzy_match_result);
                 $("#BenificiaryName").val(data.data.beneficiary_name_with_bank);
-
+                $("#Bankdetailsdiv").show();
                 $("#refId").val(data.data.refId);
+                $("#CHequproof").show();
                 showDynamicMessage('Bank verification completed successfully.', 4000, 'green', 'Pennysuccess');
                 saveClientBankDetails(true);
 
@@ -291,8 +292,7 @@ function pennydropfunction() {
                 $("#fuzzy_match_result").val('0');
                 $("#BenificiaryName").val($("#ClientName").val()); // if penny fail then set previous client name
 
-                $("#refId").val('');
-                $("#CHequproof").show();
+                $("#refId").val(''); 
                 $("#Upload-Documents").show()
                 saveClientBankDetails(false);
             }
