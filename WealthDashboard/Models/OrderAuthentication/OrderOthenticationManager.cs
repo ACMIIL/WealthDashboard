@@ -3,6 +3,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Net;
 using System.Text;
+using WealthDashboard.Configuration;
 using WealthDashboard.Models.InvestNowManager;
 
 namespace WealthDashboard.Models.OrderAuthentication
@@ -10,11 +11,11 @@ namespace WealthDashboard.Models.OrderAuthentication
     public class OrderOthenticationManager : IOrderOthenticationManager
     {
         #region Global Variable
-        private readonly AppSetting _appSetting;
+        private readonly Appsetting _appSetting;
         #endregion
 
         #region Ctor
-        public OrderOthenticationManager(IOptions<AppSetting> options)
+        public OrderOthenticationManager(IOptions<Appsetting> options)
         {
             _appSetting = options.Value;
         }

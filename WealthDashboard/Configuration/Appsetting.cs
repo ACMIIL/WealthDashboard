@@ -53,6 +53,9 @@
         public string AuthorizedSameer { get; set; }
         public string AuthorizedEmpSignPath { get; set; }
         public string PDFCreateFolder { get; set; }
+
+
+        public string MFAPIBaseURL { get; set; }
         #endregion
     }
 }
