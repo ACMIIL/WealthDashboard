@@ -101,7 +101,10 @@
                             <div class="col-md-8">
                                 <div class="row">
                                     <div class="col-md-7">
-                                        <input type="search" class="form-control ms-3 menu-search-bar" id="" aria-describedby="" placeholder="Search here..." style="background-color: white;">
+                                        @* <input type="search" class="form-control ms-3 menu-search-bar" id="" aria-describedby="" placeholder="Search here..." style="background-color: white;"> *@
+                                        <input type="text" class="form-control ms-3 menu-search-bar" style="background-color: white;" placeholder="Search" value="" list="list-timezone" id="input-datalist">
+                                        <datalist id="list-timezone">
+                                        </datalist>
                                     </div>
                                     <ul class="col-md-5 navbar-nav flex-row  align-items-center justify-content-end">
                                         <li class="nav-item">
@@ -179,7 +182,7 @@
             @*<a class=" calendar-tab-mf me-2">NFO</a>*@
             <a class=" calendar-tab-mf me-2" href="Transaction">Transactions</a>  
             <a class=" calendar-tab-mf me-2" href="PortfolioSummary">Portfolio Summary</a>
-            <a class=" calendar-tab-mf me-2">Global Search</a>
+            <a class=" calendar-tab-mf me-2" href="cartDetail">Cart</a>
             @*<a class=" calendar-tab-mf me-2">Buy/SIP/STP</a>*@
             @*<a class=" calendar-tab-mf me-2">Redemption</a>*@
             @*<a class=" calendar-tab-mf me-2">Goal Planning</a>*@
@@ -193,6 +196,7 @@
     </div>
     <script src="~/js/sweetalert.js"></script>
     <script src="~/mf script/global.js"></script>
+    <script src="~/mf script/globalsearch.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function (event) {
 

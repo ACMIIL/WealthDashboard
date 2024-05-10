@@ -2,17 +2,18 @@
 using Newtonsoft.Json;
 using System.Net.Mail;
 using System.Text;
+using WealthDashboard.Configuration;
 
 namespace WealthDashboard.Models.InvestNowManager
 {
     public class InvestNowManager : IInvestNowManager
     {
         #region Global Variables
-        private readonly AppSetting _appSetting;
+        private readonly Appsetting _appSetting;
         #endregion
 
         #region Ctor
-        public InvestNowManager(IOptions<AppSetting> appSetting)
+        public InvestNowManager(IOptions<Appsetting> appSetting)
         {
             _appSetting = appSetting.Value;
         }
