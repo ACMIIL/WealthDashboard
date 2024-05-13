@@ -366,19 +366,19 @@
                     });
 
                     $http({
-                        url: "https://uattwcapi.wealthcompany.in/api/Admin/UserAuthenticationadmin",
+                        url: "home/Login?userid=" + $scope.userid + "&password=" + $scope.password,//https://uattwcapi.wealthcompany.in/api/Admin/UserAuthenticationadmin",
                         method: "POST",
                         Headers: {},
-                        data: query
+                        data: {}
                     }).then(function (response) {
-                        if (response.data.statusCode === 200) {
+                        if (response.data === 'true') {
                             var result = '';
                             //alert("sucess")
-                            window.location.assign('/MutualFund/Main')
+                            window.location.assign('/Dashboard/Dashboard/index')
                             // toastr.success('An OTP has been sent to ' + $scope.MobileNumber, 'Title Success!');
                         }
                         else {
-                            alert("error")
+                            alert("Login faild!")
                         }
                     }).catch(function (error) {
                         console.error('Error sending OTP:', error);
