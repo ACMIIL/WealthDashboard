@@ -95,11 +95,11 @@ function GetQRBankData() {
                 $("#Bankdetailsdiv").show();
             }
             else {
-                /*$('#AccountNumber').val(data.data.accountNo).prop('readonly', false);
-                $('#IFSCCode').val(data.data.ifsC_Code).prop('readonly', false);
-                $("#PennyDrop").show();
-                $("#flush-collapse3").show();
-                $("#Bankdetailsdiv").hide();*/
+                //$('#AccountNumber').val(data.data.accountNo).prop('readonly', false);
+                //$('#IFSCCode').val(data.data.ifsC_Code).prop('readonly', false);
+                //$("#PennyDrop").show();
+                //$("#flush-collapse3").show();
+                //$("#Bankdetailsdiv").hide();
                 $("#flush-collapse3").show();
                 showDynamicMessage('Please Enter Account No And IFSC Code.', 4000, 'red', 'Pennysuccess');
                 $("#CHequproof").show();
@@ -189,10 +189,20 @@ function CheckPennyDropStatusAfterGet() {
 }
 
 
-/*
+
 $("#PennyDrop").on('click', function () {
+
+    if ($("#AccountNumber").val() == "" && $("#AccountNumber").val() == null && $("#AccountNumber").val() == undefined) {
+        showDynamicMessage('Please Enter Valid Account No', 4000, 'red', 'Pennysuccess');
+        return;
+    }
+    if ($("#IFSCCode").val() == "" && $("#IFSCCode").val() == null && $("#IFSCCode").val() == undefined) {
+        showDynamicMessage('Please Enter Valid IFSC Code', 4000, 'red', 'Pennysuccess');
+        return;
+    }
+
     Ifsccodefinder();
-})*/
+})
 
 
 
@@ -226,7 +236,7 @@ function Ifsccodefinder() {
                     $('#bankState').text(data.data.state);
 
                     saveClientBankDetails(true);
-                    //pennydropfunction();
+                    pennydropfunction();
                 }
                 else if (data.message == "Error -") {
                     showDynamicMessage('Please Enter Valid IFSC Code.', 4000, 'red', 'Pennysuccess');
@@ -245,7 +255,7 @@ function Ifsccodefinder() {
         
     }
 }
-/*
+
 function pennydropfunction() {
     var beneficiaryAccountNo = $("#AccountNumber").val();
     var beneficiaryIFSC = $("#IFSCCode").val();
@@ -254,7 +264,7 @@ function pennydropfunction() {
 
     $.ajax({
         type: "POST",
-        url: "https://digio.investmentz.com/api/DigioKYC/GetPennyDrop",
+        url: CommonAPIURL + "api/DigioKYC/GetPennyDrop", //"https://digio.investmentz.com/api/DigioKYC/GetPennyDrop",
         contentType: "application/json",  // Set content type to JSON
         data: JSON.stringify({
             beneficiary_account_no: beneficiaryAccountNo,
@@ -270,8 +280,9 @@ function pennydropfunction() {
                 $("#fuzzy_match_score").val(data.data.fuzzy_match_score);
                 $("#fuzzy_match_result").val(data.data.fuzzy_match_result);
                 $("#BenificiaryName").val(data.data.beneficiary_name_with_bank);
-
+                $("#Bankdetailsdiv").show();
                 $("#refId").val(data.data.refId);
+                $("#CHequproof").show();
                 showDynamicMessage('Bank verification completed successfully.', 4000, 'green', 'Pennysuccess');
                 saveClientBankDetails(true);
 
@@ -281,8 +292,7 @@ function pennydropfunction() {
                 $("#fuzzy_match_result").val('0');
                 $("#BenificiaryName").val($("#ClientName").val()); // if penny fail then set previous client name
 
-                $("#refId").val('');
-                $("#CHequproof").show();
+                $("#refId").val(''); 
                 $("#Upload-Documents").show()
                 saveClientBankDetails(false);
             }
@@ -291,7 +301,7 @@ function pennydropfunction() {
             console.log(data);
         }
     });
-}*/
+}
 
 
 

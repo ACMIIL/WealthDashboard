@@ -66,7 +66,7 @@
                     var status = response.data.data.status;
                     var host = window.location.hostname;
                     var BaseURL1 = "";
-                    // Check if the host is localhost or 127.0.0.1
+                    // Check if the host is localhost or 127.0.0.1 
                     if (host === "localhost" || host === "127.0.0.1") {
                         BaseURL1 = SessionURL + "CreateSession?userid=" + userId;
                     }

@@ -97,12 +97,12 @@ function updateContent(fundName, fundDetails) {
 function GetInvestNow(event) {
     sessionStorage.clear();
     const ISIN = event.currentTarget.id;
-    //const values = event.currentTarget.dataset.encschemdetails;
+    const values = event.currentTarget.dataset.encschemdetails;
     sessionStorage.setItem("ISIN", ISIN);
     sessionStorage.setItem("FolioNo", null);
 
     // Save the clicked data in sessionStorage for later use
-    //sessionStorage.setItem("selectedFund", values);  ``
+    sessionStorage.setItem("selectedFund", values);  
 
     // Update the content dynamically
     //updateContent(value.schemeName, value);
