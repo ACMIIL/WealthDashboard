@@ -75,6 +75,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Dashboard\Data\" />
+    <Folder Include="Areas\Dashboard\Models\" />
     <Folder Include="Areas\EKYC_MFJourney\Data\" />
     <Folder Include="Areas\WP_Registration\Data\" />
     <Folder Include="Areas\WP_Registration\Models\" />

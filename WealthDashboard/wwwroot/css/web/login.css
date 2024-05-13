@@ -62,18 +62,18 @@
     background-size: cover;
 }*/
 .eye-o {
-    position: absolute;
-    top: 149px ;
-    right: 30px ;
-    width: 30px ;
-    height: 18px ;
+    position: absolute !important;
+    top: 149px !important;
+    right: 30px !important;
+    width: 30px !important;
+    height: 18px !important;
 }
 .eye-c {
-    position: absolute;
-    top: 149px ;
-    right: 30px ;
-    width: 30px ;
-    height: 18px ;
+    position: absolute !important;
+    top: 149px !important;
+    right: 30px !important;
+    width: 30px !important;
+    height: 18px !important;
 }
   
   
