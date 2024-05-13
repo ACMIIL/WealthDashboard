@@ -1,8 +1,20 @@
-﻿@{
+﻿  @model Microsoft.Extensions.Configuration.IConfiguration
+@{
     Layout = null;
 }
 <!doctype html>
+@{
+    var userData = "";
+    try
+    {
+        userData = Context.Session.GetString("userData");
+    }
+    catch {
 
+       // window.location.assign('/Dashboard/Dashboard/index');
+    }
+
+}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -26,15 +38,15 @@
     <style>
 
         .tabcontentmf {
-            display: none;
-            padding: 6px 12px;
-            border-top: none;
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
         }
 
         .mf-sub-tab {
-            display: none;
-            padding: 6px 12px;
-            border-top: none;
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
         }
     </style>
 </head>
@@ -62,7 +74,7 @@
                     <div class="menu-dropdown collapse" id="sidebarDashboards" style="">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="Screener" class="nav_link  mb-2 mt-2"><span class="nav_name">- Mutual Fund</span> </a>
+                                <a href="Screener" class="nav_link  mb-2 mt-2"><span class="nav_name"></span> </a>
                             </li>
                         </ul>
                     </div>
@@ -109,20 +121,29 @@
                                                 <i class="ti ti-bell-ringing" style="font-size: 22px;"></i>
                                             </a>
                                         </li>
-                                        <div class="login-icon d-flex ms-0" style="background-color: white;">
+                                        <div class="login-icon d-flex ms-0" style="background-color: white;" id="drop2">
                                             <img src="~/images/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
-                                        <li class="nav-item dropdown ">
-                                            <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                                               aria-expanded="false">
-                                                <div>
-                                                    <h6>Amit Kumar</h6>
-                                                </div>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                                                <div class="message-body">
-                                                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                                        <i class="ti ti-user fs-6"></i>
-                                                        <p class="mb-0 fs-3">Amit Kumar</p>
+                                            <li class="nav-item dropdown ">
+                                                <a class="nav-link nav-icon-hover" href="javascript:void(0)"  data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                                    <div>
+                                                        <h6 id="username">
+                                                             
+                                                               
+                                                            
+                                                        </h6>
+                                                    </div>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up login" aria-labelledby="drop2" style="position: absolute;right: -38%;">
+                                                    <div class="message-body">
+                                                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                                                            <i class="ti ti-user fs-6"></i>
+                                                        <p class="mb-0 fs-3" id="username1">
+
+
+                                                              
+                                                                 
+                                                        </p>
                                                     </a>
                                                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                                                         <i class="ti ti-mail fs-6"></i>
@@ -234,6 +255,14 @@
         });
 
     </script>
+    <!--menu toggle-->
+        <script>
+            $(document).ready(function () {
+                $("#drop2").click(function () {
+                 $(".login").toggle();
+                });
+            });
+        </script>
 
     <script>
 
@@ -245,6 +274,7 @@
     </script>
     <!--table navigation scripts-->
     @*<script src="https://code.jquery.com/jquery-3.7.0.js"></script>*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/colreorder/1.5.1/js/dataTables.colReorder.min.js"></script>
@@ -259,7 +289,31 @@
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
-
+    <script>
+        $(document).ready(function () {
+            var data = @Html.Raw(Json.Serialize(userData));
+               
+         var result=JSON.parse(data);
+            var divElement1 = document.getElementById("username");
+            var divElement = document.getElementById("username1");
+            // Modify the content of the div
+            divElement1.innerHTML = result.FirstName + " "  result.LastName;
+            divElement.innerHTML1 = result.FirstName + " "   + result.LastName;
+                // Make an AJAX GET request
+                // $.ajax({
+                // url: '/home/GetSessionData', // Example URL
+                //     method: 'GET',
+                //     success: function (data) {
+                //         console.log(data)
+                //     },
+                //     error: function (xhr, status, error) {
+                //         // Handle errors
+                //         console.error('AJAX Error:', status, error);
+                //     }
+                // });
+            
+        });
+    </script>
 </body>
 
 </html>

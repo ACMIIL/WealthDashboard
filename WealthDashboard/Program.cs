@@ -72,6 +72,11 @@ app.UseEndpoints(endpoints =>
            areaName: "WP_Registration",
            pattern: "{area:exists}/{controller}/{action}/{id?}"
          );
+    endpoints.MapAreaControllerRoute(
+          name: "Dashboard",
+          areaName: "Dashboard",
+          pattern: "{area:exists}/{controller}/{action}/{id?}"
+        );
 });
 //
 
