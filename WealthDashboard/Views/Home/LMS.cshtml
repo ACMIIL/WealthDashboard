@@ -1,0 +1,407 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>TWP</title>
+    <link rel="canonical" href="" />
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="" rel="icon">
+    <link href="" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+ 
+
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/styles.min.css" rel="stylesheet" />
+
+    <script src="~/js/bootstrap.bundle.js"></script>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/jquery.js"></script>
+
+
+    <link href="~/css/wpregistrationcss/slick.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/slick-theme.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
+</head>
+
+<body>
+ 
+    <div class="container-fluid">
+        <div class="col-lg-12">
+    <div class="card" id="tasksList">
+        <div class="card-header border-0">
+            <div class="d-flex align-items-center">
+                <h5 class="card-title mb-0 flex-grow-1">Lead Managment System</h5>
+                <div class="flex-shrink-0 d-flex flex-wrap gap-2 hstack">
+                    <button class="btn btn-danger add-btn" data-bs-toggle="modal" data-bs-target="#showModal"
+                        (click)="openModal(content)"><i class="ri-add-line align-bottom me-1"></i> Create
+                        Lead</button>
+                        <div class="hstack gap-2 justify-content-end">
+                
+                            <button type="submit" class="btn btn-primary" (click)="downloadExcel()">Download Report</button>
+                            <input type="file"  class="btn btn-success" (change)="onFileSelected($event)" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                            
+                            <!-- <button  type="submit" class="btn btn-success" (click)="BulkUplaodExcel()">Bulk upload</button>  -->
+                        </div>
+                    <!-- <button class="btn btn-soft-danger" id="remove-actions" style="display: none"
+                        (click)="deleteMultiple(deleteModel)"><i class="ri-delete-bin-2-line"></i></button> -->
+                </div>
+            </div>
+        </div>
+      
+        <div class="card-body">
+            <div class="table-responsive table-card mb-2">
+                <table class="table">
+                    <thead>
+                        <tr class="bg-light text-muted">
+
+
+                            <th class="sort" (click)="onSort('Customer_Name')">Name</th>
+                            <th class="sort" (click)="onSort('mobile')">Mobile</th>
+                            <th class="sort" (click)="onSort('email')">Email</th>
+                            <th class="sort" (click)="onSort('Pan')">Pancard</th>
+                            <th class="sort" (click)="onSort('email')">Interested in</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
+                        <tr>
+
+                            <td>
+                               Customer Name
+                            </td>
+                            <td>
+                             Mobile
+                            </td>
+                            <td>
+                              Email
+                            </td>
+                            <td>
+                                Pan
+                            </td>
+                            <td>
+                               Interested In
+                            </td>
+
+                            <td>
+                                <button class="btn btn-primary add-btn" data-bs-toggle="modal" data-bs-target="#showModal">
+                                    <i class="ri-add-line align-bottom me-1"></i> On Board
+                                </button>
+                            </td>
+
+
+                        </tr>
+                        <!-- } -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="row justify-content-md-between align-items-md-center">
+                <!-- Pagination -->
+           
+<div class="row justify-content-md-between align-items-md-center">
+    <!-- Pagination -->
+<div class="pagination">
+
+</div>
+
+    <div class="align-items-center mt-4 pt-2 justify-content-between d-md-flex">
+        <div class="col flex-shrink-0">
+        </div>
+        <ul class="pagination pagination-separated pagination-sm mb-0">
+            <li class="page-item disabled">
+                <pagination-controls (pageChange)="page=$event"></pagination-controls>
+            </li>
+        </ul>
+    </div>
+    <!-- End Pagination -->
+</div>
+             
+            </div>
+            <!--end card-body-->
+        </div>
+        <!--end card-->
+    </div>
+    <!--end col-->
+    <div id="elmLoader">
+        <div class="spinner-border text-primary avatar-sm" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
+<!--end row-->
+
+        <div class ="modal faid" id="AddClientModel" tabindex="-1" aria-labelledby="declarationModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+    <div class="modal-header p-3 bg-info-subtle">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Client</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"
+            (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <form (ngSubmit)="saveLead()" [formGroup]="leadForm" class="tablelist-form" autocomplete="off">
+        <div class="modal-body">
+
+            <div class="row g-3">
+              <div class="col-lg-12">
+                  <div class="form-group">
+                        <label><h6>Name</h6></label>
+                        <input type="text" formControlName="name" class="form-control" maxlength="225"
+                            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
+                        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                            <div *ngIf="f['name'].errors['required']">Name is required</div>
+
+
+                        </div>
+                   </div>
+                </div>
+                <div class="col-lg-12">
+                    <label>Email Id</label>
+                 <input type="text" formControlName="email" class="form-control" maxlength="225"
+                     [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+                 <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                     <div *ngIf="f['email'].errors['required']">Email is required</div>
+                     <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                  </div>
+             </div>
+
+           
+                <div class="col-lg-6">
+                       <div class="form-group">
+                        <label>Phone number</label>
+                        <input type="number" formControlName="mobile" maxlength="10" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['mobile'].errors }" />
+                        <div *ngIf="submitted && f['mobile'].errors" class="invalid-feedback">
+                            <div *ngIf="f['mobile'].errors['required']">Mobile is required</div>
+                            <div *ngIf="f['mobile'].errors['pattern']">Invalid mobile number </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="col-lg-6">
+                    <label>PAN Number</label>
+                 <input type="text" formControlName="pan" class="form-control" maxlength="10"
+                     [ngClass]="{ 'is-invalid': submitted && f['pan'].errors }" />
+                 <div *ngIf="submitted && f['pan'].errors" class="invalid-feedback">
+                     <div *ngIf="f['pan'].errors['required']">Pan is required</div>
+                     <div *ngIf="f['pan'].errors['pan']">Pan is invalid</div>
+                  </div>
+             </div>
+            
+               <div class="col-lg-12">
+                    <label for="Name-field" class="form-label">Interested Products</label>
+                    <ng-multiselect-dropdown [placeholder]="'Interested In'" [settings]="settings" [data]="dropdownList"
+                        [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)"
+                        (onSelectAll)="onSelectAll($event)" formControlName="Interested">
+                    </ng-multiselect-dropdown>
+                </div>
+           </div>
+            <!--end row-->
+        </div>
+        <div class="modal-footer">
+            <div class="hstack gap-2 justify-content-end">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal"
+                    (click)="modal.close('Close click')">Close</button>
+                <button type="submit" class="btn btn-success" id="add-btn">Add Client</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+        <div class="modal fade" id="CreateLeadModel" tabindex="-1" aria-labelledby="declarationModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+    <div class="modal-header p-3 bg-info-subtle">
+        <h5 class="modal-title" id="exampleModalLabel">Create Lead</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"
+            (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <form>
+        <div class="modal-body">
+
+            <div class="row g-3">
+              <div class="col-lg-12">
+                  <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" formControlName="name" class="form-control" maxlength="225"
+                            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
+                        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                            <div *ngIf="f['name'].errors['required']">Name is required</div>
+
+
+                        </div>
+                   </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                          <label>Pan</label>
+                          <input type="text" formControlName="pan" class="form-control" maxlength="10"
+                              [ngClass]="{ 'is-invalid': submitted && f['pan'].errors }" />
+                          <div *ngIf="submitted && f['pan'].errors" class="invalid-feedback">
+                              <div *ngIf="f['pan'].errors['required']">Name is required</div>
+  
+  
+                          </div>
+                     </div>
+                  </div>
+                <div class="col-lg-12">
+                       <div class="form-group">
+                        <label>Mobile</label>
+                        <input type="number" formControlName="mobile" maxlength="10" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['mobile'].errors }" />
+                        <div *ngIf="submitted && f['mobile'].errors" class="invalid-feedback">
+                            <div *ngIf="f['mobile'].errors['required']">Mobile is required</div>
+                            <div *ngIf="f['mobile'].errors['pattern']">Invalid mobile number </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-12">
+                       <label>Email</label>
+                    <input type="text" formControlName="email" class="form-control" maxlength="225"
+                        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+                    <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                        <div *ngIf="f['email'].errors['required']">Email is required</div>
+                        <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                     </div>
+                </div>
+               <div class="col-lg-12">
+                    <label for="Name-field" class="form-label">Interested In</label>
+                    <ng-multiselect-dropdown [placeholder]="'Interested In'" [settings]="settings" [data]="dropdownList"
+                        [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)"
+                        (onSelectAll)="onSelectAll($event)" formControlName="Interested">
+                    </ng-multiselect-dropdown>
+                </div>
+           </div>
+            <!--end row-->
+        </div>
+        <div class="modal-footer">
+            <div class="hstack gap-2 justify-content-center">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal"
+                    (click)="modal.close('Close click')">Close</button>
+                <button type="submit" class="btn btn-success" id="add-btn">Add Lead</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+        <div class="modal fade" id="OnBoardModel" tabindex="-1" aria-labelledby="declarationModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+    <div class="modal-header p-3 bg-info-subtle">
+        <h5 class="modal-title" id="exampleModalLabel">On Board</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"
+            (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body text-center">
+            <button type="submit" class="btn btn-success me-2" (click)="NonDemat(NonDematModal)">Non-Demat</button>
+            <button type="submit" class="btn btn-success me-2" (click)="OpenDemat()">Only MF</button>
+            <button type="submit" class="btn btn-success me-2" (click)="OpenDemat()">Trading</button>
+        
+    </div>
+
+</div>
+
+        <div class="modal fade" id="pandetailspopup" tabindex="-1" aria-labelledby="declarationModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+    <div class="modal-header p-3 bg-info-subtle">
+        <h5 class="modal-title" id="exampleModalLabel">On Board</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"
+            (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <form  [formGroup]="OnBoardND" class="tablelist-form" autocomplete="off">
+        <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-6">
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>  
+                            <input class="form-control" type="text" id="SetEmail" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <div class="mb-3">
+                            <label  class="form-label">Mobile</label>  
+                            <input type="text" id="SetMobile" readonly  class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <div class="mb-3">
+                            <label  class="form-label">Pancard</label>
+                            <input type="text" id="SetPancard" readonly  class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <div class="mb-3">
+                            <label  class="form-label">Name</label>
+                            <input type="text" id="SetName" readonly  class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-12">
+                        <div class="mb-3">
+                            <label  class="form-label">Interested In</label>
+                            <input type="text" id="SetInterstedIn" readonly  class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <div class="mb-3">
+                            <label  class="form-label">Enter Mobile otp</label>
+                            <input type="text" id="SetMobileOtp"  class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <div class="mb-3">
+                            <label  class="form-label">Enter Email otp</label>
+                            <input type="text" id="SetEmailOtp"  class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-12 text-center mt-2">
+                        <div class="mb-3">
+                            <button (click)="SentOtp()"  *ngIf="!ShowSubmitButton" class="btn btn-primary">Sent Otp</button>
+                            <button (click)="AddNonDemat()" *ngIf="ShowSubmitButton"class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>                
+                
+            </div>     
+        </div>
+    </form>
+
+</div>
+
+
+
+ 
+
+
+
+
+
+    
+<script src="~/js/wpregistration/jquery.min.js"></script>
+<script src="~/js/wpregistration/slick.js"></script>
+<script src="~/js/wpregistration/slick.min.js"></script>
+<script src="~/js/wpregistration/bootstrap.bundle.min.js"></script>
+<!---for Angular js---->
+
+<script src="~/angularjs/toast/angular.min.js"></script>
+<script src="~/angularjs/toast/angular-animate.min.js"></script>
+<link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
+<script src="~/angularjs/tosters/toaster.js"></script>
+<!-- Template Main JS File -->
+
+
+<script src="~/js/wpregistration/main.js"></script>
+</body>
+</html>
+
+

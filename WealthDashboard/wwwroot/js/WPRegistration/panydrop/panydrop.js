@@ -129,8 +129,11 @@
             var acc = $scope.accountno;
            
             if (acc.length < 1) {
-               
+
                 $scope.invalidAcc = 1;
+            }
+            else {
+                $scope.invalidAcc = 0;
             }
            
         };
@@ -143,7 +146,9 @@
             if (name.length < 1) {
                 $scope.invalidname = 1
             }
-         
+            else {
+                $scope.invalidname = 0
+            }
 
         };
 
@@ -151,8 +156,11 @@
            
             var ifsc = $scope.IFSCCode;
           
-           if (ifsc.length < 1) {
+            if (ifsc.length < 1) {
                 $scope.invalidIFSC = 1
+            }
+            else {
+                $scope.invalidIFSC = 0
             }
 
         };
