@@ -83,5 +83,10 @@ namespace WealthDashboard.Areas.WP_Registration.Controllers
         public IActionResult PanyDrop()
         { return View(_configuration); }
 
+        public IActionResult UploadPersonalData()
+        { 
+            return View(_configuration); 
+        }
+
     }
 }
