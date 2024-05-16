@@ -4,8 +4,7 @@
 angular.module('main', ['ngAnimate', 'toaster'])
     .controller('myController', function ($scope, toaster, $location, $window, $http) {
         $scope.isvalied = false;
-       //   var BaseURL = "https://localhost:7222/";
-        //var  BaseURL="https://devwealthmaapi.investmentz.com/";
+
         var hostUrl = window.location.href
        
         $scope.sendOTP = function () {
