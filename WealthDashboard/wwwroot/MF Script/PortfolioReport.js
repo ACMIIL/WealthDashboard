@@ -10,6 +10,9 @@ function GetPortfolioData() {
             ClientName: "MOHMADTALHA MUSTAKBHAI SHEIKH",
             PanNo: "FVBPS9933K",
             group: "folioid"
+            //ClientName: "DILIP ALGU CHAUHAN",
+            //PanNo: "AXCPC8054B",
+            //group: "folioid"
         },
         success: function (data) {
             console.log(data);
@@ -97,7 +100,7 @@ function GetPortfolioData() {
                                                     '</button>' +
                                                     '<div class="dropdown-menu dropdown-menu-end" style="">' +
                                                         '<a class="dropdown-item" data-schemedata="' + encodeURIComponent(JSON.stringify(value)) +'" onclick="AdditionalPurchase(this);" ><i class="ri-eye-fill align-bottom me-2 text-muted"></i>Buy More</a>' +
-                                                        '<a class="dropdown-item" data-schemedata="' + encodeURIComponent(JSON.stringify(value)) +'" onclick="Switch(this);"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i>Switch</a>' +
+                                                        //'<a class="dropdown-item" data-schemedata="' + encodeURIComponent(JSON.stringify(value)) +'" onclick="Switch(this);"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i>Switch</a>' +
                                                         '<a class="dropdown-item" data-schemedata="' + encodeURIComponent(JSON.stringify(value)) +'" onclick="Redeem(this);"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i>Redeem</a>' +
                                                     '</div>' +
                                                 '</div>' +
@@ -130,7 +133,10 @@ function GetPortfolioData() {
 function AdditionalPurchase(data) {
     var decodedData = decodeURIComponent(data.dataset.schemedata);
     var jsonObject = JSON.parse(decodedData);
-    console.log(jsonObject);
+    localStorage.setItem('FolioNo', jsonObject.folioNo);
+    sessionStorage.setItem("ISIN", jsonObject.isinNo);
+    window.location.href = CommonWebsiteURL + 'MutualFund/InvestNow';
+    //console.log(jsonObject);
 }
 
 function Switch(data) {
@@ -143,6 +149,13 @@ function Redeem(data) {
     var decodedData = decodeURIComponent(data.dataset.schemedata);
     var jsonObject = JSON.parse(decodedData);
     console.log(jsonObject);
+    localStorage.setItem("schemedata", data.dataset.schemedata);
+    localStorage.setItem("FolioNo", jsonObject.folioNo);
+    //localStorage.setItem("SchemeId",jsonObject);
+    localStorage.ISIN1=jsonObject.isinNo;
+
+    window.location.href = CommonWebsiteURL + 'MutualFund/Redeemswp';
+    
 }
 
 function detailPort(data) {

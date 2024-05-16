@@ -99,7 +99,7 @@ function GetInvestNow(event) {
     const ISIN = event.currentTarget.id;
     const values = event.currentTarget.dataset.encschemdetails;
     sessionStorage.setItem("ISIN", ISIN);
-    sessionStorage.setItem("FolioNo", null);
+    localStorage.setItem("FolioNo", null);
 
     // Save the clicked data in sessionStorage for later use
     sessionStorage.setItem("selectedFund", values);  

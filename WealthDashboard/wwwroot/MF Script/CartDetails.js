@@ -562,7 +562,7 @@ function mergeObjects(obj1, obj2) {
 function checksamepaymentgatway() {
     sameentry = true;
     $.each(CartDetails[0], function (index, value) {
-        if (CartDetails[0][0].paymentMode != value.paymentMode) {
+        if (CartDetails[0][index].paymentMode != value.paymentMode) {
             sameentry = false;
             return sameentry;
         }
