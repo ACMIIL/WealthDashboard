@@ -1,0 +1,306 @@
+﻿
+@{
+    ViewData["Title"] = "Redeemswp";
+    Layout = "~/Views/Shared/_LayoutMF.cshtml";
+}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BA Dashboard</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="" type="~/image/png" href="" />
+    <link rel="stylesheet" href="~/css/styles.min.css" />
+    <link rel="stylesheet" href="~/css/ba-style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+
+<body id="" class="body-pd">
+
+
+    <input type="hidden" id="UCC" />
+    <input type="hidden" id="BACode" />
+    <input type="hidden" id="hiddenmandateamt" />
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="bg-color" style="min-height: 100vh;">
+        <div class="row">
+            <div class="col-md-12 col-12">
+
+                <div class="new-card p-4">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <!--first coloum-->
+                            <div class="col-md-6 col-12 card">
+                                <!-- Mutual Fund Cart -->
+                                <div class="font-18 margin-top-12">Mutual Fund Redeem</div>
+                                <div class="col-md-12 mt-4">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="reddenswpnm" id="inlineRadio1" value="option1" checked>
+                                        @* <a class="form-check-label font-14-500" name="inlineRadio1" for="inlineRadio1">SIP</a> *@
+                                        <label class="form-check-label font-14-500" name="inlineRadio1" for="inlineRadio1">Redeem</label>
+                                    </div>
+                                    <div class="form-check form-check-inline ms-5">
+                                        <input class="form-check-input" type="radio" name="reddenswpnm" id="inlineRadio2" value="option2">
+                                        @* <a class="form-check-label font-14-500" name="inlineRadio2" for="inlineRadio2">Lumpsum</a> *@
+                                        <label class="form-check-label font-14-500" name="inlineRadio2" for="inlineRadio2">SWP</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4" id="paymentmodediv">
+                                    @* <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="RadioOptions" id="PaymentGatewayLumpsum" value="option1" checked>
+                                    <label class="form-check-label font-14-500" name="PaymentGatewayLumpsum" for="PaymentGatewayLumpsum"> Payment Gateway</label>
+                                    </div>
+                                    <div class="form-check form-check-inline ms-5">
+                                    <input class="form-check-input" type="radio" name="RadioOptions" id="MandateLumpsum" value="option2">
+                                    <label class="form-check-label font-14-500" name="MandateLumpsum" for="MandateLumpsum">Mandate</label>
+                                    </div> *@
+                                </div>
+                                <!-- Section 1 -->
+                                <div class="row gx-4" style="display:none" id="SWPDIV">
+                                    <div class="row">
+                                        <div class="col-md-6 mt-4">
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Frequency <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example" id="Frequency">
+                                                    <option selected>select Frequency</option>
+                                                    @* <option value="1">DAILY</option> *@
+                                                    <option selected value="MONTHLY">MONTHLY</option>
+                                                    @* <option value="3">QUARTERLY</option> *@
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mt-4">
+                                            <div class="mb-3">
+                                                <label for="sipDateField" class="form-label">SWP Start Date <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example" id="SWPDate">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mt-2">
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">No. installment</label>
+                                                <input type="text" class="form-control" id="SWPInstallment">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mt-2">
+                                        <div class="mb-3">
+                                        <label for="sipDateField" class="form-label">SIP End Date <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="endmonth">
+                                        </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12 mt-2">
+                                        <div class="mb-3">
+                                                <label for="sipDateField" class="form-label">Select Volume</label>
+                                                <select class="drop-down2 boxborder boxborder form-control rounded-0 ps-2" id="myselectionSWP">
+                                                    <option>Select Volume</option>
+                                                    <option value="SWP-Amount">Amount</option>
+                                                </select>
+                                        </div>
+                                            <div class="myDivSWP mb-3" style="display:none" id="showSWP-Amount">
+                                                <label for="sipDateField" class="form-label">Withdrawal Amount (Min Amount Rs <span id="SWPMinAmt"></span>)</label>
+                                                <input type="text" id="SWPAmount" class="form-control" max="Infinity" min="0" placeholder="Enter Units" value="">
+                                            </div>
+                                        </div>
+
+                                        <div class=" col-md-12 mt-2">
+                                            <div class="mb-3">
+                                                <label for="sipDateField" class="form-label">Generate First Order Today</label>
+                                                <input type="checkbox" id="FirstOrderToday" style="width: 20px; height: 20px; position: relative; top: 5px;">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 mt-4">
+                                            @* <button type="button" class="btn btn-Add-Scheme col-md-4">Add Scheme</button> *@
+                                            <button id="SWPInsert" type="button" class="btn btn-buy-now col-md-4">Proceed</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Section 2 -->
+                                <div class="row gx-4" style="" id="ReedemDiv">
+
+                                    <div class="row">
+                                        <div class="col-md-6 mt-4">
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Select Volume</label>
+                                                <select class="drop-down2 boxborder boxborder form-control rounded-0 ps-2" id="RedeemVolume">
+                                                    <option value="">Select Volume</option>
+                                                    <option value="Two">Amount</option>
+                                                    <option value="three">Units</option>
+                                                    <option value="One">All Units</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mt-4 myDiv" style="display:none" id="showTwo">
+                                            <label for="exampleFormControlInput1" class="form-label">Withdrawal Amount(Min Rs.<span id="MinAmt"></span>, in multiples of <span id="AmtMultiples"></span>)</label>
+                                            <input type="text" id="RedeemAmt" class="boxborder boxborder form-control rounded-0 ps-2" max="Infinity" min="0" placeholder="Enter Units" value="">
+                                        </div>
+                                        <div class="col-md-6 mt-4 myDiv" style="display:none" id="showthree">
+                                            <label for="exampleFormControlInput1" class="form-label">Withdrawal Units (Min Unit <span id="MinUnit"></span>, in multiples of <span id="MinMulti"></span>)</label>
+                                            <input type="text" id="RedeemUnit" class="boxborder boxborder form-control rounded-0 ps-2" max="Infinity" min="0" placeholder="Enter Units" value="">
+                                        </div>
+                                        <div class="col-md-6 mt-4 myDiv" style="display:none" id="showOne">
+                                            <label for="exampleFormControlInput1" class="form-label">Withdrawal AllUnits</label>
+                                            <input type="text" id="RedeemAllUnit" class="boxborder boxborder form-control rounded-0 ps-2" max="Infinity" min="0" placeholder="Enter Units" value="">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 mt-4">
+                                            @* <button type="button" class="btn btn-Add-Scheme col-md-4">Add Scheme</button> *@
+                                            <button id="InsertRedeem" type="button" class="btn btn-buy-now col-md-4">Proceed</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4 p-0">
+                                    <div class="col-md-12">
+                                        <label class="labelcheck title-sub4 m-top m-bottom0 ps-3">
+                                            <input type="checkbox" id="TermsChk" style="width: 20px; height: 20px; position: relative; top: 5px;"><span class="checkmark"></span>&nbsp;<span class="textleabel1">I agree to <a href="/MFHome/termsandconditions" class="term-test1" style="font-size: 13px;"> Terms Conditions, Disclaimer &amp; Privacy Policy</a></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal" id="RedeemOtpTab" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-popup1">
+            <div class="modal-content mt-4">
+                <div class="modal-header">
+                    <a id="btn-search-close" class="btn-search-close" aria-label="Close search form" style="float: right; font-size: 25px; cursor: pointer;">
+                        <i class="icon-x"></i>
+                    </a>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="row m-0 pt-2" @*id="RedeemOtpTab" style="display:none;"*@>
+                        <div class="col-md-3 ps-0 pt-2">
+                            <label class="mb-number1"><span id="RDMFirstHolderNo"></span></label>
+                        </div>
+                        <div class="col-md-3 ps-0">
+                            <input type="text" maxlength="6" id="RDMFirstOtp" placeholder="Enter OTP" oninput="OTPValidation(this)" class="form-control" autocomplete="off" onkeypress="if(this.value.length==6) return false;">
+                            <label id="RDMerrorFirstOtp" style="color: #f00; font-size: 12px; font-weight:400;"></label>
+                        </div>
+                        <div class="col-md-2 ps-0 pt-2">
+                            <i class="fa fa-check" id="FirstOTPVerify" style="font-size:25px;color:green; display:none;"></i>
+                            @* <button class="verify-list" id="FirstOTPVerify">Verify</button> *@
+                        </div>
+                        @* <div class="col-md-2 ps-0 pt-2">
+                            <button class="verify-list" id="RDMFirstOTPVerify">Verify</button>
+                        </div> *@
+                        <div class="col-md-1 pe-0 ps-0 pt-2" id="RDMfirstresendcartotp">
+                            <a href="javascript:;" class="text-decoration-underline" onclick="RDMResendotpcart(1)" style="display:none">Resend</a>
+                        </div>
+                        <div class="col-md-3 ps-0 pt-2" id="RDMfirsttimercartdiv">
+                            <div class="timer-number">Resend in <span id="RDMfirsttimercart"></span></div>
+                        </div>
+                        <div class="mt-3">
+                            <button class="btn btn-primary FaFolio_button" id="RDMVerifyOTP">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="width: 377px;">
+            <div class="modal-content madal-bg-colour px-2">
+                <div class="modal-header justify-content-end">
+                    <button type="button" class="" data-bs-dismiss="modal" aria-label="Close" style="border: none;"><img src="images/close.png" style="width: 19px;height: auto;"></button>
+                </div>
+                <div class="modal-body pb-0">
+                    <div class="row">
+                        <div class="col-md-12 col-12 text-center">
+                            <img src="~/images/done-1.png" class="done1-logo">
+                        </div>
+                        <div class="col-md-12">
+                            <p class="modal-text text-center">
+                                Thank you for your response.
+                                Your response has been submitted successfully.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer mx-auto pt-0">
+                    <button type="button" class="btn modal-but" data-bs-dismiss="modal">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+
+            const showNavbar = (toggleId, navId, bodyId, headerId) => {
+                const toggle = document.getElementById(toggleId),
+                    nav = document.getElementById(navId),
+                    bodypd = document.getElementById(bodyId),
+                    headerpd = document.getElementById(headerId)
+
+                // Validate that all variables exist
+                if (toggle && nav && bodypd && headerpd) {
+                    toggle.addEventListener('click', () => {
+                        // show navbar
+                        nav.classList.toggle('show')
+                        // change icon
+                        toggle.classList.toggle('bx-x')
+                        // add padding to body
+                        bodypd.classList.toggle('body-pd')
+                        // add padding to header
+                        headerpd.classList.toggle('body-pd')
+                    })
+                }
+            }
+
+            showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+
+            /*===== LINK ACTIVE =====*/
+            const linkColor = document.querySelectorAll('.nav_link')
+
+            function colorLink() {
+                if (linkColor) {
+                    linkColor.forEach(l => l.classList.remove('active'))
+                    this.classList.add('active')
+                }
+            }
+            linkColor.forEach(l => l.addEventListener('click', colorLink))
+
+            // Your code to run since DOM is loaded and ready
+        });
+
+    </script>
+
+    <script>
+
+        $(document).ready(function () {
+            $(".toggle-button1").click(function () {
+                $(".card-panel2").toggle();
+            });
+        });
+    </script>
+    <!--table navigation scripts-->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script>new DataTable('#example');</script>
+</body>
+
+</html>
+<script src="~/mf script/reedemswp.js"></script>

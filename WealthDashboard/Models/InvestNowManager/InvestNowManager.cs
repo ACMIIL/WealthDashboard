@@ -63,7 +63,42 @@ namespace WealthDashboard.Models.InvestNowManager
             return getResult;
         }
 
+        public async Task<ResultModel> RedeemInsert(InsertRedeemOrderModel insertRedeemOrderModel)
+        {
+            ResultModel getResult = new ResultModel();
+            try
+            {
+                var requestContent = new StringContent
+                (
+                              JsonConvert.SerializeObject(insertRedeemOrderModel),
+                              Encoding.UTF8,
+                              StaticValues.ApplicationJsonMediaType
+                );
 
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Clear();
+                //client.DefaultRequestHeaders.Accept
+                //    .Add(new MediaTypeWithQualityHeaderValue(StaticValues.ApplicationJsonMediaType));
+                client.BaseAddress = new Uri(_appSetting.MFAPIBaseURL);
+                //Sending request to find web api REST service using HttpClient  
+                HttpResponseMessage response = await client
+                                   .PostAsync(APIUrl.RedeemInsert, requestContent);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var objResponse = await response.Content.ReadAsStringAsync();
+                    getResult = JsonConvert.DeserializeObject<ResultModel>(Convert.ToString(objResponse));
+
+                }
+
+                //return Msg;
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+            return getResult;
+        }
         public async Task<ResultModel> generatesrno(string ucc)
         {
             ResultModel getResult = new ResultModel();

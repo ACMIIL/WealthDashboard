@@ -56,7 +56,7 @@ function GetInvestNow1(data) {
     const ISIN = data.currentTarget.id;
     const values =  data.currentTarget.dataset.encschemdetails;
     sessionStorage.setItem("ISIN", ISIN);
-    sessionStorage.setItem("FolioNo", null);
+    localStorage.setItem("FolioNo", null);
 
     // Save the clicked data in sessionStorage for later use
     sessionStorage.setItem("selectedFund", values); 
