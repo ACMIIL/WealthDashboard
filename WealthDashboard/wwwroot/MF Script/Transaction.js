@@ -5,9 +5,9 @@
 function GetTransactionData() {
     var mydata = {
         "schemedropdownlist": "allvalue",
-        "clientcode": "3010098",
+        "clientcode": UCC,
         "loginRole": "C",
-        "bacode": "RC4048"
+        "bacode": RCCode
     }
 
     $.ajax({

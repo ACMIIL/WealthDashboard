@@ -11,9 +11,17 @@ namespace WealthDashboard.Areas.Dashboard.Controllers
        // [Route("dashboar/home")]
         public IActionResult Index()
         {
-          var data=   HttpContext.Session.GetString("userData" ).ToString();
-          var result = JsonConvert.DeserializeObject<UserData>(data);
-           //var userdetais=new UserData { FirstName=result.FirstName +" "+result.LastName+" "+ result.MiddleName,UserId= result.UserId};
+            try
+            {
+                //var data = HttpContext.Session.GetString("userData").ToString();
+                //var result = JsonConvert.DeserializeObject<UserData>(data);
+                //var userdetais=new UserData { FirstName=result.FirstName +" "+result.LastName+" "+ result.MiddleName,UserId= result.UserId};
+            }
+            catch (Exception ex)
+            {
+
+            }
+         
             return View();
         }
     }

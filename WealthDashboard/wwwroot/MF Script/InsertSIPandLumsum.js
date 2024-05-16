@@ -1,4 +1,4 @@
-﻿var FolioNo = null;
+﻿var FolioNo = localStorage.getItem("FolioNo");
 $(document).ready(function () {
 
     $("#BACode").val('RC4048');
@@ -52,8 +52,8 @@ function GetInvestNowDetails(ISIN) {
                 $("#MinAmount").html(data.data.sipMinInstallmentAmt);
                 $("#Multiples").html(data.data.sipMultiplierAmt);
                 $("#MinInstallments").html(data.data.sipMinInstallmentNo);
-                $("#LumpsumMinAmount").html(data.data.minPurchaseAmt);
-                $("#LumpsumMultiples").html(data.data.purchaseAmtMultiplier);
+                $("#LumpsumMinAmount").html(parseFloat(data.data.minPurchaseAmt).toFixed(2));
+                $("#LumpsumMultiples").html(parseFloat(data.data.purchaseAmtMultiplier).toFixed(2));
                 GetSIPDates(data.data.sipDates)
 
                 $("#DisplatSchemeDetails").html(content);
@@ -236,9 +236,9 @@ $("#SendlumpsumdataCart").click(function () {
     if (FolioNo == null) {
         FolioNo = "";
     }
-    //else {
-    //    FolioNo = FolioNo
-    //}
+    else {
+        FolioNo = FolioNo
+    }
 
     var data = JSON.parse(decodeURIComponent(sessionStorage.selectedFund));
 
@@ -339,3 +339,4 @@ function checkmandatefn() {
         return false;
     }
 }
+

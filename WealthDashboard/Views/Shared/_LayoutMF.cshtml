@@ -8,10 +8,17 @@
     try
     {
         userData = Context.Session.GetString("userData");
+
+        if(userData == null)
+        {
+            
+            @Html.ActionLink("http://localhost:52206/home/index","link");
+        }
     }
     catch {
 
-       // window.location.assign('/Dashboard/Dashboard/index');
+        @Html.ActionLink("index", "home");
+        
     }
 
 }
@@ -198,7 +205,7 @@
             </div>
         </nav>*@
         <div class="py-4">
-            <a class="calendar-tab-mf active me-2" href="Screener">Screener</a>
+            <a class="calendar-tab-mf active me-2" href="/MutualFund/Screener">Screener</a>
             <a class=" calendar-tab-mf me-2" href="AdvicedFund">Advised Funds</a>
             @*<a class=" calendar-tab-mf me-2">NFO</a>*@
             <a class=" calendar-tab-mf me-2" href="Transaction">Transactions</a>  
@@ -296,13 +303,18 @@
     <script>
         $(document).ready(function () {
             var data = @Html.Raw(Json.Serialize(userData));
-               
+
+            if(data === null || data === undefined)
+            {
+                window.location.href = '/Home/Index';
+            }
+
          var result=JSON.parse(data);
             var divElement1 = document.getElementById("username");
-            var divElement = document.getElementById("username1");
+            var divElement2 = document.getElementById("username1");
             // Modify the content of the div
-            divElement1.innerHTML = result.FirstName + " "  result.LastName;
-            divElement.innerHTML1 = result.FirstName + " "   + result.LastName;
+            divElement1.innerHTML = result.FirstName + " " + result.LastName;
+            divElement2.innerHTML = result.FirstName + " "   + result.LastName;
                 // Make an AJAX GET request
                 // $.ajax({
                 // url: '/home/GetSessionData', // Example URL

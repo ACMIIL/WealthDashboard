@@ -80,5 +80,9 @@ namespace WealthDashboard.Controllers
         {
             return View();
         }
+        public IActionResult Redeemswp()
+        {
+            return View();
+        }
     }
 }

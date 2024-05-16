@@ -28,5 +28,13 @@ namespace WealthDashboard.Controllers
             return Json(getCheckOutsideDPdata);
         }
 
+        [HttpPost]
+        public async Task<JsonResult> RedeemInsert([FromBody] InsertRedeemOrderModel insertRedeemOrderModel)
+        {
+            var InsertDetails = await _investNowManager.RedeemInsert(insertRedeemOrderModel);
+            return Json(InsertDetails);
+
+        }
+
     }
 }
