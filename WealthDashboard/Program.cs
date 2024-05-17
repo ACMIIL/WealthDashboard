@@ -16,7 +16,6 @@ builder.Services.AddTransient<IOrderOthenticationManager, OrderOthenticationMana
 builder.Services.AddTransient<IPrimaryDetailsManager, PrimaryDetailsManager>();
 //Added By MF_journey
 builder.Services.AddEkycServices();
-
 builder.Services.Configure<Appsetting>(builder.Configuration.GetSection("AppSetting"));
 builder.Services.Configure<Connection>(builder.Configuration.GetSection("ConnectionStrings"));
 builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
@@ -34,6 +33,7 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

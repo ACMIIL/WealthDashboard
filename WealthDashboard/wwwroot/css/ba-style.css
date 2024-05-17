@@ -380,8 +380,7 @@ input.form-control.rounded-5.bg-light-gray.pt-2.pb-2 {
 .nav {
   height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
   overflow: hidden;
 }
 
