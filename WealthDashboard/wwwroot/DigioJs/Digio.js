@@ -192,7 +192,7 @@ function PanandPersonalSubmit() {
                 PersonalDetailsId: 0,
                 RegistrationId: registartionid,
                 Title: parseInt(title),
-                Bacode: "RC115",
+                Bacode: "RC5555",
                 ClientFullName: name,
                 ClientFirstName: firstname,
                 ClientMiddleName: middlename,

@@ -404,7 +404,7 @@ namespace WealthDashboard.Areas.EKYC_MFJourney.Controllers
                                         xdocument.Close();
                                         Blank_FileStream.Dispose();
                                         Blank_FileStream.Close();
-                                        message = "Normal PDF Error : " + model.PrimaryDetailsModel.InwardNo + " Documents not found.";
+                                        message = "MF PDF Error : " + model.PrimaryDetailsModel.InwardNo + " Documents not found.";
                                         _logger.LogError(message);
                                         return Json(message);
                                     }
@@ -429,7 +429,7 @@ namespace WealthDashboard.Areas.EKYC_MFJourney.Controllers
                                     Blank_FileStream.Dispose();
                                     Blank_FileStream.Close();
                                     xdocument.Close();
-                                    message = "Normal  PDF Error :Proof not found on server";
+                                    message = "MF  PDF Error :Proof not found on server";
                                 }
                             }
                             pdfReader.Close();
@@ -447,7 +447,8 @@ namespace WealthDashboard.Areas.EKYC_MFJourney.Controllers
                             Blank_FileStream.Dispose();
                             Blank_FileStream.Close();
                             xdocument.Close();
-                            return Json("Fail Error : " + ex.Message.ToString());
+                            message = "Fail Error : " + ex.Message.ToString();
+                            return Json(message);
                         }
                     }
                     xdocument.Close();
@@ -458,7 +459,7 @@ namespace WealthDashboard.Areas.EKYC_MFJourney.Controllers
             else
             {
                 _logger.LogError("Data Not Found");
-                message = "Data Not Found";
+                message = "Error: Data Not Found";
                 return Json(message);
             }
         }

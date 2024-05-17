@@ -1,7 +1,9 @@
 ﻿let timerOn = true;
 var Mobileotp = "";
-$(document).ready(function () {
-   
+
+$(document).ready(function () {    
+    document.getElementById('txtMobileNumber').value = $('#MobileNumber').val();   
+    CheckMobileExistsOrNot();
 });
 
 $('#txtMobileNumber').on("cut copy paste", function (e) {
@@ -18,7 +20,10 @@ $('#terms').click(function () {
 
 function SendMobileOtp() {
     var Mobilenumber = document.getElementById('txtMobileNumber').value
-    var EmailId = "";
+    var EmailId = "";   
+    if (!Mobilenumber) {        
+        return;
+    }
     $.ajax({
         type: 'POST',
         url: CommonPageURL + "Login/GenerateMobileOTP",

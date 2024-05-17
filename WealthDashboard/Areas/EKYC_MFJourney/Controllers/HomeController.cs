@@ -11,6 +11,9 @@ using WealthDashboard.Areas.EKYC_MFJourney.Models.Login;
 using WealthDashboard.Areas.EKYC_MFJourney.Models.SegmentManager;
 using WealthDashboard.Areas.EKYC_MFJourney.Models.SegmentModel;
 using WealthDashboard.Configuration;
+using WealthDashboard.Models;
+using ErrorViewModel = WealthDashboard.Areas.EKYC_MFJourney.Models.ErrorViewModel;
+using StaticValues = WealthDashboard.Areas.EKYC_MFJourney.Models.Common.StaticValues;
 
 namespace WealthDashboard.Areas.EKYC_MFJourney.Controllers
 {
@@ -35,26 +38,35 @@ namespace WealthDashboard.Areas.EKYC_MFJourney.Controllers
         {
             return View();
         }
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+
         public IActionResult LoginView()
         {
             UCCTempModel mUCCTempModel = new UCCTempModel();
+            var sourceType = HttpContext.Request.Query["sourceType"];
+            var encWPCode = HttpContext.Request.Query["WPCode"];
+            var encMobNo = HttpContext.Request.Query["MobNo"];
+            var encBACode = HttpContext.Request.Query["rc_code"];
+            mUCCTempModel.SourceType = sourceType;
 
-            mUCCTempModel.EncBACode = HttpContext.Request.Query["rc_code"];
-            mUCCTempModel.SourceType = HttpContext.Request.Query["Source"];
+            _logger.LogError("sourceType" + sourceType + " encencWPCode" + encWPCode + " encMobNo" + encMobNo + "Encrypted LMS Data");
 
-            if (mUCCTempModel.EncBACode == "" || mUCCTempModel.EncBACode == null)
+            if (sourceType == "LMS")
             {
-                mUCCTempModel.EncBACode = "0fG9SSKKfEI=";
+                mUCCTempModel.EncWPCode = encWPCode;
+                mUCCTempModel.EncMobNo = encMobNo;
+
+                if (!string.IsNullOrEmpty(encWPCode))
+                {
+                    mUCCTempModel.WPCode = Encryption.Decrypt(mUCCTempModel.EncWPCode.Replace(' ', '+'));
+                }
+                if (!string.IsNullOrEmpty(encMobNo))
+                {
+                    mUCCTempModel.MobNo = Encryption.Decrypt(mUCCTempModel.EncMobNo.Replace(' ', '+'));
+                }
             }
-            if (mUCCTempModel.SourceType != "" && mUCCTempModel.SourceType != null)
-            {
-                mUCCTempModel.SourceType = Encryption.Decrypt(mUCCTempModel.SourceType.Replace(' ', '+'));
-            }
+            mUCCTempModel.EncBACode = string.IsNullOrEmpty(encBACode) ? "0fG9SSKKfEI=" : encBACode;
             mUCCTempModel.BACode = Encryption.Decrypt(mUCCTempModel.EncBACode.Replace(' ', '+'));
+            mUCCTempModel.MobileNumber = mUCCTempModel.MobNo;
             return View(mUCCTempModel);
         }
 
@@ -198,9 +210,6 @@ namespace WealthDashboard.Areas.EKYC_MFJourney.Controllers
                 segmentUploadModel.isActive = true;
                 segmentUploadModel.userId = "";
                 #endregion
-
-
-
                 result = await _segmentManager.InsertOrUpdateClientUploadData(segmentUploadModel);
             }
 
@@ -215,9 +224,7 @@ namespace WealthDashboard.Areas.EKYC_MFJourney.Controllers
                 filePath1 = Path.Combine(path1, fileName1);
                 using (var stream3 = new FileStream(filePath1, FileMode.Create))
                 {
-
                     await uploadimageModel.CheckImage.CopyToAsync(stream3);
-
                 }
 
                 #region Set Data on segmentUploadModel obj
