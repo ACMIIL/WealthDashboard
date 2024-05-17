@@ -1,4 +1,4 @@
-﻿  @model Microsoft.Extensions.Configuration.IConfiguration
+﻿
 @{
     Layout = null;
 }
@@ -12,12 +12,12 @@
         if(userData == null)
         {
             
-            @Html.ActionLink("http://localhost:52206/home/index","link");
+    @Html.ActionLink("/home/index","link");
         }
     }
     catch {
 
-        @Html.ActionLink("index", "home");
+    @Html.ActionLink("index", "home");
         
     }
 
@@ -162,6 +162,10 @@
                                                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                                                         <i class="ti ti-list-check fs-6"></i>
                                                         <p class="mb-0 fs-3">My Task</p>
+                                                    </a> 
+                                                    <a href="/Dashboard/Dashboard/LMS" class="d-flex align-items-center gap-2 dropdown-item">
+                                                        <i class="ti ti-list-check fs-6"></i>
+                                                        <p class="mb-0 fs-3">Lead</p>
                                                     </a>
                                                     <a href="./authentication-login.html" class="btn btn-outline-Delete mx-3 mt-2 d-block">Logout</a>
                                                 </div>
@@ -204,20 +208,20 @@
                 </div>
             </div>
         </nav>*@
-        <div class="py-4">
+       @*  <div class="py-4">
             <a class="calendar-tab-mf active me-2" href="/MutualFund/Screener">Screener</a>
-            <a class=" calendar-tab-mf me-2" href="AdvicedFund">Advised Funds</a>
+            <a class=" calendar-tab-mf me-2" href="/MutualFund/AdvicedFund">Advised Funds</a>
             @*<a class=" calendar-tab-mf me-2">NFO</a>*@
-            <a class=" calendar-tab-mf me-2" href="Transaction">Transactions</a>  
-            <a class=" calendar-tab-mf me-2" href="PortfolioSummary">Portfolio Summary</a>
-            <a class=" calendar-tab-mf me-2" href="cartDetail">Cart</a>
+          @*   <a class=" calendar-tab-mf me-2" href="/MutualFund/Transaction">Transactions</a>
+            <a class=" calendar-tab-mf me-2" href="/MutualFund/PortfolioSummary">Portfolio Summary</a>
+            <a class=" calendar-tab-mf me-2" href="/MutualFund/cartDetail">Cart</a> *@
             @*<a class=" calendar-tab-mf me-2">Buy/SIP/STP</a>*@
             @*<a class=" calendar-tab-mf me-2">Redemption</a>*@
             @*<a class=" calendar-tab-mf me-2">Goal Planning</a>*@
-            @*<a class=" calendar-tab-mf me-2">Calculator</a>*@
-        </div>
+            @*<a class=" calendar-tab-mf me-2">Calculator</a>
+        </div> *@
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
                 @RenderBody()
         </main>
@@ -301,20 +305,26 @@
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
+
+       
+
+
+        var SessionData;
+       
         $(document).ready(function () {
-            var data = @Html.Raw(Json.Serialize(userData));
+           var data = @Html.Raw(Json.Serialize(userData));
 
             if(data === null || data === undefined)
             {
                 window.location.href = '/Home/Index';
             }
 
-         var result=JSON.parse(data);
+            SessionData = JSON.parse(data);
             var divElement1 = document.getElementById("username");
             var divElement2 = document.getElementById("username1");
             // Modify the content of the div
-            divElement1.innerHTML = result.FirstName + " " + result.LastName;
-            divElement2.innerHTML = result.FirstName + " "   + result.LastName;
+            divElement1.innerHTML = SessionData.FirstName + " " + SessionData.LastName;
+            divElement2.innerHTML = SessionData.FirstName + " " + SessionData.LastName;
                 // Make an AJAX GET request
                 // $.ajax({
                 // url: '/home/GetSessionData', // Example URL

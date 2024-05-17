@@ -1,0 +1,327 @@
+﻿@model Microsoft.Extensions.Configuration.IConfiguration
+@{
+    ViewData["Title"] = "Home Page";
+   Layout = "~/Views/Shared/_LayoutMF.cshtml";
+}
+
+
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.4/xlsx.full.min.js"></script>
+<link href="~/css/wpregistrationcss/slick.css" rel="stylesheet" />
+<link href="~/css/wpregistrationcss/slick-theme.css" rel="stylesheet" />
+@* <link href="~/angularjs/toast/toaster.css" rel="stylesheet" /> *@
+
+<!--  Sidebar End -->
+<!--  Main wrapper -->
+
+<style>
+    .togglelable{
+        font-size: 16px;
+    }
+</style>
+<div  ng-app="main" ng-controller="myController">
+
+   
+        <div class="row">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Create</button>
+                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" ng-click="FetchData()">View</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <strong style="color:slategray;">Add New Client</strong>
+                            
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+
+                               <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" ng-model="name" class="form-control floating-text-area" id="floatingInput">
+                                        <label for="floatingInput" style="color:#CAAA86;">Customer Name</label>
+                                    </div>
+                                </div>
+                               </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control floating-text-area" ng-model="PAN"
+                                               id="floatingInput" placeholder="31-12-1995" 
+                                         oninput="this.value = this.value.toUpperCase();removeWhitespace(this);blockSpecialCharacters(event)">
+                                        <label for="floatingInput" style="color: #CAAA86;">Permanent Account Number</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control floating-text-area" ng-model="Mobile" id="floatingInput" placeholder="31-12-1995">
+                                        <label for="floatingInput" style="color:#CAAA86;">Mobile Number</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control floating-text-area" ng-model="Email" id="floatingInput" placeholder="31-12-1995">
+                                        <label for="floatingInput" style="color:#CAAA86;">Email</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <p class="m-0" style="color:slategray;font-size: 18px;font-weight: 400;">Interested In</p><br />
+
+                                    <div class="card p-3">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" ng-model="chkMutualFund" id="chkMutualFund">
+                                                    <label class="form-check-label togglelable" for="chkMutualFund" >Mutual fund</label>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" ng-model="chkEquity" id="chkEquity" checked>
+                                                    <label class="form-check-label togglelable" for="chkEquity">Equity</label>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" ng-model="chkRMS" id="chkRMS">
+                                                    <label class="form-check-label togglelable" for="chkRMS">RMS</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" ng-model="chkAIF" id="chkAIF">
+                                                    <label class="form-check-label togglelable" for="chkAIF">AIF</label>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" ng-model="chkIBasket" id="chkIBasket">
+                                                    <label class="form-check-label togglelable" for="chkIBasket">IBasket</label>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" ng-model="chkFixedIncome" id="chkFixedIncome">
+                                                    <label class="form-check-label togglelable" for="chkFixedIncome">Fixed Income</label>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-sm-4">
+
+
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" ng-model="chkStartup" id="chkStartup">
+                                                    <label class="form-check-label togglelable" for="chkStartup">Start Up</label>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" ng-model="chkRealState" id="chkRealState" checked>
+                                                    <label class="form-check-label togglelable" for="chkRealState">Real estate</label>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" ng-model="chkFundraising" id="chkFundRaising">
+                                                    <label class="form-check-label togglelable" for="chkFundRaising">Fundraising</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                                
+
+                                
+
+                              
+
+
+                                
+
+                            </div>
+                        </div>
+                        <div class="hstack card-footer gap-2 justify-content-end">
+                        <button class="btn btn-primary" ng-click="importData()">Add Client</button>
+                        <input type="file" id="inputexcel" class="btn btn-success" ng-model="inputfile" accept=".xlsx,.xls" /> @* accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" /> *@
+                        @* <input type="file" ngf-select="uploadFiles($files)" accept=".xlsx,.xls"> *@
+                        
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+
+                <div class="card">
+                    <div class="card-header text-center">
+                        <strong style="color:slategray;">New Client Data</strong>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+
+                        
+                            <table class="table table-striped table-hover">
+                               <thead>
+                                   <tr>
+                                        <th>Customer</th>
+                                        <th>Email</th>
+                                        <th>Mobile Number</th>
+                                        <th>Pan Number</th>
+                                        <th>Interested In</th>
+                                        <th></th>
+                                   </tr>
+                               </thead>
+                               <tbody>
+                                    <tr ng-repeat="item in GetData">
+                                        <td>{{item.customer_Name}}</td>
+                                        <td>{{item.email}}</td>
+                                        <td>{{item.mobile}}</td>
+                                        <td>{{item.pan}}</td>
+                                        <td>{{item.interested_in}}</td>
+                                        <td><a href="#" ng-click="EmailSend(item.mobile)" class="btn btn-success">Email Send</a></td>
+
+                                     @*    <td><a href="/EKYC_MFJourney/home/loginview?WPCode={{agentcode}}&MobNo={{item.mobile}}" target="_blank" class="btn btn-success">Email Send</a></td> *@
+                                   </tr>
+                               </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+                    <div class="hstack card-footer gap-2 justify-content-end">
+                       
+                    </div>
+                </div>
+                
+                
+                </div>
+            </div>
+        </div>
+
+ 
+   
+</div>
+
+
+
+
+<script src="~/js/wpregistration/jquery.min.js"></script>
+<script src="~/js/wpregistration/slick.min.js"></script>
+<script src="~/js/wpregistration/slick.js"></script>
+
+@* <script src="~/js/wpregistration/bootstrap.bundle.min.js"></script>
+<script src="~/js/wpregistration/bootstrap.bundle.js"></script> *@
+<!-- Template Main JS File -->
+
+@* <script src="~/js/wpregistration/main.js"></script> *@
+<!---For Angular js-->
+<script src="~/angularjs/toast/angular.min.js"></script>
+<script src="~/angularjs/toast/angular-animate.min.js"></script>
+<script src="~/angularjs/toast/toaster.js"></script>
+<script src="~/angularjs/tosters/toaster.js"></script>
+<!-----Js File-->
+<script src="~/js/dashboard/lms/lms.js"></script>
+
+<script>
+    var DasboardAPIURL = '@Model["DashboardAPI:URL"]';
+    $(document).ready(function () {
+        toastr.options = {
+            'closeButton': true,
+            'debug': false,
+            'newestOnTop': false,
+            'progressBar': false,
+            'positionClass': 'toast-top-right',
+            'preventDuplicates': false,
+            'showDuration': '1000',
+            'hideDuration': '1000',
+            'timeOut': '5000',
+            'extendedTimeOut': '1000',
+            'showEasing': 'swing',
+            'hideEasing': 'linear',
+            'showMethod': 'fadeIn',
+            'hideMethod': 'fadeOut',
+        }
+    });
+
+    // Toast Position
+    $('#position').click(function (event) {
+        var pos = $('input[name=position]:checked', '#positionForm').val();
+        toastr.options.positionClass = "toast-" + pos;
+        toastr.options.preventDuplicates = false;
+        toastr.info('This sample position', 'Toast Position')
+    });
+
+
+
+    $('.multiple-items').slick({
+        arrows: true,
+        dots: true,
+        number: false,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: false
+                }
+            }
+
+        ]
+    });
+
+</script>
+
+
+
+<script>
+    function removeWhitespace(input) {
+        input.value = input.value.replace(/\s/g, '');
+    }
+
+    function blockSpecialCharacters(event) {
+        var inputValue = event.target.value;
+        var regex = /^[a-zA-Z0-9 ]*$/;
+
+        if (!regex.test(inputValue)) {
+            event.target.value = inputValue.replace(/[^a-zA-Z0-9 ]/g, '');
+        }
+    }
+
+
+</script>
