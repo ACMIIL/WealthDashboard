@@ -42,18 +42,13 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
 }
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 app.UseSession();
-
-
 
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapAreaControllerRoute(
-
       name: "EKYC_MFJourney",
       areaName: "EKYC_MFJourney",
       pattern: "{area:exists}/{controller}/{action}/{id?}"

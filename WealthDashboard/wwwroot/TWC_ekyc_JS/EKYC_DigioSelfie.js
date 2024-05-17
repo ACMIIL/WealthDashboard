@@ -217,7 +217,8 @@ function Normalpdfgeneration(PDFSelect, EsignType) {
             }
         },
         error: function (data) {
-            alert(data);
+            console.log(data);
+            alert("Error: PDF Issue Conatct to Administartor.");
         }
     })
 }
