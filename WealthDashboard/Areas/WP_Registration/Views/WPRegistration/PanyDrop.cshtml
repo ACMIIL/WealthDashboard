@@ -82,7 +82,7 @@
                                         <div class="row mb-3 padding-left-form">
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control  floating-text-area" id="floatingInput"
-                                                       style="color: white;" placeholder="HERFK4578G" ng-keyup="changename()" ng-model="customerName">
+                                                       style="color: white;" onkeydown="return blockDigits(event)" oninput="this.value = this.value.toUpperCase();blockSpecialCharacters(event)" placeholder="HERFK4578G" ng-keyup="changename()" ng-model="customerName">
 
                                                 <span ng-if="invalidname" style="color: rgb(212, 25, 25);font-size:small;">
                                                     Please
@@ -95,7 +95,7 @@
 
                                             <div class="form-floating mb-2">
                                                 <input type="text"  class="form-control  floating-text-area" id="floatingInput"
-                                                       style="color: white;" placeholder="HERFK4578G" ng-keyup="changeacc()" ng-model="accountno">
+                                                       style="color: white;" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onkeypress="blockspace(event)" placeholder="HERFK4578G" ng-keyup="changeacc()" ng-model="accountno">
 
                                                 <span ng-if="invalidAcc" style="color: rgb(212, 25, 25);font-size:small;">
                                                     Please
@@ -107,9 +107,9 @@
                                             </div>
                                             <div class="form-floating mb-2">
                                           
-                                                <input id="floatingInput" oninput="this.value = this.value.toUpperCase()" onkeydown="return blockspace(event)"
+                                                <input id="floatingInput" oninput="this.value = this.value.toUpperCase();preventSpecialCharacters(event)" onkeydown="return blockspace(event)"
                                                        type="text" class="form-control floating-text-area" ng-blur="GetBankDetails()"
-                                                      ng-model="IFSCCode" ng-keyup="changeifsc()" style="color: white;">
+                                                       ng-model="IFSCCode" ng-keyup="changeifsc()" style="color: white;" />
                                                 <span ng-if="invalidIFSC" style="color: rgb(212, 25, 25);font-size:small;">
                                                     Please
                                                     Enter IFSC Code
@@ -303,7 +303,47 @@
 
 
     </script>
+    <script>
+        function preventSpecialCharacters(event) {
+            var inputValue = event.target.value;
+            var regex = /^[a-zA-Z0-9]*$/;
+            if (!regex.test(inputValue)) {
+                event.target.value = inputValue.replace(/[^a-zA-Z0-9]/g, '');
+            }
+        }
 
+        function blockSpecialCharacters(event) {
+            // Get the value of the input field
+            var inputValue = event.target.value;
+
+            // Define a regular expression to allow only alphanumeric characters and spaces
+            var regex = /^[a-zA-Z0-9 ]*$/;
+
+            // Check if the entered character matches the regular expression
+            if (!regex.test(inputValue)) {
+                // If a special character is entered, remove it from the input field
+                event.target.value = inputValue.replace(/[^a-zA-Z0-9 ]/g, '');
+            }
+        }
+
+        function blockDigits(event) {
+            var keyCode = event.keyCode || event.which;
+            if ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105)) {
+                event.preventDefault();
+                return false;
+            }
+            return true;
+        }
+        function blockCharacters(event) {
+            var keyCode = event.which || event.keyCode;
+            var blockedCharacters = [32, 33, 34, /* Add more ASCII values here */];
+            if (blockedCharacters.includes(keyCode)) {
+                event.preventDefault();
+            }
+        }
+
+        
+    </script>
 
     </body>
     </html>

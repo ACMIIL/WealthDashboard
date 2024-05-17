@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
     SchemeDetails_globalsearch();
+    clientGlobalSearch();
 })
 
 let suggestions = [];
@@ -88,4 +89,31 @@ function search_fundatadrop(e) {
         //adding onclick attribute in all li tag
         allList[i].setAttribute("onclick", "search_selectfund(this)");
     }
+}
+
+function clientGlobalSearch() {
+    debugger;
+    var RcCode = $("#HiddenLogiId").val();
+    var RcCode = RCCode;// $("#HiddenLogiId").val();
+
+    $.ajax(
+        {
+            url: "https://trade.investmentz.com/InvestmentzAPI/api/EmpBaClients?EmpBACode=" + RcCode + "&Option=1",
+            type: "GET",
+            data: {
+                //SubCategory: SchemeSubCategory
+            },
+            dataType: "json",
+            success: function (data) {
+                $.each(data.EmpBAClientMaster, function (index, value) {
+
+                    $("#list-timezone").append('<option>' + value.CommonClientCode + '-' + value.ClientName + '</option>');
+                })
+            },
+            error: function (data) {
+                console.log(data);
+            }
+
+        });
+
 }

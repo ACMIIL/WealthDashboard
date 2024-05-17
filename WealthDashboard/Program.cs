@@ -64,14 +64,19 @@ app.UseEndpoints(endpoints =>
     //);
     endpoints.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Login}/{action=Login}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 
     endpoints.MapAreaControllerRoute(
            name: "WP_Registration",
-           areaName : "WP_Registration",
+           areaName: "WP_Registration",
            pattern: "{area:exists}/{controller}/{action}/{id?}"
          );
+    endpoints.MapAreaControllerRoute(
+          name: "Dashboard",
+          areaName: "Dashboard",
+          pattern: "{area:exists}/{controller}/{action}/{id?}"
+        );
 });
 //
 

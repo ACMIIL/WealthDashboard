@@ -1,8 +1,20 @@
-﻿@{
+﻿  @model Microsoft.Extensions.Configuration.IConfiguration
+@{
     Layout = null;
 }
 <!doctype html>
+@{
+    var userData = "";
+    try
+    {
+        userData = Context.Session.GetString("userData");
+    }
+    catch {
 
+       // window.location.assign('/Dashboard/Dashboard/index');
+    }
+
+}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -11,26 +23,30 @@
     <link rel="" type="image/png" href="" />
     <link rel="stylesheet" href="~/css/styles.min.css" />
     <link rel="stylesheet" href="~/css/ba-style.css" />
+    <link rel="stylesheet" href="~/css/datatable.css" />
+    <link href="~/images/favicon.png" rel="icon" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="~/js/Common.js"></script>
-    <script src="~/js/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="~/js/Moment.js"></script>
 
     <style>
 
         .tabcontentmf {
-            display: none;
-            padding: 6px 12px;
-            border-top: none;
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
         }
 
         .mf-sub-tab {
-            display: none;
-            padding: 6px 12px;
-            border-top: none;
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
         }
     </style>
 </head>
@@ -51,15 +67,25 @@
                 </a>
                 <div class="nav_list">
                     <a href="index.html" class="nav_link  mb-2 mt-2"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
-                    <a  class="nav_link active mb-2 mt-2"> <i class='bx bxs-briefcase nav_icon'></i> <span class="nav_name">Wealth Prodcuts</span> </a>
-                    <a  class="nav_link mb-2 mt-2"> <i class='bx bx-list-ul nav_icon'></i> <span class="nav_name">Client List</span> </a>
+                    @*<a  class="nav_link active mb-2 mt-2"> <i class='bx bxs-briefcase nav_icon'></i> <span class="nav_name">Wealth Prodcuts</span> </a>*@
+                    <a class="nav_link  mb-2 mt-2" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                        <i class='bx bxs-briefcase nav_icon'></i> <span class="nav_name">Wealth Products</span>
+                    </a>
+                    <div class="menu-dropdown collapse" id="sidebarDashboards" style="">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="Screener" class="nav_link  mb-2 mt-2"><span class="nav_name"></span> </a>
+                            </li>
+                        </ul>
+                    </div>
+                    @*<a  class="nav_link mb-2 mt-2"> <i class='bx bx-list-ul nav_icon'></i> <span class="nav_name">Client List</span> </a>
                     <a href="#" class="nav_link  mb-2 mt-2"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">SIP Book</span> </a>
                     <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-time-five nav_icon'></i> <span class="nav_name">Proposals</span> </a>
                     <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-sitemap nav_icon'></i> <span class="nav_name">Earnings</span> </a>
                     <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-group nav_icon'></i> <span class="nav_name">My Team</span> </a>
                     <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-layer nav_icon'></i> <span class="nav_name">Tracker</span> </a>
                     <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-cog nav_icon'></i> <span class="nav_name">Rewards</span> </a>
-                    <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-cog nav_icon'></i> <span class="nav_name">My Profile</span> </a>
+                    <a href="#" class="nav_link mb-2 mt-2"> <i class='bx bx-cog nav_icon'></i> <span class="nav_name">My Profile</span> </a>*@
                 </div>
             </div>
             <a href="#" class="nav_link mb-5 mt-0"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
@@ -87,7 +113,10 @@
                             <div class="col-md-8">
                                 <div class="row">
                                     <div class="col-md-7">
-                                        <input type="search" class="form-control ms-3 menu-search-bar" id="" aria-describedby="" placeholder="Search here..." style="background-color: white;">
+                                        @* <input type="search" class="form-control ms-3 menu-search-bar" id="" aria-describedby="" placeholder="Search here..." style="background-color: white;"> *@
+                                        <input type="text" class="form-control ms-3 menu-search-bar" style="background-color: white;" placeholder="Search" value="" list="list-timezone" id="input-datalist">
+                                        <datalist id="list-timezone">
+                                        </datalist>
                                     </div>
                                     <ul class="col-md-5 navbar-nav flex-row  align-items-center justify-content-end">
                                         <li class="nav-item">
@@ -95,20 +124,29 @@
                                                 <i class="ti ti-bell-ringing" style="font-size: 22px;"></i>
                                             </a>
                                         </li>
-                                        <div class="login-icon d-flex ms-0" style="background-color: white;">
+                                        <div class="login-icon d-flex ms-0" style="background-color: white;" id="drop2">
                                             <img src="~/images/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
-                                        <li class="nav-item dropdown ">
-                                            <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                                               aria-expanded="false">
-                                                <div>
-                                                    <h6>Amit Kumar</h6>
-                                                </div>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                                                <div class="message-body">
-                                                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                                        <i class="ti ti-user fs-6"></i>
-                                                        <p class="mb-0 fs-3">Amit Kumar</p>
+                                            <li class="nav-item dropdown ">
+                                                <a class="nav-link nav-icon-hover" href="javascript:void(0)"  data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                                    <div>
+                                                        <h6 id="username">
+                                                             
+                                                               
+                                                            
+                                                        </h6>
+                                                    </div>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up login" aria-labelledby="drop2" style="position: absolute;right: -38%;">
+                                                    <div class="message-body">
+                                                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                                                            <i class="ti ti-user fs-6"></i>
+                                                        <p class="mb-0 fs-3" id="username1">
+
+
+                                                              
+                                                                 
+                                                        </p>
                                                     </a>
                                                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                                                         <i class="ti ti-mail fs-6"></i>
@@ -132,7 +170,7 @@
             </div>
         </div>
         <!--header mf and login End-->
-        <nav class="navbar navbar-expand-lg" style="background-color:#EBDFD7;">
+        @*<nav class="navbar navbar-expand-lg" style="background-color:#EBDFD7;">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarNav" style="border-bottom: 2px solid #c3c3c3;">
                     <ul class="navbar-nav">
@@ -158,17 +196,18 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>*@
         <div class="py-4">
             <a class="calendar-tab-mf active me-2" href="Screener">Screener</a>
             <a class=" calendar-tab-mf me-2" href="AdvicedFund">Advised Funds</a>
-            <a class=" calendar-tab-mf me-2">NFO</a>
-            @* <a class=" calendar-tab-mf me-2">Global Search</a> *@
-            <a class=" calendar-tab-mf me-2" href="CartDetail">Cart</a>
-            <a class=" calendar-tab-mf me-2">Buy/SIP/STP</a>
-            <a class=" calendar-tab-mf me-2">Redemption</a>
-            <a class=" calendar-tab-mf me-2">Goal Planning</a>
-            <a class=" calendar-tab-mf me-2">Calculator</a>
+            @*<a class=" calendar-tab-mf me-2">NFO</a>*@
+            <a class=" calendar-tab-mf me-2" href="Transaction">Transactions</a>  
+            <a class=" calendar-tab-mf me-2" href="PortfolioSummary">Portfolio Summary</a>
+            <a class=" calendar-tab-mf me-2" href="cartDetail">Cart</a>
+            @*<a class=" calendar-tab-mf me-2">Buy/SIP/STP</a>*@
+            @*<a class=" calendar-tab-mf me-2">Redemption</a>*@
+            @*<a class=" calendar-tab-mf me-2">Goal Planning</a>*@
+            @*<a class=" calendar-tab-mf me-2">Calculator</a>*@
         </div>
     </div>
     <div class="container">
@@ -178,6 +217,7 @@
     </div>
     <script src="~/js/sweetalert.js"></script>
     <script src="~/mf script/global.js"></script>
+    <script src="~/mf script/globalsearch.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function (event) {
 
@@ -219,6 +259,14 @@
         });
 
     </script>
+    <!--menu toggle-->
+        <script>
+            $(document).ready(function () {
+                $("#drop2").click(function () {
+                 $(".login").toggle();
+                });
+            });
+        </script>
 
     <script>
 
@@ -230,13 +278,46 @@
     </script>
     <!--table navigation scripts-->
     @*<script src="https://code.jquery.com/jquery-3.7.0.js"></script>*@
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/colreorder/1.5.1/js/dataTables.colReorder.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-    <script>new DataTable('#example');</script>
 
-
-
-
+    <script>
+        $(document).ready(function () {
+            var data = @Html.Raw(Json.Serialize(userData));
+               
+         var result=JSON.parse(data);
+            var divElement1 = document.getElementById("username");
+            var divElement = document.getElementById("username1");
+            // Modify the content of the div
+            divElement1.innerHTML = result.FirstName + " "  result.LastName;
+            divElement.innerHTML1 = result.FirstName + " "   + result.LastName;
+                // Make an AJAX GET request
+                // $.ajax({
+                // url: '/home/GetSessionData', // Example URL
+                //     method: 'GET',
+                //     success: function (data) {
+                //         console.log(data)
+                //     },
+                //     error: function (xhr, status, error) {
+                //         // Handle errors
+                //         console.error('AJAX Error:', status, error);
+                //     }
+                // });
+            
+        });
+    </script>
 </body>
 
 </html>

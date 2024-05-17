@@ -1,8 +1,411 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = null;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TWC </title>
+    <meta name="description" content="TWC ">
+    <!-- FAVICON FILES -->
+    <link href="ico/favicon.png" rel="shortcut icon">
+    <link href="~/css/web/fontawesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/web/fontawesome.min.css">
+    <link rel="stylesheet" href="~/css/web/animate.min.css">
+    <link rel="stylesheet" href="~/css/web/fancybox.min.css">
+    <link rel="stylesheet" href="~/css/web/odometer.min.css">
+    <link rel="stylesheet" href="~/css/web/swiper.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/web/style.css">
+    <link rel="stylesheet" href="~/css/web/custom.css">
+    <link rel="stylesheet" href="~/css/web/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link href="https://chhotaniveshgold.com/assets/vendor/boxicons/css/boxicons.min.css"> -->
+    <!---for toaster--->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
+
+
+
+
+
+</head>
+<body ng-app="main" ng-controller="myController">
+
+    <!-- end side-navigation -->
+    <nav class="navbar p-4">
+        <div class="">
+            <div class="d-flex">
+                <div class="">
+                    <div class="logo"> <a href="index.html"><img src="~/images/web/logo-light.png" alt="Image" style="width:85%;"></a> </div>
+                </div>
+                <div class="" style="position: absolute;top: 25px;right: 40px;">
+                    <div class="phone-email d-flex">
+                        <img src="~/images/web/icon-user.png" alt="Image" />
+                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: #fff;">login</button>
+                    </div>
+                </div>
+            </div>
+            <!-- end logo -->
+            <!--<div class="hamburger"> <span></span> <span></span> <span></span><span></span> </div> -->
+            <!-- end upper-side -->
+            <!-- end menu -->
+        </div>
+        <!-- end container -->
+    </nav>
+    <!-- end navbar -->
+    <header class="slider">
+        <div class="slider-container" style="background-image: url(/images/slide01.png) center no-repeat;">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" data-background="~/images/web/" data-stellar-background-ratio="1.15">
+                    <div class="container">
+                        <h1><span>Your Journey, Our Commitment – Together Every Step of the Way.</span></h1>
+                        <h2>We are reengineering the power of investing.</h2>
+                        <!-- <a href="#">View More <i class="fas fa-caret-right"></i></a> -->
+                        <!-- <figure><img src="images/services-icon01.png" alt="Image"></figure> -->
+                    </div>
+                    <!-- end container -->
+                </div>
+
+                <!-- end swiper-slide -->
+                <div class="swiper-slide" data-background="~/images/web/" data-stellar-background-ratio="1.15">
+                    <div class="container">
+                        <h1><span>Every Challenge Met, Every Goal Achieved – Your Partner Every Step of the Way.</span></h1>
+                        <h2> Unique, Tech Driven, Fastest Growing, Integrated Wealth Platform</h2>
+                        <!-- <a href="#">View More <i class="fas fa-caret-right"></i></a> -->
+                        <!-- <figure><img src="images/services-icon08.png" alt="Image"></figure> -->
+                    </div>
+                    <!-- end container -->
+                </div>
+                <!-- end swiper-slide -->
+                <div class="swiper-slide" data-background="~/images/web/" data-stellar-background-ratio="1.15">
+                    <div class="container">
+                        <h1><span>Explore Tailored Solutions & Achieve Your Clients Financial Dreams</span> </h1>
+                        <h2>Commited towards quality investments to improve your portfolio management experience</h2>
+                        <!-- <a href="#">View More <i class="fas fa-caret-right"></i></a> -->
+                        <!-- <figure><img src="images/services-icon07.png" alt="Image"></figure> -->
+                    </div>
+                    <!-- end container -->
+                </div>
+                <!-- end swiper-slide -->
+            </div>
+            <!-- Add Pagination -->
+            <div class="inner-elements">
+                <div class="container">
+                    <div class="pagination"></div>
+                    <!-- end pagination -->
+                    <div class="button-prev">PREV</div>
+                    <!-- end button-prev -->
+                    <div class="button-next">NEXT</div>
+                    <!-- end button-next -->
+
+                </div>
+                <!-- end container -->
+            </div>
+            <!-- end inner-elements -->
+        </div>
+        <!-- end slider-container -->
+    </header>
+    <!-- end slider -->
+    <section class="intro">
+        <div class="container">
+            <div class="row align-items-center my-5 py-5">
+                <div class="col-lg-6">
+                    <figure>
+                        <div class="pattern-bg" data-stellar-ratio="1.07"></div>
+                        <!-- end pattern-bg -->
+                        <div class="holder" data-stellar-ratio="1.10"> <img src="~/images/web/side-image01.jpg" alt="Image" class="bw"></div>
+                        <!-- end holder -->
+                    </figure>
+                </div>
+                <!-- end col-6 -->
+                <div class="col-lg-6 wow fadeInUp">
+                    <div class="content-box">
+                        <b>About us</b>
+                        <h4><span> 40 years of collaboration</span>  </h4>
+                        <p>Building a Distinct Wealth House of New Era Contributing to Financial Sustainability.</p>
+                        <p>The Wealth Company is your steadfast partner toward financial growth. Our products are curated meticulously basis our rich legacy of handling various business and equity market cycles. For us, what makes sense is multiplying our client's hard-earned money and not putting the same at risk by investing in high-risk products. We tailor-make solutions that align with your goals and your risk tolerance. Whether it's capital protection, retirement savings, funding your family's education, or achieving financial security, rest assured, we're here for you. </p>
+                        <!-- <a href="#" class="readmore">read more <i class="fa fa-arrow-right"></i></a> -->
+                        <!-- end content-box -->
+                    </div>
+                    <!-- edn col-6 -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+    </section>
+    <!-- end intro -->
+
+    <section class="benefits">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-12 wow fadeInUp">
+                    <h4><span> Milestones</span> Achieved</h4>
+
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col col-md-2 ">
+                            <!-- <figure> <img src="images/icon-benefits01.png" alt="Image"> <b></b> </figure>
+                            <h6>Near to Subway</h6>
+                            <span class="odometer" data-count="28" data-status="yes">0</span> <span class="extra">min</span>  -->
+                        </div>
+                        <!-- end col -->
+                        <div class="col col-md-2 ">
+                            <!-- <figure> <img src="images/icon-benefits02.png" alt="Image"> <b></b> </figure>
+                            <h6>Spaces in Pozniaky</h6>
+                            <span class="odometer" data-count="32" data-status="yes">0</span> <span class="extra">+</span>  -->
+                        </div>
+                        <!-- end col -->
+                        <div class="col col-md-2 wow fadeInUp" data-wow-delay="0.10s">
+                            <figure> <img src="~/images/web/icon-benefits03.svg" alt="Image"> <b></b> </figure>
+                            <h6 class="aum">AUM</h6>
+                            <span class="odometer" data-count="1200" data-status="yes">000+</span> <span class="extra">cr</span>
+                        </div>
+                        <!-- end col -->
+                        <div class="col col-md-2 wow fadeInUp" data-wow-delay="0.15s">
+                            <figure> <img src="~/images/web/icon-benefits04.svg" alt="Image"> <b></b> </figure>
+                            <h6 class="aum">Deals</h6>
+                            <span class="odometer" data-count="300" data-status="yes">000</span> <span class="extra">+</span>
+                        </div>
+                        <!-- end col -->
+                        <!-- end col -->
+                        <div class="col col-md-2 wow fadeInUp" data-wow-delay="0.10s">
+                            <!-- <figure> <img src="images/icon-benefits03.png" alt="Image"> <b></b> </figure>
+                            <h6>Spaces in Pozniaky</h6>
+                            <span class="odometer" data-count="15" data-status="yes">0</span> <span class="extra">%</span>  -->
+                        </div>
+                        <!-- end col -->
+                        <div class="col col-md-2 wow fadeInUp" data-wow-delay="0.15s">
+                            <!-- <figure> <img src="images/icon-benefits04.png" alt="Image"> <b></b> </figure>
+                            <h6>Spaces in Pozniaky</h6>
+                            <span class="odometer" data-count="3" data-status="yes">0</span> <span class="extra">years</span>  -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- end benefits -->
+
+    <section class="intro">
+        <div class="container">
+            <div class="row align-items-center  py-5">
+
+                <div class="col-lg-6 wow fadeInUp">
+                    <div class="content-box">
+                        <b>Explore Products</b>
+                        <h4><span> Mutual Funds</span></h4>
+
+                        <p>A Mutual Fund is an investment tool pooling funds from investors to invest in stocks, bonds, and other assets. Our expert team and specialized tools guide you at every step, ensuring informed decisions. Diverse Goals, One Solution: Mutual Funds. Invest affordably, diversify across securities effortlessly, and let experts handle the decisions. Your path to financial goals made easy.</p>
+                        <!-- <a href="#" class="readmore">read more <i class="fa fa-arrow-right"></i></a> -->
+                    </div>
+                    <!-- edn col-6 -->
+                </div>
+                <!-- end row -->
+                <div class="col-lg-6 mt-100">
+                    <figure>
+                        <div class="pattern-bg" data-stellar-ratio="1.07"></div>
+                        <!-- end pattern-bg -->
+                        <div class="holder" data-stellar-ratio="1.10"> <img src="~/images/web/side-image02.png" alt="Image" class="bw"></div>
+                        <!-- end holder -->
+                    </figure>
+                </div>
+                <!-- end col-6 -->
+            </div>
+            <!-- end container -->
+    </section>
+    <!-- end intro -->
+
+
+    <section class="footer-bar my-5">
+        <div class="container">
+            <div class="inner wow fadeIn">
+                <div class="row">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.05s">
+                        <h3>Embark on your opulent wealth creation Journey with us.</h3>
+                    </div>
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.10s">
+                        <div class="row">
+                            <div class="mb-3 col-md-8 position-relative">
+                                <input type="tel" class="form-control custom-fc" id="" aria-describedby="emailid" placeholder="Enter Email Id" maxlength="10">
+                                <div class="custom-pos">
+                                    <button href="#" class="get-cl">Submit <i class="fa fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end footer-bar -->
+    <footer class="footer pt-0 mt-5">
+        <div class="container">
+            <!-- <div class="row">
+              <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.05s"> <img src="images/logo-light.png" alt="Image" class="logo">
+                <p>Empowering the future by seamlessly intertwining heritage with cutting-edge innovation, guaranteeing steadfast stability alongside exponential growth.</p>
+
+              </div>
+
+              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.10s">
+                <ul class="footer-menu">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Our Products</a></li>
+                  <li><a href="#">Our Team</a></li>
+                  <li><a href="#">Contact Us</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.20s">
+                <div class="contact-box">
+                  <p><a href="#">Follow us on</a></p>
+                  <ul>
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div> -->
+
+            <div class="row">
+                <div class="col-12 mt-0"> <span class="copyright">Copyrights 2024 © The Wealth Company</span></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="text-end mt-2 me-2">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="container">
+                    <div class="card">
+                        <h2>Login</h2>
+
+                        <input type="text" id="username" name="username" placeholder="Username" required ng-model="userid">
+                        <input class="pw" type="{{inputType}}" id="password" name="password" placeholder="Password" required ng-model="password">
+                        <i class="fa fa-eye eye-o" ng-click="toggleInputType()" ng-if="inputType=='text'"></i>
+                        <i class="fa fa-eye-slash eye-c" ng-click="toggleInputType()" ng-if="inputType=='password'"></i>
+                        <button type="button" ng-click="Login()">Login</button>
+
+                        <br /><br/>
+                        <div class="registration">
+
+                            <label><input type="radio" ng-model="selectedColor" value="wp" ng-click="register('wp')"> Partner</label>
+                            &nbsp; &nbsp;
+                            <label><input type="radio" ng-model="selectedColor" value="mf" ng-click="register('mf')"> Investor</label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end footer -->
+    <!--login modal pop up-->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- JS FILES -->
+    @*     <script src="~/js/jquery.js"></script> *@
+    <script src="~/js/web/popper.min.js"></script>
+    <script src="~/js/web/swiper.min.js"></script>
+    <script src="~/js/web/fancybox.min.js"></script>
+    <script src="~/js/web/odometer.min.js"></script>
+    <script src="~/js/web/wow.min.js"></script>
+    @*  <script src="~/js/web/text-rotater.js"></script> *@
+    <script src="~/js/web/jquery.stellar.js"></script>
+    <script src="~/js/web/isotope.min.js"></script>
+    <script src="~/js/web/scripts.js"></script>
+
+    <script src="~/angularjs/toast/angular.min.js"></script>
+    <script src="~/angularjs/toast/angular-animate.min.js"></script>
+    <link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
+    <script src="~/angularjs/tosters/toaster.js"></script>
+
+    <script type="text/javascript">
+
+        angular.module('main', ['ngAnimate', 'toaster'])
+
+            .controller('myController', function ($scope, toaster, $window, $http, $interval) {
+
+                $scope.userid = "";
+                $scope.password = "";
+                $scope.selectedColor = '';
+                $scope.inputType = 'password';
+                $scope.Login = function () {
+                    var query = JSON.stringify({ // Data to send to the server
+                        userID: $scope.userid,
+                        password: $scope.password
+
+                    });
+
+                    $http({
+                        url: "home/Login?userid=" + $scope.userid + "&password=" + $scope.password,//https://uattwcapi.wealthcompany.in/api/Admin/UserAuthenticationadmin",
+                        method: "POST",
+                        Headers: {},
+                        data: {}
+                    }).then(function (response) {
+                        if (response.data === 'true') {
+                            var result = '';
+                            //alert("sucess")
+                            window.location.assign('/Dashboard/Dashboard/index')
+                            // toastr.success('An OTP has been sent to ' + $scope.MobileNumber, 'Title Success!');
+                        }
+                        else {
+                            alert("Login faild!")
+                        }
+                    }).catch(function (error) {
+                        console.error('Error sending OTP:', error);
+                    });
+
+                }
+
+                $scope.toggleInputType = function () {
+                    $scope.inputType = ($scope.inputType === 'text') ? 'password' : 'text';
+                };
+
+                $scope.register = function (value) {
+                    if (value == 'wp') {
+                        window.location.assign('/WP_Registration/WPRegistration/index')
+                    }
+                    else {
+                        window.location.assign('/EKYC_MFJourney/home/loginview')
+                    }
+
+                }
+            });
+
+
+
+
+    </script>
+</body>
+
+<!-- Mirrored from themezinho.net/hompark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jan 2024 12:05:55 GMT -->
+</html>

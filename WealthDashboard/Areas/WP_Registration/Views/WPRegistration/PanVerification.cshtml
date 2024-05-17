@@ -96,7 +96,7 @@
                                             <div class="form-floating">
                                                 @*   <input type="text" ng-model="pan" ng-change="transformToUpper();checkPanDetails($event)"  class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="HERFK4578G"> *@
                                                 <input type="text" ng-model="pan" id="inputPAN"
-                                                       oninput="this.value = this.value.toUpperCase();removeWhitespace(this)"
+                                                       oninput="this.value = this.value.toUpperCase();removeWhitespace(this);blockSpecialCharacters(event)"
                                                        maxlength="10" ng-keyup="displayDate()" ng-change="CHeckPanNumber()"
                                                        class="form-control floating-text-area" style="color: white;" placeholder="HERFK4578G">
 
@@ -225,6 +225,20 @@
 
         function removeWhitespace(input) {
             input.value = input.value.replace(/\s/g, '');
+        }
+
+        function blockSpecialCharacters(event) {
+            // Get the value of the input field
+            var inputValue = event.target.value;
+
+            // Define a regular expression to allow only alphanumeric characters and spaces
+            var regex = /^[a-zA-Z0-9 ]*$/;
+
+            // Check if the entered character matches the regular expression
+            if (!regex.test(inputValue)) {
+                // If a special character is entered, remove it from the input field
+                event.target.value = inputValue.replace(/[^a-zA-Z0-9 ]/g, '');
+            }
         }
     </script>
     <script>

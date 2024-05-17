@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WealthDashboard.Areas.EKYC_MFJourney.Models.ClientRegistrationManager;
-using WealthDashboard.Areas.EKYC_MFJourney.Models.SegmentManager;
 
 namespace WealthDashboard.Areas.WP_Registration.Controllers
 {
@@ -82,6 +80,11 @@ namespace WealthDashboard.Areas.WP_Registration.Controllers
         }
         public IActionResult PanyDrop()
         { return View(_configuration); }
+
+        public IActionResult UploadPersonalData()
+        {
+            return View(_configuration);
+        }
 
     }
 }

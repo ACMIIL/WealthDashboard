@@ -170,13 +170,13 @@ function PanandPersonalSubmit() {
         var Emailid = $("#txtEmailid").val();
         var otpno = $("#txtotpno").val();
 
-        var maritalstatus = $('input[name="btnradioMarital"]:checked').val();
-        var Gender = $('input[name="btnradioGender"]:checked').val();
-        var Relation = $('input[name="btnSelectRelation"]:checked').val();
-        var AnnualIncome = $('input[name="btnAnnualIncome"]:checked').val();
-        var Investmentexperiance = $('input[name="btnInvestment"]:checked').val();
-        //var EducationalQualification = $('input[name="btnEducational"]:checked').val();
-        var Occupation = $('input[name="btnOccupation"]:checked').val();
+        var maritalstatus = $('input[name="inlineRadioOptions1"]:checked').val();
+        var Gender = $('input[name="inlineRadioOptions2"]:checked').val();
+        var Relation = $('input[name="inlineRadioOptions3"]:checked').val();
+        var AnnualIncome = $('input[name="inlineRadioOptions5"]:checked').val();
+        var Investmentexperiance = $('input[name="inlineRadioOptions6"]:checked').val();
+        //var EducationalQualification = $('input[name="inlineRadioOptions7"]:checked').val();
+        var Occupation = $('input[name="inlineRadioOptions8"]:checked').val();
 
         var splitname = name.split(' ');
         var firstname = splitname[0];

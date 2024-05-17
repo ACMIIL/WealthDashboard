@@ -169,18 +169,20 @@ namespace WealthDashboard.Areas.EKYC_MFJourney.Controllers
                 string StrSmtpCleint = _appsetting.smtpClientEmail;
                 string strLoginId = _appsetting.EmailLoginId;
                 string strPassword = _appsetting.EmailPassword;
+                
                 msg.From = new MailAddress(StrFromAddress);
                 msg.To.Add(EmailID);
                 msg.Subject = _appsetting.AccountOpenSubject;
                 msg.Body = mEmailTemplate.EmailAccountOpen(StrEmailOTP);
                 msg.IsBodyHtml = true;
                 msg.Priority = MailPriority.High;
+                var otp = _loginManager.SaveEmailDetails(EmailID, mobile, "AccountOpen", EmailID, StrFromAddress, msg.Body, StrEmailOTP, "EKYCtwc");
                 SmtpClient smt = new SmtpClient(StrSmtpCleint);
                 smt.Credentials = new System.Net.NetworkCredential(strLoginId, strPassword);
                 smt.Send(msg);
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
-                var otp = _loginManager.SaveEmailDetails(EmailID, mobile, "AccountOpen", EmailID, StrFromAddress, msg.Body, StrEmailOTP, "EKYCtwc");
+                
             }
             catch (Exception ex)
             {

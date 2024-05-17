@@ -24,7 +24,7 @@
 
 
         //selfie
-        public const string SelfieUrl = "api/DigioSelfie/SelfieWorkTemplate";
+        public const string SelfieUrl = "/api/DigioSelfie/SelfieWorkTemplate";
         public const string SelfieResponseUrl = "/api/DigioSelfie/SelfieResponse?ResponseId=";
         public const string DigioSelfieFileDownload = "/api/DigioSelfie/GetselfieMedia?FileId=";
 
