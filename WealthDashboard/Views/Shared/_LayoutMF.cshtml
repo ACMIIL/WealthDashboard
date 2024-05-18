@@ -12,7 +12,10 @@
         if(userData == null)
         {
             
+
+
     @Html.ActionLink("/home/index","link");
+
         }
     }
     catch {
@@ -167,7 +170,8 @@
                                                         <i class="ti ti-list-check fs-6"></i>
                                                         <p class="mb-0 fs-3">My Lead</p>
                                                     </a>
-                                                    <a href="./authentication-login.html" class="btn btn-outline-Delete mx-3 mt-2 d-block">Logout</a>
+                                                   @*  <a href="./authentication-login.html" class="btn btn-outline-Delete mx-3 mt-2 d-block">Logout</a> *@
+                                                    <button class="btn btn-outline-Delete mx-3 mt-2 d-block" id="Logout">Logout</button>
                                                 </div>
                                             </div>
                                         </li>
@@ -337,6 +341,38 @@
                 //         console.error('AJAX Error:', status, error);
                 //     }
                 // });
+            $('#Logout').click(function () {
+                RemoveSession();
+            });
+
+            function RemoveSession() {
+                $.ajax({
+                    type: "GET",
+                    url: "/Home/RemoveSessionData",
+                    contentType: "application/json",
+                    data: {},
+                    success: function (response) {
+
+                        if (response == true) {
+                            
+                            window.location.href = '/Home/index'
+                           // window.location.href = 'http://localhost:52206/';
+                            // window.location.href = 'https://wealthcompany.in/';
+
+                        }
+                        else{
+                            alert("Something Went Wrong!!")
+                        }
+
+                        //window.location = '/Home/Sessionindex';
+                    },
+                    error: function (error) {
+                        console.error(error);
+                    }
+                });
+
+            }
+   
             
         });
     </script>
