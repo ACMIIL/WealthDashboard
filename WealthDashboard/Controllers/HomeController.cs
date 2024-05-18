@@ -23,11 +23,7 @@ namespace WealthDashboard.Controllers
         {
             return View();
         }
-        public IActionResult LMS()
-        {
-            return View();
-        }
-
+       
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -359,6 +359,7 @@
                 $scope.selectedColor = '';
                 $scope.inputType = 'password';
                 $scope.Login = function () {
+
                     if ($scope.userid == null || $scope.userid == undefined || $scope.userid == '') {
 
                         toastr.error('Please Enter your UserName', 'Error!');
@@ -398,8 +399,7 @@
                             console.error('Error sending OTP:', error);
                         });
 
-                    }
-                 
+                    }                
 
                 }
 

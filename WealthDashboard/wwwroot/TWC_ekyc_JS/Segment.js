@@ -3,7 +3,7 @@ $(document).ready(function () {
     $("#segmentvarifi").removeClass('a');
     $("#segmentvarifi").addClass('b');
     Brockarageplan();
-    if ($("#BACode").val() == "RC319" || $("#BACode").val() == "RC115") {
+    if ($("#BACode").val() == "RC319" || $("#BACode").val() == "RC115" || $("#BACode").val() == "RC5555") {
         $("#divboicust").show();
     }
 });
@@ -298,7 +298,8 @@ function InsertSegmentDetails() {
         var EnterClientID = $("#EnterClientID").val();
         var DepositoryName = $("#DepositoryName").val();
         var DPName = $("#DPName").val();
-        if ($("#BACode").val() == "RC319" || $("#BACode").val() == "RC115") {
+
+        if ($("#BACode").val() == "RC319" || $("#BACode").val() == "RC115" || $("#BACode").val() == "RC5555") {
             var terrifplan = $('input[name="btnTariffPlan"]:checked').val();
             var brokrage = parseInt(1);
         }
