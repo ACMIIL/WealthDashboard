@@ -23,6 +23,7 @@
         $scope.agentcode = '';
         var InsertData = [];
         $scope.isPanFormateCorrect = false;
+        $scope.inputvalid = false;
         var BaseURL = DasboardAPIURL;
         function saveData() {
 
@@ -104,7 +105,7 @@
                 }
                 else
                 {
-                    toastr.error('Unsupported file format', 'File!');
+                    toastr.error('Unsupported file format', 'Error!');
                 }
             };
 
@@ -122,7 +123,7 @@
 
             if ($scope.name == null || $scope.name == '' || $scope.name == undefined) {
 
-                toastr.error('Please Enter Client Name', 'Client Name !');
+                toastr.error('Please Enter Client Name', 'Error !');
 
             }
             //else if ($scope.PAN == null || $scope.PAN == '' || $scope.PAN == undefined) {
@@ -131,7 +132,12 @@
             //}
             else if ($scope.Mobile == null || $scope.Mobile == '' || $scope.Mobile == undefined) {
 
-                toastr.error('Please Enter Mobile Number', 'Mobile Number !');
+                toastr.error('Please Enter Mobile Number', 'Error !');
+            }
+
+            else if ($scope.inputvalid == true) {
+
+                toastr.error('Please Enter Valid Mobile Number', 'Error!');
             }
             //else if ($scope.Email == null || $scope.Email == '' || $scope.Email == undefined) {
 
@@ -284,7 +290,7 @@
         };
 
         $scope.change = function () {
-            var mobile = $scope.mobile;
+            var mobile = $scope.Mobile;
             var value = mobile.charAt(0);
             var numbers = [1, 2, 3, 4, 5];
             $scope.isvalied = numbers.find(function (e) {
@@ -299,7 +305,7 @@
                     if (mobile[i] != value) {
                         $scope.check = false;
 
-                        angular.element(document.getElementById('btn')).focus();
+                        angular.element(document.getElementById('InputEmail')).focus();
                         break;
                     }
                 }
@@ -308,6 +314,29 @@
                 }
             }
         };
+
+
+        $scope.ValidateMobileNumber = function () {
+            var mobileNumber = document.getElementById("InputMobile");
+            var lblError = document.getElementById("lblError");
+            lblError.innerHTML = "";
+            if (mobileNumber.value.length > 3)
+            { 
+                //var expr = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+               var expr = /^[789]\d{9}$/;
+
+                if (!expr.test(mobileNumber.value)) {
+                    lblError.innerHTML = "Invalid Mobile Number.";
+                    $scope.inputvalid = true;
+                }
+                else {
+                    $scope.inputvalid = false;
+                }
+              
+            }
+        }
+
+
 
         $scope.CHeckPanNumber = function () {
 
@@ -331,6 +360,26 @@
             }
 
         }
+
+
+        $scope.checkEmail = function () {
+
+            var input = $scope.Email;
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$/;
+            if (input.length > 0) {
+            }
+            else {
+            }
+            if (!emailPattern.test(input)) {
+                $scope.CheckEmailPattern = true;
+            } else {
+                $scope.CheckEmailPattern = false;
+            }
+            if (input.length == 0) {
+                $scope.CheckEmailPattern = false;
+            }
+        };
+
         //============================================================================================
 
         ///for view page

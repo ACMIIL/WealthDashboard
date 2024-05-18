@@ -116,7 +116,7 @@
                             <div class="col-md-4">
                                 <div class="row text-start">
                                     <div class="dashbourd-title p-0">
-                                        Mutual Fund
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -329,18 +329,7 @@
             // Modify the content of the div
             divElement1.innerHTML = SessionData.FirstName + " " + SessionData.LastName;
             divElement2.innerHTML = SessionData.FirstName + " " + SessionData.LastName;
-                // Make an AJAX GET request
-                // $.ajax({
-                // url: '/home/GetSessionData', // Example URL
-                //     method: 'GET',
-                //     success: function (data) {
-                //         console.log(data)
-                //     },
-                //     error: function (xhr, status, error) {
-                //         // Handle errors
-                //         console.error('AJAX Error:', status, error);
-                //     }
-                // });
+            
             $('#Logout').click(function () {
                 RemoveSession();
             });
