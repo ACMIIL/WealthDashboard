@@ -1,6 +1,4 @@
 using Serilog;
-using WealthDashboard.Areas.EKYC_MFJourney.Models.ClientRegistrationManager;
-using WealthDashboard.Areas.EKYC_MFJourney.Models.LoginManager;
 using WealthDashboard.Configuration;
 using WealthDashboard.Models;
 using WealthDashboard.Models.InvestNowManager;

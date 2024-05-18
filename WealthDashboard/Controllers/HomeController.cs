@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System.Diagnostics;
 using WealthDashboard.Models;
 using WealthDashboard.Models.Login;
@@ -16,7 +14,7 @@ namespace WealthDashboard.Controllers
         {
             _logger = logger;
         }
-         
+
         public IActionResult Index()
         {
             return View();
@@ -37,8 +35,8 @@ namespace WealthDashboard.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-     
-        public async Task<IActionResult> Login(string userid,  string password)
+
+        public async Task<IActionResult> Login(string userid, string password)
         {
             try
             {
@@ -52,33 +50,48 @@ namespace WealthDashboard.Controllers
                 response.EnsureSuccessStatusCode();
                 var jsonString = await response.Content.ReadAsStringAsync();
                 LoginResponse result = JsonConvert.DeserializeObject<LoginResponse>(jsonString);
-                UserData users = JsonConvert.DeserializeObject<UserData>(result.data);
-                if (result.statusCode == 200)
+                if (result.data == null || result.data == "")
                 {
-                    HttpContext.Session.SetString("userData",  result.data);
-
-                    return Ok(true);
+                    return Ok(false);
                 }
                 else
                 {
-                    return Ok(false);
+                    UserData users = JsonConvert.DeserializeObject<UserData>(result.data);
+                    if (result.statusCode == 200)
+                    {
+                        HttpContext.Session.SetString("userData", result.data);
+
+                        return Ok(true);
+                    }
+                    else
+                    {
+                        return Ok(false);
+                    }
                 }
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-           
+
         }
 
-        public  IActionResult GetSessionData()
+        public IActionResult GetSessionData()
         {
             //var data = Context.Session.GetString("userData");
-          
+
             var data = HttpContext.Session.GetString("userData");
 
-          //  var result = JsonConvert.DeserializeObject<WealthDashboard.Models.Login.UserData>(data);
+            //  var result = JsonConvert.DeserializeObject<WealthDashboard.Models.Login.UserData>(data);
             return Ok(data);
+        }
+        [HttpGet]
+        public IActionResult RemoveSessionData()
+        {
+            HttpContext.Session.Remove("userData");
+
+            //  var result = JsonConvert.DeserializeObject<WealthDashboard.Models.Login.UserData>(data);
+            return Ok(true);
         }
     }
 }
