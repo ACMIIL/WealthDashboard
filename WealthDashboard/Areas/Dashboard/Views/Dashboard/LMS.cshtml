@@ -48,8 +48,9 @@
                                <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="form-floating mb-3">
-                                        <input type="text" ng-model="name" class="form-control floating-text-area" id="floatingInput">
-                                        <label for="floatingInput" style="color:#CAAA86;">Customer Name</label>
+                                        <input type="text" ng-model="name" class="form-control floating-text-area" id="InputName"
+                                               oninput="this.value = this.value.toUpperCase()" onkeydown="return blockDigits(event)" placeholder="31-12-1995">
+                                        <label for="InputName" style="color:#CAAA86;">Customer Name</label>
                                     </div>
                                 </div>
                                </div>
@@ -57,17 +58,21 @@
                                 <div class="form-group">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control floating-text-area" ng-model="PAN"
-                                               id="floatingInput" placeholder="31-12-1995" 
-                                         oninput="this.value = this.value.toUpperCase();removeWhitespace(this);blockSpecialCharacters(event)">
-                                        <label for="floatingInput" style="color: #CAAA86;">Permanent Account Number</label>
+                                               id="InputPan" ng-change="CHeckPanNumber()" maxlength=" 10" 
+                                               oninput="this.value = this.value.toUpperCase();removeWhitespace(this);blockSpecialCharacters(event)" placeholder="31-12-1995">
+                                        <label for="InputPan" style="color: #CAAA86;">Permanent Account Number</label>
+
+                                        <span ng-if="isPanFormateCorrect" style="color: rgb(212, 25, 25);font-size:small;">Invalid PAN number format.</span>
                                     </div>
+                                   
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control floating-text-area" ng-model="Mobile" id="floatingInput" placeholder="31-12-1995">
-                                        <label for="floatingInput" style="color:#CAAA86;">Mobile Number</label>
+                                        <input type="text" class="form-control floating-text-area" ng-model="Mobile"
+                                               id="InputMobile" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="10" placeholder="31-12-1995">
+                                        <label for="InputMobile" style="color:#CAAA86;">Mobile Number</label>
                                     </div>
                                 </div>
                             </div>
@@ -75,8 +80,8 @@
 
                                 <div class="form-group">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control floating-text-area" ng-model="Email" id="floatingInput" placeholder="31-12-1995">
-                                        <label for="floatingInput" style="color:#CAAA86;">Email</label>
+                                        <input type="text" class="form-control floating-text-area" ng-model="Email" id="InputEmail" placeholder="31-12-1995">
+                                        <label for="InputEmail" style="color:#CAAA86;">Email</label>
                                     </div>
                                 </div>
                             </div>
@@ -152,10 +157,13 @@
                         </div>
                         <div class="hstack card-footer gap-2 justify-content-end">
                         <button class="btn btn-primary" ng-click="importData()">Add Client</button>
-                        <input type="file" id="inputexcel" class="btn btn-success" ng-model="inputfile" accept=".xlsx,.xls" /> @* accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" /> *@
+                        <input type="file" id="inputexcel" class="btn btn-danger" ng-model="inputfile" accept=".xlsx,.xls" /> @* accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" /> *@
                         @* <input type="file" ngf-select="uploadFiles($files)" accept=".xlsx,.xls"> *@
                         
                         </div>
+
+                          
+
                     </div>
 
 
@@ -322,6 +330,13 @@
             event.target.value = inputValue.replace(/[^a-zA-Z0-9 ]/g, '');
         }
     }
-
+    function blockDigits(event) {
+        var keyCode = event.keyCode || event.which;
+        if ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105)) {
+            event.preventDefault();
+            return false;
+        }
+        return true;
+    }
 
 </script>

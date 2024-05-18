@@ -22,7 +22,7 @@
         $scope.GetData = [];
         $scope.agentcode = '';
         var InsertData = [];
-
+        $scope.isPanFormateCorrect = false;
         var BaseURL = DasboardAPIURL;
         function saveData() {
 
@@ -271,6 +271,66 @@
             $scope.Interestedid = Interestedin_id.toString();
         }
 
+
+
+        $scope.allowNumbers = function (event) {
+            var charCode = event.which || event.keyCode;
+            if (charCode < 48 || charCode > 57) {
+                event.preventDefault();
+            }
+        };
+        $scope.preventPaste = function (event) {
+            event.preventDefault();
+        };
+
+        $scope.change = function () {
+            var mobile = $scope.mobile;
+            var value = mobile.charAt(0);
+            var numbers = [1, 2, 3, 4, 5];
+            $scope.isvalied = numbers.find(function (e) {
+                return e == value;
+            });
+
+            if (mobile.length < 10) {
+                $scope.check = true;
+            } else {
+                $scope.check = true;
+                for (var i = 0; i < mobile.length; i++) {
+                    if (mobile[i] != value) {
+                        $scope.check = false;
+
+                        angular.element(document.getElementById('btn')).focus();
+                        break;
+                    }
+                }
+                if ($scope.check) {
+                    $scope.isvalied = 1;
+                }
+            }
+        };
+
+        $scope.CHeckPanNumber = function () {
+
+
+
+
+            if ($scope.PAN.length > 5) {
+
+                var input = $scope.PAN;
+                // var panPattern = /[A-Z]{5}[0-9]{4}[A-Z]/;
+                var panPattern = /^[A-Za-z]{5}[0-9]{4}[A-Za-z]$/;
+                if (!panPattern.test(input)) {
+                    $scope.isPanFormateCorrect = true;
+                } else {
+                    $scope.isPanFormateCorrect = false;
+                }
+            }
+            else {
+                $scope.isPanFormateCorrect = false;
+
+            }
+
+        }
         //============================================================================================
 
         ///for view page
