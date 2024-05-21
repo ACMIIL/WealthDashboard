@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WealthDashboard.Areas.EKYC_MFJourney.Models.Encryption;
+using WealthDashboard.Models;
 
 namespace WealthDashboard.Controllers
 {
@@ -79,6 +81,14 @@ namespace WealthDashboard.Controllers
         public IActionResult CartDetail()
         {
             return View();
+        }
+        [Route("MutualFund/Authentication")]
+        public IActionResult Authentication(string encucc)
+        {
+            string decucc = Encryption.Decrypt(encucc.Replace(' ', '+').Replace(' ', '+'));
+            ENCUCCM eNCUCCM = new ENCUCCM();
+            eNCUCCM.ucc = decucc;
+            return View(eNCUCCM);
         }
         public IActionResult Redeemswp()
         {

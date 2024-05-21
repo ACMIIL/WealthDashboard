@@ -52,4 +52,9 @@
         public string holder { get; set; }
         public string holdOTP { get; set; }
     }
+
+    public class ENCUCCM
+    {
+        public string? ucc { get; set; }
+    }
 }
