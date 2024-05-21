@@ -1,0 +1,177 @@
+﻿@{
+    Layout = null;
+}
+@model WealthDashboard.Models.ENCUCCM;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #EBDFD7;
+        }
+
+        .container {
+            background-color: #EBDFD7;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        p {
+            margin-top: 5px;
+        }
+
+        .otp-input {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+            .otp-input input {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                margin: 0 5px;
+                text-align: center;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            display: none;
+        }
+
+        .verify-btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .verify-btn:hover {
+                background-color: #0056B3;
+            }
+
+        .resend-link {
+            margin-top: 10px;
+            color: #007BFF;
+            cursor: pointer;
+        }
+
+            .resend-link:hover {
+                text-decoration: underline;
+            }
+
+        .logo {
+            width: 150px;
+        }
+        #loading-bar-spinner.spinner {
+    left: 50%;
+    margin-left: -20px;
+    top: 50%;
+    margin-top: -20px;
+    position: absolute;
+    z-index: 19 !important;
+    animation: loading-bar-spinner 900ms linear infinite;
+}
+
+#loading-bar-spinner.spinner .spinner-icon {
+    width: 40px;
+    height: 40px;
+    border:  solid 4px transparent;
+    border-top-color:  black !important;
+    border-left-color: black !important;
+    border-radius: 50%;
+}
+
+@@keyframes loading-bar-spinner {
+  0%   { transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
+    </style>
+</head>
+<body>
+    <input type="hidden" id="UCC" value="@Model.ucc" />
+    <input type="hidden" id="AccountNo" value="" />
+    <div class="container">
+        <div id="loading-bar-spinner" style="display:none" class="spinner"><div class="spinner-icon"></div></div>
+        <a href="https://www.wealthcompany.in/images/web/logo-light.png" target="_blank">
+            <img class="logo" src="https://www.wealthcompany.in/images/web/logo-light.png" alt="Logo">
+        </a>
+        <h2>OTP Verification</h2>
+        <p>An OTP has been sent to your phone number. </p><p id="mobilenospan"> </p>
+        <div class="otp-input">
+            <input type="text" maxlength="1" oninput="moveToNext(this)" onkeydown="moveToPrev(this, event)" />
+            <input type="text" maxlength="1" oninput="moveToNext(this)" onkeydown="moveToPrev(this, event)" />
+            <input type="text" maxlength="1" oninput="moveToNext(this)" onkeydown="moveToPrev(this, event)" />
+            <input type="text" maxlength="1" oninput="moveToNext(this)" onkeydown="moveToPrev(this, event)" />
+            <input type="text" maxlength="1" oninput="moveToNext(this)" onkeydown="moveToPrev(this, event)" />
+            <input type="text" maxlength="1" onkeydown="moveToPrev(this, event)" />
+        </div>
+        <button class="verify-btn" id="btnOtpverity">Verify OTP</button>
+        <div class="col-md-3 ps-0 pt-2" id="firsttimercartdiv">
+            <label class="timer-number">Resend in <span id="authfirsttimercart"></span></label>
+        </div>
+        <div id="resendotpdiv" style="display:none">
+            <a class="resend-link" id="rsndotp">Resend OTP</a>
+        </div>
+        <div class="error-message">Please enter numbers only</div>
+    </div>
+    <script>
+        function moveToNext(currentInput) {
+            if (currentInput.value.length == 1) {
+                var nextInput = currentInput.nextElementSibling;
+                if (nextInput !== null) {
+                    nextInput.focus();
+                }
+            }
+            // Hide error message when valid input is entered
+            document.querySelectorAll('.error-message').forEach(function (errorMsg) {
+                errorMsg.style.display = 'none';
+            });
+        }
+        function moveToPrev(currentInput, event) {
+            if (event.keyCode === 8 && currentInput.value.length === 0) {
+                var prevInput = currentInput.previousElementSibling;
+                if (prevInput !== null) {
+                    prevInput.focus();
+                }
+            }
+        }
+        // Prevents non-numeric input and shows error message
+        document.querySelectorAll('.otp-input input').forEach(function (input) {
+            input.addEventListener('input', function () {
+                var isValid = /^\d*$/.test(this.value);
+                if (!isValid) {
+                    this.value = this.value.replace(/\D/g, '');
+                    document.querySelector('.error-message').style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="~/mf script/authenticate.js"></script>

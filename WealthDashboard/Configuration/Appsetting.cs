@@ -4,6 +4,7 @@
     {
         #region MF EKYC
         public string DigioBaseUrl { get; set; }
+        public string wealthweburl { get; set; }
         public string CntrlzDigiSuccRespoBaseurl { get; set; }
         public string DigioAuthorization { get; set; }
         public string sourceType { get; set; }
