@@ -307,8 +307,8 @@
                     <div class="card">
                         <h2>Login</h2>
 
-                        <input type="text" id="username" name="username" placeholder="Username" required ng-model="userid">
-                        <input class="pw" type="{{inputType}}" id="password" name="password" placeholder="Password" required ng-model="password">
+                        <input type="text" id="username" name="username" placeholder="Username" required ng-model="userid" maxlength="15">
+                        <input class="pw" type="{{inputType}}" id="password" name="password" ng-keypress="handleKeyPress($event)" placeholder="Password" required ng-model="password" maxlength="20">
                         <i class="fa fa-eye eye-o" ng-click="toggleInputType()" ng-if="inputType=='text'"></i>
                         <i class="fa fa-eye-slash eye-c" ng-click="toggleInputType()" ng-if="inputType=='password'"></i>
                         <button type="button" ng-click="Login()">Login</button>
@@ -354,37 +354,62 @@
 
             .controller('myController', function ($scope, toaster, $window, $http, $interval) {
 
-                $scope.userid = "";
-                $scope.password = "";
+                $scope.userid = '';
+                $scope.password = '';
                 $scope.selectedColor = '';
                 $scope.inputType = 'password';
                 $scope.Login = function () {
-                    var query = JSON.stringify({ // Data to send to the server
-                        userID: $scope.userid,
-                        password: $scope.password
+                    if ($scope.userid == null || $scope.userid == undefined || $scope.userid == '') {
 
-                    });
+                        toastr.error('Please Enter your UserName', 'Error!');
 
-                    $http({
-                        url: "home/Login?userid=" + $scope.userid + "&password=" + $scope.password,//https://uattwcapi.wealthcompany.in/api/Admin/UserAuthenticationadmin",
-                        method: "POST",
-                        Headers: {},
-                        data: {}
-                    }).then(function (response) {
-                        if (response.data === 'true') {
-                            var result = '';
-                            //alert("sucess")
-                            window.location.assign('/Dashboard/Dashboard/index')
-                            // toastr.success('An OTP has been sent to ' + $scope.MobileNumber, 'Title Success!');
-                        }
-                        else {
-                            alert("Login faild!")
-                        }
-                    }).catch(function (error) {
-                        console.error('Error sending OTP:', error);
-                    });
+                    }
+                    else if ($scope.password == null || $scope.password == undefined || $scope.password == '') {
+                        toastr.error('Enter Your Password', 'Error!');
+                        
+                    }
+                    else {
+
+                        var query = JSON.stringify({ // Data to send to the server
+                            userID: $scope.userid,
+                            password: $scope.password
+
+                        });
+                       
+                        $http({
+                            url: "/home/Login?userid=" + $scope.userid + "&password=" + $scope.password,//https://uattwcapi.wealthcompany.in/api/Admin/UserAuthenticationadmin",
+                            method: "POST",
+                            Headers: {},
+                            data: {}
+                        }).then(function (response) {
+                            if (response.data === 'true') {
+                                var result = '';
+                                //alert("sucess")
+                                window.location.assign('/Dashboard/Dashboard/index')
+                                // toastr.success('An OTP has been sent to ' + $scope.MobileNumber, 'Title Success!');
+                            }
+                            else {
+                                toastr.error('Invalid Username & Password ', 'Try Again!');
+                                $scope.userid = '';
+                                $scope.password = '';
+                              //  alert("Login faild!")
+                            }
+                        }).catch(function (error) {
+                            console.error('Error sending OTP:', error);
+                        });
+
+                    }     
 
                 }
+
+
+                $scope.handleKeyPress = function (event) {
+                    if (event.key === "Enter") {
+                        event.preventDefault();
+                        $scope.Login();
+                       // $scope.showAlert();
+                    }
+                };
 
                 $scope.toggleInputType = function () {
                     $scope.inputType = ($scope.inputType === 'text') ? 'password' : 'text';

@@ -1,4 +1,4 @@
-﻿  @model Microsoft.Extensions.Configuration.IConfiguration
+﻿
 @{
     Layout = null;
 }
@@ -12,12 +12,15 @@
         if(userData == null)
         {
             
-            @Html.ActionLink("http://localhost:52206/home/index","link");
+
+
+    @Html.ActionLink("/home/index","link");
+
         }
     }
     catch {
 
-        @Html.ActionLink("index", "home");
+    @Html.ActionLink("index", "home");
         
     }
 
@@ -113,7 +116,7 @@
                             <div class="col-md-4">
                                 <div class="row text-start">
                                     <div class="dashbourd-title p-0">
-                                        Mutual Fund
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -162,8 +165,13 @@
                                                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                                                         <i class="ti ti-list-check fs-6"></i>
                                                         <p class="mb-0 fs-3">My Task</p>
+                                                    </a> 
+                                                    <a href="/Dashboard/Dashboard/LMS" class="d-flex align-items-center gap-2 dropdown-item">
+                                                        <i class="ti ti-list-check fs-6"></i>
+                                                        <p class="mb-0 fs-3">My Lead</p>
                                                     </a>
-                                                    <a href="./authentication-login.html" class="btn btn-outline-Delete mx-3 mt-2 d-block">Logout</a>
+                                                   @*  <a href="./authentication-login.html" class="btn btn-outline-Delete mx-3 mt-2 d-block">Logout</a> *@
+                                                    <button class="btn btn-outline-Delete mx-3 mt-2 d-block" id="Logout">Logout</button>
                                                 </div>
                                             </div>
                                         </li>
@@ -204,20 +212,20 @@
                 </div>
             </div>
         </nav>*@
-        <div class="py-4">
+       @*  <div class="py-4">
             <a class="calendar-tab-mf active me-2" href="/MutualFund/Screener">Screener</a>
-            <a class=" calendar-tab-mf me-2" href="AdvicedFund">Advised Funds</a>
+            <a class=" calendar-tab-mf me-2" href="/MutualFund/AdvicedFund">Advised Funds</a>
             @*<a class=" calendar-tab-mf me-2">NFO</a>*@
-            <a class=" calendar-tab-mf me-2" href="Transaction">Transactions</a>  
-            <a class=" calendar-tab-mf me-2" href="PortfolioSummary">Portfolio Summary</a>
-            <a class=" calendar-tab-mf me-2" href="cartDetail">Cart</a>
+          @*   <a class=" calendar-tab-mf me-2" href="/MutualFund/Transaction">Transactions</a>
+            <a class=" calendar-tab-mf me-2" href="/MutualFund/PortfolioSummary">Portfolio Summary</a>
+            <a class=" calendar-tab-mf me-2" href="/MutualFund/cartDetail">Cart</a> *@
             @*<a class=" calendar-tab-mf me-2">Buy/SIP/STP</a>*@
             @*<a class=" calendar-tab-mf me-2">Redemption</a>*@
             @*<a class=" calendar-tab-mf me-2">Goal Planning</a>*@
-            @*<a class=" calendar-tab-mf me-2">Calculator</a>*@
-        </div>
+            @*<a class=" calendar-tab-mf me-2">Calculator</a>
+        </div> *@
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
                 @RenderBody()
         </main>
@@ -301,32 +309,59 @@
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
+
+       
+
+
+        var SessionData;
+       
         $(document).ready(function () {
-            var data = @Html.Raw(Json.Serialize(userData));
+           var data = @Html.Raw(Json.Serialize(userData));
 
             if(data === null || data === undefined)
             {
                 window.location.href = '/Home/Index';
             }
 
-         var result=JSON.parse(data);
+            SessionData = JSON.parse(data);
             var divElement1 = document.getElementById("username");
             var divElement2 = document.getElementById("username1");
             // Modify the content of the div
-            divElement1.innerHTML = result.FirstName + " " + result.LastName;
-            divElement2.innerHTML = result.FirstName + " "   + result.LastName;
-                // Make an AJAX GET request
-                // $.ajax({
-                // url: '/home/GetSessionData', // Example URL
-                //     method: 'GET',
-                //     success: function (data) {
-                //         console.log(data)
-                //     },
-                //     error: function (xhr, status, error) {
-                //         // Handle errors
-                //         console.error('AJAX Error:', status, error);
-                //     }
-                // });
+            divElement1.innerHTML = SessionData.FirstName + " " + SessionData.LastName;
+            divElement2.innerHTML = SessionData.FirstName + " " + SessionData.LastName;
+            
+            $('#Logout').click(function () {
+                RemoveSession();
+            });
+
+            function RemoveSession() {
+                $.ajax({
+                    type: "GET",
+                    url: "/Home/RemoveSessionData",
+                    contentType: "application/json",
+                    data: {},
+                    success: function (response) {
+
+                        if (response == true) {
+                            
+                            window.location.href = '/Home/index'
+                           // window.location.href = 'http://localhost:52206/';
+                            // window.location.href = 'https://wealthcompany.in/';
+
+                        }
+                        else{
+                            alert("Something Went Wrong!!")
+                        }
+
+                        //window.location = '/Home/Sessionindex';
+                    },
+                    error: function (error) {
+                        console.error(error);
+                    }
+                });
+
+            }
+   
             
         });
     </script>

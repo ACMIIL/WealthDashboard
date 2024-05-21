@@ -4,6 +4,10 @@ using WealthDashboard.Models.InvestNowManager;
 using WealthDashboard.Models.OrderAuthentication;
 using WealthDashboard.Models;
 using WealthDashboard.Models.PrimaryDetailManager;
+using WealthDashboard.Areas.EKYC_MFJourney.Models.Encryption;
+using WealthDashboard.Areas.EKYC_MFJourney.Models.Login;
+using Microsoft.Extensions.Options;
+using WealthDashboard.Configuration;
 
 namespace WealthDashboard.Controllers
 {
@@ -13,17 +17,19 @@ namespace WealthDashboard.Controllers
         private readonly IOrderOthenticationManager _orderAuthentication;
         private readonly IInvestNowManager _investNowManager;
         private readonly IPrimaryDetailsManager _primaryDetailsManager;
+        private readonly Appsetting _appSetting;
         #endregion
 
 
 
         #region Ctor
         public OrderAuthenticationController(IOrderOthenticationManager orderAuthentication,
-            IInvestNowManager investNowManager, IPrimaryDetailsManager primaryDetailsManager)
+            IInvestNowManager investNowManager, IPrimaryDetailsManager primaryDetailsManager, IOptions<Appsetting> appSetting)
         {
             _orderAuthentication = orderAuthentication;
             _investNowManager = investNowManager;
             _primaryDetailsManager = primaryDetailsManager;
+            _appSetting = appSetting.Value;
         }
         #endregion
         #region Method
@@ -77,7 +83,7 @@ namespace WealthDashboard.Controllers
                     TransactionType = string.Empty,
                     SchemeName = string.Empty,
                     SchemeCode = string.Empty,
-                    Option = "1",
+                    Option = "1", //for single otp
                     CommonOrderID = AuthenticationSentOTPDetails
 
                 });
@@ -92,7 +98,7 @@ namespace WealthDashboard.Controllers
                     TransactionType = string.Empty,
                     SchemeName = string.Empty,
                     SchemeCode = string.Empty,
-                    Option = "5",
+                    Option = "1",
                     CommonOrderID = AuthenticationSentOTPDetails
 
                 });
@@ -108,6 +114,30 @@ namespace WealthDashboard.Controllers
         {
             var getCheckOutsideDPdata = await _orderAuthentication.UpdateResendOTP(resendotp);
             return Json(getCheckOutsideDPdata);
+
+        }
+        /// <summary>
+        /// for send payment welth link to client
+        /// </summary>
+        /// <param name="ucc"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<JsonResult> PaymentRequestLink(string ucc)
+        {
+
+            try
+            {
+                var encucc = Encryption.Encrypt(ucc.Replace(' ', '+').Replace(' ', '+'));
+                var redirecturl = _appSetting.wealthweburl + "MutualFund/Authentication?encucc=" + encucc;
+
+                await _investNowManager.SendPaymentLinkOnEmail(redirecturl);
+                return Json("Ok");
+            }
+            catch (Exception ex)
+            {
+                return Json(ex.Message);
+            }
+            
 
         }
         #endregion

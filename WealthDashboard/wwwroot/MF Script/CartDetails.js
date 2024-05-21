@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿
+$(document).ready(function () {
     localStorage.setItem("EditFlag", null);
     $("#UCC").val(UCC);
     getpersonaldetail();
@@ -134,10 +135,11 @@ function DeleteCartOrder() {
         text: "For Delete",
         icon: "warning",
         buttons: true,
+        showCancelButton: true,
         dangerMode: true,
     })
         .then((willDelete) => {
-            if (willDelete) {
+            if (willDelete.isConfirmed) {
                 $.ajax
                     ({
                         type: "GET",
@@ -156,6 +158,7 @@ function DeleteCartOrder() {
                         }
                     });
             } else {
+                
                 swal("Your order is cancelled");
             }
         });
@@ -164,8 +167,9 @@ function DeleteCartOrder() {
 $("#ConfirmOrder").click(function () {
 
     if (checksamepaymentgatway() != false) {
-        $("#Otpmodal").modal('show');
-        GetHolderCount();
+        //$("#Otpmodal").modal('show');
+        //GetHolderCount();
+        SentPaymentrequest();
     }
     else {
         swal.fire('Please select similar payment mode for all your current cart items. You can edit your cart items to set similar payment mode');
@@ -236,7 +240,28 @@ function SentMessage() {
         });
 }
 
-
+function SentPaymentrequest() {
+    $.ajax
+        ({
+            type: "GET",
+            url: CommonWebsiteURL + "OrderAuthentication/PaymentRequestLink",
+            data: {
+                ucc: document.getElementById('UCC').value
+            },
+            contentType: "application/json",
+            success: function (data) {
+                if (data == "Ok") {
+                    swal.fire("Payment Request Send Successfully");
+                }
+                else {
+                    swal.fire("Somthing went wrong....");
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+}
 
 function InsertBseOrder() {
 
