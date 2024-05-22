@@ -92,7 +92,7 @@ function search_fundatadrop(e) {
 }
 
 function clientGlobalSearch() {
-    debugger;
+   
     var RcCode = $("#HiddenLogiId").val();
     var RcCode = RCCode;// $("#HiddenLogiId").val();
 
