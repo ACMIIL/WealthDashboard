@@ -1,9 +1,9 @@
 ﻿angular.module('main', ['ngAnimate', 'toaster'])
     .controller('myController', function ($scope, $location, $window, $http, $interval, toaster) {
-        
-       
 
-       
+
+
+
         $scope.name = '';
         $scope.PAN = '';
         $scope.Mobile = '';
@@ -38,17 +38,17 @@
 
                     setTimeout(() => {
                         location.reload();
-                    },3000);
-                   
+                    }, 3000);
+
                 }
 
             }).catch(function (error) {
                 toastr.error('Error occurred:', error);
             });
         }
-       
+
         $scope.importData = function () {
-           var filedata = document.getElementById("inputexcel");
+            var filedata = document.getElementById("inputexcel");
             var file = filedata.files[0];
             var reader = new FileReader();
             reader.onload = function (e) {
@@ -57,7 +57,7 @@
                 if (file.name.endsWith('.csv')) {
                     // Handle CSV file
                     var lines = data.split('\n');
-                  
+
                     for (var i = 0; i < jsonData.length; i++) {
                         InputData = {
                             Customer_Name: lines[i].Customer_Name.toString(),
@@ -77,34 +77,32 @@
                     console.log(InsertData);
 
                 }
-                else if (file.name.endsWith('.xls') || file.name.endsWith('.xlsx'))
-                {
+                else if (file.name.endsWith('.xls') || file.name.endsWith('.xlsx')) {
                     // Handle Excel file
                     var workbook = XLSX.read(data, { type: 'binary' });
                     var sheetName = workbook.SheetNames[0];
                     var worksheet = workbook.Sheets[sheetName];
                     var jsonData = XLSX.utils.sheet_to_json(worksheet);
-                            for (var i = 0; i < jsonData.length; i++) {
-                                InputData = {
-                                    Customer_Name: jsonData[i].Customer_Name.toString(),
-                                    mobile: jsonData[i].mobile.toString(),
-                                    email: jsonData[i].email.toString(),
-                                    pan: jsonData[i].pan.toString(),
-                                    interested_in: jsonData[i].interested_in.toString(),
-                                    interested_in_id: jsonData[i].interested_in_id.toString(),
-                                    userID: SessionData.Userid.toString()
-                                }
+                    for (var i = 0; i < jsonData.length; i++) {
+                        InputData = {
+                            Customer_Name: jsonData[i].Customer_Name.toString(),
+                            mobile: jsonData[i].mobile.toString(),
+                            email: jsonData[i].email.toString(),
+                            pan: jsonData[i].pan.toString(),
+                            interested_in: jsonData[i].interested_in.toString(),
+                            interested_in_id: jsonData[i].interested_in_id.toString(),
+                            userID: SessionData.Userid.toString()
+                        }
 
-                                InsertData.push(InputData);
-                            }
+                        InsertData.push(InputData);
+                    }
 
 
                     saveData();
 
                     console.log(InsertData);
                 }
-                else
-                {
+                else {
                     toastr.error('Unsupported file format', 'Error!');
                 }
             };
@@ -115,7 +113,7 @@
             else {
                 reader.readAsBinaryString(file);
             }
-            
+
         };
 
 
@@ -143,8 +141,7 @@
 
             //    toastr.error('Please Enter Email-ID', 'Email !');
             //}
-            else
-            {
+            else {
                 checkProduct();
 
 
@@ -163,8 +160,8 @@
                     InsertData.push(InputData);
                 }
 
-                    saveData();
-             }
+                saveData();
+            }
         }
 
 
@@ -320,10 +317,9 @@
             var mobileNumber = document.getElementById("InputMobile");
             var lblError = document.getElementById("lblError");
             lblError.innerHTML = "";
-            if (mobileNumber.value.length > 3)
-            { 
+            if (mobileNumber.value.length > 3) {
                 //var expr = /^(\+\d{1,3}[- ]?)?\d{10}$/;
-               var expr = /^[789]\d{9}$/;
+                var expr = /^[789]\d{9}$/;
 
                 if (!expr.test(mobileNumber.value)) {
                     lblError.innerHTML = "Invalid Mobile Number.";
@@ -332,7 +328,7 @@
                 else {
                     $scope.inputvalid = false;
                 }
-              
+
             }
         }
 
@@ -384,7 +380,7 @@
 
         ///for view page
 
-        $scope.FetchData = function(){
+        $scope.FetchData = function () {
 
             $scope.agentcode = SessionData.AgentSrno;
 
@@ -403,7 +399,7 @@
             });
         }
 
-        $scope.EmailSend = function (mobile) {
+        $scope.EmailSend = function (mobile, customerName, email) {
             var Mobileno = '';
             var agentcode = '';
 
@@ -423,8 +419,10 @@
                         data: {}
                     }).then(function (res) {
                         if (res.data.statusCode == "200") {
-                              agentcode = res.data.data; 
-                            window.open('/EKYC_MFJourney/home/loginview?WPCode=' + agentcode + '&MobNo=' + Mobileno + '&sourceType=LMS', '_blank');
+                            agentcode = res.data.data;
+                            url = 'https://wealthcompany.in/EKYC_MFJourney/home/loginview?WPCode=' + agentcode + '&MobNo=' + Mobileno + '&sourceType=LMS'
+                            sendsms(mobile, customerName, url, email);
+                            // window.open('/EKYC_MFJourney/home/loginview?WPCode=' + agentcode + '&MobNo=' + Mobileno + '&sourceType=LMS', '_blank');
                         }
                     })
 
@@ -433,10 +431,45 @@
             }).catch(function (error) {
                 toastr.error('Error occurred:', error);
             });
-          
+
         }
 
-    
+            async function sendsms(mobile, customerName, url, email) {
+              
+            const response = await fetch(`https://api-ssl.bitly.com/v4/shorten`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer 52826353308d9b1ad4ff0787953accc2c84cf130' // Replace with your Bitly access token
+                },
+                body: JSON.stringify({ long_url: url })
+            });
+            const data = await response.json();
+            if (data.link == null || data.link == '' || data.link == undefined) {
+
+                toastr.error('link short issue:', error);
+            }
+            else {
+
+                $http({
+                    url: BaseURL + 'LMS/SendMessage?mobile=' + mobile + "&custmorName=" + customerName + "&url=" + data.link + "&email=" + email,
+                    method: 'GET',
+                    headers: {},
+                    data: {}
+                }).then(function (res) {
+                    if (res.data.statusCode == "200") {
+                        Mobileno = res.data.data;
+                        toastr.success('Link send on your given mobile ' + Mobileno + ' also on your email ' + email + '  please check ');
+                    }
+                }).catch(function (error) {
+                    toastr.error('Error occurred:', error);
+                });
+
+            }
+
+        }
+
+
+
     });
- 
-    
+
