@@ -37,7 +37,7 @@
     </div> *@
 
     <div class="py-4" >
-        <a ng-class="x.product_id === 1 ? 'calendar-tab-mf active me-2' : 'calendar-tab-mf me-2'" ng-repeat="x in ProductName" value="{{x.product_id}}" ng-click="GetValuebyid(x.product_id)">
+        <a ng-class="x.product_id === activeproduct ? 'calendar-tab-mf active me-2' : 'calendar-tab-mf me-2'" ng-repeat="x in ProductName" value="{{x.product_id}}" ng-click="GetValuebyid(x.product_id)">
             {{x.product_name}}
         </a>
 
@@ -62,7 +62,7 @@
                     <div class="card order-card bg-card-colour">
                         <img class="sales-icon icon-color-p" src="~/images/pink.png"></img>
                         <div class="card-body mt-4 ps-4">
-                            <div class="card-subtitle">Total revenue</div>
+                            <div class="card-subtitle">Total Investment</div>
                             <h5 class="card-title mb-0">{{totalInvestedValue}}</h5>
                             <div class="card-subtitle2">12% increase from last month</div>
                         </div>
@@ -74,7 +74,7 @@
                     <div class="card order-card bg-card-colour">
                         <img class="sales-icon icon-color-y" src="~/images/yellow.png"></img>
                         <div class="card-body mt-4 ps-4">
-                            <div class="card-subtitle">Current Revenue</div>
+                            <div class="card-subtitle">Current Investment</div>
                             <h5 class="card-title mb-0">{{totalCurrentValue}}</h5>
                             <div class="card-subtitle2">10% decrease from last month</div>
                         </div>
@@ -86,7 +86,7 @@
                     <div class="card order-card bg-card-colour">
                         <img class="sales-icon icon-color-pur" src="~/images/purple.png"></img>
                         <div class="card-body mt-4 ps-4">
-                            <div class="card-subtitle">Last Month’s Revenue</div>
+                            <div class="card-subtitle">Last Month’s Investment</div>
                             <h5 class="card-title mb-0">{{lastMonthInvestedValue}}</h5>
                             <div class="card-subtitle2">8% increase from last month</div>
                         </div>

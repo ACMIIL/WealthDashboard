@@ -36,32 +36,62 @@ namespace WealthDashboard.Areas.Dashboard.Controllers
             return View(_configuration);
         }
         [HttpGet]
-        public async Task<IActionResult> indexdeta()
+        //public async Task<IActionResult> indexdeta()
+        //{
+        //    var Condaition = "";
+        //    var data = ""; string apiUrl = _appSetting.URL + "Dashboard/GetWPTotalRevanue";
+        //   // Result res = new Result();
+        //    using (HttpClient client = new HttpClient())
+        //    {
+        //        client.BaseAddress = new Uri(apiUrl); client.DefaultRequestHeaders.Accept.Clear();
+        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //        HttpResponseMessage response = await client.GetAsync(apiUrl);
+        //        data = await response.Content.ReadAsStringAsync();
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            var stuff = JsonConvert.DeserializeObject(data);
+        //            Condaition = stuff.ToString();
+
+
+
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine("API call failed: " + response.StatusCode);
+        //        }
+        //    }
+        //    return Json(data);
+
+
+        //}
+        public async Task<JsonResult> indexdeta()
         {
-            var Condaition = "";
-            var data = ""; string apiUrl = _appSetting.URL + "Dashboard/GetWPTotalRevanue"; Result res = new Result();
-            using (HttpClient client = new HttpClient())
+            var data = "";
+            try
             {
-                client.BaseAddress = new Uri(apiUrl); client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
-                data = await response.Content.ReadAsStringAsync();
-                if (response.IsSuccessStatusCode)
+                var apiUrl = _appSetting.URL + "Dashboard/GetWPTotalRevanue";
+                using (HttpClient client = new HttpClient())
                 {
-                    var stuff = JsonConvert.DeserializeObject(data);
-                    Condaition = stuff.ToString();
-
-
-
-                }
-                else
-                {
-                    Console.WriteLine("API call failed: " + response.StatusCode);
+                    client.BaseAddress = new Uri(apiUrl);
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+                    data = await response.Content.ReadAsStringAsync();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return Json(data);
+                    }
+                    else
+                    {
+                        Console.WriteLine("API call failed: " + response.StatusCode);
+                    }
                 }
             }
-            return Json(Condaition);
-
-
+            catch (Exception ex)
+            {
+                return Json(ex);
+            }
+            return Json(data);
         }
 
     }
