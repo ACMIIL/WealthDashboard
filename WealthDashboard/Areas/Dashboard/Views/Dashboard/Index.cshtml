@@ -63,7 +63,7 @@
                         <img class="sales-icon icon-color-p" src="~/images/pink.png"></img>
                         <div class="card-body mt-4 ps-4">
                             <div class="card-subtitle">Total Investment</div>
-                            <h5 class="card-title mb-0">{{totalInvestedValue}}</h5>
+                            <h5 class="card-title mb-0">{{totalinvestment}}</h5>
                             <div class="card-subtitle2">12% increase from last month</div>
                         </div>
                     </div>
@@ -74,8 +74,8 @@
                     <div class="card order-card bg-card-colour">
                         <img class="sales-icon icon-color-y" src="~/images/yellow.png"></img>
                         <div class="card-body mt-4 ps-4">
-                            <div class="card-subtitle">Current Investment</div>
-                            <h5 class="card-title mb-0">{{totalCurrentValue}}</h5>
+                            <div class="card-subtitle">Total Investment Value</div>
+                            <h5 class="card-title mb-0">{{totalInvestedValue}}</h5>
                             <div class="card-subtitle2">10% decrease from last month</div>
                         </div>
                     </div>
@@ -86,15 +86,48 @@
                     <div class="card order-card bg-card-colour">
                         <img class="sales-icon icon-color-pur" src="~/images/purple.png"></img>
                         <div class="card-body mt-4 ps-4">
-                            <div class="card-subtitle">Last Month’s Investment</div>
-                            <h5 class="card-title mb-0">{{lastMonthInvestedValue}}</h5>
+                            <div class="card-subtitle">Current Month Investment</div>
+                            <h5 class="card-title mb-0">{{totalcurrentmontinvestment}}</h5>
                             <div class="card-subtitle2">8% increase from last month</div>
                         </div>
                     </div>
                 </div>
-                <!---Opened Account-->
+
+                <div class="col-md-3 me-3 ms-3">
+                    <div class="card order-card bg-card-colour">
+                        <img class="sales-icon icon-color-pur" src="~/images/purple.png"></img>
+                        <div class="card-body mt-4 ps-4">
+                            <div class="card-subtitle">Current Month Investment Value</div>
+                            <h5 class="card-title mb-0">{{totalCurrentMonthValue}}</h5>
+                            <div class="card-subtitle2">8% increase from last month</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 me-2">
+                    <div class="card order-card bg-card-colour">
+                        <img class="sales-icon icon-color-p" src="~/images/pink.png"></img>
+                        <div class="card-body mt-4 ps-4">
+                            <div class="card-subtitle">Last Month Investment</div>
+                            <h5 class="card-title mb-0">{{totallastmonthinvestment}}</h5>
+                            <div class="card-subtitle2">12% increase from last month</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!---Daily P&L-->
+                <div class="col-md-3 me-3 ms-4">
+                    <div class="card order-card bg-card-colour">
+                        <img class="sales-icon icon-color-y" src="~/images/yellow.png"></img>
+                        <div class="card-body mt-4 ps-4">
+                            <div class="card-subtitle">Last Month Investment Value</div>
+                            <h5 class="card-title mb-0">{{lastMonthInvestedValue}}</h5>
+                            <div class="card-subtitle2">10% decrease from last month</div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
+           
             <div class="row">
                 <div class="mb-3 mb-sm-0">
                     <h5 class="Project-summary-titile mb-0"> Project summary </h5>
