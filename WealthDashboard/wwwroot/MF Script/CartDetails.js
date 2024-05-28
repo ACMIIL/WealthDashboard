@@ -244,7 +244,7 @@ function SentPaymentrequest() {
     $.ajax
         ({
             type: "GET",
-            url: CommonWebsiteURL + "OrderAuthentication/PaymentRequestLink",
+            url: "/OrderAuthentication/PaymentRequestLink",
             data: {
                 ucc: document.getElementById('UCC').value
             },

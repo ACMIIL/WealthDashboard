@@ -110,7 +110,8 @@ function GetInvestNow(event) {
     // Set fundNameDisplayInput value
    // $("#fundNameDisplayInput").val(value.schemeName);
 
-    window.location.href = CommonWebsiteURL + 'MutualFund/InvestNow';
+    //window.location.href = CommonWebsiteURL + 'MutualFund/InvestNow';
+    window.location.href = '/MutualFund/InvestNow';
 }
 
 function SchemeDetails() {
