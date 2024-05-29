@@ -35,6 +35,13 @@ namespace WealthDashboard.Controllers
             return Json(InsertDetails);
 
         }
+        [HttpPost]
+        public async Task<JsonResult> SWPInsert([FromBody] SwpOrderModel swpOrderModel)
+        {
+            var InsertDetails = await _investNowManager.SWPInsert(swpOrderModel);
+            return Json(InsertDetails);
+
+        }
 
     }
 }

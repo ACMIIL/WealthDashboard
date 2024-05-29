@@ -117,13 +117,7 @@ function GetInvestNow(event) {
 function SchemeDetails() {
     $("#scrtbody").html('');
 
-    //const SchemeSubCategory = data.dataset.schemedetail;
     let URL = GlobalUrl + "MFUsers/GetScreenerData";
-    //let URL = "https://localhost:7217/api/MFUsers/GetScreenerData";
-    //let datas = {
-    //    SubCategory: SchemeSubCategory
-    //};
-
     $.ajax({
         type: "GET",
         url: URL,
@@ -161,21 +155,6 @@ function SchemeDetails() {
     });
 }
 
-//function GetInvestNow(event, value) {
-//    const ISIN = event.currentTarget.id;
-//    localStorage.setItem("ISIN", ISIN);
-//    localStorage.setItem("FolioNo", null);
-//    window.location.href = CommonWebsiteURL + 'MutualFund/SIPFund';
-//}
-
-
-//function GetInvestNow(event, value) {
-//    console.log("GetInvestNow called");
-//    const ISIN = event.currentTarget.id;
-//    localStorage.setItem("ISIN", ISIN);
-//    localStorage.setItem("FolioNo", null);
-//    window.location.href = CommonWebsiteURL + 'MutualFund/SIPFund';
-//}
 function Rearrangedata(data, Return) {
     var sortedData = [];
     if (Return == "1") {

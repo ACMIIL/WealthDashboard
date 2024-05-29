@@ -4,7 +4,6 @@
     schemedata = JSON.parse(decodeURIComponent(localStorage.getItem("schemedata")));
     $("#UCC").val(UCC);
 
-    //GetSchemeWiseFolioDetails(PanNo, FolioNumber, SchemeId)
     GetMinAmountAndQty(isin);
     $("div.myDiv").hide();
     GetSIPDates();
