@@ -24,7 +24,7 @@
         var InsertData = [];
         $scope.isPanFormateCorrect = false;
         $scope.inputvalid = false;
-        var BaseURL = DasboardAPIURL;
+        var BaseURL =DasboardAPIURL;
         function saveData() {
 
             $http({

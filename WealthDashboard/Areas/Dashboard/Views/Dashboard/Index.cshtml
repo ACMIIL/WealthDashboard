@@ -1,4 +1,6 @@
-﻿ @{
+﻿@model Microsoft.Extensions.Configuration.IConfiguration
+
+@{
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_LayoutMF.cshtml";
 }
@@ -9,23 +11,49 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 
-<!--  Sidebar End -->
-<!--  Main wrapper -->
-<div class="container-fluid">
-    @* <div class="py-4">
-        <a class="calendar-tab-mf active me-2" href="/MutualFund/Screener">Screener</a>
-        <a class=" calendar-tab-mf me-2" href="/MutualFund/AdvicedFund">Advised Funds</a>
-        @*<a class=" calendar-tab-mf me-2">NFO</a>*@
-        @* <a class=" calendar-tab-mf me-2" href="/MutualFund/Transaction">Transactions</a>
-        <a class=" calendar-tab-mf me-2" href="/MutualFund/PortfolioSummary">Portfolio Summary</a>
-        <a class=" calendar-tab-mf me-2" href="/MutualFund/cartDetail">Cart</a> *@
-        @*<a class=" calendar-tab-mf me-2">Buy/SIP/STP</a>*@
-        @*<a class=" calendar-tab-mf me-2">Redemption</a>*@
-        @*<a class=" calendar-tab-mf me-2">Goal Planning</a>*@
-        @*<a class=" calendar-tab-mf me-2">Calculator</a>
-    </div> *@
-    <div class="row">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Toastr -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<!-- Toastr End -->
+
+
+<!--  Main wrapper -->
+<div class="container-fluid" ng-app="main" ng-controller="myController">
+    <!--comment by vyadav-->
+
+@*     <div class="py-4">
+        <a class="calendar-tab-mf active me-2" href="/MutualFund/Screener">Mutual Fund</a>
+        <a class=" calendar-tab-mf me-2" href="/MutualFund/AdvicedFund">Advised Funds</a>
+        <a class=" calendar-tab-mf me-2">NFO</a>
+        <a class=" calendar-tab-mf me-2" href="/MutualFund/Transaction">Transactions</a>
+        <a class=" calendar-tab-mf me-2" href="/MutualFund/PortfolioSummary">Portfolio Summary</a>
+        <a class=" calendar-tab-mf me-2" href="/MutualFund/cartDetail">Cart</a>
+        <a class=" calendar-tab-mf me-2">Buy/SIP/STP</a>
+        <a class=" calendar-tab-mf me-2">Redemption</a>
+        <a class=" calendar-tab-mf me-2">Goal Planning</a>
+        <a class=" calendar-tab-mf me-2">Calculator</a> 
+    </div> *@
+
+    <div class="py-4" >
+        <a ng-class="x.product_id === activeproduct ? 'calendar-tab-mf active me-2' : 'calendar-tab-mf me-2'" ng-repeat="x in ProductName" value="{{x.product_id}}" ng-click="GetValuebyid(x.product_id)">
+            {{x.product_name}}
+        </a>
+
+       @*  <a class=" calendar-tab-mf me-2">Equity</a>
+        <a class=" calendar-tab-mf me-2">RMS</a>
+        <a class=" calendar-tab-mf me-2">AIF</a>
+        <a class=" calendar-tab-mf me-2">IBasket</a>
+        <a class=" calendar-tab-mf me-2">Fixed Income</a>
+        <a class=" calendar-tab-mf me-2">Start Up</a>
+        <a class=" calendar-tab-mf me-2">Real estate</a> 
+        <a class=" calendar-tab-mf me-2">Fundraising</a> *@
+    </div>
+
+    <div class="row" >
+        
+       
         <!--  card and live data msi -->
         <div class="col-md-9">
             <!---order card-->
@@ -34,8 +62,8 @@
                     <div class="card order-card bg-card-colour">
                         <img class="sales-icon icon-color-p" src="~/images/pink.png"></img>
                         <div class="card-body mt-4 ps-4">
-                            <div class="card-subtitle">Total revenue</div>
-                            <h5 class="card-title mb-0">₹53,989</h5>
+                            <div class="card-subtitle">Total Investment</div>
+                            <h5 class="card-title mb-0">{{totalinvestment}}</h5>
                             <div class="card-subtitle2">12% increase from last month</div>
                         </div>
                     </div>
@@ -46,8 +74,8 @@
                     <div class="card order-card bg-card-colour">
                         <img class="sales-icon icon-color-y" src="~/images/yellow.png"></img>
                         <div class="card-body mt-4 ps-4">
-                            <div class="card-subtitle">Current Revenue</div>
-                            <h5 class="card-title mb-0">₹27,742</h5>
+                            <div class="card-subtitle">Total Investment Value</div>
+                            <h5 class="card-title mb-0">{{totalInvestedValue}}</h5>
                             <div class="card-subtitle2">10% decrease from last month</div>
                         </div>
                     </div>
@@ -58,15 +86,48 @@
                     <div class="card order-card bg-card-colour">
                         <img class="sales-icon icon-color-pur" src="~/images/purple.png"></img>
                         <div class="card-body mt-4 ps-4">
-                            <div class="card-subtitle">Last Month’s Revenue</div>
-                            <h5 class="card-title mb-0">₹11,310</h5>
+                            <div class="card-subtitle">Current Month Investment</div>
+                            <h5 class="card-title mb-0">{{totalcurrentmontinvestment}}</h5>
                             <div class="card-subtitle2">8% increase from last month</div>
                         </div>
                     </div>
                 </div>
-                <!---Opened Account-->
+
+                <div class="col-md-3 me-3 ms-3">
+                    <div class="card order-card bg-card-colour">
+                        <img class="sales-icon icon-color-pur" src="~/images/purple.png"></img>
+                        <div class="card-body mt-4 ps-4">
+                            <div class="card-subtitle">Current Month Investment Value</div>
+                            <h5 class="card-title mb-0">{{totalCurrentMonthValue}}</h5>
+                            <div class="card-subtitle2">8% increase from last month</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 me-2">
+                    <div class="card order-card bg-card-colour">
+                        <img class="sales-icon icon-color-p" src="~/images/pink.png"></img>
+                        <div class="card-body mt-4 ps-4">
+                            <div class="card-subtitle">Last Month Investment</div>
+                            <h5 class="card-title mb-0">{{totallastmonthinvestment}}</h5>
+                            <div class="card-subtitle2">12% increase from last month</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!---Daily P&L-->
+                <div class="col-md-3 me-3 ms-4">
+                    <div class="card order-card bg-card-colour">
+                        <img class="sales-icon icon-color-y" src="~/images/yellow.png"></img>
+                        <div class="card-body mt-4 ps-4">
+                            <div class="card-subtitle">Last Month Investment Value</div>
+                            <h5 class="card-title mb-0">{{lastMonthInvestedValue}}</h5>
+                            <div class="card-subtitle2">10% decrease from last month</div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
+           
             <div class="row">
                 <div class="mb-3 mb-sm-0">
                     <h5 class="Project-summary-titile mb-0"> Project summary </h5>
@@ -184,12 +245,20 @@
 
 
 
-</div>
- 
+<!---For Angular js-->
+<script src="~/angularjs/toast/angular.min.js"></script>
+<script src="~/angularjs/toast/angular-animate.min.js"></script>
+<link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
+<script src="~/angularjs/tosters/toaster.js"></script>
+
+<!-----Js File-->
+
+<script src="~/js/dashboard/index/index.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
         integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
         crossorigin="anonymous"></script>
 <script>
+    var DasboardAPIURL = '@Model["DashboardAPI:URL"]';
     document.addEventListener("DOMContentLoaded", function (event) {
 
         const showNavbar = (toggleId, navId, bodyId, headerId) => {

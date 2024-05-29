@@ -17,7 +17,7 @@ builder.Services.AddEkycServices();
 builder.Services.Configure<Appsetting>(builder.Configuration.GetSection("AppSetting"));
 builder.Services.Configure<Connection>(builder.Configuration.GetSection("ConnectionStrings"));
 builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
-
+builder.Services.Configure<Appsetting>(builder.Configuration.GetSection("DashboardAPI"));
 Log.Logger = new LoggerConfiguration()
             .Enrich.FromLogContext()
             .WriteTo.File(@"D:\TWCEKYC_CLogs\mylog.txt", rollingInterval: RollingInterval.Day)
@@ -35,10 +35,10 @@ builder.Services.AddSession(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-}
+//if (!app.Environment.IsDevelopment())
+//{
+//    app.UseExceptionHandler("/Home/Error");
+//}
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();

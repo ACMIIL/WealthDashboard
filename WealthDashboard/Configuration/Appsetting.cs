@@ -58,5 +58,8 @@
 
         public string MFAPIBaseURL { get; set; }
         #endregion
+        #region DashboardApiUrl
+        public string URL { get; set; }
+        #endregion
     }
 }

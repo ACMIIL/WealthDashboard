@@ -1,9 +1,10 @@
 ﻿
 
-var GlobalUrl = "https://investinmfapi.investmentz.com/api/";
+//var GlobalUrl = "https://investinmfapi.investmentz.com/api/";
 
-var clientapi = "https://clientprofileapi.investmentz.com/api/UsersDetails/GetUsersPersonalDetails?ClientCode=4100467";
-var CommonWebsiteURL = "http://localhost:52206/";
+//var clientapi = "https://clientprofileapi.investmentz.com/api/UsersDetails/GetUsersPersonalDetails?ClientCode=4100467";
+//var CommonWebsiteURL = "https://wealthcompany.in/";
+//var CommonWebsiteURL = "http://localhost:52206/";
 $(document).ready(function () {
     
     GetclientDetails();
