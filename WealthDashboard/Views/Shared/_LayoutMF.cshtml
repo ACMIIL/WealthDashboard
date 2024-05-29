@@ -58,6 +58,81 @@
         padding: 6px 12px;
         border-top: none;
         }
+
+        .client-serch{
+            border-radius: 20px 20px;
+        }
+
+       /*  .clientlist-twp {
+            height: 250px !important;
+            position: absolute !important;
+            top: 53px !important;
+            right: 330px !important;
+            background-color: white;
+            padding: 10px !important;
+            overflow-x: auto !important;
+            z-index: 1 !important;
+            width: 35% !important;
+        }
+
+            .clientlist-twp option {
+                cursor: pointer;
+                line-height: 2;
+                border-bottom: 1px solid #ccc;
+            }  */
+
+        /*the container must be positioned relative:*/
+        .autocomplete {
+            position: relative;
+            display: inline-block;
+        }
+
+        #myInput {
+            border: 1px solid transparent;
+            background-color: #f1f1f1;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+            input[type=text] {
+                background-color: #f1f1f1;
+                width: 100%;
+            }
+
+
+        .autocomplete-items {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            border-bottom: none;
+            border-top: none;
+            z-index: 99;
+            top: 100%;
+            left: 18px;
+            right: 0;
+            max-height: 129px;
+            background-color: white;
+            overflow-y: scroll;
+            width: 297px;
+        }
+
+            .autocomplete-items div {
+                padding: 10px;
+                cursor: pointer;
+                background-color: #fff;
+                border-bottom: 1px solid #d4d4d4;
+            }
+
+                /*when hovering an item:*/
+                .autocomplete-items div:hover {
+                    background-color: #e9e9e9;
+                }
+
+        /*when navigating through the items using the arrow keys:*/
+        .autocomplete-active {
+            background-color: #f5e8dd !important;
+            color: black;
+        }
+       
     </style>
 </head>
 
@@ -123,10 +198,12 @@
                             <div class="col-md-8">
                                 <div class="row">
                                     <div class="col-md-7">
-                                        @* <input type="search" class="form-control ms-3 menu-search-bar" id="" aria-describedby="" placeholder="Search here..." style="background-color: white;"> *@
-                                        <input type="text" class="form-control ms-3 menu-search-bar" style="background-color: white;" placeholder="Search" value="" list="list-timezone" id="input-datalist">
-                                        <datalist id="list-timezone">
-                                        </datalist>
+                                        <div class="autocomplete" style="width:300px;">
+                                            <input id="myInput" type="text" name="myCountry" placeholder="Search Client..." class="form-control ms-3 client-serch" autocomplete="off">
+                                        </div>
+                                        
+                                         @* <input type="text" class="form-control ms-3 menu-search-bar" style="background-color: white;" placeholder="Search" value="" oninput="filterOptions(this.value)" list="list-timezone" id="input-datalist"> *@
+                                        
                                     </div>
                                     <ul class="col-md-5 navbar-nav flex-row  align-items-center justify-content-end">
                                         <li class="nav-item">
@@ -282,7 +359,6 @@
                 });
             });
         </script>
-
     <script>
 
         $(document).ready(function () {
@@ -291,6 +367,15 @@
             });
         });
     </script>
+
+        <!--client list toggle start-->
+        <script>
+            $(document).ready(function () {
+                $(".menu-search-bar").click(function () {
+                    $(".clientlist-twp").fadeToggle("hide");
+                });
+            });
+        </script>
     <!--table navigation scripts-->
     @*<script src="https://code.jquery.com/jquery-3.7.0.js"></script>*@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
