@@ -23,7 +23,7 @@ function GetCartUserDetails() {
     var content = '';
     var PaymentMode = "";
     var FolioNumber = "";
-    debugger;
+  
     $.ajax(
         {
             type: "GET",
@@ -75,7 +75,7 @@ function SentMessage() {
             data: JSON.stringify(redata),
             contentType: "application/json",
             success: function (data) {
-                debugger;
+                 
                 AllOTPDetails.push(data);
                 $("#mobilenospan").html(data.fMobileNumber);
                 timer(20);

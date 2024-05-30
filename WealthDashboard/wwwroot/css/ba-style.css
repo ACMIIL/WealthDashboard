@@ -100,9 +100,9 @@
   height: 45px;
   font-size: 15px;
   background: url(../images/search-normal.png) no-repeat;
-  background-position: 15px 14px;
+  background-position: 5px 14px;
   background-size: 4%;
-  padding-left: 42px;
+  padding-left: 30px;
   border-radius: 55px;
 }
 input.form-control.rounded-5.bg-light-gray.pt-2.pb-2 {
@@ -822,19 +822,19 @@ a#header-toggle {
     padding: 10px 13px !important;
 }
 
-.login-icon{
-  border: 1px solid rgb(211, 209, 209);
-  border-radius: 216px opx opx opx;
-  margin-left: 9px;
-  background-color: #ffffff;
-  padding: 6px 35px 0px 6px;
-  border-top-right-radius: 33px 30px;
-  border-bottom-right-radius: 33px 30px;
-  border-top-left-radius: 30px 30px;
-  border-bottom-left-radius: 30px 30px;
-  background: url(../images/dopdown.png) no-repeat;
-  background-position: 136px 14px;
-  background-size: 12%;
+.login-icon {
+    border: 1px solid rgb(211, 209, 209);
+    border-radius: 216px 0px 0px 0px;
+    margin-left: 9px;
+    background-color: #ffffff;
+    padding: 5px 35px 3px 11px;
+    border-top-right-radius: 33px 30px;
+    border-bottom-right-radius: 33px 30px;
+    border-top-left-radius: 30px 30px;
+    border-bottom-left-radius: 30px 30px;
+    background: url(../images/dopdown.png) no-repeat;
+    background-position: 187px 13px;
+    background-size: 9%;
 }
 .total-aum-card{
   width: 223px;
