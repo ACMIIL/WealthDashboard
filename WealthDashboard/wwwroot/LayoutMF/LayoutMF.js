@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     //var data = Html.Raw(Json.Serialize(userData));
 
-    debugger;
+   
     var data = userData;
     var result = JSON.parse(data);
     var divElement1 = document.getElementById("username");
