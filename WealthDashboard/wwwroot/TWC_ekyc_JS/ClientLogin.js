@@ -19,7 +19,12 @@ $('#terms').click(function () {
 });
 
 function SendMobileOtp() {
-    var Mobilenumber = document.getElementById('txtMobileNumber').value
+    var Mobilenumber = document.getElementById('txtMobileNumber').value;
+    
+    if (Mobilenumber === "undefined") {
+        document.getElementById("txtMobileNumber").value = "";
+        return;
+    }
     var EmailId = "";   
     if (!Mobilenumber) {        
         return;
@@ -176,7 +181,7 @@ function CheckMobileExistsOrNot() {
                 var message = data.data[0].msg;
 
                 SendMobileOtp();
-               // CheckMobileDeclarationWithUCC();
+               
             },
             error: function (data) {
                 console.log("Error: Contact Customer Care service");
@@ -188,11 +193,15 @@ function CheckMobileExistsOrNot() {
 
 function ValidateMobileNumber() {
     var mobileNumber = document.getElementById("txtMobileNumber").value;
-    // var lblError = document.getElementById("lblError");
-    //lblError.innerHTML = "";
+    
+    if (mobileNumber === "undefined") {
+        document.getElementById("txtMobileNumber").value = "";
+        return;
+    }
 
     var expr = /^(0|91)?[6-9][0-9]{9}$/;
     if (!expr.test(mobileNumber)) {
+        document.getElementById("txtMobileNumber").value = "";
         showMessage('Invalid Mobile Number', 7000, 'red');
         return false;
     }

@@ -14,6 +14,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\EKYC_MFJourney\Views\BankDetails\BankDetail.cshtml" />
+    <None Include="Areas\EKYC_MFJourney\Views\Home\Bank_Details.cshtml" />
+    <None Include="Areas\EKYC_MFJourney\Views\Home\LoginView.cshtml" />
+    <None Include="Areas\EKYC_MFJourney\Views\Home\PAN_Details.cshtml" />
+    <None Include="Areas\EKYC_MFJourney\Views\Nominee\Nominee_Details.cshtml" />
+    <None Include="Areas\EKYC_MFJourney\Views\Selfie\SelfieView.cshtml" />
+    <None Include="Areas\EKYC_MFJourney\Views\Test\Index.cshtml" />
     <None Include="wwwroot\images\add-icon.png" />
     <None Include="wwwroot\images\add-user-1.png" />
     <None Include="wwwroot\images\ant-design_usergroup.png" />

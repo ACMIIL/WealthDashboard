@@ -12,13 +12,6 @@
         public string BACode { get; set; }
         public string EncBACode { get; set; }
         public string SourceType { get; set; }
-        public string MobNo { get; set; }
-        public string WPCode { get; set; }
-
-        public string EncMobNo { get; set; }
-        public string EncWPCode { get; set; }
-
-
 
         public int RegistrationId { get; set; }
         public string OCRToken { get; set; }
