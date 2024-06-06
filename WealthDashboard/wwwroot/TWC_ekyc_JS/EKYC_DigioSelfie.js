@@ -208,9 +208,9 @@ function Normalpdfgeneration(PDFSelect, EsignType) {
         success: function (data) {
 
             if (data == "PDF has been generated successfully!") {
-
                 saveApprovedPDF(PDFSelect, EsignType);
                 alert(data);
+                window.location.assign(CommonPageURL + "Home/MFAccThankyou");
             }
             else {
                 alert(data);
