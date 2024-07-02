@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using System;
 using System.Net.Mail;
+using System.Security.Policy;
 using WealthDashboard.Areas.EKYC_MFJourney.Models;
 using WealthDashboard.Areas.EKYC_MFJourney.Models.Common;
 using WealthDashboard.Areas.EKYC_MFJourney.Models.Login;
@@ -63,14 +65,14 @@ namespace WealthDashboard.Areas.EKYC_MFJourney.Controllers
         {
             try
             {
-                string OTPMsg = mobileOTP + " is your OTP. This OTP can be used only once. - www.Investmentz.com";
+                string OTPMsg = mobileOTP + " is your OTP. This OTP can be used only once. - www.Investmentz.com";                
                 if (_appsetting.IsLiveEnvironment.ToString() == "Y")
                 {
                     using (var client = new System.Net.WebClient()) //WebClient  
                     {
                         client.Headers.Add("Content-Type:application/json"); //Content-Type  
                         client.Headers.Add("Accept:application/json");
-                        var result = client.DownloadString("https://push3.maccesssmspush.com/servlet/com.aclwireless.pushconnectivity.listeners.TextListener?userId=acmiil&pass=acmiil&appid=acmiil&subappid=acmiil&contenttype=1&to=" + mobileNo + "&from=ACMIIL&text=" + OTPMsg + "&selfid=true&alert=1&dlrreq=true"); //URI                        
+                        var result = client.DownloadString("https://otp2.maccesssmspush.com/servlet/com.aclwireless.pushconnectivity.listeners.TextListener?userId=acmiil&pass=acmiil&appid=acmiil&subappid=acmiil&contenttype=1&to=" + mobileNo + "&from=ACMIIL&text=" + OTPMsg + "&selfid=true&alert=1&dlrreq=true"); //URI                        
                     }
                 }
             }
