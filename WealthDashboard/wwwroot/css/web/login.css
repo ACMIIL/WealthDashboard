@@ -75,6 +75,13 @@
     width: 30px !important;
     height: 18px !important;
 }
-  
+.forpw {
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color: #2663c7;
+    text-decoration: none;
+}
   
   
