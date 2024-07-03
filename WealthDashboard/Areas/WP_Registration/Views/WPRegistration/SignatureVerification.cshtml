@@ -1,27 +1,20 @@
 ﻿@{
     Layout = "_WPLayout";
 }
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
     <title>TWP</title>
     <link rel="canonical" href="" />
     <meta content="" name="description">
     <meta content="" name="keywords">
-
     <!-- Favicons -->
     <link href="" rel="icon">
     <link href="" rel="apple-touch-icon">
-
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Toastr -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -37,12 +30,12 @@
 <body>
 
     <!-- ======= Hero Section ======= -->
-    <section id="" class=" background-twc-banner" ng-app="main" ng-controller="myController">
+    <section  class=" background-twc-banner" ng-app="main" ng-controller="myController">
         <div class="container">
-            <header id="header" class="pb-5">
+            <header id="header" class="pb-5 mobile-top-padding-header ">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 text-center mb-4">
+                        <div class="col-md-2 col-6 mx-auto text-center ">
                             <a href="index.html">
                                 <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
                             </a>
@@ -53,6 +46,7 @@
             <div class="row">
                 <div class="col-md-12 mx-auto">
                     <div class="row">
+                        <!--mob img div -->
                         <div class="col-md-5 d-none d-md-block">
                             <div class="row">
                                 <div class="mx-auto">
@@ -74,7 +68,6 @@
                                         <div class="row mt-2">
                                             <div class="col-md-8 mx-auto">
                                                 <div class="form-floating mb-2">
- 
                                                     <span>
                                                         <img src="~/wpregimages/upload-icon.png" class="date-icon2" ng-click="clickFileInputarn()" style="cursor: pointer;">
                                                         <input type="file" id="fileInput" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'signature')">
@@ -87,22 +80,19 @@
                                             <div class="col-md-12 text-center  mt-2">
                                                 <h5 class="or">OR</h5>
                                             </div>
-                                            <div class="col-md-12" style="margin-left: 97px;">
-                                                <button ng-click="clearCanvas()" class="btn rounded btn-submit col-md-12 col-12 mb-2">Clear Signature</button>
+                                            <div class="col-md-4 mx-auto text-center">
+                                                <button ng-click="clearCanvas()" class="btn rounded btn-submit mb-2 col-12">Clear Signature</button>
                                             </div>
                                             <div class="col-md-12 d-flex justify-content-center mt-2">
                                                 <div class="">
-                                                    <canvas id="signatureCanvas" width="390" height="200" style="border:1px solid #fff;background-color: #fff;border-radius:10px;"></canvas>
-                                                    <br>
-
-
+                                                    <canvas id="signatureCanvas" width="390" height="200" class="signbox"></canvas>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="row mt-4">
-                                            <div class="col-md-12 " style="margin-left: 97px;">
-                                                <button ng-click="uploadSignature()" class="btn rounded btn-submit col-md-12 col-12">Next</button>
+                                        <div class="row mt-2">
+                                            <div class="col-md-4 mx-auto text-center">
+                                                <button ng-click="uploadSignature()" class="btn rounded btn-submit col-12">Next</button>
                                             </div>
 
                                         </div>

@@ -1,20 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 
 * {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 
 
 .login-form {
     background-color: #0E1D22;
-    border: 4px solid #CAAA86;
+    border: 4px solid #c9a13f;
     border-radius: 10px;
     color: white;
     padding:20px;
 }
 .form-subtitle {
     text-align: center;
-    font-family: 'Roboto', sans-serif;
+  
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -24,7 +26,7 @@
 .golden{
     color: #AA8861;
     font-weight: 500;
-    font-family: 'Roboto', sans-serif;
+  
     line-height: 16px;
     font-size: 14px;
 
@@ -32,7 +34,7 @@
 .golden2{
     color: #AA8861;
     font-weight: 400;
-    font-family: 'Roboto', sans-serif;
+  
     line-height: 14px;
     font-size: 14px;
 }
@@ -55,19 +57,16 @@
     background-color: #0E1D22;
     border: 0 0 0 1px !important;
     border: none;
-    border-bottom: 2px solid #CAAA86;
+    border-bottom: 2px solid #c9a13f;
     border-radius: 0px;
     margin-top: 10px;
-    font-size: 17px !important;
+    font-size: 15px !important;
     padding-bottom: 0px !important;
 }
-.padding-left-form{
-    padding-left: 132px;
-}
+
 .checkbox-label{
     font-size: 14px !important;
     color: white;
-    width: 322px; /* Adjust the width as needed */
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -78,8 +77,8 @@
 }
 .date-icon{
     position: absolute;
-    margin-top: 30px;
-    margin-left: 303px;
+    margin-top: 20px;
+    right:0;
     cursor: pointer;
 }
 .done-icon{
@@ -94,13 +93,13 @@
     color: #FF7F0B;
     font-size: 14px !important;
     font-weight: 400;
-    font-family: 'Roboto', sans-serif;
+  
 }
 .mobile-number-textarea {
     background-color: #0E1D22;
     border: 0 0 0 1px !important;
     border: none;
-    border-bottom: 2px solid #CAAA86;
+    border-bottom: 2px solid #c9a13f;
     border-radius: 0px;
     margin-top: -11px;
     font-size: 17px !important;
@@ -117,17 +116,15 @@
     height: 20px;
 }
 .mobile-number-otp{
-    width: 35%;
     height: 44px !important;
     background-color: #0E1D22;
     border: 0 0 0 1px !important;
     border: none;
-    border-bottom: 2px solid #CAAA86;
+    border-bottom: 2px solid #c9a13f;
     border-radius: 0px;
     margin-top: 10px;
     font-size: 17px !important;
     padding-bottom: 0px !important;
-    margin-left: 196px;
 }
 .box{
     width: 290px;
@@ -137,54 +134,52 @@
 }
 .lable-signature{
     font-weight: 300;
-    font-family: 'Roboto', sans-serif;
+  
     font-size: 14px;
 }
 .btn-submit-digilocker {
-    background-image: linear-gradient(to bottom, #CAAA86, #9C7952);
-    padding: 5px !important;
-    font-family: 'Roboto', sans-serif !important;
-    width: 71% !important;
-    font-size: 18px !important;
+    background-image: linear-gradient(to bottom, #c9a13f, #9C7952);
+    padding: 5px;
+    width: 71% ;
+    font-size: 18px;
     border-radius: 8px;
 }
 .btn-submit-popup1{
-    background-image: linear-gradient(to bottom, #CAAA86, #9C7952);
-    padding: 10px !important;
-    font-family: 'Roboto', sans-serif !important;
-    width: 30% !important;
-    font-size: 14px !important;
+    background-image: linear-gradient(to bottom, #c9a13f, #9C7952);
+    padding: 10px;
+    width: 30% ;
+    font-size: 14px ;
     border-radius: 8px;
     color: white;
 }
 .btn-submit-popup2{
-    /* background-image: linear-gradient(to bottom, #CAAA86, #9C7952); */
+    /* background-image: linear-gradient(to bottom, #c9a13f, #9C7952); */
     background-color: #0E1D22;
-    border: 1px solid #CAAA86;
-    padding: 10px !important;
-    font-family: 'Roboto', sans-serif !important;
-    width: 30% !important;
-    font-size: 14px !important;
+    border: 1px solid #c9a13f;
+    padding: 10px;
+  
+    width: 30%;
+    font-size: 14px;
     border-radius: 8px;
     color: white;
 }
 
 .btn-submit-popup2:hover{
-    background-color: #0E1D22 !important;
-    border: 1px solid #CAAA86 !important;
-    padding: 10px !important;
-    font-family: 'Roboto', sans-serif !important;
-    width: 30% !important;
-    font-size: 14px !important;
-    border-radius: 8px !important;
-    color: white !important;
+    background-color: #0E1D22 ;
+    border: 1px solid #c9a13f ;
+    padding: 10px ;
+  
+    width: 30%;
+    font-size: 14px ;
+    border-radius:8px;
+    color: white;
 }
 
 .UploadFileName {
     color: #d0a989;
     font-size: 12px !important;
     padding-left: 0 !important;
-    margin-top: 15px !important;
+    margin-top: 10px !important;
     padding: 21px;
 }
 .l1 {
@@ -245,3 +240,97 @@
 }
 
 
+
+.text-small2 {
+    font-size: 14px !important;
+    font-weight: 500;
+    text-align: center !important;
+}
+.pd input {
+    padding-top: 0px !important;
+    margin-left: 10px;
+    font-size: 17px;
+}
+.btn-outline-light {
+    --bs-btn-color: #c9a13f;
+    --bs-btn-border-color: #c9a13f;
+    --bs-btn-hover-color: #c9a13f;
+    --bs-btn-hover-bg: #c9a13f;
+    --bs-btn-hover-border-color: #c9a13f;
+    --bs-btn-focus-shadow-rgb: 248, 249, 250;
+    --bs-btn-active-color: #000;
+    --bs-btn-active-bg: #c9a13f;
+    --bs-btn-active-border-color: #c9a13f;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #c9a13f;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #c9a13f;
+    --bs-gradient: none;
+}
+.signbox {
+    border: 1px solid #fff;
+    background-color: #fff;
+    border-radius: 10px;
+}
+@media (max-width:600px) {
+    .signbox {
+        width:100% !important;
+    }
+    #page-topbar {
+        left: var(--vz-vertical-menu-width)
+    }
+    .mobile-top-padding-header {
+        padding: 0px !important;
+    }
+    .mobile-number-textarea {
+        font-size: 14px;
+        padding-left: 4px !important;
+    }
+    .btn-submit {
+        padding: 5px;
+        width: 60%;
+        font-size: 15px;
+    }
+    .text-small2 {
+        font-size: 12px !important;
+        font-weight: 500;
+        text-align: center;
+    }
+    .background-twc-banner {
+        min-height: 100vh;
+    }
+    .mobile-number-textarea {
+        width: 50%;
+    }
+    .btn-submit-digilocker {
+        width: 100%;
+    }
+    .font-label-1 {
+        font-size: 14px;
+    }
+    .mfs12{
+        font-size:12px;
+    }
+    .title-4 {
+        font-size: 14px;
+    }
+    .font-label-2 {
+        font-size: 14px;
+    }
+    .btn-submit-popup1 {
+        width: 60%;
+        font-size: 12px;
+    }
+
+    .btn-submit-popup2 {
+        width: 60%;
+        font-size: 12px;
+    }
+        .btn-submit-popup2:hover {
+            width: 60%;
+            font-size: 12px;
+        }
+    .btn-outline-light{
+        font-size:9px !important;
+    }
+}

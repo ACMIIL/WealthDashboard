@@ -3,40 +3,30 @@
 }
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
     <title>TWP</title>
     <link rel="canonical" href="" />
     <meta content="" name="description">
     <meta content="" name="keywords">
-
     <!-- Favicons -->
     <link href="" rel="icon">
     <link href="" rel="apple-touch-icon">
-
     <!-- Google Fonts -->
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link href="https://chhotaniveshgold.com/assets/vendor/boxicons/css/boxicons.min.css"> -->
     <!---for toaster--->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <!-- Vendor CSS Files -->
     <link href="~/css/wpregistrationcss/slick.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/slick-theme.css" rel="stylesheet" />
-
     <!-- Template Main CSS File -->
     <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
-
-
-
     <script>
         function blockspace(event) {
             // Get the key code of the pressed key
@@ -49,25 +39,19 @@
                 return false;
             }
             return true;
-
-
-
         }
     </script>
 </head>
 
 <body>
-
     <div ng-app="main" ng-controller="mycontroller">
-
-
         <!-- ======= Hero Section ======= -->
-        <section class=" background-twc-banner">
+        <section class="background-twc-banner">
             <div class="container">
-                <header id="header" class="pb-5">
+                <header id="header" class="pb-5 mobile-top-padding-header ">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12 text-center mb-4">
+                            <div class="col-md-2 col-6 mx-auto text-center ">
                                 <a href="index.html">
                                     <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
                                 </a>
@@ -75,6 +59,7 @@
                         </div>
                     </div>
                 </header>
+               
                 <div class="row">
                     <div class="col-md-12 mx-auto">
                         <div class="row">
@@ -87,132 +72,97 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="row">
-                                    <div class="col-md-11 ms-0 mx-auto card login-form">
-                                        <div class="row mb-1 mt-5">
-                                            <div class="form-title text-center">
-                                                Link Your Bank Account
+                                    <div class="col-md-12">
+                                        <div class="card login-form">
+                                            <div class="row mb-1 mt-5">
+                                                <div class="form-title text-center">
+                                                    Link Your Bank Account
+                                                </div>
+                                                <div class="text-center">
+                                                    <label class="form-subtitle "><span class="golden">Scan Your QR Code from UPI </span></label>
+                                                </div>
                                             </div>
-                                            <div class="text-center">
-                                                <label class="form-subtitle "><span class="golden">Scan Your QR Code from UPI </span></label>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="row mb-3">
-                                            <div class="row mb-3 padding-left-form">
-                                                <div class="form-floating mb-3">
-
-                                                    <input type="text" class="form-control floating-text-area"
-                                                           id="floatingInput" style="color: white;" ng-model="Account_Name" oninput="this.value = this.value.toUpperCase()" onkeydown="return blockDigits(event)">
-
-
-                                                    <span ng-if="Account_Name==''" style="color: rgb(212, 25, 25);font-size:small;">
-                                                        Please
-                                                        Enter Account Holder Name
-                                                    </span>
-
-
-                                                    <label for="floatingInput" style="color: #CAAA86;">
-                                                        Account Holder
-                                                        Name
-                                                    </label>
-
-                                                </div>
-                                                <div class="form-floating mb-3">
-
-                                                    <input id="floatingInput" name="floatingInput" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onkeydown="return blockspace(event)" type="text" class="form-control floating-text-area" ng-model="Account_Num" style="color: white;">
-
-                                                    <span ng-if="Account_Num==''" style="color: rgb(212, 25, 25);font-size:small;">
-                                                        Please
-                                                        Enter Account Number
-                                                    </span>
-
-
-
-
-
-                                                    <label for="floatingInput" style="color: #CAAA86;">
-                                                        Bank Account
-                                                        Number
-                                                    </label>
-                                                </div>
-                                                <div class="form-floating mb-2">
-
-                                                    <input id="floatingInput" oninput="this.value = this.value.toUpperCase()" onkeydown="return blockspace(event)" name="floatingInput" type="text" class="form-control floating-text-area" ng-blur="GetBankDetails()" ng-model="IFSCCode" style="color: white;">
-
-                                                    <span ng-if="IFSCCode==''" style="color: rgb(212, 25, 25);font-size:small;">
-                                                        Please
-                                                        Enter IFSC Code
-                                                    </span>
-
-                                                    <label for="floatingInput" style="color: #CAAA86;">IFSC Code</label>
-                                                </div>
-                                                <div>
-                                                    <label class="orangetext" for="flexCheckChecked">
-                                                        {{ADDRESS}}
-                                                    </label>
-                                                </div>
-                                                <div class="form-floating mb-5">
-                                                    <span>
-                                                        <img src="/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInput()" style="cursor: pointer;">
-                                                        <input type="file" id="fileInput" ng-model="CancelCheque" name="fileInput" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this)">
-                                                    </span>
-                                                    <input type="text" class="form-control floating-text-area" id="fileInput" name="floatingInput" ng-model="CancelChequeFileName" style="color: white;" placeholder="Cancel Cheque">
-
-                                                    <span ng-if="CancelChequeFileName==''" style="color: rgb(212, 25, 25);font-size:small;">
-                                                        Upload Cancel Cheque
-                                                    </span>
-
-
-                                                    <label for="fileInput" style="color: #CAAA86;"> Upload Cancel Cheque </label>
-                                                    <span ng-if="filesize" style="color: rgb(212, 25, 25);font-size:small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
-                                                </div>
-
-
-                                                <div class="row mb-2">
-                                                    <div class="col-md-12 ms-2 ps-2">
-                                                        <h3 class="title-4" style="color: #CAAA86;">Account Type</h3>
+                                            <div class="row mb-3">
+                                                <div class="col-md-10 mx-auto">
+                                                    <div class="form-floating mb-2">
+                                                        <input type="text" class="form-control floating-text-area"
+                                                               id="floatingInput" style="color: white;" ng-model="Account_Name" oninput="this.value = this.value.toUpperCase()" onkeydown="return blockDigits(event)" autocomplete="off">
+                                                        <span ng-if="Account_Name==''" style="color: rgb(212, 25, 25);font-size:small;">
+                                                            Please
+                                                            Enter Account Holder Name
+                                                        </span>
+                                                        <label for="floatingInput" style="color: #c9a13f;">
+                                                            Account Holder
+                                                            Name
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-floating mb-2">
+                                                        <input id="floatingInput" class="form-control floating-text-area" name="floatingInput" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onkeydown="return blockspace(event)" type="text" class="form-control floating-text-area" ng-model="Account_Num" style="color: white;" autocomplete="off">
+                                                        <span ng-if="Account_Num==''" style="color: rgb(212, 25, 25);font-size:small;">
+                                                            Please
+                                                            Enter Account Number
+                                                        </span>
+                                                        <label for="floatingInput" style="color: #c9a13f;">
+                                                            Bank Account
+                                                            Number
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-floating mb-2">
+                                                        <input id="floatingInput" class="form-control floating-text-area" oninput="this.value = this.value.toUpperCase()" onkeydown="return blockspace(event)" name="floatingInput" type="text" class="form-control floating-text-area" ng-blur="GetBankDetails()" ng-model="IFSCCode" style="color: white;" autocomplete="off">
+                                                        <span ng-if="IFSCCode==''" style="color: rgb(212, 25, 25);font-size:small;">
+                                                            Please
+                                                            Enter IFSC Code
+                                                        </span>
+                                                        <label for="floatingInput" style="color: #c9a13f;">IFSC Code</label>
+                                                    </div>
+                                                    <div>
+                                                        <label class="orangetext" for="flexCheckChecked">
+                                                            {{ADDRESS}}
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-floating">
+                                                        <span>
+                                                            <img src="/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInput()" style="cursor: pointer;">
+                                                            <input type="file" id="fileInput" ng-model="CancelCheque" name="fileInput" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this)">
+                                                        </span>
+                                                        <input type="text" autocomplete="off" class="form-control floating-text-area" id="fileInput" name="floatingInput" ng-model="CancelChequeFileName" style="color: white;" placeholder="Cancel Cheque">
+                                                        <span ng-if="CancelChequeFileName==''" style="color: rgb(212, 25, 25);font-size:small;">
+                                                            Upload Cancel Cheque
+                                                        </span>
+                                                        <label for="fileInput" style="color: #c9a13f;"> Upload Cancel Cheque </label>
+                                                        <span ng-if="filesize" style="color: rgb(212, 25, 25);font-size:small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-12 ms-2 ps-2">
-                                                        <label class="font-label-2" style="color: #CAAA86;">
+                                                <div class="row mb-2">
+                                                    <div class="col-md-10 mx-auto">
+                                                        <h3 class="title-4" style="color: #c9a13f;">Account Type</h3>
+                                                    </div>
+                                                    <div class="col-md-10 mx-auto">
+                                                        <label class="font-label-2" style="color: #c9a13f;">
                                                             <input type="radio"
                                                                    name="account" ng-model="AccountType" ng-checked="true" value="1"> Saving
                                                             Account
                                                         </label>&nbsp;&nbsp;
-                                                        <label class="font-label-2" style="color: #CAAA86;">
+                                                        <label class="font-label-2" style="color: #c9a13f;">
                                                             <input type="radio"
                                                                    name="account" ng-model="AccountType" value="0">
                                                             Current Account
                                                         </label>
                                                     </div>
-
-
+                                                    <div class="col-md-10 mx-auto">
+                                                        <div class="mt-2 checkbox-label-2">
+                                                            Note: This bank will serve as your default bank for all future transactions.
+                                                        </div>
+                                                    </div>
                                                 </div>
-
-                                                <div class="mt-2 checkbox-label-2">
-                                                    Note: This bank will serve as your default bank for all future transactions.
+                                                <div class="row">
+                                                    <div class="col-md-10 mx-auto text-center">
+                                                        <button ng-click="SaveBankDetails()" class="btn rounded btn-submit">Next</button>
+                                                    </div>
                                                 </div>
 
                                             </div>
-
-
-
-
-
-                                            <div class="row mb-3 row mb-3 ms-2">
-                                                <div class="col-md-12 text-center col-12 mt-2 mb-4">
-                                                    <button ng-click="SaveBankDetails()" class="btn rounded btn-submit">Next</button>
-                                                </div>
-                                            </div>
-
                                         </div>
-
-
-
-
                                     </div>
                                 </div>
                             </div>

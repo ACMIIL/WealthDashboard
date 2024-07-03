@@ -36,10 +36,10 @@
     <!-- ======= Hero Section ======= -->
     <section class=" background-twc-banner">
         <div class="container">
-            <header id="header" class="pb-5">
+            <header id="header" class="pb-5 mobile-top-padding-header ">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 text-center mb-4">
+                        <div class="col-md-2 col-6 mx-auto text-center ">
                             <a href="index.html">
                                 <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
                             </a>
@@ -61,94 +61,81 @@
                         <!--End == mob img div -->
                         <div class="col-md-7">
                             <div class="row">
-                                <div class=" mx-auto card login-form">
-
-                                    <div class="row mb-1">
-                                        <div class="col-md-12 col-12 text-center">
-                                            <h5 class="form-title">
-                                                <strong> Confirm your Personal Details </strong>
-                                            </h5>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <div class="col-md-12 col-12 text-start"
-                                             style=" color: #CAAA86;">
-                                            <label class="font-label-1"> Name :</label><span class="p-0" style="color: #fff;"> {{data[0].MA_Name}} </span>
-                                        </div>
-                                        <div class="col-md-12 col-12 text-start">
-                                            <label class="font-label-1" style="color: #CAAA86;">Mobile</label>
-                                            <!-- <input type="text" class="form-control" name="password" value="Amit Ashok Kumar"> -->
-                                            <span class="p-0"> {{mobile}} </span>
-                                        </div>
-
-                                        <div class="col-md-12 col-12 text-start">
-                                            <label class="font-label-1" style="color: #CAAA86;"> Date Of Birth</label>
-                                            <!-- <input type="text" class="form-control" name="password" value="HDFC00145754"> -->
-                                            <span class="p-0">
-                                                {{data[0].DateOfBirth| date}}
-                                            </span>
-                                        </div>
-
-                                        <div class="col-md-12 col-12 text-start">
-                                            <label class="font-label-1" style="color: #CAAA86;"> Pincode</label>
-                                            <!-- <input type="text" class="form-control" name="password" value="123456789"> -->
-                                            <span class="p-0">{{data[0].Pincode}} </span>
-                                        </div>
-
-                                        <div class="col-md-12 col-12 text-start">
-                                            <label class="font-label-1" style="color: #CAAA86;"> Adresss</label>
-                                            <!-- <input type="text" class="form-control" name="password" value="123456789"> -->
-                                            <span class="p-0">{{data[0].Permanent_Address}} </span>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3 mt-3"
-                                         <div class="col-md-6 col-12 text-start">
-                                            <label class="font-label-1" style="color: #CAAA86;"> Email </label>
-                                            <span class="p-0">{{data[0].Email}}</span>
+                                <div class="col-md-12">
+                                    <div class="card login-form">
+                                        <div class="row mb-1">
+                                            <div class="col-md-12 col-12 text-center">
+                                                <h5 class="form-title">
+                                                    <strong> Confirm your Personal Details </strong>
+                                                </h5>
+                                            </div>
+                                            <div class="col-md-10 mx-auto col-12"
+                                                 style=" color: #c9a13f;">
+                                                <label class="font-label-1"> Name :</label><span class="p-0" style="color: #fff;"> {{data[0].MA_Name}} </span>
+                                            </div>
+                                            <div class="col-md-10 mx-auto col-12">
+                                                <label class="font-label-1" style="color: #c9a13f;">Mobile</label>
+                                                <!-- <input type="text" class="form-control" name="password" value="Amit Ashok Kumar"> -->
+                                                <span class="p-0"> {{mobile}} </span>
+                                            </div>
+                                            <div class="col-md-10 mx-auto col-12">
+                                                <label class="font-label-1" style="color: #c9a13f;"> Date Of Birth</label>
+                                                <!-- <input type="text" class="form-control" name="password" value="HDFC00145754"> -->
+                                                <span class="p-0">
+                                                    {{data[0].DateOfBirth| date}}
+                                                </span>
+                                            </div>
+                                            <div class="col-md-10 mx-auto col-12">
+                                                <label class="font-label-1" style="color: #c9a13f;"> Pincode</label>
+                                                <!-- <input type="text" class="form-control" name="password" value="123456789"> -->
+                                                <span class="p-0">{{data[0].Pincode}} </span>
+                                            </div>
+                                            <div class="col-md-10 mx-auto col-12">
+                                                <label class="font-label-1" style="color: #c9a13f;"> Adresss</label>
+                                                <!-- <input type="text" class="form-control" name="password" value="123456789"> -->
+                                                <span class="p-0">{{data[0].Permanent_Address}} </span>
+                                            </div>
+                                            <div class="col-md-10 mx-auto col-12">
+                                               <div class="d-flex pd">
+                                                    <label class="font-label-1" style="color: #c9a13f;"> Email </label>
+                                                    <span class="p-0">{{data[0].Email}}</span>
+                                                    <input type="text" ng-if="!data[0].Email" id="Mailid" class="form-control mobile-number-textarea ps-0" style="color: white;width:187px;" ng-keyup="checkEmail()" maxlength="30">
+                                                    <span ng-if="!data[0].Email" id="notVerify" style="color:rgb(206, 44, 44);" class="mfs12"> Email is not Verify </span>
+                                                    <span ng-if="data[0].Email != null && data[0].Email != '' && data[0].Email != undefined" style="color:green" class="mfs12">Verified Email</span>
+                                                    <span ng-if="CheckEmailPattern" style="color:rgb(206, 44, 44)" class="mfs12"> Invalid Email </span>
+                                               </div>
+                                            </div>
 
 
-
-                                          <input type="text" ng-if="!data[0].Email" id="Mailid" class="form-control mobile-number-textarea ps-0" style="color: white;width:187px;" ng-keyup="checkEmail()" maxlength="30">
-
-                                            <span ng-if="!data[0].Email"  id="notVerify" style="color:rgb(206, 44, 44);" class="ps-2"> Email is not Verify </span>
-                                             <span ng-if="data[0].Email != null && data[0].Email != '' && data[0].Email != undefined" style="color:green" class="ps-2">Verified Email</span>
-                                              <span ng-if="CheckEmailPattern" style="color:rgb(206, 44, 44)" class="ps-2"> Invalid Email </span>
-                                        </div>
-
-
-                                        <div class="col-md-6 col-12 text-start">
-                                             <a ng-click="EmailOtpVerify()" ng-if="sendOTP" style="cursor: pointer;color:green;"> <i class="fa fa-hand-pointer-o"></i>SendOTP</a>
-                                               <a ng-click="EmailOtpVerify()" ng-if="ResndOTP" style="cursor: pointer;color:green;"> <i class="fa fa-hand-pointer-o"></i>ResendOTP</a>
-                                            @*   <a (click)="showemailtextbox()" style="cursor: pointer;color:green;"> <i class="fa fa-edit ps-5"></i> Edit </a> *@
-                                            <a (click)="sendOtp()" style="cursor: pointer;color:green;margin-left:5px">  </a>
-                                            @*  <a (click)="cancelEmailEdit()" style="cursor: pointer;color:green;margin-left:5px"> Cancel </a> *@
+                                            <div class="col-md-10 mx-auto col-12">
+                                                <a ng-click="EmailOtpVerify()" ng-if="sendOTP" class="mfs12" style="cursor: pointer;color:green;"> <i class="fa fa-hand-pointer-o"></i>SendOTP</a>
+                                                <a ng-click="EmailOtpVerify()" ng-if="ResndOTP" class="mfs12" style="cursor: pointer;color:green;"> <i class="fa fa-hand-pointer-o"></i>ResendOTP</a>
+                                                @*   <a (click)="showemailtextbox()" style="cursor: pointer;color:green;"> <i class="fa fa-edit ps-5"></i> Edit </a> *@
+                                                <a (click)="sendOtp()" class="mfs12" style="cursor: pointer;color:green;margin-left:5px">  </a>
+                                                @*  <a (click)="cancelEmailEdit()" style="cursor: pointer;color:green;margin-left:5px"> Cancel </a> *@
+                                            </div>
                                         </div>
 
-                                         <div class="col-md-12">
-                                             <div ng-if="OpenOTPbox">
-                                              <label ng-if="!data[0].Email" class="font-label-1" style="color: #CAAA86;"> OTP</label>
-                                             <input type="text"  id="OtpInput" class="form-control mobile-number-textarea ps-0" style="color: white;width:187px;"  ng-model="InputOTP" ng-change="EnterOTP()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="4">
-                                             <a ng-click="OtpVerify()" ng-if="VerifyOTP" style="cursor: pointer;color:green;"> <i class="fa fa-hand-pointer-o"></i>VerifyOTP</a>
-
-                                             </div>
-
-                                            <!-- <input type="text" class="form-control" name="password" value="123456789"> -->
-                                            @* <input id="otp" name="otp" #otp value=""   class="email-style-edit inp font-label-1"> *@
-                                            <div style="color: brown;">
+                                        <div class="row">
+                                             <div class="col-md-12">
+                                                 <div ng-if="OpenOTPbox">
+                                                  <label ng-if="!data[0].Email" class="font-label-1" style="color: #c9a13f;"> OTP</label>
+                                                 <input type="text"  id="OtpInput" class="form-control mobile-number-textarea ps-0" style="color: white;width:187px;"  ng-model="InputOTP" ng-change="EnterOTP()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="4">
+                                                 <a ng-click="OtpVerify()" ng-if="VerifyOTP" style="cursor: pointer;color:green;"> <i class="fa fa-hand-pointer-o"></i>VerifyOTP</a>
+                                                 </div>
+                                                <!-- <input type="text" class="form-control" name="password" value="123456789"> -->
+                                                    @* <input id="otp" name="otp" #otp value=""   class="email-style-edit inp font-label-1"> *@
+                                                <div style="color: brown;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3 mt-3">
+                                            <div class="col-md-12 text-center">
+                                                <button class="btn btn-primary btn-submit-popup1 btn-sm" ng-disabled="!isValidOTP" ng-click="gotoNext()">Next</button>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col-md-12 text-center">
-                                            <button class="btn btn-primary btn-submit-popup1 btn-sm" ng-disabled="!isValidOTP" ng-click="gotoNext()">Next</button>
-                                        </div>
-                                    </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>

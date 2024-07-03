@@ -50,7 +50,7 @@
                                     <div class="form-floating mb-3">
                                         <input type="text" ng-model="name" class="form-control floating-text-area" id="InputName"
                                                oninput="this.value = this.value.toUpperCase()" onkeydown="return blockDigits(event)" placeholder="31-12-1995">
-                                        <label for="InputName" style="color:#CAAA86;">Customer Name</label>
+                                        <label for="InputName" style="color:#c9a13f;">Customer Name</label>
                                     </div>
                                 </div>
                                </div>
@@ -60,7 +60,7 @@
                                         <input type="text" class="form-control floating-text-area" ng-model="PAN"
                                                id="InputPan" ng-change="CHeckPanNumber()" maxlength=" 10" 
                                                oninput="this.value = this.value.toUpperCase();removeWhitespace(this);blockSpecialCharacters(event)" placeholder="31-12-1995">
-                                        <label for="InputPan" style="color: #CAAA86;">PAN Number (Optional)</label>
+                                        <label for="InputPan" style="color: #c9a13f;">PAN Number (Optional)</label>
 
                                         <span ng-if="isPanFormateCorrect" style="color: rgb(212, 25, 25);font-size:small;">Invalid PAN number format.</span>
                                     </div>
@@ -72,7 +72,7 @@
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control floating-text-area" ng-model="Mobile"
                                                id="InputMobile" ng-keyup="ValidateMobileNumber();change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="10" placeholder="31-12-1995">
-                                        <label for="InputMobile" style="color:#CAAA86;">Mobile Number</label>
+                                        <label for="InputMobile" style="color:#c9a13f;">Mobile Number</label>
                                         <span style="color: rgb(212, 25, 25);font-size:small;" id="lblError"> </span>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@
                                 <div class="form-group">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control floating-text-area" ng-keyup="checkEmail()" ng-model="Email" id="InputEmail" placeholder="31-12-1995">
-                                        <label for="InputEmail" style="color:#CAAA86;">Email  (Optional)</label>
+                                        <label for="InputEmail" style="color:#c9a13f;">Email  (Optional)</label>
                                         <span ng-if="CheckEmailPattern" style="color:rgb(206, 44, 44)" class="ps-2"> Invalid Email </span>
                                     </div>
                                 </div>

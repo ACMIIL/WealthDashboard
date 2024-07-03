@@ -37,18 +37,14 @@
     <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
 </head>
-
-
 <body ng-app="main" ng-controller="myController">
-
-
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class=" background-twc-banner" style="height: 900px;">
+    <section class=" background-twc-banner">
         <div class="container">
-            <header id="header" class="pb-5">
+            <header id="header" class="pb-5 mobile-top-padding-header ">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 text-center mb-4">
+                        <div class="col-md-2 col-6 mx-auto text-center ">
                             <a href="index.html">
                                 <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
                             </a>
@@ -59,75 +55,75 @@
             <div class="row">
                 <div class="col-md-12 mx-auto">
                     <div class="row">
-                        <div class="col-md-6 mt-5 pt-5">
+                        <div class="col-md-5 d-none d-md-block">
                             <div class="row">
                                 <div class="mx-auto">
                                     <img src="~/wpregimages/twc-mobile.png" class="img-fluid">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                             <div class="row ">
-                                <div class="col-md-11 ms-0 mx-auto card login-form">
-                                    <div class="row mx-auto mt-5 mb-2">
-                                        <img src="~/wpregimages/bank3.png" class="img-fluid">
-                                    </div>
-                                    <div class="row mb-1">
-                                        <div class="form-title text-center">
-                                            Pany Drop
+                                <div class="col-md-10  mx-auto">
+                                    <div class="card login-form">
+                                        <div class="row mx-auto mb-2">
+                                            <img src="~/wpregimages/bank3.png" class="img-fluid">
                                         </div>
-
-                                    </div>
-                                    <div>
-                                        <div class="row mb-3 padding-left-form">
-                                            <div class="form-floating mb-2">
-                                                <input type="text" class="form-control  floating-text-area" id="floatingInput"
-                                                       style="color: white;" onkeydown="return blockDigits(event)" oninput="this.value = this.value.toUpperCase();blockSpecialCharacters(event)" placeholder="HERFK4578G" ng-keyup="changename()" ng-model="customerName">
-
-                                                <span ng-if="invalidname" style="color: rgb(212, 25, 25);font-size:small;">
-                                                    Please
-                                                    Enter Beneficiary Name
-                                                </span>
-                                                <label for="floatingInput" style="color: #CAAA86;">Customer Name</label>
-
-
+                                        <div class="row mb-1">
+                                            <div class="form-title text-center">
+                                                Pany Drop
                                             </div>
-
-                                            <div class="form-floating mb-2">
-                                                <input type="text"  class="form-control  floating-text-area" id="floatingInput"
-                                                       style="color: white;" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onkeypress="blockspace(event)" placeholder="HERFK4578G" ng-keyup="changeacc()" ng-model="accountno">
-
-                                                <span ng-if="invalidAcc" style="color: rgb(212, 25, 25);font-size:small;">
-                                                    Please
-                                                    Enter Account Number
-                                                </span>
-                                                <label for="floatingInput" style="color: #CAAA86;">Account No</label>
-
-
-                                            </div>
-                                            <div class="form-floating mb-2">
-                                          
-                                                <input id="floatingInput" oninput="this.value = this.value.toUpperCase();preventSpecialCharacters(event)" onkeydown="return blockspace(event)"
-                                                       type="text" class="form-control floating-text-area" ng-blur="GetBankDetails()"
-                                                       ng-model="IFSCCode" ng-keyup="changeifsc()" style="color: white;" />
-                                                <span ng-if="invalidIFSC" style="color: rgb(212, 25, 25);font-size:small;">
-                                                    Please
-                                                    Enter IFSC Code
-                                                </span>
-                                                <label for="floatingInput" style="color: #CAAA86;">IFSC Code</label>
-                                            </div>
-                                            <div>
-                                                <label class="orangetext" for="flexCheckChecked">
-                                                    {{ADDRESS}}
-                                                </label>
-                                            </div>
-
-                      
                                         </div>
-                                        <div class="row mb-3 row mb-3 ms-2">
-                                            <div class="col-md-12 text-center col-12 mt-2 mb-4">
-                                                <button ng-disabled="isDisabled" type="button" ng-click="SaveBankDetails()" class="btn rounded btn-submit">Next</button>
+                                        <div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-10 mx-auto">
+                                                    <div class="form-floating">
+                                                        <input autocomplete="off" type="text" class="form-control  floating-text-area" id="floatingInput"
+                                                               style="color: white;" onkeydown="return blockDigits(event)" oninput="this.value = this.value.toUpperCase();blockSpecialCharacters(event)" placeholder="HERFK4578G" ng-keyup="changename()" ng-model="customerName">
+
+                                                        <span ng-if="invalidname" style="color: rgb(212, 25, 25);font-size:small;">
+                                                            Please
+                                                            Enter Beneficiary Name
+                                                        </span>
+                                                        <label for="floatingInput" style="color: #c9a13f;">Customer Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10 mx-auto">
+                                                    <div class="form-floating">
+                                                        <input autocomplete="off" type="text" class="form-control  floating-text-area" id="floatingInput"
+                                                               style="color: white;" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onkeypress="blockspace(event)" placeholder="HERFK4578G" ng-keyup="changeacc()" ng-model="accountno">
+
+                                                        <span ng-if="invalidAcc" style="color: rgb(212, 25, 25);font-size:small;">
+                                                            Please
+                                                            Enter Account Number
+                                                        </span>
+                                                        <label for="floatingInput" style="color: #c9a13f;">Account No</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10 mx-auto">
+                                                    <div class="form-floating">
+                                                        <input autocomplete="off" class="form-control  floating-text-area" id="floatingInput" oninput="this.value = this.value.toUpperCase();preventSpecialCharacters(event)" onkeydown="return blockspace(event)"
+                                                               type="text" class="form-control floating-text-area" ng-blur="GetBankDetails()"
+                                                               ng-model="IFSCCode" ng-keyup="changeifsc()" style="color: white;" />
+                                                        <span ng-if="invalidIFSC" style="color: rgb(212, 25, 25);font-size:small;">
+                                                            Please
+                                                            Enter IFSC Code
+                                                        </span>
+                                                        <label for="floatingInput" style="color: #c9a13f;">IFSC Code</label>
+                                                    </div>
+
+                                                    <div>
+                                                        <label class="orangetext" for="flexCheckChecked">
+                                                            {{ADDRESS}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10 text-center col-12 mt-2 mx-auto">
+                                                    <button ng-disabled="isDisabled" type="button" ng-click="SaveBankDetails()" class="btn rounded btn-submit">Next</button>
+                                                </div>
+                                               
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
