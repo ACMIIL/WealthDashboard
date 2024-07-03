@@ -1,5 +1,5 @@
 ﻿angular.module('main', ['ngAnimate', 'toaster'])
-
+   
     .controller('myController', function ($scope, toaster, $window, $http, $interval) {
      //   var BaseURL = "https://localhost:7222/";
         //var  BaseURL="https://devwealthmaapi.investmentz.com/";
