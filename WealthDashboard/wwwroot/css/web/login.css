@@ -75,6 +75,37 @@
     width: 30px !important;
     height: 18px !important;
 }
+ 
+.forpw {
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color: #2663c7;
+    text-decoration: none;
+}
+ 
+.forpw{
+    font-size:14px;
+    font-weight:500;
+    color:blue;
+    display:flex;
+    justify-content:center;
+    align-items:end;
+    text-decoration:none;
+    cursor:pointer;
+}
+.forpw:hover{
+    font-size: 14px;
+    font-weight: 500;
+    color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    text-decoration: none;
+    cursor: pointer;
+}
   
+ 
   
   

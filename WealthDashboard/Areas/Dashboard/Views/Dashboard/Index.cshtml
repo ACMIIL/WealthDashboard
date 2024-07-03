@@ -4,19 +4,6 @@
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_LayoutMF.cshtml";
 }
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,500&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- Toastr -->
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<!-- Toastr End -->
 
 
 <!--  Main wrapper -->
@@ -254,170 +241,50 @@
 <!-----Js File-->
 
 <script src="~/js/dashboard/index/index.js"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+@* <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
         integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> *@
 <script>
     var DasboardAPIURL = '@Model["DashboardAPI:URL"]';
     document.addEventListener("DOMContentLoaded", function (event) {
 
-        const showNavbar = (toggleId, navId, bodyId, headerId) => {
-            const toggle = document.getElementById(toggleId),
-                nav = document.getElementById(navId),
-                bodypd = document.getElementById(bodyId),
-                headerpd = document.getElementById(headerId)
+        // const showNavbar = (toggleId, navId, bodyId, headerId) => {
+        //     const toggle = document.getElementById(toggleId),
+        //         nav = document.getElementById(navId),
+        //         bodypd = document.getElementById(bodyId),
+        //         headerpd = document.getElementById(headerId)
 
             // Validate that all variables exist
-            if (toggle && nav && bodypd && headerpd) {
-                toggle.addEventListener('click', () => {
-                    // show navbar
-                    nav.classList.toggle('show')
-                    // change icon
-                    toggle.classList.toggle('bx-x')
-                    // add padding to body
-                    bodypd.classList.toggle('body-pd')
-                    // add padding to header
-                    headerpd.classList.toggle('body-pd')
-                })
-            }
-        }
+        //     if (toggle && nav && bodypd && headerpd) {
+        //         toggle.addEventListener('click', () => {
+        //             // show navbar
+        //             nav.classList.toggle('show')
+        //             // change icon
+        //             toggle.classList.toggle('bx-x')
+        //             // add padding to body
+        //             bodypd.classList.toggle('body-pd')
+        //             // add padding to header
+        //             headerpd.classList.toggle('body-pd')
+        //         })
+        //     }
+        // }
 
-        showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+        // showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
 
         /*===== LINK ACTIVE =====*/
-        const linkColor = document.querySelectorAll('.nav_link')
+        // const linkColor = document.querySelectorAll('.nav_link')
 
-        function colorLink() {
-            if (linkColor) {
-                linkColor.forEach(l => l.classList.remove('active'))
-                this.classList.add('active')
-            }
-        }
-        linkColor.forEach(l => l.addEventListener('click', colorLink))
+        // function colorLink() {
+        //     if (linkColor) {
+        //         linkColor.forEach(l => l.classList.remove('active'))
+        //         this.classList.add('active')
+        //     }
+        // }
+        // linkColor.forEach(l => l.addEventListener('click', colorLink))
 
         // Your code to run since DOM is loaded and ready
     });
 
 </script>
 
-<script>
-
-    $(document).ready(function () {
-        $(".toggle-button1").click(function () {
-            $(".card-panel2").toggle();
-        });
-    });
-</script>
-
-<script>
-    var xValues = ["JAN", "FEB", "MARCH", "APRIL", "MAY"];
-    var yValues = [35, 30, 40, 30, 25];
-    var barColors = ["red", "green", "blue", "orange", "brown"];
-
-    new Chart("myChart", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            legend: { display: false },
-            title: {
-                display: true,
-                text: "2023 BA Data"
-            }
-        }
-    });
-</script>
-<!--chart2-->
-<script>
-    var xValues = ["JAN", "FEB", "MARCH", "APRIL", "MAY"];
-    var yValues = [49, 45, 44, 24, 15];
-    var barColors = ["green", "green", "green", "green", "green"];
-
-    new Chart("myChart2", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            legend: { display: false },
-            title: {
-                display: true,
-                text: "2023 BA Data"
-            }
-        }
-    });
-</script>
-<!--chart3-->
-<script>
-    var xValues = ["JAN", "FEB", "MARCH", "APRIL", "MAY"];
-    var yValues = [49, 45, 44, 24, 15];
-    var barColors = ["orange", "orange", "orange", "orange", "orange"];
-
-    new Chart("myChart3", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            legend: { display: false },
-            title: {
-                display: true,
-                text: "2023 BA Data"
-            }
-        }
-    });
-</script>
-
-<!--chart4-->
-<script>
-    var xValues = ["JAN", "FEB", "MARCH", "APRIL", "MAY"];
-    var yValues = [30, 45, 44, 24, 15];
-    var barColors = ["brown", "brown", "brown", "brown", "brown"];
-
-    new Chart("myChart4", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            legend: { display: false },
-            title: {
-                display: true,
-                text: "2023 BA Data"
-            }
-        }
-    });
-</script>
-<!--tab event java script-->
-<script>
-    function opentabevent(evt, tabname) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabname).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-</script>
+ 

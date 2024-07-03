@@ -1,5 +1,5 @@
 ﻿angular.module('main', ['ngAnimate', 'toaster'])
-
+   
     .controller('myController', function ($scope, toaster, $window, $http, $interval) {
      //   var BaseURL = "https://localhost:7222/";
         //var  BaseURL="https://devwealthmaapi.investmentz.com/";
@@ -67,18 +67,17 @@
                     var host = window.location.hostname;
                     var BaseURL1 = "";
                     // Check if the host is localhost or 127.0.0.1 
-                    if (host === "localhost" || host === "127.0.0.1") {
-                        BaseURL1 = SessionURL + "CreateSession?userid=" + userId;
-                    }
-                    else {
-                        BaseURL1 = ApplicationURL + "CreateSession?userid=" + userId;
-                    }
+                    //if (host === "localhost" || host === "127.0.0.1") {
+                    //    BaseURL1 = "http://localhost:52206/WP_Registration/WPRegistration/" + "CreateSession?userid=" + userId;
+                    //}
+                    //else {
+                    //    BaseURL1 = ApplicationURL + "CreateSession?userid=" + userId;
+                    //}
 
                     $http({
-                        url: BaseURL1,
+                        url: "/WP_Registration/WPRegistration/CreateSession?userid=" + userId,
                         method: "GET",
                         headers: {}, // lowercase 'headers'
-                        data: {}
                     }).then(function (response1) {
 
                         if (status === 0 ) {
@@ -104,7 +103,8 @@
                             window.location.href = '/WP_Registration/WPRegistration/Thankyou'
                         }
                         else if (status === 9) {
-                           // show dashbord
+                            // show dashbord
+                            window.location.href = '/home/index'
                         }
                     }).catch(function (error) {
                         console.error('Error Something went wrong:', error);
