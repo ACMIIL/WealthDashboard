@@ -40,21 +40,16 @@
             padding: 21px;
         }
     </style>
-
-
 </head>
 <body>
-
     <div ng-app="main" ng-controller="myController">
-
-
         <!-- ======= Hero Section ======= -->
         <section class="background-twc-banner">
             <div class="container">
-                <header id="header" class="pb-5">
+                <header id="header" class="pb-5 mobile-top-padding-header ">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12 text-center mb-4">
+                            <div class="col-md-2 col-6 mx-auto text-center ">
                                 <a href="index.html">
                                     <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
                                 </a>
@@ -65,7 +60,7 @@
                 <div class="row">
                     <div class="col-md-12 mx-auto">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-5 d-none d-md-block">
                                 <div class="row">
                                     <div class="mx-auto">
                                         <img src="~/wpregimages/twc-mobile.png" class="img-fluid">
@@ -74,168 +69,166 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="row ">
-                                    <div class="col-md-12 ms-0 mx-auto card login-form">
-                                        <div class="row mx-auto mt-5 mb-2">
-                                            <img src="~/wpregimages/form-logo.png" alt="" title=""
-                                                 class="img-fluid text-center" style="width:55px;height: 31px;">
-                                        </div>
-                                        <div class="row mb-1">
-                                            <div class="form-title text-center">
-                                                Personal Details
-                                            </div>
-                                            <div class="text-center">
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="row mb-4">
-                                                <div class="col-md-6 ps-4">
-                                                    <div class="form-floating mb-2">
-                                                        <input type="text" ng-model="aadharNo"
-                                                               maxlength="12"
-                                                               class="form-control floating-text-area UploadFileName" id="floatingInput"
-                                                               style="color: white;" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" placeholder="HERFK4578G">
-                                                        <label for="floatingInput" style="color: #CAAA86;">Aadhar No</label>
-
-
-
-                                                    </div>
-
-
-
-                                                    <div class="form-floating mb-2">
-                                                        <input type="text" ng-model="email"
-                                                               class="form-control floating-text-area" id="floatingInput"
-                                                               style="color: white;" ng-keyup="checkEmail()" placeholder="HERFK4578G">
-                                                        <label for="floatingInput" style="color: #CAAA86;">Email</label>
-
-                                                        <span ng-if="CheckEmailPattern" style="color:rgb(206, 44, 44)" class="ps-2"> Invalid Email </span>
-
-                                                    </div>
-
-
-
-                                                    <div class="form-floating mb-2">
-                                                        <input type="text" ng-model="PinCodev" ng-change="GetCityCode(PinCodev)"
-                                                               class="form-control  floating-text-area" id="floatingInput"
-                                                               style="color: white;" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" placeholder="HERFK4578G" maxlength="7">
-
-                                                        <label for="floatingInput" style="color: #CAAA86;">Pincode</label>
-                                                    </div>
-
-
-                                                    <div class="form-floating mb-2">
-                                                        <input type="text" ng-model="city"
-                                                               class="form-control  floating-text-area ChangeColor"
-                                                               style="color: white;" placeholder="HERFK4578G" ng-disabled="isDisabled" ng-keypress="validateInput($event)">
-
-                                                        <label for="floatingInput" style="color: #CAAA86;">City</label>
-                                                    </div>
-
-
-                                                    <div class="form-floating mb-2">
-                                                        <input type="text" ng-model="state"
-                                                               class="form-control  floating-text-area ChangeColor"
-                                                               style="color: white;" placeholder="HERFK4578G" ng-disabled="isDisabled" ng-keypress="validateInput($event)">
-
-                                                        <label for="floatingInput" style="color: #CAAA86;">State</label>
-                                                    </div>
-
-                                                    <div class="form-floating mb-2">
-                                                        <input type="text" ng-model="Country"
-                                                               class="form-control  floating-text-area ChangeColor"
-                                                               style="color: white;" placeholder="HERFK4578G" ng-disabled="isDisabled" ng-keypress="validateInput($event)">
-
-                                                        <label for="floatingInput" style="color: #CAAA86;">Country</label>
-                                                    </div>
-
-
+                                    <div class="col-md-12 mx-auto ">
+                                        <div class="card login-form">
+                                            <div class="row mb-1">
+                                                <div class="form-title text-center">
+                                                    Personal Details
                                                 </div>
-
-                                                <div class="col-md-6 ps-3">
-                                                    <div class="form-floating mb-2">
-                                                        <input type="text" ng-model="address1"
-                                                               class="form-control  floating-text-area" id="floatingInput"
-                                                               style="color: white;" placeholder="HERFK4578G" maxlength="40" ng-keyup="FindValue('add1')">
-                                                        <label for="floatingInput" style="color: #CAAA86;">Address 1</label>
-                                                    </div>
-                                                    <span ng-if="Address1Valid" style="color:rgb(206, 44, 44)" class="ps-2"> Continue in address2 field </span>
-                                                    <div class="form-floating mb-2">
-                                                        <input type="text" value=" " ng-model="address2"
-                                                               class="form-control  floating-text-area" id="floatingInput"
-                                                               style="color: white;" placeholder="HERFK4578G" maxlength="30" ng-keyup="FindValue('add2')">
-
-                                                        <label for="floatingInput" style="color: #CAAA86;">Address 2</label>
-                                                    </div>
-                                                    <span ng-if="Address2Valid" style="color:rgb(206, 44, 44)" class="ps-2"> Continue in address3 field </span>
-                                                    <div class="form-floating mb-2">
-                                                        <input type="text" ng-model="address3"
-                                                               class="form-control  floating-text-area" id="floatingInput"
-                                                               style="color: white;" placeholder="HERFK4578G" maxlength="40">
-
-                                                        <label for="floatingInput" style="color: #CAAA86;">Address 3</label>
-                                                    </div>
-                                                    <div class="form-floating mb-2">
-                                                        <span>
-                                                            <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputpan()" style="cursor: pointer;margin-left: 267px;">
-                                                            <input type="file" id="fileInputpan" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'Pan')">
-                                                        </span>
-                                                        <input readonly type="text" class="floating-text-area UploadFileName" ng-model="PanFileName" style="color: white;">
-                                                        <label for="fileInputpan" class="l1">Upload Pan</label>
-                                                        @*  <span>
-                                                        <img src="~/wpregimages/upload-icon.png" class="date-icon">
-                                                        <input type="file" hidden #gst (change)="onFileSelect(gst,'pan')" accept="image/png,image/jpeg"/>
-                                                        </span>
-                                                        <input readonly type="text" class="form-control floating-text-area"
-                                                        ng-model="pan" id="floatingInput"
-                                                        style="color: white;padding-left: 0 !important;font-size: 12px !important;"
-                                                        placeholder="31-12-1995">
-
-                                                        <label for="floatingInput"
-                                                        style="color: #CAAA86;font-size: 16px;opacity: 1;">
-                                                        Upload  Pan
-                                                        </label>
-
-                                                        <span ng-if="pansize" style="color: darkred;font-size:small;">
-                                                        Oops! The
-                                                        size limit for the image is 5 MB. Reduce the file size and try
-                                                        again.
-                                                        </span> *@
-                                                    </div>
-                                                    <span ng-if="Pansize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
-                                                    <div class="form-floating mb-3">
-
-                                                        <span>
-                                                            <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputaddhar()" style="cursor: pointer;margin-left: 267px;">
-                                                            <input type="file" id="fileInputaddhar" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'addhar')">
-                                                        </span>
-                                                        <input readonly type="text" class="floating-text-area UploadFileName" ng-model="addharFileName" style="color: white;">
-                                                        <label for="fileInputaddhar" class="l1">Upload Aadhar</label>
-
-
-                                                        @*  <span>
-                                                        <img src="~/wpregimages/upload-icon.png" class="date-icon">
-                                                        <input type="file" hidden #pms (change)="onFileSelect(pms,'aadhar')" accept="image/png,image/jpeg" />
-                                                        </span>
-                                                        <input readonly type="text" class="form-control floating-text-area" ng-model="aadhar" id="floatingInput"
-                                                        style="color: white;padding-left: 0 !important;font-size: 12px !important;"
-                                                        placeholder="31-12-1995">
-
-                                                        <label for="floatingInput"
-                                                        style="color: #CAAA86;font-size: 16px;opacity: 1;">Upload  Aadhar </label>
-                                                        <span ng-if="aadharsize" style="color: darkred;font-size:small;">
-                                                        Oops! The
-                                                        size limit for the image is 5 MB. Reduce the file size and try
-                                                        again.
-                                                        </span> *@
-                                                    </div>
-                                                    <span ng-if="Addharsize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+                                                <div class="text-center">
                                                 </div>
-
                                             </div>
-                                            <div class="row mb-3 row mb-3 ms-2">
-                                                <div class="col-md-12 text-center col-12 mt-2 mb-4">
-                                                    <button type="button" ng-click="SubmitDetails()" class="btn rounded btn-submit">Next</button>
+                                            <div>
+                                                
+                                                <div class="row mb-2">
+                                                    <div class="col-md-6 order-0">
+                                                        <div class="form-floating mb-2">
+                                                            <input autocomplete="off" type="text" ng-model="aadharNo"
+                                                                   maxlength="12"
+                                                                   class="form-control floating-text-area UploadFileName" id="floatingInput"
+                                                                   style="color: white;" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" placeholder="HERFK4578G">
+                                                            <label for="floatingInput" style="color: #c9a13f;">Aadhar No</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-2">
+                                                            <input autocomplete="off" type="text" ng-model="address1"
+                                                                   class="form-control  floating-text-area" id="floatingInput"
+                                                                   style="color: white;" placeholder="HERFK4578G" maxlength="40" ng-keyup="FindValue('add1')">
+                                                            <label for="floatingInput" style="color: #c9a13f;">Address 1</label>
+                                                        </div>
+                                                        <span ng-if="Address1Valid" style="color:rgb(206, 44, 44)" class="ps-2"> Continue in address2 field </span>
 
+                                                    </div>
+                                                    <div class="col-md-6 order-1">
+                                                        <div class="form-floating mb-2">
+                                                            <input autocomplete="off" type="text" ng-model="email"
+                                                                   class="form-control floating-text-area" id="floatingInput"
+                                                                   style="color: white;" ng-keyup="checkEmail()" placeholder="HERFK4578G">
+                                                            <label for="floatingInput" style="color: #c9a13f;">Email</label>
+                                                            <span ng-if="CheckEmailPattern" style="color:rgb(206, 44, 44)" class="ps-2"> Invalid Email </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-2">
+                                                            <input autocomplete="off" type="text" value=" " ng-model="address2"
+                                                                   class="form-control  floating-text-area" id="floatingInput"
+                                                                   style="color: white;" placeholder="HERFK4578G" maxlength="30" ng-keyup="FindValue('add2')">
+
+                                                            <label for="floatingInput" style="color: #c9a13f;">Address 2</label>
+                                                        </div>
+                                                        <span ng-if="Address2Valid" style="color:rgb(206, 44, 44)" class="ps-2"> Continue in address3 field </span>
+                                                    </div>
+                                                    <div class="col-md-6 order-2">
+                                                        <div class="form-floating mb-2">
+                                                            <input autocomplete="off" type="text" ng-model="PinCodev" ng-change="GetCityCode(PinCodev)"
+                                                                   class="form-control  floating-text-area" id="floatingInput"
+                                                                   style="color: white;" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" placeholder="HERFK4578G" maxlength="7">
+                                                            <label for="floatingInput" style="color: #c9a13f;">Pincode</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-2">
+                                                            <input autocomplete="off" type="text" ng-model="address3"
+                                                                   class="form-control  floating-text-area" id="floatingInput"
+                                                                   style="color: white;" placeholder="HERFK4578G" maxlength="40">
+
+                                                            <label for="floatingInput" style="color: #c9a13f;">Address 3</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 order-3">
+                                                        <div class="form-floating mb-2">
+                                                            <input autocomplete="off" type="text" ng-model="city"
+                                                                   class="form-control  floating-text-area ChangeColor"
+                                                                   style="color: white;" placeholder="HERFK4578G" ng-disabled="isDisabled" ng-keypress="validateInput($event)">
+
+                                                            <label for="floatingInput" style="color: #c9a13f;">City</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-2">
+                                                            <span>
+                                                                <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputpan()" style="cursor: pointer;margin-left: 267px;">
+                                                                <input type="file" id="fileInputpan" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'Pan')">
+                                                            </span>
+                                                            <input autocomplete="off" readonly type="text" class="floating-text-area UploadFileName" ng-model="PanFileName" style="color: white;">
+                                                            <label for="fileInputpan" class="l1">Upload Pan</label>
+                                                            @*  <span>
+                                                            <img src="~/wpregimages/upload-icon.png" class="date-icon">
+                                                            <input type="file" hidden #gst (change)="onFileSelect(gst,'pan')" accept="image/png,image/jpeg"/>
+                                                            </span>
+                                                            <input readonly type="text" class="form-control floating-text-area"
+                                                            ng-model="pan" id="floatingInput"
+                                                            style="color: white;padding-left: 0 !important;font-size: 12px !important;"
+                                                            placeholder="31-12-1995">
+
+                                                            <label for="floatingInput"
+                                                            style="color: #c9a13f;font-size: 16px;opacity: 1;">
+                                                            Upload  Pan
+                                                            </label>
+
+                                                            <span ng-if="pansize" style="color: darkred;font-size:small;">
+                                                            Oops! The
+                                                            size limit for the image is 5 MB. Reduce the file size and try
+                                                            again.
+                                                            </span> *@
+                                                        </div>
+                                                        <span ng-if="Pansize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+
+                                                    </div>
+                                                    <div class="col-md-6 order-4">
+                                                        <div class="form-floating mb-2">
+                                                            <input autocomplete="off" type="text" ng-model="state"
+                                                                   class="form-control  floating-text-area ChangeColor"
+                                                                   style="color: white;" placeholder="HERFK4578G" ng-disabled="isDisabled" ng-keypress="validateInput($event)">
+
+                                                            <label for="floatingInput" style="color: #c9a13f;">State</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3">
+
+                                                            <span>
+                                                                <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputaddhar()" style="cursor: pointer;margin-left: 267px;">
+                                                                <input type="file" id="fileInputaddhar" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'addhar')">
+                                                            </span>
+                                                            <input autocomplete="off" readonly type="text" class="floating-text-area UploadFileName" ng-model="addharFileName" style="color: white;">
+                                                            <label for="fileInputaddhar" class="l1">Upload Aadhar</label>
+
+
+                                                            @*  <span>
+                                                            <img src="~/wpregimages/upload-icon.png" class="date-icon">
+                                                            <input type="file" hidden #pms (change)="onFileSelect(pms,'aadhar')" accept="image/png,image/jpeg" />
+                                                            </span>
+                                                            <input readonly type="text" class="form-control floating-text-area" ng-model="aadhar" id="floatingInput"
+                                                            style="color: white;padding-left: 0 !important;font-size: 12px !important;"
+                                                            placeholder="31-12-1995">
+
+                                                            <label for="floatingInput"
+                                                            style="color: #c9a13f;font-size: 16px;opacity: 1;">Upload  Aadhar </label>
+                                                            <span ng-if="aadharsize" style="color: darkred;font-size:small;">
+                                                            Oops! The
+                                                            size limit for the image is 5 MB. Reduce the file size and try
+                                                            again.
+                                                            </span> *@
+                                                        </div>
+                                                        <span ng-if="Addharsize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+                                                    </div>
+                                                    <div class="col-md-6 order-5">
+                                                        <div class="form-floating mb-2">
+                                                            <input autocomplete="off" type="text" ng-model="Country"
+                                                                   class="form-control  floating-text-area ChangeColor"
+                                                                   style="color: white;" placeholder="HERFK4578G" ng-disabled="isDisabled" ng-keypress="validateInput($event)">
+
+                                                            <label for="floatingInput" style="color: #c9a13f;">Country</label>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                </div>
+                                                <div class="row mb-3 row mb-3 ms-2">
+                                                    <div class="col-md-12 text-center col-12 mt-2 mb-4">
+                                                        <button type="button" ng-click="SubmitDetails()" class="btn rounded btn-submit">Next</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

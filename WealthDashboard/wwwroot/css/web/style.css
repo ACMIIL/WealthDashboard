@@ -1113,7 +1113,7 @@ button[type=submit] {
   display: inline-block;
   margin-bottom: 0;
  
-  background: #CAAA86;
+  background: #c9a13f;
   position: relative;
 }
 .intro figure .pattern-bg {
@@ -2801,7 +2801,7 @@ button[type=submit] {
   margin-bottom: -80px;
 }
 .footer-bar .inner {
-  background: #CAAA86;
+  background: #c9a13f;
   padding: 60px 30px;
   color: #fff;
 }

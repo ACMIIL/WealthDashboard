@@ -36,12 +36,12 @@
 <body>
 
     <!-- ======= Hero Section ======= -->
-    <section class=" background-twc-banner" ng-app="main" ng-controller="myController">
+    <section class="background-twc-banner" ng-app="main" ng-controller="myController">
         <div class="container">
-            <header id="header" class="pb-5">
+            <header id="header" class="pb-5 mobile-top-padding-header ">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 text-center mb-4">
+                        <div class="col-md-2 col-6 mx-auto text-center ">
                             <a href="index.html">
                                 <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
                             </a>
@@ -52,6 +52,7 @@
             <div class="row">
                 <div class="col-md-12 mx-auto">
                     <div class="row">
+                        <!--mob img div -->
                         <div class="col-md-5 d-none d-md-block">
                             <div class="row">
                                 <div class="mx-auto">
@@ -79,12 +80,17 @@
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <button type="button" class="btn btn-primary" id="start-camera">Start-camera</button>
-                                            <button type="button" class="btn btn-primary" style="display:none;" id="start-retake">Retake</button>
-                                            <button class="btn btn-primary pgf" ng-click="Submit()">Next</button>
+                                            <div class="col-md-4 col-4 text-end">
+                                                <button type="button" class="btn btn-outline-light" id="start-camera">Start-camera</button>
+                                            </div>
+                                            <div class="col-md-4 col-4 text-center">
+                                                <button type="button" class="btn btn-outline-light" id="start-retake">Retake</button>
+                                            </div>
+                                            <div class="col-md-4 col-4 ">
+                                                <button class="btn btn-outline-light pgf" ng-click="Submit()">Next</button>
+                                            </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

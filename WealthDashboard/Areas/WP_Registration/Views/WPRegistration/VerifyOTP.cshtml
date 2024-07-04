@@ -7,19 +7,14 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
     <title>TWP</title>
     <link rel="canonical" href="" />
     <meta content="" name="description">
     <meta content="" name="keywords">
-
     <!-- Favicons -->
     <link href="" rel="icon">
     <link href="" rel="apple-touch-icon">
-
     <!-- Google Fonts -->
-
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link href="https://chhotaniveshgold.com/assets/vendor/boxicons/css/boxicons.min.css"> -->
     <!---for toaster--->
@@ -38,17 +33,15 @@
     <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
 </head>
-
-
 <body>
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class=" background-twc-banner" style="height: 780px;" ng-app="main" ng-controller="myController">
+    <section class=" background-twc-banner"  ng-app="main" ng-controller="myController">
         <div class="container">
-            <header id="header" class="pb-5">
+            <header id="header" class="pb-5 mobile-top-padding-header ">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 text-center mb-5">
+                        <div class="col-md-2 col-6 mx-auto text-center ">
                             <a href="index.html">
                                 <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
                             </a>
@@ -68,40 +61,40 @@
                         </div>
                         <div class="col-md-6 ">
                             <div class="row ">
-                                <div class="col-md-12 mx-auto card login-form ps-4 pe-4">
-                                    <div class="row mx-auto mt-5 mb-4">
-                                        <img src="~/wpregimages/form-logo.png" alt="" title="" class="img-fluid text-center" style="width:55px;height: 31px;">
-                                    </div>
-                                    <div class="row mb-1">
-                                        <div class="form-title text-center">
-                                            Enter OTP
+                                <div class="col-md-12 mx-auto ">
+                                    <div class="card login-form">
+                                        <div class="row mx-auto mt-5 mb-4">
+                                            <img src="~/wpregimages/form-logo.png" alt="" title="" class="img-fluid text-center" style="width:55px;height: 31px;">
                                         </div>
-                                    </div>
-                                    <div class="row mb-3 row mb-3 justify-content-center">
-                                        <div class="min-h-screen flex flex-col justify-center text-center">
-                                            <form action="#" method="post">
-                                            
-                                                <label class="form-subtitle ">A OTP has been sent to <span class="golden">{{MobileNumber}}</span><img src="~/wpregimages/edit.png" class="ms-1 mb-1"></label>
-                                                <div class="form-floating mb-2">
-                                                   
-                                                    
-                                                    <input type="text" class="form-control mobile-number-otp ps-0 text-center" id="floatingInput" style="color: white;" ng-model="OTPvalue" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="4">
+                                        <div class="row mb-1">
+                                            <div class="form-title text-center">
+                                                Enter OTP
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3 row mb-3 justify-content-center">
+                                            <div class="col-md-6 col-10 mx-auto">
+                                                <div class="min-h-screen flex flex-col justify-center text-center">
+                                                    <form action="#" method="post">
+                                                        <label class="form-subtitle ">A OTP has been sent to <span class="golden">{{MobileNumber}}</span><img src="~/wpregimages/edit.png" class="ms-1 mb-1"></label>
+                                                        <div class="form-floating mb-2">
+                                                            <input autocomplete="off" type="text" class="form-control mobile-number-otp ps-0 text-center" id="floatingInput" style="color: white;" ng-model="OTPvalue" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="4">
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                            </form>
-                                        </div>
-                                        <div class="col-md-12 text-center col-12 mt-3">
-                                          @*   <a href="pan-card-details.html" class="btn rounded btn-submit">Submit</a> *@                                          
-                                            <button ng-click="VerifyOTP(OTPvalue)" class="btn rounded btn-submit" ng-disabled="OTPvalue.length !== 4">Submit</button>
-                                        </div>
+                                            </div>
+                                            <div class="col-md-12 text-center col-12 mt-3">
+                                                @*   <a href="pan-card-details.html" class="btn rounded btn-submit">Submit</a> *@
+                                                <button ng-click="VerifyOTP(OTPvalue)" class="btn rounded btn-submit" ng-disabled="OTPvalue.length !== 4">Submit</button>
+                                            </div>
 
                                             <div class="col-md-12 text-center mt-3 mb-4">
-                                        <label class="form-subtitle" >
-                                                <a ng-click="ResendOTP()" ng-show="resendOtp== true" style="color: floralwhite;">Resend OTP in</a>
-                                            <span class="golden">&nbsp;{{ display }}&nbsp;</span> Sec
-                                        </label>
-                                        </div> 
+                                                <label class="form-subtitle">
+                                                    <a ng-click="ResendOTP()" ng-show="resendOtp== true" style="color: floralwhite;">Resend OTP in</a>
+                                                    <span class="golden">&nbsp;{{ display }}&nbsp;</span> Sec
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
