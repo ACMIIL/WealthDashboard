@@ -85,7 +85,7 @@
                         } else if (status === 1) {
                             window.location.assign('/WP_Registration/WPRegistration/ARNdetails');
                         } else if (status === 2) {
-                            $location.path('/WP_Registration/WPRegistration/DigiLocker');
+                            window.location.assign('/WP_Registration/WPRegistration/DigiLocker');
                         } else if (status === 3) {
                             window.location.href = "/WP_Registration/WPRegistration/PersonalDetails";
                         } else if (status === 4 ) {

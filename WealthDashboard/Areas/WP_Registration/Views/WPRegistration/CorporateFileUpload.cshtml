@@ -1,0 +1,113 @@
+﻿@{
+    Layout = "_WPLayout";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>TWP</title>
+    <link rel="canonical" href="" />
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="" rel="icon">
+    <link href="" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <!-- Vendor CSS Files -->
+    <link href="~/css/wpregistrationcss/slick.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/slick-theme.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
+
+   
+
+
+
+</head>
+<body>
+
+    <div ng-app="main" ng-controller="myController">
+
+        <section class="background-twc-banner">
+            <div class="container">
+                <header id="header" class="pb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center mb-4">
+                                <a href="index.html">
+                                    <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="row">
+                    <div class="col-md-12 mx-auto">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="row">
+                                    <div class="mx-auto">
+                                        <img src="~/wpregimages/twc-mobile.png" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="row ">
+                                    <div class="col-md-12 ms-0 mx-auto card login-form">
+                                        <div class="row mx-auto mt-0 mb-2">
+                                            <img src="~/wpregimages/form-logo.png" alt="" title=""
+                                                 class="img-fluid text-center" style="width:55px;height: 31px;">
+                                        </div>
+                                        <div class="row mb-1">
+                                            <div class="form-title text-center">
+                                               Corporate Wealth Partner Details
+                                            </div>
+                                            <div class="text-center">
+                                                Kindly download below form and fill up the form and send to us along with document list.
+                                            </div>
+                                        </div>
+                                        <div class="card text-bg-primary">
+                                            <div class="card-header">
+                                                <strong>Document List</strong>
+                                            </div>
+                                            <div class="card-body">
+                                                <ol>
+                                                    <li>Company PAN card</li>
+                                                    <li>Company Light Bill</li>
+                                                    <li>Company MOA</li>
+                                                    <li>Company Director Consent Letter</li>
+                                                    <li>Company Stablish Certificate</li>
+                                                </ol>
+                                                <div>
+                                                    <button type="button" ng-click="DownloadPDF()" class="btn btn-primary">Download Form</button>
+                                                    <button type="button" class="btn btn-primary">Home</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- End Hero -->
+
+    </div>
+</body>
+</html>
