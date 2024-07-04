@@ -12,6 +12,8 @@ angular.module('main', ['ngAnimate', 'toaster'])
         $scope.pandate = new Date();
         $scope.Name = '';
         $scope.DOB = '';
+        $scope.PanDescription = '';
+        $scope.Pantype = '';
 
         $scope.isChecked = false;
         $scope.isDisabled = true;
@@ -65,7 +67,9 @@ angular.module('main', ['ngAnimate', 'toaster'])
 
                     $scope.Name = CVLKRA.appName;
                     $scope.DOB = CVLKRA.appDOB;
-
+                    $scope.Pantype = CVLKRA.panType;
+                    $scope.PanDescription = CVLKRA.panDescription;
+                    
                     var myModal = new bootstrap.Modal(document.getElementById('pandetailspopup'));
 
                     myModal.show();
@@ -91,6 +95,8 @@ angular.module('main', ['ngAnimate', 'toaster'])
                     /*localStorage.setItem('DOB', null);*/
                     $scope.Name = '';
                     $scope.DOB = '';
+                    $scope.Pantype = '';
+                    $scope.PanDescription = '';
                     var myModal = new bootstrap.Modal(document.getElementById('pandetailspopup'));
                     myModal.show();
                 }
@@ -188,6 +194,8 @@ angular.module('main', ['ngAnimate', 'toaster'])
 
             }
 
+            
+
         }
 
 
@@ -196,7 +204,19 @@ angular.module('main', ['ngAnimate', 'toaster'])
         }
 
 
-       
+        function checkPANforCorporate() {
+
+            if (input.length > 9) {
+                for (let i = 0; i < len; i++) {
+                    if (input[i].toLowerCase() == 'c');
+                    {
+                        var myModal = new bootstrap.Modal(document.getElementById('pandetailspopupForCorporate'));
+                        myModal.show();
+                    }
+                }
+
+            }
+        }
 
 
     })

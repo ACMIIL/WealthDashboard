@@ -62,7 +62,8 @@
                     //this.router.navigate(['/qrscanner'])
                 }
                 else {
-                    this.router.navigate(['/addPersonalDetails'])
+                    //this.router.navigate(['/addPersonalDetails'])
+                    window.location.href = "/wp_registration/wpregistration/uploadpersonaldata";
                 }
 
 
@@ -81,8 +82,9 @@
 
         function closeEvent(data) {
             if (data.error_code == "CANCELLED") {
-
-                toastr.error(data.message, 'Digio Locker Error');
+                debugger
+                //toastr.error(data.message, 'Digio Locker Error');
+                window.location.href = "/wp_registration/wpregistration/uploadpersonaldata";
             }
             else {
               //  var userId = localStorage.getItem('userId');
