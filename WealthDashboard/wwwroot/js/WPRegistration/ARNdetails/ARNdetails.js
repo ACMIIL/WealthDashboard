@@ -4,32 +4,38 @@
         $scope.arnFileName = '';
         $scope.invalid = false;
         $scope.appPanNo = localStorage.getItem('appPanNo')
+        var checkbox = document.getElementById("forpms");
+        $scope.toggleDiv = function () {
+
+            var pmsDiv = document.getElementById("pmsDiv");
+
+            if (checkbox.checked) {
+                pmsDiv.classList.remove("hidden");
+            } else {
+                pmsDiv.classList.add("hidden");
+            }
+        }
+
         $scope.SubmitDetails = function () {
+            var checkbox = document.getElementById("forpms");
 
             if ($scope.ARNNUMBER == null || $scope.ARNNUMBER == '' || $scope.ARNNUMBER == undefined) {
-
                 toastr.error('Please Enter ARN Number', 'ARN Number !');
             } else if ($scope.arnFileName == null || $scope.arnFileName == '' || $scope.arnFileName == undefined) {
-
                 toastr.error('Please Upload ARN File', 'ARN File !');
+            } else if (checkbox.checked && ($scope.PMSNo == null || $scope.PMSNo == '' || $scope.PMSNo == undefined)) {
+                toastr.error('Please Enter PMS Number', 'PMS Number !');
+            } else if (checkbox.checked && ($scope.pmsFileName == null || $scope.pmsFileName == '' || $scope.pmsFileName == undefined)) {
+                toastr.error('Please Upload PMS File', 'PMS File !');
             } else if ($scope.User == null || $scope.User == '' || $scope.User == undefined) {
-
                 toastr.error('Userid is required', 'Error!');
-            }
-            else if ($scope.Characters == true) {
-                $scope.Characters = true
-
-            }
-            else if ($scope.Passwords == null || $scope.Passwords == '' || $scope.Passwords == undefined) {
-
+            } else if ($scope.Passwords == null || $scope.Passwords == '' || $scope.Passwords == undefined) {
                 toastr.error('Password is required', 'Error!');
-            }  else if ($scope.Characterspass == true) {
-                $scope.Characterspass = true
             } else {
-                 
                 localStorage.setItem('ARNNo', "ARN-" + $scope.ARNNUMBER);
                 localStorage.setItem('GSTNumber', $scope.gstNo);
                 localStorage.setItem('PMSNumber', $scope.PMSNo);
+
                 var formData = new FormData();
                 formData.append('UserId', userId);
                 formData.append('ARNNo', "ARN-" + $scope.ARNNUMBER);
@@ -61,20 +67,92 @@
                             data: {}
                         }).then(function (res) {
                             if (res.data.code == "200") {
-
-                                CheckPanConfirmation(userId)
+                                CheckPanConfirmation(userId);
                             }
                         });
                     } else {
-                        toastr.error('500Internal Server Error!', 'ARN Submit!');
+                        toastr.error('500 Internal Server Error!', 'ARN Submit!');
                     }
                 }).catch(function (error) {
                     console.error('Error occurred:', error);
                 });
-
             }
-
         };
+
+
+        //$scope.SubmitDetails = function () {
+
+        //    if ($scope.ARNNUMBER == null || $scope.ARNNUMBER == '' || $scope.ARNNUMBER == undefined) {
+
+        //        toastr.error('Please Enter ARN Number', 'ARN Number !');
+        //    } else if ($scope.arnFileName == null || $scope.arnFileName == '' || $scope.arnFileName == undefined) {
+
+        //        toastr.error('Please Upload ARN File', 'ARN File !');
+        //    }
+
+        //    else if ($scope.User == null || $scope.User == '' || $scope.User == undefined) {
+
+        //        toastr.error('Userid is required', 'Error!');
+        //    }
+        //    else if ($scope.Characters == true) {
+        //        $scope.Characters = true
+
+        //    }
+        //    else if ($scope.Passwords == null || $scope.Passwords == '' || $scope.Passwords == undefined) {
+
+        //        toastr.error('Password is required', 'Error!');
+        //    }  else if ($scope.Characterspass == true) {
+        //        $scope.Characterspass = true
+        //    } else {
+
+        //        localStorage.setItem('ARNNo', "ARN-" + $scope.ARNNUMBER);
+        //        localStorage.setItem('GSTNumber', $scope.gstNo);
+        //        localStorage.setItem('PMSNumber', $scope.PMSNo);
+        //        var formData = new FormData();
+        //        formData.append('UserId', userId);
+        //        formData.append('ARNNo', "ARN-" + $scope.ARNNUMBER);
+        //        formData.append('ARNfile', $scope.arnImage);
+        //        formData.append('ImgName', $scope.arnFileName);
+        //        formData.append('GSTFile', $scope.gstImage);
+        //        formData.append('GSTNumber', $scope.gstNo);
+        //        formData.append('GSTName', $scope.gstFileName);
+        //        formData.append('PMSNumber', $scope.PMSNo);
+        //        formData.append('PMSFile', $scope.pmsImage);
+        //        formData.append('PMSName', $scope.pmsFileName);
+        //        formData.append('Loginid', $scope.User);
+        //        formData.append('Password', $scope.Passwords);
+
+        //        $http({
+        //            url: BaseURL + "User/AddARNDetails",
+        //            method: "POST",
+        //            headers: {
+        //                'Content-Type': undefined
+        //            },
+        //            transformRequest: angular.identity,
+        //            data: formData
+        //        }).then(function (response) {
+        //            if (response.data.code == "200") {
+        //                $http({
+        //                    url: BaseURL + "User/UpdateUserStatus?userId=" + userId + "&status=1",
+        //                    method: "GET",
+        //                    headers: {}, // lowercase 'headers'
+        //                    data: {}
+        //                }).then(function (res) {
+        //                    if (res.data.code == "200") {
+
+        //                        CheckPanConfirmation(userId)
+        //                    }
+        //                });
+        //            } else {
+        //                toastr.error('500Internal Server Error!', 'ARN Submit!');
+        //            }
+        //        }).catch(function (error) {
+        //            console.error('Error occurred:', error);
+        //        });
+
+        //    }
+
+        //};
 
         function CheckPanConfirmation(Id) {
 
@@ -231,4 +309,6 @@
             }
 
         }
+
+
     });
