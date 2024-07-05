@@ -25,7 +25,7 @@
                     toastr.success('An OTP has been sent to ' + $scope.MobileNumber, 'Title Success!');
                 }
             }).catch(function (error) {
-                console.error('Error sending OTP:', error);
+                console.log('Error sending OTP:', error);
             });
         };
 
@@ -49,7 +49,7 @@
                     this.toastr.error('Please enter the valid OTP', 'OTP Verify !');
                 }
             }).catch(function (error) {
-                console.error('Error Sending Verify OTP:', error);
+                console.log('Error Sending Verify OTP:', error);
             });
         };
 
@@ -76,6 +76,7 @@
 
                     $http({
                         url: "/WP_Registration/WPRegistration/CreateSession?userid=" + userId,
+                           
                         method: "GET",
                         headers: {}, // lowercase 'headers'
                     }).then(function (response1) {
@@ -103,17 +104,22 @@
                             window.location.href = '/WP_Registration/WPRegistration/Thankyou'
                         }
                         else if (status === 9) {
-                            // show dashbord
+                            toastr.success('Your KYC has been completed, kindly login!', 'Title Success!');
+
+                        
+                        setTimeout(function () {
                             window.location.href = '/home/index'
+                        }, 5000);
+                           
                         }
                     }).catch(function (error) {
-                        console.error('Error Something went wrong:', error);
+                        console.log('Error Something went wrong:', error);
                     });
 
                   
                 }
             }).catch(function (error) {
-                console.error('Error Something went wrong:', error);
+                console.log('Error Something went wrong:', error);
             });
         }
 
