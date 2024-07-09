@@ -13,7 +13,7 @@ angular.module('main', ['ngAnimate', 'toaster'])
             var updatemobile = "none";
 
             $http({
-                url: BaseURL + "User/MobileSendOTP?parameter=" + mobile + "&updateMobile=" + updatemobile + "&Otptype=1",
+                url: BaseURL + "User/MobileSendOTP?parameter=" +mobile+ "&browser=" + browser +"&Otptype=1",
                 method: "POST",
                 Headers: {},
                 data: {}
@@ -38,7 +38,7 @@ angular.module('main', ['ngAnimate', 'toaster'])
                 }
 
             }).catch(function (error) {
-                console.error('Error sending OTP:', error);
+                console.log('Error sending OTP:', error);
             });
         };
         $scope.allowNumbers = function (event) {

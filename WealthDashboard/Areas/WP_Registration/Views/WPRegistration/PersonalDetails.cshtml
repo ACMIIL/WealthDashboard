@@ -129,6 +129,13 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-12 text-center mt-3 mb-4" style="display:none;" id="Minute">
+                                            <label class="form-subtitle">
+                                               @*  <a ng-click="EmailOtpVerify()" ng-show="resendOtp== true" style="color: floralwhite;">Resend OTP in</a> *@
+                                                <span  class="golden">&nbsp;{{ displayy }}&nbsp;</span> Sec
+                                            </label>
+                                        </div>
                                         <div class="row mb-3 mt-3">
                                             <div class="col-md-12 text-center">
                                                 <button class="btn btn-primary btn-submit-popup1 btn-sm" ng-disabled="!isValidOTP" ng-click="gotoNext()">Next</button>

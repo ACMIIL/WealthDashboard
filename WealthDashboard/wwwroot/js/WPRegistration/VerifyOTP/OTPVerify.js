@@ -12,10 +12,10 @@
             toastr.success('An OTP has been sent to ' + $scope.MobileNumber, 'Title Success!');
         }
         $scope.ResendOTP = function () {
-
+             
             var mobile = localStorage.getItem('Mnumber');
             $http({
-                url: BaseURL + "User/MobileSendOTP?parameter=" + mobile + "&updateMobile=none&Otptype=1",
+                url: BaseURL + "User/MobileSendOTP?parameter=" + mobile + "&browser=" + browser +"&Otptype=1",
                 method: "POST",
                 Headers: {},
                 data: {}
@@ -25,16 +25,23 @@
                     toastr.success('An OTP has been sent to ' + $scope.MobileNumber, 'Title Success!');
                 }
             }).catch(function (error) {
-                console.error('Error sending OTP:', error);
+                console.log('Error sending OTP:', error);
             });
         };
 
         $scope.VerifyOTP = function (Otp) {
 
             var userId = localStorage.getItem('userId')
+            if (userId == null) {
+                 toastr.error('session expired', 'expired!');
+                //window.location.href = '/WP_Registration/WPRegistration/index';
+                setTimeout(() => {
+                    window.location.href = '/WP_Registration/WPRegistration/index';
+                }, 3000); 
+            }
 
             $http({
-                url: BaseURL + "user/MobileVerifyOtp?Userid=" + userId + "&MobileOtp=" + Otp,
+                url: BaseURL + "User/MobileVerifyOtp?Userid=" + userId + "&MobileOtp=" + Otp + "&browser=" + browser,
                 method: "GET",
                 Headers: {},
                 data: {}
@@ -46,10 +53,10 @@
                     Getuserstapes(userId);
                 }
                 else {
-                    this.toastr.error('Please enter the valid OTP', 'OTP Verify !');
+                   toastr.error('Please enter the valid OTP', 'OTP Verify !');
                 }
             }).catch(function (error) {
-                console.error('Error Sending Verify OTP:', error);
+                console.log('Error Sending Verify OTP:', error);
             });
         };
 
@@ -107,13 +114,13 @@
                             window.location.href = '/home/index'
                         }
                     }).catch(function (error) {
-                        console.error('Error Something went wrong:', error);
+                        console. log('Error Something went wrong:', error);
                     });
 
                   
                 }
             }).catch(function (error) {
-                console.error('Error Something went wrong:', error);
+                console.log('Error Something went wrong:', error);
             });
         }
 
