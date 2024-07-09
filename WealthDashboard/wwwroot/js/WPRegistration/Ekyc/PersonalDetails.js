@@ -1,5 +1,5 @@
 ﻿angular.module('main', ['ngAnimate', 'toaster'])
-    .controller('myController', function ($scope, toaster, $location, $window, $http) {
+    .controller('myController', function ($scope, toaster, $location, $window, $http, $interval) {
         getdata()
 
         // user/GetDigioLockerUserPersonalDetails
@@ -11,9 +11,11 @@
         $scope.sendOTP = false;
         $scope.CheckOtp = false;
         $scope.VerifyEmailID = '';
+        $scope.changeemail = false;
+        $scope.resendOtp = false;
         function getdata() {
-           // userId ='1BE51D13-BAD8-44A6-8842-C71C5E83E175'
-            $scope.mobile = localStorage.getItem('Mnumber');          
+            // userId ='1BE51D13-BAD8-44A6-8842-C71C5E83E175'
+            $scope.mobile = localStorage.getItem('Mnumber');
             $http({
                 url: BaseURL + "user/GetDigioLockerUserPersonalDetails?userId=" + userId,
                 method: "GET",
@@ -35,7 +37,10 @@
             });
         }
 
-
+        $scope.cancelEmailEdit = function () {
+            $scope.changeemail = false;
+            $scope.otp = 'Get OTP';
+        }
         $scope.gotoNext = function () {
             UpdateStatus();
         }
@@ -85,7 +90,7 @@
                     $scope.ResndOTP = true;
                     $scope.VerifyEmailID = Emailid
 
-                   // window.location.assign('/WP_Registration/WPRegistration/qrbankverification');
+                    // window.location.assign('/WP_Registration/WPRegistration/qrbankverification');
                     //window.location.assign('/WP_Registration/WPRegistration/Panydrop');
 
                 }
@@ -132,6 +137,36 @@
             }
 
         }
+        $scope.SendOTP = function () {
+            this.otp = 'Resend OTP'
+            var email = this.renderer.selectRootElement('#txtemail').value;
+            var mobile = localStorage.getItem('mob');
+
+            $http({
+                url: BaseURL + "User/EmailSendOTP?Emailid=" + email + "&Mobileno=" + mobile + "&Otptype=2",
+                method: 'GET',
+                headers: {},
+                data: {}
+            }).then(function (response) {
+                var result = response;
+                if (result.data.code === 200) {
+                    toastr.success('Please check the OTP send in your EmailId,', 'Title Success!');
+                    // this.validOTP = "";
+                }
+                else {
+                    toastr.error('Please enter the valid email OTP', 'OTP Verify !');
+
+                }
+
+            })
+
+        }
+
+        $scope.showemailtextbox = function () {
+            $scope.changeemail = true;
+            this.renderer.selectRootElement('#txtemail').focus();
+
+        }
         function UpdateStatus() {
             $http({
                 url: BaseURL + "User/UpdateUserStatus?userId=" + userId + "&status=4",
@@ -142,7 +177,7 @@
                 var result = response;
                 if (result.data.code === 200) {
                     window.location.assign('/WP_Registration/WPRegistration/qrbankverification')
-                  //  window.location.assign('/WPRegistration/qrbankverification');
+                    //  window.location.assign('/WPRegistration/qrbankverification');
                 }
             })
 
@@ -152,7 +187,30 @@
             if (charCode < 48 || charCode > 57) {
                 event.preventDefault();
             }
+        }
+
+        $scope.startTimer = function (seconds, prefix) {
+            var timer = $interval(function () {
+                var minutes = Math.floor(seconds / 60);
+                var textSec = (seconds % 60 < 10) ? '0' + (seconds % 60) : (seconds % 60);
+                $scope.display = `${prefix}${minutes}:${textSec}`;
+
+                if (seconds === 0) {
+                    console.log("finished");
+                    $scope.resendOtp = true;
+                    $interval.cancel(timer);
+                }
+                seconds--;
+            }, 1000);
+
+
+            if (seconds === 0) {
+                $scope.resendOtp = true;
+            }
         };
 
+        var totalSeconds = 59;
+        var prefix = '';
+        $scope.startTimer(totalSeconds, prefix);
 
     });

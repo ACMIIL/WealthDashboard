@@ -52,6 +52,18 @@
                 console.error('Error Sending Verify OTP:', error);
             });
         };
+        function generateCustomRandomString(length, characters) {
+            let result = '';
+            const charactersLength = characters.length;
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        }
+
+        // Example usage
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+        console.log(generateCustomRandomString(10, characters)); // Example output: "A1b2!C3d4E"
 
 
         function Getuserstapes(userId) {
