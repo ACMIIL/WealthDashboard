@@ -83,6 +83,7 @@
 
                     $http({
                         url: "/WP_Registration/WPRegistration/CreateSession?userid=" + userId,
+                           
                         method: "GET",
                         headers: {}, // lowercase 'headers'
                     }).then(function (response1) {
@@ -110,11 +111,16 @@
                             window.location.href = '/WP_Registration/WPRegistration/Thankyou'
                         }
                         else if (status === 9) {
-                            // show dashbord
+                            toastr.success('Your KYC has been completed, kindly login!', 'Title Success!');
+
+                        
+                        setTimeout(function () {
                             window.location.href = '/home/index'
+                        }, 5000);
+                           
                         }
                     }).catch(function (error) {
-                        console. log('Error Something went wrong:', error);
+                        console.log('Error Something went wrong:', error);
                     });
 
                   

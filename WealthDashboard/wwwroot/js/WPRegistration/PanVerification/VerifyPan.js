@@ -22,14 +22,23 @@ angular.module('main', ['ngAnimate', 'toaster'])
         $scope.isPanDateVisible = false;
         $scope.isPanFormateCorrect = false;
         $scope.panCorrectMessage = false;
-
+        $scope.panMessage = '';
+        
+        var pannumber = '';
 
 
 
 
         $scope.PanDetails = function () {
+            debugger
+            pannumber = $scope.pan.charAt(3);
 
-
+            if (pannumber != 'P') {
+               
+                alert('Since this is a non-individual PAN number, you have to download a form and after fillup the form send us along with listed documents.');
+                window.location.assign('/WP_Registration/WPRegistration/Corporate');
+                return;
+            }
 
             var inputDate = document.getElementById('mydate');
             $http({
@@ -69,7 +78,14 @@ angular.module('main', ['ngAnimate', 'toaster'])
                     $scope.DOB = CVLKRA.appDOB;
                     $scope.Pantype = CVLKRA.panType;
                     $scope.PanDescription = CVLKRA.panDescription;
-                    
+                   /* if ($scope.Pantype == 'P') {*/
+                        $scope.panMessage = 'PAN number and DOB should be of the person whose account you wish to open. Once confirmed, DOB cannot be modified online, under any circumstance';
+ 
+                    //}
+                    //else {
+                    //    $scope.panMessage = 'Since this is a non-individual PAN number, you have to download a form and after fillup the form send us along with listed documents.';
+                      
+                    //}
                     var myModal = new bootstrap.Modal(document.getElementById('pandetailspopup'));
 
                     myModal.show();
@@ -126,7 +142,13 @@ angular.module('main', ['ngAnimate', 'toaster'])
                 var result = response;
 
                 if (result.data.code === 200) {
-                    window.location.assign('/WP_Registration/WPRegistration/ARNdetails');
+                    if (pannumber != 'P') {
+                        window.location.assign('/WP_Registration/WPRegistration/CorporateFileUpload');
+                    }
+                    else {
+                        window.location.assign('/WP_Registration/WPRegistration/ARNdetails');
+                    }
+                   
                 }
 
             })
@@ -204,19 +226,6 @@ angular.module('main', ['ngAnimate', 'toaster'])
         }
 
 
-        function checkPANforCorporate() {
-
-            if (input.length > 9) {
-                for (let i = 0; i < len; i++) {
-                    if (input[i].toLowerCase() == 'c');
-                    {
-                        var myModal = new bootstrap.Modal(document.getElementById('pandetailspopupForCorporate'));
-                        myModal.show();
-                    }
-                }
-
-            }
-        }
 
 
     })

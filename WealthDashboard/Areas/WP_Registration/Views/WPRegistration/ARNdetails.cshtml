@@ -35,6 +35,10 @@
             top: 17px;
             right: 13px;
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
 
 </head>
@@ -136,6 +140,19 @@
                                                     <!----------------->
                                                 </div>
                                                 <!------------Upload GST Number----->
+
+
+                                                    <div class="form-floating mb-2">
+
+
+                                                        <input type="checkbox" id="forpms" name="pms" ng-click="toggleDiv()">
+                                                        <label for="forpms" style="color: #CAAA86;">PMS Details</label>
+
+                                                    </div>
+
+
+
+                                            <div id="pmsDiv" class="hidden">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control floating-text-area" autocomplete="off" ng-model="PMSNo" id="floatingInput" style="color: white;" placeholder="31-12-1995">
@@ -143,18 +160,6 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-
-                                                    @*             <div class="form-floating mb-2">
-                                                    <span>
-                                                    <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputPMS()" style="cursor: pointer;">
-                                                    <input type="file" id="fileInputPMS" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'pms')">
-                                                    </span>
-                                                    <input readonly type="text" class="floating-text-area UploadFileName" ng-model="PMSFileName" style="color: white;">
-                                                    <label for="fileInputPMS" class="l1">Upload PMS Distribution Certificate</label>
-                                                    </div>
-                                                    <span ng-if="pmssize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span> *@
-
-
                                                     <!-------Upload PMS File---------->
 
                                                     <div class="form-floating mb-2">
@@ -166,13 +171,8 @@
                                                         <label for="fileInputpms" class="l1">Upload PMS Distribution Certificate</label>
                                                     </div>
                                                     <span ng-if="pmssize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
-                                                    @*                               <div class="form-floating mb-3">
-                                                    <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
-                                                    <input readonly type="text" class="form-control floating-text-area" ng-model="gstFileName" style="color: white;" placeholder="31-12-1995">
-                                                    <label for="fileInputgst" style="color: #c9a13f;">Upload PMS Distribution Certificate</label>
-                                                    </div>
-                                                    <span ng-if="pmssize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span> *@
-
+                                                  
+                                                </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3">

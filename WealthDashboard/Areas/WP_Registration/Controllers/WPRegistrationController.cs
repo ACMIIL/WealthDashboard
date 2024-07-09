@@ -91,6 +91,10 @@ namespace WealthDashboard.Areas.WP_Registration.Controllers
         {
             return View(_configuration);
         }
+        public IActionResult Corporate()
+        {
+            return View(_configuration);
+        }
 
     }
 }
