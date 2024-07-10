@@ -1,5 +1,5 @@
 ﻿angular.module('main', ['ngAnimate', 'toaster'])
-    .controller('myController', function ($scope, toaster, $location, $window, $http) {
+    .controller('myController', function ($scope, toaster, $location, $window, $http, $interval) {
         getdata()
 
         // user/GetDigioLockerUserPersonalDetails
@@ -8,9 +8,12 @@
         $scope.data = [];
         $scope.CheckEmailPattern = false;
         $scope.Emailid = '';
+        $scope.displayy = '';
         $scope.sendOTP = false;
         $scope.CheckOtp = false;
         $scope.VerifyEmailID = '';
+        var totalSeconds = 300;
+        var prefix = '';
         function getdata() {
            // userId ='1BE51D13-BAD8-44A6-8842-C71C5E83E175'
             $scope.mobile = localStorage.getItem('Mnumber');          
@@ -69,7 +72,9 @@
         };
         $scope.EmailOtpVerify = function () {
             $scope.OpenOTPbox = true;
+            $scope.startTimer(totalSeconds, prefix);
             var Emailid = document.getElementById('Mailid').value;
+            document.getElementById('Minute').style.display='block';
             $http({
                 url: BaseURL + "User/EmailSendOTP?Emailid=" + Emailid + "&Mobileno=" + $scope.mobile + "&Otptype=2",
                 method: 'POST',
@@ -80,9 +85,9 @@
                 if (result.data.code === 200) {
 
                     this.toastr.success('Please check the OTP send in your EmailId,', 'Title Success!');
-
+                    document.getElementById("Mailid").disabled = true; 
                     $scope.sendOTP = false;
-                    $scope.ResndOTP = true;
+                 
                     $scope.VerifyEmailID = Emailid
 
                    // window.location.assign('/WP_Registration/WPRegistration/qrbankverification');
@@ -154,5 +159,39 @@
             }
         };
 
+        $scope.startTimer = function (seconds, prefix) {
+            $scope.sendOTP = false;
+            $scope.ResndOTP = false;
+            var timer = $interval(function () {
+                var minutes = Math.floor(seconds / 60);
+                var textSec = (seconds % 60 < 10) ? '0' + (seconds % 60) : (seconds % 60);
+               // $scope.display = `${prefix}${minutes}:${textSec}`;
+                $scope.displayy = `${prefix}${minutes}:${textSec}`;
 
+                if (seconds === 0) {
+                    console.log("finished");
+                    document.getElementById('Minute').style.display = 'none';
+                    $scope.sendOTP = false;
+                    $scope.ResndOTP = true;
+                    document.getElementById("Mailid").disabled = false; 
+                    $interval.cancel(timer);
+                }
+                seconds--;
+            }, 1000);
+
+
+            if (seconds === 0) {
+                document.getElementById('Minute').style.display = 'none';
+                $scope.sendOTP = false;
+                $scope.ResndOTP = true;
+                document.getElementById("Mailid").disabled = false; 
+              
+            }
+        };
+
+     
+
+       
+        
+       
     });

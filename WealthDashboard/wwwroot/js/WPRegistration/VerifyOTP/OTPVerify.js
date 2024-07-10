@@ -12,10 +12,10 @@
             toastr.success('An OTP has been sent to ' + $scope.MobileNumber, 'Title Success!');
         }
         $scope.ResendOTP = function () {
-
+             
             var mobile = localStorage.getItem('Mnumber');
             $http({
-                url: BaseURL + "User/MobileSendOTP?parameter=" + mobile + "&updateMobile=none&Otptype=1",
+                url: BaseURL + "User/MobileSendOTP?parameter=" + mobile + "&browser=" + browser +"&Otptype=1",
                 method: "POST",
                 Headers: {},
                 data: {}
@@ -32,9 +32,16 @@
         $scope.VerifyOTP = function (Otp) {
 
             var userId = localStorage.getItem('userId')
+            if (userId == null) {
+                 toastr.error('session expired', 'expired!');
+                //window.location.href = '/WP_Registration/WPRegistration/index';
+                setTimeout(() => {
+                    window.location.href = '/WP_Registration/WPRegistration/index';
+                }, 3000); 
+            }
 
             $http({
-                url: BaseURL + "user/MobileVerifyOtp?Userid=" + userId + "&MobileOtp=" + Otp,
+                url: BaseURL + "User/MobileVerifyOtp?Userid=" + userId + "&MobileOtp=" + Otp + "&browser=" + browser,
                 method: "GET",
                 Headers: {},
                 data: {}
@@ -46,7 +53,7 @@
                     Getuserstapes(userId);
                 }
                 else {
-                    this.toastr.error('Please enter the valid OTP', 'OTP Verify !');
+                   toastr.error('Please enter the valid OTP', 'OTP Verify !');
                 }
             }).catch(function (error) {
                 console.log('Error Sending Verify OTP:', error);
