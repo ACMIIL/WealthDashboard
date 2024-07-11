@@ -21,7 +21,7 @@ body {
     background: #000000 url('../../wpregimages/twc-banner.png') !important;
     background-size: cover !important;
     background-position: bottom center !important;
-
+    min-height: 100vh;
 }
 
 select.form-control.select-arrow {

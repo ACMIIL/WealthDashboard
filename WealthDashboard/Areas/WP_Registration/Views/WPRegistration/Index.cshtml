@@ -44,11 +44,11 @@
 </head>
 <body>
     <!-- ======= Hero Section ======= -->
-    <section class="background-twc-banner"  ng-app="main" ng-controller="myController">
+    <section class="background-twc-banner middleLayout " ng-app="main" ng-controller="myController">
         <div class="container">
             <header id="header" class="pb-5 mobile-top-padding-header ">
                 <div class="container">
-                    <div class="row">
+                    <div class="row d-block d-md-none">
                         <div class="col-md-2 col-6 mx-auto text-center">
                             <a href="index.html">
                                 <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
@@ -78,7 +78,7 @@
                                         <div class="col-md-12">
                                             <div class="col-md-12 d-flex justify-content-center align-item-center">
                                                 <label for="phoneNumber">+91</label>
-                                                <input type="text" class="form-control mobile-number-textarea ps-0" id="floatingInput" style="color: white;" ng-model="mobile" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="10" autocomplete="off">
+                                                <input type="text" class="form-control mobile-number-textarea p-0" id="floatingInput" style="color: white;" ng-model="mobile" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="10" autocomplete="off">
                                            </div>
                                             <div class="col-md-12 d-flex justify-content-center align-item-center">
                                                 <h6 class="text-small2 text-center" ng-if="isvalied" style="color: brown;">Please enter the valid Mobile No.</h6>
