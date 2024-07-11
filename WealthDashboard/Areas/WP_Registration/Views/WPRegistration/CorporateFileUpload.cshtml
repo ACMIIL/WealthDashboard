@@ -39,15 +39,13 @@
 
 </head>
 <body>
-
     <div ng-app="main" ng-controller="myController">
-
-        <section class="background-twc-banner">
+        <section class="background-twc-banner middleLayout">
             <div class="container">
-                <header id="header" class="pb-5">
+                <header id="header" class="pb-5 mobile-top-padding-header ">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 text-center mb-4">
+                        <div class="row  d-block d-md-none">
+                            <div class="col-md-2 col-6 mx-auto text-center">
                                 <a href="index.html">
                                     <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
                                 </a>
@@ -58,7 +56,7 @@
                 <div class="row">
                     <div class="col-md-12 mx-auto">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-5 d-none d-md-block">
                                 <div class="row">
                                     <div class="mx-auto">
                                         <img src="~/wpregimages/twc-mobile.png" class="img-fluid">
@@ -67,37 +65,36 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="row ">
-                                    <div class="col-md-12 ms-0 mx-auto card login-form">
-                                        <div class="row mx-auto mt-0 mb-2">
-                                            <img src="~/wpregimages/form-logo.png" alt="" title=""
-                                                 class="img-fluid text-center" style="width:55px;height: 31px;">
-                                        </div>
-                                        <div class="row mb-1">
-                                            <div class="form-title text-center">
-                                               Corporate Wealth Partner Details
+                                    <div class="col-md-12 ms-0 mx-auto">
+                                        <div class="card login-form">
+                                            <div class="row mb-1">
+                                                <div class="form-title text-center">
+                                                    Corporate Wealth Partner Details
+                                                </div>
+                                                <div class="text-center small mt-2 mb-2">
+                                                    Kindly download below form and fill up the form and send to us along with document list.
+                                                </div>
                                             </div>
-                                            <div class="text-center">
-                                                Kindly download below form and fill up the form and send to us along with document list.
-                                            </div>
-                                        </div>
-                                        <div class="card text-bg-primary">
-                                            <div class="card-header">
-                                                <strong>Document List</strong>
-                                            </div>
-                                            <div class="card-body">
-                                                <ol>
-                                                    <li>Company PAN card</li>
-                                                    <li>Company Light Bill</li>
-                                                    <li>Company MOA</li>
-                                                    <li>Company Director Consent Letter</li>
-                                                    <li>Company Stablish Certificate</li>
-                                                </ol>
-                                                <div>
-                                                    <button type="button" ng-click="DownloadPDF()" class="btn btn-primary">Download Form</button>
-                                                    <button type="button" class="btn btn-primary">Home</button>
+                                            <div class="card ">
+                                                <div class="card-header text-dark">
+                                                    <strong>Document List</strong>
+                                                </div>
+                                                <div class="card-body text-dark">
+                                                    <ol>
+                                                        <li>Company PAN card</li>
+                                                        <li>Company Light Bill</li>
+                                                        <li>Company MOA</li>
+                                                        <li>Company Director Consent Letter</li>
+                                                        <li>Company Stablish Certificate</li>
+                                                    </ol>
+                                                    <div>
+                                                        <button type="button" ng-click="DownloadPDF()" class="btn btn-primary">Download Form</button>
+                                                        <button type="button" class="btn btn-primary">Home</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
