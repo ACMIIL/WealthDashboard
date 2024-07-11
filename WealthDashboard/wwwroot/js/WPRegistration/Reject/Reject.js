@@ -173,9 +173,9 @@
 
 
 
-            if ($scope.pan.length > 5) {
+            if ($scope.item.PAN.length > 5) {
 
-                var input = $scope.pan;
+                var input = $scope.item.PAN;
                 // var panPattern = /[A-Z]{5}[0-9]{4}[A-Z]/;
                 var panPattern = /^[A-Za-z]{5}[0-9]{4}[A-Za-z]$/;
                 if (!panPattern.test(input)) {
@@ -250,7 +250,7 @@
                 else if (type === 'Aadhar') {
                     $scope.sizeError.Aadhar = false;
                 }
-                $scope.errorMessage = '';
+              //  $scope.errorMessage = '';
 
             }
         };

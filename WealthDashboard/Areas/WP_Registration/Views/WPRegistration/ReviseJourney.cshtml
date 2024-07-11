@@ -215,9 +215,9 @@
                                                 <div class="col-md-6" ng-if="PanCard==true">
                                                     <div class="form-floating mb-2">
                                                         <input type="text" class="form-control floating-text-area" id="floatingInput"
-                                                               ng-model="pan" id="inputPAN"
+                                                               ng-model="item.PAN" id="inputPAN"
                                                                oninput="this.value = this.value.toUpperCase();removeWhitespace(this);blockSpecialCharacters(event)"
-                                                               maxlength="10" ng-keyup="displayDate()" ng-change="CHeckPanNumber()" style="color: white;" ng-model="ARNNUMBER" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="8" placeholder="HERFK4578G" autocomplete="off">
+                                                               maxlength="10" ng-keyup="displayDate()" ng-change="CHeckPanNumber()" style="color: white;"  ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="8" placeholder="HERFK4578G" autocomplete="off">
                                                         <label for="floatingInput" style="color: #c9a13f;">Enter Pan Number</label>
                                                         <div ng-if="panCorrectMessage" class="text-success1 small mt-2" style="font-size: 12px !important;">Wow, your PAN is already KYC verified, this will reduce your A/C<br>opening time.</div>
                                                         @*  <div ng-if="pan==''" style="color: rgb(212, 25, 25);font-size:small;">Pan is required</div> *@
