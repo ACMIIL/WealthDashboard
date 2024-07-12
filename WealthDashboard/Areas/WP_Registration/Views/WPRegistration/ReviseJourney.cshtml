@@ -179,15 +179,13 @@
                                             <div class="row">
                                                 <div class="col-md-6" ng-if="AadhaarFront==true">
 
-                                                    <span ng-if="invalid" style="color: darkred; font-size: small;">User ID already exists </span>
-                                                    <span ng-if="Characters" style="color: darkred; font-size: small;">Userid must be at least 5 characters</span>
-
+                                                   
                                                     <div class="form-floating mb-3">
-                                                        <input type="text" class="form-control floating-text-area" autocomplete="off" style="color: white;" ng-model="item.Aadhar"   maxlength="15">
+                                                        <input type="text" class="form-control floating-text-area" autocomplete="off" style="color: white;" ng-model="item.Aadhar" ng-change="ValideAadhar()" maxlength="15" ng-keypress="allowNumbers($event)">
                                                         <i ng-if="Passvalid" class="fa fa-check-circle fa-done"></i>
                                                         <label for="floatingInput" style="color: #c9a13f;">Aadhar Number</label>
                                                     </div>
-                                                    <span ng-if="Characterspass" style="color: darkred; font-size: small;">Password must be at least 5 characters</span>
+                                                    <span ng-if="AadharError==false" style="color: darkred; font-size: small;">Aadhar Number in valid!</span>
                                                 </div>
                                                 <div class="col-md-6" ng-if="AadhaarFront==true">
                                                     <div class="form-floating mb-2">
@@ -252,10 +250,11 @@
                                                 @* Pan close *@
                                            </div>
                                           <div class="row">
+
                                                 @* Bank Details---------------------------- *@
                                                 <div class="col-md-6" ng-if="CancelCheque==true">
                                                     <div class="form-floating mb-2">
-                                                        <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" ng-model="ARNNUMBER" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="8" placeholder="HERFK4578G" autocomplete="off">
+                                                        <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" ng-model="item.Cheque" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="15" placeholder="HERFK4578G" autocomplete="off">
                                                         <label for="floatingInput" style="color: #c9a13f;">Enter  Bank Account  Number</label>
 
                                                     </div>
@@ -483,6 +482,15 @@
 
             ]
         });
+
+
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
 
     </script>
 
