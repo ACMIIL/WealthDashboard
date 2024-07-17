@@ -29,16 +29,21 @@
     <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
+    <style>
+        .pad-top0 {
+            padding: 0px 20px !important;
+        }
+    </style>
 </head>
 
 <body ng-app="main" ng-controller="myController">
 
     <!-- ======= Hero Section ======= -->
-    <section class=" background-twc-banner">
+    <section class="background-twc-banner">
         <div class="container">
             <header id="header" class="pb-5 mobile-top-padding-header ">
                 <div class="container">
-                    <div class="row">
+                    <div class="row d-block d-md-none">
                         <div class="col-md-2 col-6 mx-auto text-center ">
                             <a href="index.html">
                                 <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
@@ -71,7 +76,7 @@
                                             </div>
                                             <div class="col-md-10 mx-auto col-12"
                                                  style=" color: #c9a13f;">
-                                                <label class="font-label-1"> Name :</label><span class="p-0" style="color: #fff;"> {{data[0].MA_Name}} </span>
+                                                <label class="font-label-1"> Name </label><span class="p-0" style="color: #fff;"> {{data[0].MA_Name}} </span>
                                             </div>
                                             <div class="col-md-10 mx-auto col-12">
                                                 <label class="font-label-1" style="color: #c9a13f;">Mobile</label>
@@ -99,7 +104,9 @@
                                                <div class="d-flex pd">
                                                     <label class="font-label-1" style="color: #c9a13f;"> Email </label>
                                                     <span class="p-0">{{data[0].Email}}</span>
-                                                    <input type="text" ng-if="!data[0].Email" id="Mailid" class="form-control mobile-number-textarea ps-0" style="color: white;width:187px;" ng-keyup="checkEmail()" maxlength="30">
+                                                    <input type="text" ng-if="!data[0].Email" id="Mailid" class="form-control mobile-number-textarea ps-0" style="color: white;width:250px;" ng-keyup="checkEmail()" maxlength="30">
+                                               </div>
+                                               <div>
                                                     <span ng-if="!data[0].Email" id="notVerify" style="color:rgb(206, 44, 44);" class="mfs12"> Email is not Verify </span>
                                                     <span ng-if="data[0].Email != null && data[0].Email != '' && data[0].Email != undefined" style="color:green" class="mfs12">Verified Email</span>
                                                     <span ng-if="CheckEmailPattern" style="color:rgb(206, 44, 44)" class="mfs12"> Invalid Email </span>
@@ -117,10 +124,10 @@
                                         </div>
 
                                         <div class="row">
-                                             <div class="col-md-12">
-                                                 <div ng-if="OpenOTPbox">
+                                            <div class="col-md-10 mx-auto col-12">
+                                                 <div ng-if="OpenOTPbox" class="d-flex">
                                                   <label ng-if="!data[0].Email" class="font-label-1" style="color: #c9a13f;"> OTP</label>
-                                                 <input type="text"  id="OtpInput" class="form-control mobile-number-textarea ps-0" style="color: white;width:187px;"  ng-model="InputOTP" ng-change="EnterOTP()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="4">
+                                                 <input type="text"  id="OtpInput" class="form-control mobile-number-textarea pad-top0 ps-0" style="color: white;width:185px;"  ng-model="InputOTP" ng-change="EnterOTP()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="4">
                                                  <a ng-click="OtpVerify()" ng-if="VerifyOTP" style="cursor: pointer;color:green;"> <i class="fa fa-hand-pointer-o"></i>VerifyOTP</a>
                                                  </div>
                                                 <!-- <input type="text" class="form-control" name="password" value="123456789"> -->

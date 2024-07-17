@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>TWP</title>
+    <title>TWC</title>
     <link rel="canonical" href="" />
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -29,9 +29,9 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 
-    <link href="~/css/wpregistrationcss/style.css" rel="stylesheet"/>
-    <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet"/>
-    <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet"/>
+    <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
     <style>
         /* Some basic styling for demonstration */
         input {
@@ -44,11 +44,11 @@
 </head>
 <body>
     <!-- ======= Hero Section ======= -->
-    <section class="background-twc-banner"  ng-app="main" ng-controller="myController">
+    <section class="background-twc-banner middleLayout" ng-app="main" ng-controller="myController">
         <div class="container">
-            <header id="header" class="pb-5 mobile-top-padding-header ">
+            <header id="header" class="mobile-top-padding-header ">
                 <div class="container">
-                    <div class="row">
+                    <div class="row d-block d-md-none">
                         <div class="col-md-2 col-6 mx-auto text-center">
                             <a href="index.html">
                                 <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
@@ -74,15 +74,15 @@
                                         <div class="col-md-12 text-center">
                                             <h5 class="form-title">  Welcome Wealth Partner</h5>
                                             <p class="form-subtitle ">Enter your 10-digit mobile number</h>
-                                        </div>  
+                                        </div>
                                         <div class="col-md-12">
                                             <div class="col-md-12 d-flex justify-content-center align-item-center">
                                                 <label for="phoneNumber">+91</label>
-                                                <input type="text" class="form-control mobile-number-textarea ps-0" id="floatingInput" style="color: white;" ng-model="mobile" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="10" autocomplete="off">
-                                           </div>
+                                                <input type="text" class="form-control mobile-number-textarea p-0" id="floatingInput" style="color: white;" ng-model="mobile" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="10" autocomplete="off">
+                                            </div>
                                             <div class="col-md-12 d-flex justify-content-center align-item-center">
                                                 <h6 class="text-small2 text-center" ng-if="isvalied" style="color: brown;">Please enter the valid Mobile No.</h6>
-                                           </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-12 text-center col-12 mt-3 mb-3">
                                             <button ng-click="sendOTP()" ng-disabled="mobile.length != 10 || check" class="btn rounded btn-submit">Generate OTP</button>
@@ -215,7 +215,7 @@
     <script src="~/angularjs/tosters/toaster.js"></script>
     <!-----Js File-->
     <script src="~/js/wpregistration/index/index.js"></script>
- 
+
     <script>
         document.getElementById('phoneNumber').addEventListener('input', function () {
             var inputValue = this.value;
