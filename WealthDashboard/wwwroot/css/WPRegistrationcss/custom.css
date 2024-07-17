@@ -5,40 +5,38 @@
     font-family: "Poppins", sans-serif;
 }
 
-
-
 .login-form {
     background-color: #0E1D22;
-    border: 4px solid #c9a13f;
+    border: 4px solid #ffffff;
     border-radius: 10px;
     color: white;
-    padding:20px;
+    padding: 20px;
 }
+
 .form-subtitle {
     text-align: center;
-  
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 16px;
     text-align: center;
 }
-.golden{
-    color: #AA8861;
+
+.golden {
+    color: #c9a13f;
     font-weight: 500;
-  
     line-height: 16px;
     font-size: 14px;
-
 }
-.golden2{
-    color: #AA8861;
+
+.golden2 {
+    color: #c9a13f;
     font-weight: 400;
-  
     line-height: 14px;
     font-size: 14px;
 }
-.form-textbox{
+
+.form-textbox {
     width: 300px;
     border-left: NONE;
     BORDER: none;
@@ -51,8 +49,8 @@
 
 
 /*text-box css*/
-.floating-text-area{
-   width:100%;
+.floating-text-area {
+    width: 100%;
     height: 44px !important;
     background-color: #0E1D22;
     border: 0 0 0 1px !important;
@@ -64,49 +62,53 @@
     padding-bottom: 0px !important;
 }
 
-.checkbox-label{
+.checkbox-label {
     font-size: 14px !important;
     color: white;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.checkbox-label-2{
+
+.checkbox-label-2 {
     font-size: 14px !important;
     color: white;
-    
 }
-.date-icon{
+
+.date-icon {
     position: absolute;
     margin-top: 20px;
-    right:0;
+    right: 0;
     cursor: pointer;
 }
-.done-icon{
+
+.done-icon {
     position: absolute;
     margin-top: 20px;
-    margin-left: 303px;
     cursor: pointer;
     width: 20px;
     height: 20px;
+    right:0;
 }
-.orangetext{
+
+.orangetext {
     color: #FF7F0B;
     font-size: 14px !important;
     font-weight: 400;
-  
 }
+
 .mobile-number-textarea {
     background-color: #0E1D22;
     border: 0 0 0 1px !important;
     border: none;
     border-bottom: 2px solid #c9a13f;
     border-radius: 0px;
-    margin-top: -11px;
+    /*margin-top: -11px;*/
     font-size: 17px !important;
     padding-bottom: 0px !important;
     width: 34%;
     padding-left: 10px !important;
 }
+
 .flag-icon {
     position: absolute;
     margin-top: 16px;
@@ -115,7 +117,8 @@
     width: 20px;
     height: 20px;
 }
-.mobile-number-otp{
+
+.mobile-number-otp {
     height: 44px !important;
     background-color: #0E1D22;
     border: 0 0 0 1px !important;
@@ -126,65 +129,68 @@
     font-size: 17px !important;
     padding-bottom: 0px !important;
 }
-.box{
+
+.box {
     width: 290px;
     height: 125PX;
     border: 1px dotted white;
     margin-left: 150px !important;
 }
-.lable-signature{
+
+.lable-signature {
     font-weight: 300;
-  
     font-size: 14px;
 }
+
 .btn-submit-digilocker {
     background-image: linear-gradient(to bottom, #c9a13f, #9C7952);
     padding: 5px;
-    width: 71% ;
+    width: 71%;
     font-size: 18px;
     border-radius: 8px;
 }
-.btn-submit-popup1{
+
+.btn-submit-popup1 {
     background-image: linear-gradient(to bottom, #c9a13f, #9C7952);
     padding: 10px;
-    width: 30% ;
-    font-size: 14px ;
+    width: 50%;
+    font-size: 14px;
     border-radius: 8px;
     color: white;
 }
-.btn-submit-popup2{
+
+.btn-submit-popup2 {
     /* background-image: linear-gradient(to bottom, #c9a13f, #9C7952); */
     background-color: #0E1D22;
     border: 1px solid #c9a13f;
     padding: 10px;
-  
     width: 30%;
     font-size: 14px;
     border-radius: 8px;
     color: white;
 }
 
-.btn-submit-popup2:hover{
-    background-color: #0E1D22 ;
-    border: 1px solid #c9a13f ;
-    padding: 10px ;
-  
-    width: 30%;
-    font-size: 14px ;
-    border-radius:8px;
-    color: white;
-}
+    .btn-submit-popup2:hover {
+        background-color: #0E1D22;
+        border: 1px solid #c9a13f;
+        padding: 10px;
+        width: 30%;
+        font-size: 14px;
+        border-radius: 8px;
+        color: white;
+    }
 
 .UploadFileName {
-    color: #d0a989;
+    color: #ffffff;
     font-size: 12px !important;
     padding-left: 0 !important;
     margin-top: 10px !important;
     padding: 21px;
 }
+
 .l1 {
-    color: #d0a989;
-    font-size: 15px;
+    color: #ffffff;
+    font-size: 14px;
     /* margin: 5px; */
     position: absolute;
     top: 7px;
@@ -208,18 +214,21 @@
     font-weight: 400;
     text-transform: uppercase;
 }
+
 .date-icon1 {
     position: absolute;
     margin-top: 20px;
     margin-left: 263px;
     cursor: pointer;
 }
+
 .or {
     color: #ffffff;
     font-size: 18px;
     font-weight: 400;
     text-transform: uppercase;
 }
+
 .DrawSignature {
     width: 310px;
     height: 105px;
@@ -227,11 +236,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor:pointer;
+    cursor: pointer;
 }
-.DrawSignature p{
-  margin:0;
-}
+
+    .DrawSignature p {
+        margin: 0;
+    }
+
 .date-icon2 {
     position: absolute;
     margin-top: 30px;
@@ -246,11 +257,13 @@
     font-weight: 500;
     text-align: center !important;
 }
+
 .pd input {
     padding-top: 0px !important;
     margin-left: 10px;
     font-size: 17px;
 }
+
 .btn-outline-light {
     --bs-btn-color: #c9a13f;
     --bs-btn-border-color: #c9a13f;
@@ -267,56 +280,73 @@
     --bs-btn-disabled-border-color: #c9a13f;
     --bs-gradient: none;
 }
-.signbox {
-    border: 1px solid #fff;
-    background-color: #fff;
-    border-radius: 10px;
-}
+    .btn-outline-light:hover{
+        color:#ffffff;
+    }
+    .signbox {
+        border: 1px solid #fff;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+
 @media (max-width:600px) {
     .signbox {
-        width:100% !important;
+        width: 100% !important;
     }
+
     #page-topbar {
         left: var(--vz-vertical-menu-width)
     }
+
     .mobile-top-padding-header {
         padding: 0px !important;
     }
+
     .mobile-number-textarea {
         font-size: 14px;
         padding-left: 4px !important;
     }
+
     .btn-submit {
         padding: 5px;
         width: 60%;
         font-size: 15px;
     }
+
     .text-small2 {
         font-size: 12px !important;
         font-weight: 500;
         text-align: center;
     }
+
     .background-twc-banner {
         min-height: 100vh;
     }
+
     .mobile-number-textarea {
         width: 50%;
     }
+
     .btn-submit-digilocker {
         width: 100%;
     }
+
     .font-label-1 {
         font-size: 14px;
     }
-    .mfs12{
-        font-size:12px;
+
+    .mfs12 {
+        font-size: 12px;
     }
+
     .title-4 {
         font-size: 14px;
     }
+
     .font-label-2 {
         font-size: 14px;
     }
+
     .btn-submit-popup1 {
         width: 60%;
         font-size: 12px;
@@ -326,11 +356,20 @@
         width: 60%;
         font-size: 12px;
     }
+
         .btn-submit-popup2:hover {
             width: 60%;
             font-size: 12px;
         }
-    .btn-outline-light{
-        font-size:9px !important;
+
+    .btn-outline-light {
+        font-size: 9px !important;
     }
+}
+
+.middleLayout {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
 }

@@ -28,8 +28,6 @@
     <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
-
-
     <style>
         input[type="date"]::-webkit-calendar-picker-indicator {
             /* Change the color of the calendar icon */
@@ -40,11 +38,11 @@
 <body>
     <div ng-app="main" ng-controller="myController">
         <!-- ======= Hero Section ======= -->
-        <section id="hero" class=" background-twc-banner" style="height: 780px;">
+        <section class="background-twc-banner middleLayout">
             <div class="container">
                 <header id="header" class="pb-5 mobile-top-padding-header ">
                     <div class="container">
-                        <div class="row">
+                        <div class="row d-block d-md-none">
                             <div class="col-md-2 col-6 mx-auto text-center ">
                                 <a href="index.html">
                                     <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
@@ -65,7 +63,7 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="row ">
-                                   <div class="col-md-10 mx-auto">
+                                    <div class="col-md-10 mx-auto">
                                         <div class="card login-form">
                                             <div class="row mx-auto mt-5 mb-2">
                                                 <img src="~/wpregimages/form-logo.png" alt="" title="" class="img-fluid text-center" style="width:55px;height: 31px;">
@@ -79,25 +77,25 @@
                                                         <label class="form-subtitle "><span class="golden">Enter your PAN card number </span></label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-8 col-9 mx-auto">
+                                                <div class="col-md-8 col-12 mx-auto">
                                                     <div class="form-floating">
                                                         @*   <input type="text" ng-model="pan" ng-change="transformToUpper();checkPanDetails($event)"  class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="HERFK4578G"> *@
                                                         <input type="text" ng-model="pan" id="inputPAN"
                                                                oninput="this.value = this.value.toUpperCase();removeWhitespace(this);blockSpecialCharacters(event)"
                                                                maxlength="10" ng-keyup="displayDate()" ng-change="CHeckPanNumber()"
                                                                class="form-control floating-text-area" style="color: white;" placeholder="HERFK4578G">
-                                                        <label for="inputPAN" style="color: #c9a13f;">Permanent Account Number</label>
+                                                        <label for="inputPAN" style="color: #ffffff;">Permanent Account Number</label>
                                                         <div ng-if="panCorrectMessage" class="text-success1 small mt-2" style="font-size: 12px !important;">Wow, your PAN is already KYC verified, this will reduce your A/C<br>opening time.</div>
                                                         @*  <div ng-if="pan==''" style="color: rgb(212, 25, 25);font-size:small;">Pan is required</div> *@
                                                         <div ng-if="isPanFormateCorrect" style="color: rgb(212, 25, 25);font-size:small;">Invalid PAN number format.</div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-8 col-9 mx-auto">
+                                                <div class="col-md-8 col-12 mx-auto">
                                                     <div class="form-floating mb-3" ng-if="isPanDateVisible">
                                                         @* <span><img src="~/wpregimages/date-icon.png" class="date-icon"></span> *@
                                                         <input type="date" ng-model="pandate" class="form-control floating-text-area" id="mydate" style="color: white;" placeholder="31-12-1995">
                                                         <div style="color: rgb(212, 25, 25);font-size:small;">{{isvalidDate}}</div>
-                                                        <label for="floatingInput" style="color: #c9a13f;">Date Of Birth</label>
+                                                        <label for="floatingInput" style="color: #ffffff;">Date Of Birth</label>
                                                     </div>
                                                     <div class="form-check mt-3">
                                                         <input class="form-check-input" ng-change="check(x)" ng-model="x.isChecked" type="checkbox" value="" id="flexCheckChecked" checked>
@@ -111,7 +109,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                   </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +163,7 @@
                                 <div class="row mx-5 ps-5">
                                     <div class="col-md-12 d-flex mt-3 mb-4">
                                         <button href="" class="btn rounded btn-submit-popup1 me-4" ng-click="RefreshPage()">Change Details</button>
-                                        <button data-bs-dismiss="modal"  ng-click="PanDetailnext()" class="btn rounded btn-submit-popup2">Confirm</button>
+                                        <button data-bs-dismiss="modal" ng-click="PanDetailnext()" class="btn rounded btn-submit-popup2">Confirm</button>
                                     </div>
                                 </div>
                             </div>
@@ -224,13 +222,10 @@
     </script>
     <script>
         // Get today's date
-
         var minDate = new Date(1900, 0, 1);
         var maxDate = new Date();
         maxDate.setFullYear(maxDate.getFullYear() - 18);
-
         var today = maxDate.toISOString().split('T')[0];
-
         // Set max attribute for the input field
         //  document.getElementById('mydate').setAttribute('max', today);
         // Wait for the document to be fully loaded
