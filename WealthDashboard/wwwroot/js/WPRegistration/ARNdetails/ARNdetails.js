@@ -198,7 +198,9 @@
             document.getElementById('fileInputpms').click();
         };
 
-
+        $scope.clickFileInput = function (val) {
+            document.getElementById('fileInputpms').click();
+        };
 
         $scope.onFileSelect = function (input, type) {
             if (input.files && input.files.length > 0) {

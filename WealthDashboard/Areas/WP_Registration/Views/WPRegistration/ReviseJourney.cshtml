@@ -85,196 +85,248 @@
                                         </div>
 
                                         <div class="row mb-3">
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-2">
-                                                    <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" ng-model="ARNNUMBER" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="8" placeholder="HERFK4578G" autocomplete="off">
-                                                    <label for="floatingInput" style="color: #c9a13f;">Enter ARN Number</label>
+                                            <div class="row">
+                                                <div class="col-md-6" ng-if="ARN==true">
+                                                    <div class="form-floating mb-2">
+                                                        <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" ng-model="item.ARN" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="8" placeholder="HERFK4578G" autocomplete="off">
+                                                        <label for="floatingInput" style="color: #c9a13f;">Enter ARN Number</label>
 
-                                                </div>
-                                                <div ng-if="isvalied">
-                                                    <div style="color: rgb(212, 25, 25);font-size:small;">
-                                                        Please Enter ARN
-                                                        Number
                                                     </div>
+                                                    <div ng-if="isvalied">
+                                                        <div style="color: rgb(212, 25, 25);font-size:small;">
+                                                            Please Enter ARN
+                                                            Number
+                                                        </div>
 
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6" ng-if="ARN==true">
+                                                    <div class="form-floating mb-2">
+                                                        <span>
+                                                            <img src="~/wpregimages/upload-icon.png" class="date-icon"  onclick="document.getElementById('fileInputarn').click();" style="cursor: pointer;">
+                                                            <input type="file" id="fileInputarn" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'ARN')">
+                                                        </span>
+                                                        <input autocomplete="off" readonly type="text" class="floating-text-area UploadFileName" ng-model="fileDetails.ARNFileName" style="color: white;">
+                                                        <label for="fileInputarn" class="l1">Upload ARN Card</label>
+                                                    </div>
+                                                    <span ng-if="sizeError.ARN" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+                                                    @*     <div ng-if="((!arnFileName && fileType === 'arn')" style="color: darkred; font-size: small;">
+                                                    Please Upload ARN File
+                                                    </div> *@
+
+                                                    <!----------------->
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-2">
-                                                    <span>
-                                                        <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputarn()" style="cursor: pointer;">
-                                                        <input type="file" id="fileInputarn" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'arn')">
-                                                    </span>
-                                                    <input autocomplete="off" readonly type="text" class="floating-text-area UploadFileName" ng-model="arnFileName" style="color: white;">
-                                                    <label for="fileInputarn" class="l1">Upload ARN Card</label>
-                                                </div>
-                                                <span ng-if="arnsize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
-                                                @*     <div ng-if="((!arnFileName && fileType === 'arn')" style="color: darkred; font-size: small;">
-                                                Please Upload ARN File
-                                                </div> *@
-
-                                                <!----------------->
-                                            </div>
+                                          
                                             <!----------Upload ARN Number------->
+                                            <div class="row" ng-if="GST==true">
+                                                <div class="col-md-6" >
+                                                    <div class="form-floating mb-2">
+                                                        <input type="text" class="form-control floating-text-area" autocomplete="off" ng-model="item.GST" id="floatingInput" style="color: white;" placeholder="HERFK4578G" ng-change="isValidGSTIN()">
+                                                        <label for="floatingInput" style="color: #c9a13f;">Enter GST Number</label>
+                                                    </div>
+                                                    <div ng-if="GSTError==false" style="color: rgb(212, 25, 25);font-size:small;">Invalid GST Number.!</div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-2">
+                                                        <span>
+                                                            <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInput('fileInputgst')" style="cursor: pointer;">
+                                                            <input type="file" id="fileInputgst" accept="image/png,image/jpeg" autocomplete="off" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'GST')">
+                                                        </span>
+                                                        <input readonly type="text" class="floating-text-area UploadFileName" autocomplete="off" ng-model="fileDetails.GSTFileName" style="color: white;">
+                                                        <label for="fileInputgst" class="l1">Upload GST Number</label>
+                                                    </div>
+                                                    <span ng-if="sizeError.GST" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
 
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-2">
-                                                    <input type="text" class="form-control floating-text-area" autocomplete="off" ng-model="gstNo" id="floatingInput" style="color: white;" placeholder="HERFK4578G">
-                                                    <label for="floatingInput" style="color: #c9a13f;">Enter GST Number</label>
+
+                                                    @*      <div class="form-floating mb-2">
+                                                    <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
+                                                    <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
+                                                    <label for="floatingInput" style="color: #c9a13f;">Upload GST Number</label>
+                                                    </div> *@
+
+                                                    <!----------------->
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-2">
-                                                    <span>
-                                                        <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputgst()" style="cursor: pointer;">
-                                                        <input type="file" id="fileInputgst" accept="image/png,image/jpeg" autocomplete="off" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'gst')">
-                                                    </span>
-                                                    <input readonly type="text" class="floating-text-area UploadFileName" autocomplete="off" ng-model="gstFileName" style="color: white;">
-                                                    <label for="fileInputgst" class="l1">Upload GST Number</label>
-                                                </div>
-                                                <span ng-if="gstsize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
-
-
-                                                @*      <div class="form-floating mb-2">
-                                                <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
-                                                <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
-                                                <label for="floatingInput" style="color: #c9a13f;">Upload GST Number</label>
-                                                </div> *@
-
-                                                <!----------------->
-                                            </div>
+                                            
                                             <!------------Upload GST Number----->
 
 
-                                            
 
 
-                                             <div  class="row">
-                                                <div class="col-md-6">
+
+                                            <div class="row" ng-if="PMS==true">
+                                                <div class="col-md-6" >
                                                     <div class="form-floating mb-3">
-                                                        <input type="text" class="form-control floating-text-area" autocomplete="off" ng-model="PMSNo" id="floatingInput" style="color: white;" placeholder="31-12-1995">
+                                                        <input type="text" class="form-control floating-text-area" autocomplete="off" ng-model="item.PMS" id="floatingInput" style="color: white;" placeholder="31-12-1995">
                                                         <label for="floatingInput" style="color: #c9a13f;">Enter PMS Distribution Number</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-6"  >
                                                     <!-------Upload PMS File---------->
 
                                                     <div class="form-floating mb-2">
                                                         <span>
-                                                            <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputpms()" style="cursor: pointer;">
-                                                            <input type="file" id="fileInputpms" accept="image/png,image/jpeg" autocomplete="off" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'pms')">
+                                                            <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInput('fileInputpms')" style="cursor: pointer;">
+                                                            <input type="file" id="fileInputpms" accept="image/png,image/jpeg" autocomplete="off" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'PMS')">
                                                         </span>
-                                                        <input readonly type="text" class="floating-text-area UploadFileName" autocomplete="off" ng-model="pmsFileName" style="color: white;">
+                                                        <input readonly type="text" class="floating-text-area UploadFileName" autocomplete="off" ng-model="fileDetails.PMSFileName" style="color: white;">
                                                         <label for="fileInputpms" class="l1">Upload PMS Distribution Certificate</label>
                                                     </div>
-                                                    <span ng-if="pmssize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+                                                    <span ng-if="sizeError.PMS" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
 
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="row" ng-if="AadhaarFront==true">
+                                                <div class="col-md-6" >
 
-                                                <span ng-if="invalid" style="color: darkred; font-size: small;">User ID already exists </span>
-                                                <span ng-if="Characters" style="color: darkred; font-size: small;">Userid must be at least 5 characters</span>
-
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control floating-text-area" autocomplete="off" style="color: white;" ng-model="Passwords" ng-change="Pass(Passwords)" maxlength="15">
-                                                    <i ng-if="Passvalid" class="fa fa-check-circle fa-done"></i>
-                                                    <label for="floatingInput" style="color: #c9a13f;">Aadhar Number</label>
-                                                </div>
-                                                <span ng-if="Characterspass" style="color: darkred; font-size: small;">Password must be at least 5 characters</span>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-2">
-                                                    <span>
-                                                        <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputgst()" style="cursor: pointer;">
-                                                        <input type="file" id="fileInputgst" accept="image/png,image/jpeg" autocomplete="off" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'gst')">
-                                                    </span>
-                                                    <input readonly type="text" class="floating-text-area UploadFileName" autocomplete="off" ng-model="gstFileName" style="color: white;">
-                                                    <label for="fileInputgst" class="l1">Upload GST Number</label>
-                                                </div>
-                                                <span ng-if="gstsize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
-
-
-                                                @*      <div class="form-floating mb-2">
-                                                <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
-                                                <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
-                                                <label for="floatingInput" style="color: #c9a13f;">Upload GST Number</label>
-                                                </div> *@
-
-                                                <!----------------->
-                                            </div>
-                                           @* Pan Dedials *@
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-2">
-                                                    <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" ng-model="ARNNUMBER" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="8" placeholder="HERFK4578G" autocomplete="off">
-                                                    <label for="floatingInput" style="color: #c9a13f;">Enter Pan Number</label>
-
-                                                </div>
-                                                <div ng-if="isvalied">
-                                                    <div style="color: rgb(212, 25, 25);font-size:small;">
-                                                        Please Enter Pan
-                                                        Number
+                                                   
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control floating-text-area" autocomplete="off" style="color: white;" ng-model="item.Aadhar" ng-change="ValideAadhar()" maxlength="15" ng-keypress="allowNumbers($event)">
+                                                        <i ng-if="Passvalid" class="fa fa-check-circle fa-done"></i>
+                                                        <label for="floatingInput" style="color: #c9a13f;">Aadhar Number</label>
                                                     </div>
+                                                    <span ng-if="AadharError==false" style="color: darkred; font-size: small;">Aadhar Number in valid!</span>
+                                                </div>
+                                                <div class="col-md-6" >
+                                                    <div class="form-floating mb-2">
+                                                        <span>
+                                                            <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInput('fileInputaadhar')" style="cursor: pointer;">
+                                                            <input type="file" id="fileInputaadhar" accept="image/png,image/jpeg" autocomplete="off" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'Aadhar')">
+                                                        </span>
+                                                        <input readonly type="text" class="floating-text-area UploadFileName" autocomplete="off" ng-model="fileDetails.AadharFileName" style="color: white;">
+                                                        <label for="fileInputgst" class="l1">Upload Aadhar Card</label>
+                                                    </div>
+                                                    <span ng-if="sizeError.Aadhar" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
 
+
+                                                    @*      <div class="form-floating mb-2">
+                                                    <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
+                                                    <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
+                                                    <label for="floatingInput" style="color: #c9a13f;">Upload GST Number</label>
+                                                    </div> *@
+
+                                                    <!----------------->
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-2">
-                                                    <span>
-                                                        <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputarn()" style="cursor: pointer;">
-                                                        <input type="file" id="fileInputarn" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'arn')">
-                                                    </span>
-                                                    <input autocomplete="off" readonly type="text" class="floating-text-area UploadFileName" ng-model="arnFileName" style="color: white;">
-                                                    <label for="fileInputarn" class="l1">Upload ARN Card</label>
+                                            <div class="row" ng-if="PanCard==true">
+                                                @* Pan Dedials *@
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-2">
+                                                        <input type="text" class="form-control floating-text-area" id="floatingInput"
+                                                               ng-model="item.PAN" id="inputPAN"
+                                                               oninput="this.value = this.value.toUpperCase();removeWhitespace(this);blockSpecialCharacters(event)"
+                                                               maxlength="10" ng-keyup="displayDate()" ng-change="CHeckPanNumber()" style="color: white;"  ng-keyup="change()"   ng-paste="preventPaste($event)" maxlength="8" placeholder="HERFK4578G" autocomplete="off">
+                                                        <label for="floatingInput" style="color: #c9a13f;">Enter Pan Number</label>
+                                                        <div ng-if="panCorrectMessage" class="text-success1 small mt-2" style="font-size: 12px !important;">Wow, your PAN is already KYC verified, this will reduce your A/C<br>opening time.</div>
+                                                        @*  <div ng-if="pan==''" style="color: rgb(212, 25, 25);font-size:small;">Pan is required</div> *@
+                                                        <div ng-if="isPanFormateCorrect" style="color: rgb(212, 25, 25);font-size:small;">Invalid PAN number format.</div>
+                                                    </div>
+                                                    <div ng-if="isvalied">
+                                                        <div style="color: rgb(212, 25, 25);font-size:small;">
+                                                            Please Enter Pan
+                                                            Number
+                                                        </div>
+
+                                                    </div>
                                                 </div>
-                                                <span ng-if="arnsize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
-                                                @*     <div ng-if="((!arnFileName && fileType === 'arn')" style="color: darkred; font-size: small;">
-                                                Please Upload ARN File
-                                                </div> *@
+                                                <div class="col-md-6"  >
+                                                    <div class="form-floating mb-2">
+                                                        <span>
+                                                            <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInput('fileInputpan')" style="cursor: pointer;">
+                                                            <input type="file" id="fileInputpan" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'PAN')">
+                                                        </span>
+                                                        <input autocomplete="off" readonly type="text" class="floating-text-area UploadFileName" ng-model="fileDetails.PANFileName" style="color: white;">
+                                                        <label for="fileInputpan" class="l1">Upload Pan Card</label>
+                                                    </div>
+                                                    <span ng-if="sizeError.PAN" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+                                                    @*     <div ng-if="((!arnFileName && fileType === 'arn')" style="color: darkred; font-size: small;">
+                                                    Please Upload ARN File
+                                                    </div> *@
 
-                                                <!----------------->
-                                            </div>
-
-
-                                           @* Pan close *@
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-2">
-                                                    <span>
-                                                        <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputarn()" style="cursor: pointer;">
-                                                        <input type="file" id="fileInputarn" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'arn')">
-                                                    </span>
-                                                    <input autocomplete="off" readonly type="text" class="floating-text-area UploadFileName" ng-model="arnFileName" style="color: white;">
-                                                    <label for="fileInputarn" class="l1">Upload Photo Card</label>
+                                                    <!----------------->
                                                 </div>
-                                                <span ng-if="arnsize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
-                                                @*     <div ng-if="((!arnFileName && fileType === 'arn')" style="color: darkred; font-size: small;">
-                                                Please Upload ARN File
-                                                </div> *@
 
-                                                <!----------------->
-                                            </div>
 
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-2">
-                                                    <span>
-                                                        <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputarn()" style="cursor: pointer;">
-                                                        <input type="file" id="fileInputarn" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'arn')">
-                                                    </span>
-                                                    <input autocomplete="off" readonly type="text" class="floating-text-area UploadFileName" ng-model="arnFileName" style="color: white;">
-                                                    <label for="fileInputarn" class="l1">Upload  Signature</label>
+                                                @* Pan close *@
+                                           </div>
+                                            <div class="row" ng-if="1==2">
+
+                                                @* Bank Details---------------------------- *@
+                                                <div class="col-md-6" >
+                                                    <div class="form-floating mb-2">
+                                                        <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" ng-model="item.Cheque" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="15" placeholder="HERFK4578G" autocomplete="off">
+                                                        <label for="floatingInput" style="color: #c9a13f;">Enter  Bank Account  Number</label>
+
+                                                    </div>
+                                                    <div ng-if="isvalied">
+                                                        <div style="color: rgb(212, 25, 25);font-size:small;">
+                                                            Please Enter Bank Account
+                                                            Number
+                                                        </div>
+
+                                                    </div>
                                                 </div>
-                                                <span ng-if="arnsize" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
-                                                @*     <div ng-if="((!arnFileName && fileType === 'arn')" style="color: darkred; font-size: small;">
-                                                Please Upload ARN File
-                                                </div> *@
+                                                <div class="col-md-6" >
+                                                    <div class="form-floating mb-2">
+                                                        <span>
+                                                            <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInput('fileInputbank')" style="cursor: pointer;">
+                                                            <input type="file" id="fileInputbank" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'Cheque')">
+                                                        </span>
+                                                        <input autocomplete="off" readonly type="text" class="floating-text-area UploadFileName" ng-model="fileDetails.ChequeFilePath" style="color: white;">
+                                                        <label for="fileInputbank" class="l1">Upload  Cancel  Cheque</label>
+                                                    </div>
+                                                    <span ng-if="sizeError.Cheque" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+                                                    @*     <div ng-if="((!arnFileName && fileType === 'arn')" style="color: darkred; font-size: small;">
+                                                    Please Upload ARN File
+                                                    </div> *@
 
-                                                <!----------------->
-                                            </div>
+                                                    <!----------------->
+                                                </div>
+                                                @* Bank details Close-------------------------- *@
+                                          </div>
+                                          <div class="row">
+                                                <div class="col-md-6" ng-if="Selfie==true">
+                                                    <div class="form-floating mb-2">
+                                                        <span>
+                                                            <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInput('fileInputphoto')" style="cursor: pointer;">
+                                                            <input type="file" id="fileInputphoto" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'Selfi')">
+                                                        </span>
+                                                        <input autocomplete="off" readonly type="text" class="floating-text-area UploadFileName" ng-model="fileDetails.SelfiFileName" style="color: white;">
+                                                        <label for="fileInputarn" class="l1">Upload Photo Card</label>
+                                                    </div>
+                                                    <span ng-if="sizeError.Selfi" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+                                                    @*     <div ng-if="((!arnFileName && fileType === 'arn')" style="color: darkred; font-size: small;">
+                                                    Please Upload ARN File
+                                                    </div> *@
+
+                                                    <!----------------->
+                                                </div>
+
+                                                <div class="col-md-6" ng-if="Signature==true">
+                                                    <div class="form-floating mb-2">
+                                                        <span>
+                                                            <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInput('fileInputsign')" style="cursor: pointer;">
+                                                            <input type="file" id="fileInputsign" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'SIGN')">
+                                                        </span>
+                                                        <input autocomplete="off" readonly type="text" class="floating-text-area UploadFileName" ng-model="fileDetails.SignFileName" style="color: white;">
+                                                        <label for="fileInputarn" class="l1">Upload  Signature</label>
+                                                    </div>
+                                                    <span ng-if="Selfi.SIGN" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
+                                                    @*     <div ng-if="((!arnFileName && fileType === 'arn')" style="color: darkred; font-size: small;">
+                                                    Please Upload ARN File
+                                                    </div> *@
+                                                    
+                                                    <!----------------->
+                                                </div>
+                                          </div>
+                                           
                                         </div>
                                         <div class="row mb-3 row mb-3 ms-2">
                                             <div class="col-md-12 text-center col-12 mt-2 mb-4">
+                                                
                                                 @*   <a href="twc-link-bank-account-QR-code.html" class="btn rounded btn-submit">Submit</a> *@
-                                                <button ng-click="SubmitDetails()" class="btn rounded btn-submit">Next</button>
+                                                <button ng-click="SubmitDetails()" ng-disabled="validformbutton" class="btn rounded btn-submit">Next</button>
 
                                             </div>
                                         </div>
@@ -332,7 +384,9 @@
 
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-6 col-12 mx-auto"><a href="" class="btn btn-primary btn-submit btn-sm">SUBMIT</a></div>
+                        <div class="col-md-6 col-12 mx-auto">
+                            <a href="" class="btn btn-primary btn-submit btn-sm" ng-click="SubmitDetails()">SUBMIT</a>
+                         </div>
                     </div>
 
                 </div>
@@ -433,67 +487,43 @@
             ]
         });
 
+
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+
     </script>
 
+
+
+    
 
 
     <script>
-        /* This creates all the OTP input fields dynamically. Change the otp_length variable  to change the OTP Length */
-        const $otp_length = 6;
 
-        const element = document.getElementById('OTPInput');
-        for (let i = 0; i < $otp_length; i++) {
-            let inputField = document.createElement('input'); // Creates a new input element
-            inputField.className = "w-12 h-12 bg-gray-100 border-0 outline-none focus:bg-gray-200 text-center focus:border-blue-400 focus:shadow-outline";
-            // Do individual OTP input styling here;
-            inputField.style.cssText = "text-shadow: 0 0 0 gray;"; // Input field text styling. This css hides the text caret
-            inputField.id = 'otp-field' + i; // Don't remove
-            inputField.maxLength = 1; // Sets individual field length to 1 char
-            element.appendChild(inputField); // Adds the input field to the parent div (OTPInput)
+        function removeWhitespace(input) {
+            input.value = input.value.replace(/\s/g, '');
         }
 
-        /*  This is for switching back and forth the input box for user experience */
-        const inputs = document.querySelectorAll('#OTPInput > *[id]');
-        for (let i = 0; i < inputs.length; i++) {
-            inputs[i].addEventListener('keydown', function (event) {
-                if (event.key === "Backspace") {
+        function blockSpecialCharacters(event) {
+            // Get the value of the input field
+            var inputValue = event.target.value;
 
-                    if (inputs[i].value == '') {
-                        if (i != 0) {
-                            inputs[i - 1].focus();
-                        }
-                    } else {
-                        inputs[i].value = '';
-                    }
+            // Define a regular expression to allow only alphanumeric characters and spaces
+            var regex = /^[a-zA-Z0-9 ]*$/;
 
-                } else if (event.key === "ArrowLeft" && i !== 0) {
-                    inputs[i - 1].focus();
-                } else if (event.key === "ArrowRight" && i !== inputs.length - 1) {
-                    inputs[i + 1].focus();
-                } else if (event.key != "ArrowLeft" && event.key != "ArrowRight") {
-                    inputs[i].setAttribute("type", "text");
-                    inputs[i].value = ''; // Bug Fix: allow user to change a random otp digit after pressing it
-                    setTimeout(function () {
-                        inputs[i].setAttribute("type", "number");
-                    }, 1000); // Hides the text after 1 sec
-                }
-            });
-            inputs[i].addEventListener('input', function () {
-                inputs[i].value = inputs[i].value.toUpperCase(); // Converts to Upper case. Remove .toUpperCase() if conversion isnt required.
-                if (i === inputs.length - 1 && inputs[i].value !== '') {
-                    return true;
-                } else if (inputs[i].value !== '') {
-                    inputs[i + 1].focus();
-                }
-            });
-
-        };
-
-
+            // Check if the entered character matches the regular expression
+            if (!regex.test(inputValue)) {
+                // If a special character is entered, remove it from the input field
+                event.target.value = inputValue.replace(/[^a-zA-Z0-9 ]/g, '');
+            }
+        }
     </script>
-
-
-
+   
 </body>
 
 </html>

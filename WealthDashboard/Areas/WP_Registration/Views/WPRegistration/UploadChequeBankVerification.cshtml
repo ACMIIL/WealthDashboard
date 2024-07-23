@@ -80,6 +80,7 @@
                                                 </div>
                                                 <div class="text-center">
                                                     <label class="form-subtitle "><span class="golden">Scan Your QR Code from UPI </span></label>
+                                                   <br /> <samp ng-if="reverseJourny=='true'" style="color:red">Bank Doucment faild please upload freash document </samp>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
@@ -87,7 +88,7 @@
                                                     <div class="form-floating mb-2">
                                                         <input type="text" class="form-control floating-text-area"
                                                                id="floatingInput" style="color: white;" ng-model="Account_Name" oninput="this.value = this.value.toUpperCase()" onkeydown="return blockDigits(event)" autocomplete="off">
-                                                        <span ng-if="Account_Name==''" style="color: rgb(212, 25, 25);font-size:small;">
+                                                        <span ng-if="error.accountName==true" style="color: rgb(212, 25, 25);font-size:small;">
                                                             Please
                                                             Enter Account Holder Name
                                                         </span>
@@ -98,7 +99,7 @@
                                                     </div>
                                                     <div class="form-floating mb-2">
                                                         <input id="floatingInput" class="form-control floating-text-area" name="floatingInput" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onkeydown="return blockspace(event)" type="text" class="form-control floating-text-area" ng-model="Account_Num" style="color: white;" autocomplete="off">
-                                                        <span ng-if="Account_Num==''" style="color: rgb(212, 25, 25);font-size:small;">
+                                                        <span ng-if="error.account_Num==true" style="color: rgb(212, 25, 25);font-size:small;">
                                                             Please
                                                             Enter Account Number
                                                         </span>
@@ -109,7 +110,7 @@
                                                     </div>
                                                     <div class="form-floating mb-2">
                                                         <input id="floatingInput" class="form-control floating-text-area" oninput="this.value = this.value.toUpperCase()" onkeydown="return blockspace(event)" name="floatingInput" type="text" class="form-control floating-text-area" ng-blur="GetBankDetails()" ng-model="IFSCCode" style="color: white;" autocomplete="off">
-                                                        <span ng-if="IFSCCode==''" style="color: rgb(212, 25, 25);font-size:small;">
+                                                        <span ng-if="error.IFSCCode==true" style="color: rgb(212, 25, 25);font-size:small;">
                                                             Please
                                                             Enter IFSC Code
                                                         </span>
@@ -126,13 +127,13 @@
                                                             <input type="file" id="fileInput" ng-model="CancelCheque" name="fileInput" accept="image/png,image/jpeg" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this)">
                                                         </span>
                                                         <input type="text" autocomplete="off" class="form-control floating-text-area" id="fileInput" name="floatingInput" ng-model="CancelChequeFileName" style="color: white;" placeholder="Cancel Cheque">
-                                                        <span ng-if="CancelChequeFileName==''" style="color: rgb(212, 25, 25);font-size:small;">
+                                                        <span ng-if="cheque==true" style="color: rgb(212, 25, 25);font-size:small;">
                                                             Upload Cancel Cheque
                                                         </span>
                                                         <label for="fileInput" style="color: #c9a13f;"> Upload Cancel Cheque </label>
                                                         <span ng-if="filesize" style="color: rgb(212, 25, 25);font-size:small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
                                                     </div>
-                                                </div>
+                                                </div>  
                                                 <div class="row mb-2">
                                                     <div class="col-md-10 mx-auto">
                                                         <h3 class="title-4" style="color: #c9a13f;">Account Type</h3>
