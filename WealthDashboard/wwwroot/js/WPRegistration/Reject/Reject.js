@@ -7,6 +7,7 @@
         $scope.isPanFormateCorrect = false;
         $scope.panCorrectMessage = false;
         $scope.AadharError = true;
+        $scope.GSTError = true;
         $scope.panMessage = '';
         $scope.data = [];
         $scope.Selfie = false;
@@ -18,7 +19,8 @@
         $scope.ARN = false;
         $scope.GST = false;
         $scope.PMS = false;
-
+        $scope.userId = '';
+        $scope.validformbutton = true;
         $scope.sizeError = {
             ARN: false,
             PMS: false, GST: false, PAN: false, Cheque: false, Aadhar: false, SIGN: false, Selfi: false
@@ -44,9 +46,9 @@
         GetData();
         function GetData() {
 
-            var userId = '74DE3363-A041-478A-B97C-00B9CF697E21';// localStorage.getItem('userId')
+            $scope.userId = localStorage.getItem('userId');// '74DE3363-A041-478A-B97C-00B9CF697E21';// 
             $http({
-                url: BaseURL + "User/GetRejectDocumentList?userid=" + userId,
+                url: BaseURL + "User/GetRejectDocumentList?userid=" + $scope.userId,
                 method: "Get",
                 Headers: {},
                 data: {}
@@ -88,6 +90,11 @@
                             $scope.PMS = true;
                         }
                     }
+
+                    if ($scope.data.length == 1 && $scope.CancelCheque == true) {
+                        window.location.assign('/WP_Registration/WPRegistration/UploadChequeBankVerification');
+                    }
+
                     //var result = '';
                     //toastr.success('An OTP has been sent to ' + $scope.MobileNumber, 'Title Success!');
                 }
@@ -203,8 +210,8 @@
 
         }
         $scope.checkFileSize = function (bytes, type) {
-
-            const maxSizeMB = 5;
+             
+            const maxSizeMB = 4;
             const fileSizeInMB = bytes / (1024 * 1024);
             if (fileSizeInMB > maxSizeMB) {
 
@@ -258,37 +265,67 @@
                     $scope.sizeError.Aadhar = false;
                 }
               //  $scope.errorMessage = '';
-
+              //  validform();
             }
         };
 
 
+        function validform() {
+
+            if ($scope.GSTError == false || $scope.AadharError == false || $scope.sizeError.PAN == true ||
+                $scope.sizeError.ARN == true || $scope.sizeError.PMS == true || $scope.sizeError.CancelCheque == true || $scope.sizeError.SIGN == true ||
+                $scope.sizeError.GST == true || $scope.sizeError.Aadhar == true || $scope.sizeError.SIGN == true || $scope.isPanFormateCorrect == true) {
+                $scope.validformbutton = true;
+
+            }
+            else {
+
+                $scope.validformbutton = false;
+            }
+
+
+
+        }
+
+
+
+        $scope.isValidGSTIN=  function() {
+            const gstinRegex = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+            $scope.GSTError = gstinRegex.test($scope.item.GST);
+            validform();
+        }
+
         $scope.ValideAadhar = function ()
         {
-
             const aadhaarRegex = /^[2-9]{1}[0-9]{11}$/;
             $scope.AadharError = aadhaarRegex.test($scope.item.Aadhar);
+            validform();
         }
         $scope.SubmitDetails = function () {
             var array = [];
+            var status = true;
+            debugger
             if ($scope.Selfie == true) {
                 if ($scope.fileDetails.SelfiFile.length == 0 || $scope.fileDetails.SelfiFile == '' ||
                     $scope.fileDetails.SelfiFile == null) {
                     toastr.error('Please Upload Selfie', 'Selfie !');
+                    status = false;
                 }
                 else {
-                    var item = { File: $scope.fileDetails.PANFile, DocumentTypeId: 1, FilePath: $scope.fileDetails.PANFilePath, FileName: $scope.fileDetails.PANFileName };
+                    var item = { File: $scope.fileDetails.SelfiFile, DocumentTypeId: 1, FilePath: $scope.fileDetails.SelfiFilePath, FileName: $scope.fileDetails.SelfiFileName };
                     array.push(item);
                 }
             }
             if ($scope.PanCard == true) {
                 if ($scope.item.PAN == '') {
                     toastr.error('Please Enter the Pan', 'PAN !');
+                    status = false;
                 }
 
                 if ($scope.fileDetails.PANFile == '' || $scope.fileDetails.PANFile == null
                     || $scope.fileDetails.PANFile.length == 0) {
                     toastr.error('Please upload the Pan', 'PAN !');
+                    status = false;
                 }
                 else {
                     var item = { File: $scope.fileDetails.PANFile, DocumentTypeId: 2, FilePath: $scope.fileDetails.SeFilePath, FileName: $scope.fileDetails.SelfiFileName };
@@ -298,11 +335,13 @@
             if ($scope.AadhaarFront == true) {
                 if ($scope.item.Aadhar == '') {
                     toastr.error('Please Enter the Aadhar Number', 'Aadhar !');
+                    status = false;
                 }
 
                 if ($scope.fileDetails.AadharFile == '' || $scope.fileDetails.AadharFile == null
                     || $scope.fileDetails.AadharFile.length == 0) {
                     toastr.error('Please Upload the Aadhar', 'Aadhar !');
+                    status = false;
                 } else {
 
                     var item = { File: $scope.fileDetails.AadharFile, DocumentTypeId: 3, FilePath: $scope.fileDetails.AadharFilePath, FileName: $scope.fileDetails.AadharFileName };
@@ -315,25 +354,28 @@
             //if ($scope.data[i].TypeName == ==trueAadhaarBack==true) {
 
             //}
-            if ($scope.CancelCheque == true) {
-                if ($scope.item.Cheque == '') {
-                    toastr.error('Please Enter the Bank Account Number', 'Account Number !');
-                }
+            //if ($scope.CancelCheque == true) {
+            //    if ($scope.item.Cheque == '') {
+            //        toastr.error('Please Enter the Bank Account Number', 'Account Number !');
+            //        status = false;
+            //    }
 
-                if ($scope.fileDetails.ChequeFile == '' || $scope.fileDetails.ChequeFile == null
-                    || $scope.fileDetails.ChequeFile.length == 0) {
-                    toastr.error('Please Upload the  Cancel Cheque', 'Cheque !');
-                }
-                else {
+            //    if ($scope.fileDetails.ChequeFile == '' || $scope.fileDetails.ChequeFile == null
+            //        || $scope.fileDetails.ChequeFile.length == 0) {
+            //        toastr.error('Please Upload the  Cancel Cheque', 'Cheque !');
+            //        status = false;
+            //    }
+            //    else {
 
-                    var item = { File: $scope.fileDetails.ChequeFile, DocumentTypeId: 5, FilePath: $scope.fileDetails.ChequeFilePath, FileName: $scope.fileDetails.ChequeFileName };
-                    array.push(item);
-                }
-            }
+            //        var item = { File: $scope.fileDetails.ChequeFile, DocumentTypeId: 5, FilePath: $scope.fileDetails.ChequeFilePath, FileName: $scope.fileDetails.ChequeFileName };
+            //        array.push(item);
+            //    }
+            //}
             if ($scope.Signature == true) {
                 if ($scope.fileDetails.SignFile == '' || $scope.fileDetails.SignFile == null
                     || $scope.fileDetails.SignFile.length == 0) {
                     toastr.error('Please Upload the Signature ', 'Sign !');
+                    status = false;
                 } else {
                     var item = { File: $scope.fileDetails.SignFile, DocumentTypeId: 6, FilePath: $scope.fileDetails.SignFilePath, FileName: $scope.fileDetails.SignFileName };
                     array.push(item);
@@ -342,11 +384,13 @@
             if ($scope.ARN == true) {
                 if ($scope.item.ARN == '') {
                     toastr.error('Please Enter the ARN Number', ' ARN   !');
+                    status = false;
                 }
 
                 if ($scope.fileDetails.ARNFile == '' || $scope.fileDetails.ARNFile == null
                     || $scope.fileDetails.ARNFile.length == 0) {
                     toastr.error('Please Upload the  Cancel Cheque', 'ARN !');
+                    status = false;
                 } else {
                     var item = { File: $scope.fileDetails.ARNFile, DocumentTypeId: 7, FilePath: $scope.fileDetails.ARNFilePath, FileName: $scope.fileDetails.ARNFileName };
                     array.push(item);
@@ -355,11 +399,13 @@
             if ($scope.GST == true) {
                 if ($scope.item.GST == '') {
                     toastr.error('Please Enter the GST Number', ' GST   !');
+                    status = false;
                 }
 
-                if ($scope.fileDetails.ARNFile == '' || $scope.fileDetails.ARNFile == null
-                    || $scope.fileDetails.ARNFile.length == 0) {
+                if ($scope.fileDetails.GSTFile == '' || $scope.fileDetails.GSTFile == null
+                    || $scope.fileDetails.GSTFile.length == 0) {
                     toastr.error('Please Upload the    GST certification', 'GST !');
+                    status = false;
                 }
                 else {
                     var item = { File: $scope.fileDetails.GSTFile, DocumentTypeId: 8, FilePath: $scope.fileDetails.GSTFilePath, FileName: $scope.fileDetails.GSTFileName };
@@ -370,82 +416,86 @@
 
                 if ($scope.item.PMS == '') {
                     toastr.error('Please Enter the PMS Number', ' PMS   !');
+                    status = false;
                 }
 
                 if ($scope.fileDetails.PMSFile == '' || $scope.fileDetails.PMSFile == null
                     || $scope.fileDetails.PMSFile.length == 0) {
                     toastr.error('Please Upload the PMS certification', 'PMS !');
+                    status = false;
                 } else {
                     var item = { File: $scope.fileDetails.PMSFile, DocumentTypeId: 9, FilePath: $scope.fileDetails.PMSFilePath, FileName: $scope.fileDetails.PMSFileName };
                     array.push(item);
                 }
             }
 
-            var query = {
-                "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                "pan": $scope.item.PAN,
-                "arn": $scope.item.ARN,
-                "gst": $scope.item.GST,
-                "aadhar": $scope.item.Aadhar,
-                "pms": $scope.item.PMS
-            }
-
-            $http({
-                url: BaseURL + 'user/SaveReversJournyDetails',
-                method: 'POST',
-                headers: {},
-
-                data: query
-            }).then(function (response) {
-
-                var result = response;
-                if (result.data.code === 200) {
-                    uploadCancelCheque();
-
+            debugger
+            if (status)
+            {
+                var query = {
+                    "userId": $scope.userId,
+                    "pan": $scope.item.PAN,
+                    "arn": $scope.item.ARN,
+                    "gst": $scope.item.GST,
+                    "aadhar": $scope.item.Aadhar,
+                    "pms": $scope.item.PMS
                 }
-                else {
-                    toastr.error('500Internal Server Error!', 'Bank Details Update!');
-
-                }
-            }).catch(function (error) {
-                console.error('Error occurred (UpdateUserBankAccountTypeStatus): ', error);
-            });
-
-
-
-            //upload file
-
-
-
-            for (var i = 0; i < array.length; i++) {
-
-                var formdata = new FormData();
-                formdata.append('File', array[i].File);
-                formdata.append('ImgName', array[i].FileName);
-                formdata.append('UserId', userId);
-                formdata.append('DoucmentTypeId', array[i].DocumentTypeId);
 
                 $http({
-                    url: BaseURL + 'User/UploadFiles',
+                    url: BaseURL + 'user/SaveReversJournyDetails',
                     method: 'POST',
-                    headers: { 'Content-Type': undefined }, // Corrected content type
-                    transformRequest: angular.identity,
-                    data: formdata
+                    headers: {},
 
+                    data: query
                 }).then(function (response) {
 
                     var result = response;
-
                     if (result.data.code === 200) {
-                        UpdateStatus();
+                        uploadCancelCheque();
 
                     }
+                    else {
+                        toastr.error('500Internal Server Error!', 'Bank Details Update!');
 
-                })
+                    }
+                }).catch(function (error) {
+                    console.log('Error occurred (UpdateUserBankAccountTypeStatus): ', error);
+                });
+
+                //upload file
+                var count = 0;
+                for (var i = 0; i < array.length; i++) {
+
+                    var formdata = new FormData();
+                    formdata.append('File', array[i].File);
+                    formdata.append('ImgName', array[i].FileName);
+                    formdata.append('UserId', $scope.userId);
+                    formdata.append('DoucmentTypeId', array[i].DocumentTypeId);
+
+                    $http({
+                        url: BaseURL + 'User/UploadFiles',
+                        method: 'POST',
+                        headers: { 'Content-Type': undefined }, // Corrected content type
+                        transformRequest: angular.identity,
+                        data: formdata
+
+                    }).then(function (response) {
+
+                        var result = response;
+                        debugger
+                        if (result.data.code === 200) {
+                             
+                            if ((array.length - 1) == count && $scope.CancelCheque == true) {
+                                window.location.assign('/WP_Registration/WPRegistration/UploadChequeBankVerification');
+                            }
+                            count = count + 1;
+                        }
+
+                    })
 
 
+                }
             }
-
         }
         $scope.findItemIndex = function () {
             $scope.index = $scope.items.findIndex(function (element) {

@@ -6,16 +6,16 @@
         $scope.Account_Num = ''
         $scope.AccountType = '1';
         $scope.IFSCCode = '';
-
+        $scope.reverseJourny = localStorage.getItem('reverseJourny');
+        var error={
+            address: false, accountName: false, accountType: false, IFSCCode: false, account_Num:false,cheque:false
+        }
         var bankdetails = [];
         var Bankdata = [];
 
        
 
         $scope.CancelChequeFileName = '';
-
-
-       
             $scope.clickFileInput = function () {
             document.getElementById('fileInput').click();
         }
@@ -61,23 +61,28 @@
 
             $scope.SaveBankDetails = function () {
 
-                
+                error = {
+                    address: false, accountName: false, accountType: false, IFSCCode: false, account_Num: false, cheque: false
+                }
                 if ($scope.Account_Name == null || $scope.Account_Name == '' || $scope.Account_Name == undefined) {
 
                     toastr.error('Please Enter Account holder Name', 'Account Holder Name !');
-                    
+                    error.accountName = true;
                 }
                 if ($scope.Account_Num == null || $scope.Account_Num == '' || $scope.Account_Num == undefined) {
 
                     toastr.error('Please Enter Account Number', 'Account Number !');
+                    error.account_Num = true;
                 }
                 if ($scope.IFSCCode == null || $scope.IFSCCode == '' || $scope.IFSCCode == undefined) {
 
                     toastr.error('Please Enter IFSC Code', 'IFSC Code !');
+                    error.accountName = true;
                 }
                 if ($scope.CancelChequeFileName == null || $scope.CancelChequeFileName == '' || $scope.CancelChequeFileName == undefined) {
 
                     toastr.error('Please select cancel cheque', 'Cancel Cheque !');
+                    error.cheque = true;
                 }
 
                 Bankdata.BankAccountTypeId = $scope.AccountType;
