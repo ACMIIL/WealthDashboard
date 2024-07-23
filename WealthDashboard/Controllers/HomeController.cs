@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Net;
 using WealthDashboard.Models;
 using WealthDashboard.Models.Login;
 
@@ -9,9 +11,10 @@ namespace WealthDashboard.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly CommanModel _commanModel;
+        public HomeController(CommanModel commanModel, ILogger<HomeController> logger)
         {
+            _commanModel = commanModel;
             _logger = logger;
         }
 
@@ -89,5 +92,196 @@ namespace WealthDashboard.Controllers
             //  var result = JsonConvert.DeserializeObject<WealthDashboard.Models.Login.UserData>(data);
             return Ok(true);
         }
+        #region MainManuSliders
+        //_______________________MainManuSliders_____________________________________
+        [HttpGet]
+        public async Task<IActionResult> MainManu()
+        {
+            try
+            {
+                var result = await _commanModel.GetMainSliderValue();
+                return Ok(new ResultModel()
+                {
+                    Code = HttpStatusCode.OK,
+                    Message = "Success",
+                    Data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in MainManu");
+
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ResultModel()
+                {
+                    Code = HttpStatusCode.InternalServerError,
+                    Message = ex.Message,
+                    Data = null
+                });
+            }
+
+        }
+
+        #endregion
+
+        #region MainManuContent1
+        //_______________________MainManuContent1_____________________________________
+        [HttpGet]
+        public async Task<IActionResult> MainManuContent1()
+        {
+            try
+            {
+                var result = await _commanModel.GetMainContent1Value();
+                return Ok(new ResultModel()
+                {
+                    Code = HttpStatusCode.OK,
+                    Message = "Success",
+                    Data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in MainManu");
+
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ResultModel()
+                {
+                    Code = HttpStatusCode.InternalServerError,
+                    Message = ex.Message,
+                    Data = null
+                });
+            }
+
+        }
+
+        #endregion
+
+        #region MainManuContent2
+        //_______________________MainManuContent2_____________________________________
+        [HttpGet]
+        public async Task<IActionResult> MainManuContent2()
+        {
+            try
+            {
+                var result = await _commanModel.GetMainContent2Value();
+                return Ok(new ResultModel()
+                {
+                    Code = HttpStatusCode.OK,
+                    Message = "Success",
+                    Data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in MainManu");
+
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ResultModel()
+                {
+                    Code = HttpStatusCode.InternalServerError,
+                    Message = ex.Message,
+                    Data = null
+                });
+            }
+
+        }
+
+
+        #endregion
+
+        #region How_TWC_Helps
+        //_______________________How_TWC_Helps_____________________________________
+        [HttpGet]
+        public async Task<IActionResult> GetDataTWChelp()
+        {
+            try
+            {
+                var result = await _commanModel.GetHValue();
+                return Ok(new ResultModel()
+                {
+                    Code = HttpStatusCode.OK,
+                    Message = "Success",
+                    Data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in MainManu");
+
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ResultModel()
+                {
+                    Code = HttpStatusCode.InternalServerError,
+                    Message = ex.Message,
+                    Data = null
+                });
+            }
+
+        }
+
+        #endregion
+
+        #region Range_OF_Products
+
+        //_______________________Range_OF_Products_____________________________________
+        [HttpGet]
+        public async Task<IActionResult> GetDataProducts()
+        {
+            try
+            {
+                var result = await _commanModel.GetDataRangeOfProducts();
+                return Ok(new ResultModel()
+                {
+                    Code = HttpStatusCode.OK,
+                    Message = "Success",
+                    Data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in MainManu");
+
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ResultModel()
+                {
+                    Code = HttpStatusCode.InternalServerError,
+                    Message = ex.Message,
+                    Data = null
+                });
+            }
+
+        }
+
+
+        #endregion
+
+        #region Meet Our Team
+        //_______________________Meet Our Team_____________________________________
+        [HttpGet]
+        public async Task<IActionResult> GetDataOurTeam()
+        {
+            try
+            {
+                var result = await _commanModel.GetDataMeetTeam();
+                return Ok(new ResultModel()
+                {
+                    Code = HttpStatusCode.OK,
+                    Message = "Success",
+                    Data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in MainManu");
+
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ResultModel()
+                {
+                    Code = HttpStatusCode.InternalServerError,
+                    Message = ex.Message,
+                    Data = null
+                });
+            }
+
+        }
+
+
+
+
+        #endregion
     }
 }

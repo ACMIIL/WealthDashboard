@@ -2,460 +2,660 @@
     Layout = null;
 }
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>TWC </title>
-    <meta name="description" content="TWC ">
-    <!-- FAVICON FILES -->
-    <link href="ico/favicon.png" rel="shortcut icon">
-    <link href="~/css/web/fontawesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/css/web/fontawesome.min.css">
-    <link rel="stylesheet" href="~/css/web/animate.min.css">
-    <link rel="stylesheet" href="~/css/web/fancybox.min.css">
-    <link rel="stylesheet" href="~/css/web/odometer.min.css">
-    <link rel="stylesheet" href="~/css/web/swiper.min.css">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="~/css/web/style.css">
-    <link rel="stylesheet" href="~/css/web/custom.css">
-    <link rel="stylesheet" href="~/css/web/login.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>The Wealth Company</title>
+    <!-- Favicon-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="~/images/logo_twc.png" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/landing_page/css/styles.css" rel="stylesheet" />
+    @* <link href="~/css/styles.css" rel="stylesheet" /> *@
+    <link href="~/landing_page/css/twc.css" rel="stylesheet" />
+    <link href="~/landing_page/css/responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/plugins/slick/slick.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Fonts/Icons -->
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link href="https://chhotaniveshgold.com/assets/vendor/boxicons/css/boxicons.min.css"> -->
-    <!---for toaster--->
+    <!-- Slick Slider CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <!-- Slick Slider JS -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
+    <link href="~/plugins/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/plugins/fontawesome/css/all.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <!--slick css cdn-->
 </head>
-<body ng-app="main" ng-controller="myController">
-
-    <!-- end side-navigation -->
-    <nav class="navbar p-4">
-        <div class="">
-            <div class="d-flex">
-                <div class="">
-                    <div class="logo"> <a href="index.html"><img src="~/images/web/logo-light.png" alt="Image" style="width:85%;"></a> </div>
-                </div>
-                <div class="" style="position: absolute;top: 25px;right: 40px;">
-                    <div class="phone-email d-flex">
-                        <img src="~/images/web/icon-user.png" alt="Image" />
-                        <button type="button" class="btn" data-bs-toggle="modal"  href="#exampleModal" style="color: #fff;">login</button>
-                </div>
-                </div>
+<body data-preloader="true" ng-app="myApp" ng-controller="myCtrl">
+    <!-- Header -->
+    <div class="container-fluid topNotification">
+        <div class="row">
+            @*  <div class="col-12 px-0">
+            <div class="alert alert-warning alert-dismissible rounded-0 border-0 text-white mb-0 text-center py-1 fade show bg-gold font-14" role="alert">
+            Generate market-beating returns with our Ibasket
+            <button type="button" class="btn-close py-2" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <!-- end logo -->
-            <!--<div class="hamburger"> <span></span> <span></span> <span></span><span></span> </div> -->
-            <!-- end upper-side -->
-            <!-- end menu -->
+            </div> *@
         </div>
-        <!-- end container -->
-    </nav>
-    <!-- end navbar -->
-    <header class="slider">
-        <div class="slider-container" style="background-image: url(/images/slide01.png) center no-repeat;">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" data-background="~/images/web/" data-stellar-background-ratio="1.15">
-                    <div class="container">
-                        <h1><span>Your Journey, Our Commitment – Together Every Step of the Way.</span></h1>
-                        <h2>We are reengineering the power of investing.</h2>
-                        <!-- <a href="#">View More <i class="fas fa-caret-right"></i></a> -->
-                        <!-- <figure><img src="images/services-icon01.png" alt="Image"></figure> -->
-                    </div>
-                    <!-- end container -->
-                </div>
-
-                <!-- end swiper-slide -->
-                <div class="swiper-slide" data-background="~/images/web/" data-stellar-background-ratio="1.15">
-                    <div class="container">
-                        <h1><span>Every Challenge Met, Every Goal Achieved – Your Partner Every Step of the Way.</span></h1>
-                        <h2> Unique, Tech Driven, Fastest Growing, Integrated Wealth Platform</h2>
-                        <!-- <a href="#">View More <i class="fas fa-caret-right"></i></a> -->
-                        <!-- <figure><img src="images/services-icon08.png" alt="Image"></figure> -->
-                    </div>
-                    <!-- end container -->
-                </div>
-                <!-- end swiper-slide -->
-                <div class="swiper-slide" data-background="~/images/web/" data-stellar-background-ratio="1.15">
-                    <div class="container">
-                        <h1><span>Explore Tailored Solutions & Achieve Your Clients Financial Dreams</span> </h1>
-                        <h2>Commited towards quality investments to improve your portfolio management experience</h2>
-                        <!-- <a href="#">View More <i class="fas fa-caret-right"></i></a> -->
-                        <!-- <figure><img src="images/services-icon07.png" alt="Image"></figure> -->
-                    </div>
-                    <!-- end container -->
-                </div>
-                <!-- end swiper-slide -->
-            </div>
-            <!-- Add Pagination -->
-            <div class="inner-elements">
-                <div class="container">
-                    <div class="pagination"></div>
-                    <!-- end pagination -->
-                    <div class="button-prev">PREV</div>
-                    <!-- end button-prev -->
-                    <div class="button-next">NEXT</div>
-                    <!-- end button-next -->
-
-                </div>
-                <!-- end container -->
-            </div>
-            <!-- end inner-elements -->
-        </div>
-        <!-- end slider-container -->
-    </header>
-    <!-- end slider -->
-    <section class="intro">
+    </div>
+    <!-- Responsive navbar-->
+    <nav id="navbar-main" class="navbar navbar-expand-lg bg-transparent py-1" style="z-index: 1;">
         <div class="container">
-            <div class="row align-items-center my-5 py-5">
-                <div class="col-lg-6">
-                    <figure>
-                        <div class="pattern-bg" data-stellar-ratio="1.07"></div>
-                        <!-- end pattern-bg -->
-                        <div class="holder" data-stellar-ratio="1.10"> <img src="~/images/web/side-image01.jpg" alt="Image" class="bw"></div>
-                        <!-- end holder -->
-                    </figure>
-                </div>
-                <!-- end col-6 -->
-                <div class="col-lg-6 wow fadeInUp">
-                    <div class="content-box">
-                        <b>About us</b>
-                        <h4><span> 40 years of collaboration</span>  </h4>
-                        <p>Building a Distinct Wealth House of New Era Contributing to Financial Sustainability.</p>
-                        <p>The Wealth Company is your steadfast partner toward financial growth. Our products are curated meticulously basis our rich legacy of handling various business and equity market cycles. For us, what makes sense is multiplying our client's hard-earned money and not putting the same at risk by investing in high-risk products. We tailor-make solutions that align with your goals and your risk tolerance. Whether it's capital protection, retirement savings, funding your family's education, or achieving financial security, rest assured, we're here for you. </p>
-                        <!-- <a href="#" class="readmore">read more <i class="fa fa-arrow-right"></i></a> -->
-                        <!-- end content-box -->
-                    </div>
-                    <!-- edn col-6 -->
-                </div>
-                <!-- end row -->
-            </div>
-            <!-- end container -->
-    </section>
-    <!-- end intro -->
 
-    <section class="benefits">
+            <a class="navbar-brand" href="#"><img src="~/images/logo_twc.png" width="120"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Menu Start -->
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <!-- Trade & Invest -->
+                    <!-- <li class="nav-item"><a class="nav-link" href="#" > Products </a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" > Who We Are </a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" > Contact Us </a></li> -->
+                </ul>
+                <!-- Menu End -->
+
+                <div class="text-end ms-auto">
+                    <!-- <a href="#" class="btn btn-primary btn-primary-iz-bg px-4 bg-gold border-0 text-white rounded-5">Get Started</a> -->
+                    <a class="btnGetStarted" href="#" target="_blank" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <span>Get Started </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18" x="0" y="0" viewBox="0 0 32 32">
+                            <g>
+                                <path d="M26.68 3.867H8.175a1 1 0 0 0 0 2h16.544L4.2 26.387A1 1 0 1 0 5.613 27.8l20.52-20.52v16.545a1 1 0 0 0 2 0V5.321a1.456 1.456 0 0 0-1.453-1.454z" fill="#ffffff"></path>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- end Header -->
+    <!--banner-->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item" ng-class="{'active': $index === 0}" ng-repeat="item in mergedData">
+                <div class="d-block w-100" ng-bind-html="item.trustedSliderImages"></div>
+                <div class="carousel-caption text-start">
+                    <h1 class="poppins-bold">{{ item.header }}</h1>
+                    <p class="poppins-light-italic">{{ item.content }}</p>
+                    <div class="outer">
+                        <div class="button">
+                            <a ng-href="{{item.url}}" target="_blank" class="text">
+                                <span>GET STARTED</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18" x="0" y="0" viewBox="0 0 32 32">
+                                    <g>
+                                        <path d="M26.68 3.867H8.175a1 1 0 0 0 0 2h16.544L4.2 26.387A1 1 0 1 0 5.613 27.8l20.52-20.52v16.545a1 1 0 0 0 2 0V5.321a1.456 1.456 0 0 0-1.453-1.454z" fill="#ffffff"></path>
+                                    </g>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!--40 years legecy-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-8 mx-auto mt-5">
+                <div class="collaboration-box moving-border">
+                    <div class="number counter" data-target="40">40</div>
+                    <div class="text">Years of Collaboration</div>
+                </div>
+            </div>
+        </div>
+        <div class="row" data-aos="fade-right">
+            <div class="col-md-12 mt-5">
+                <div class="WealthHouse" ng-repeat="Content1 in mergedContent1Data">
+                    <p class="p1 poppins-bold">{{Content1.header}}</p>
+                    <p class="p2 poppins-light">{{Content1.content}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--auther details-->
+    <section class="section">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 col-12 wow fadeInUp">
-                    <h4><span> Milestones</span> Achieved</h4>
-
-                </div>
-                <div class="col-md-12">
+                <div class="col-12 mx-auto text-center boxBorderGold rounded-3">
                     <div class="row">
-                        <div class="col col-md-2 ">
-                            <!-- <figure> <img src="images/icon-benefits01.png" alt="Image"> <b></b> </figure>
-                            <h6>Near to Subway</h6>
-                            <span class="odometer" data-count="28" data-status="yes">0</span> <span class="extra">min</span>  -->
+                        <div class="col-12 col-md-9 p-5 my-auto" ng-repeat="Content2 in mergedContent2Data">
+                            <p class="prata-regular mdMessage text-white font-30 text-start">{{Content2.content}}</p>
+                            <p class="text-start text-md-end text-white font-20">Madhu Lunawat<br>Director, TWC</p>
                         </div>
-                        <!-- end col -->
-                        <div class="col col-md-2 ">
-                            <!-- <figure> <img src="images/icon-benefits02.png" alt="Image"> <b></b> </figure>
-                            <h6>Spaces in Pozniaky</h6>
-                            <span class="odometer" data-count="32" data-status="yes">0</span> <span class="extra">+</span>  -->
+                        <div class="col-6 col-md-3 mt-auto ms-auto mdMobileAlign">
+                            <img src="~/images/madhu-lunawat.png" class="w-100">
                         </div>
-                        <!-- end col -->
-                        <div class="col col-md-2 wow fadeInUp" data-wow-delay="0.10s">
-                            <figure> <img src="~/images/web/icon-benefits03.svg" alt="Image"> <b></b> </figure>
-                            <h6 class="aum">AUM</h6>
-                            <span class="odometer" data-count="1200" data-status="yes">000+</span> <span class="extra">cr</span>
-                        </div>
-                        <!-- end col -->
-                        <div class="col col-md-2 wow fadeInUp" data-wow-delay="0.15s">
-                            <figure> <img src="~/images/web/icon-benefits04.svg" alt="Image"> <b></b> </figure>
-                            <h6 class="aum">Deals</h6>
-                            <span class="odometer" data-count="300" data-status="yes">000</span> <span class="extra">+</span>
-                        </div>
-                        <!-- end col -->
-                        <!-- end col -->
-                        <div class="col col-md-2 wow fadeInUp" data-wow-delay="0.10s">
-                            <!-- <figure> <img src="images/icon-benefits03.png" alt="Image"> <b></b> </figure>
-                            <h6>Spaces in Pozniaky</h6>
-                            <span class="odometer" data-count="15" data-status="yes">0</span> <span class="extra">%</span>  -->
-                        </div>
-                        <!-- end col -->
-                        <div class="col col-md-2 wow fadeInUp" data-wow-delay="0.15s">
-                            <!-- <figure> <img src="images/icon-benefits04.png" alt="Image"> <b></b> </figure>
-                            <h6>Spaces in Pozniaky</h6>
-                            <span class="odometer" data-count="3" data-status="yes">0</span> <span class="extra">years</span>  -->
-                        </div>
-                        <!-- end col -->
                     </div>
                 </div>
-
-
             </div>
-            <!-- end row -->
         </div>
-        <!-- end container -->
     </section>
-    <!-- end benefits -->
 
-    <section class="intro">
+    <!--How TWC can help you-->
+    <section class="section pt-0">
         <div class="container">
-            <div class="row align-items-center  py-5">
-
-                <div class="col-lg-6 wow fadeInUp">
-                    <div class="content-box">
-                        <b>Explore Products</b>
-                        <h4><span> Mutual Funds</span></h4>
-
-                        <p>A Mutual Fund is an investment tool pooling funds from investors to invest in stocks, bonds, and other assets. Our expert team and specialized tools guide you at every step, ensuring informed decisions. Diverse Goals, One Solution: Mutual Funds. Invest affordably, diversify across securities effortlessly, and let experts handle the decisions. Your path to financial goals made easy.</p>
-                        <!-- <a href="#" class="readmore">read more <i class="fa fa-arrow-right"></i></a> -->
-                    </div>
-                    <!-- edn col-6 -->
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-6 text-center line-height-1">How <span class="text-gold fw-bold">TWC</span><br>can assist you</h1>
                 </div>
-                <!-- end row -->
-                <div class="col-lg-6 mt-100">
-                    <figure>
-                        <div class="pattern-bg" data-stellar-ratio="1.07"></div>
-                        <!-- end pattern-bg -->
-                        <div class="holder" data-stellar-ratio="1.10"> <img src="~/images/web/side-image02.png" alt="Image" class="bw"></div>
-                        <!-- end holder -->
-                    </figure>
-                </div>
-                <!-- end col-6 -->
             </div>
-            <!-- end container -->
-    </section>
-    <!-- end intro -->
-
-    <section class="footer-bar my-5">
-        <div class="container">
-            <div class="inner wow fadeIn">
-                <div class="row">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.05s">
-                        <h3>Embark on your opulent wealth creation Journey with us.</h3>
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.10s">
-                        <div class="row">
-                            <div class="mb-3 col-md-8 position-relative">
-                                <input type="tel" class="form-control custom-fc" id="" aria-describedby="emailid" placeholder="Enter Email Id" maxlength="10">
-                                <div class="custom-pos">
-                                    <button href="#" class="get-cl">Submit <i class="fa fa-arrow-right"></i></button>
+            <div class="row mt-3">
+                <div class="col-12 container-box bg-white rounded-3 p-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="align-items-start">
+                                <div class="row">
+                                    <div class="col-md-4 col-12 my-auto nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                        <button class="nav-link font-20 py-2 text-center text-md-start evaluteLinks bg-transparent" ng-class="{'active': $index === activeTabIndex}" ng-repeat="Data in mergedHowtoHelpData track by $index" ng-click="loadImageForTab($index)" type="button">
+                                            {{Data.content}}
+                                        </button>
+                                    </div>
+                                    <div class="col-md-7 ms-auto tab-content" id="v-pills-tabContent">
+                                        <div class="tab-pane fade" ng-class="{'show active': $index === activeTabIndex}" ng-repeat="Data in mergedHowtoHelpData track by $index">
+                                            <p ng-bind-html="Data.trustedSliderImages"></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- end footer-bar -->
-    <footer class="footer pt-0 mt-5">
+
+
+    @* <div class="d-flex align-items-start">
+    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
+    <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+    <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
+    <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+    </div>
+    <div class="tab-content" id="v-pills-tabContent">
+    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">...</div>
+    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+    </div>
+    </div> *@
+
+
+
+    <!--Explore our range of products-->
+    <section class="section pt-0">
         <div class="container">
-            <!-- <div class="row">
-              <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.05s"> <img src="images/logo-light.png" alt="Image" class="logo">
-                <p>Empowering the future by seamlessly intertwining heritage with cutting-edge innovation, guaranteeing steadfast stability alongside exponential growth.</p>
+            <div class="row">
+                <div class="col-md-12 pb-4">
+                    <div>
+                        <h4 class="display-6 text-center line-height-1">Explore our<br> range of <span class="text-gold fw-bold">products</span></h4>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="p-5 pt-3 pb-4 bg-light rounded">
+                                    <div class="prod-title Existing-Investments text-center mt-2">
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item" role="presentation" ng-repeat="tab in mergedRangeOfProductsData">
+                                                <button class="nav-link" ng-class="{'active': $first}" id="tab{{$index + 1}}-tab" data-bs-toggle="tab" data-bs-target="#tab{{$index + 1}}" type="button" role="tab" aria-controls="tab{{$index + 1}}" aria-selected="{{$first ? 'true' : 'false'}}">{{tab.Products}}</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade" ng-class="{'show active': $first}" ng-repeat="tab in mergedRangeOfProductsData" id="tab{{$index + 1}}" role="tabpanel" aria-labelledby="tab{{$index + 1}}-tab">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="prod-img" style="margin-top:20px;">
+                                                            <p ng-bind-html="tab.trustedSliderImages"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex justify-content-center align-items-center">
+                                                        <div class="prod-details">
+                                                            <p class="text-black">{{tab.content}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-              </div>
 
-              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.10s">
-                <ul class="footer-menu">
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Our Products</a></li>
-                  <li><a href="#">Our Team</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                </ul>
-              </div>
 
-              <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.20s">
-                <div class="contact-box">
-                  <p><a href="#">Follow us on</a></p>
-                  <ul>
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                  </ul>
+    <!--Meet our Team-->
+    <!--Meet our Team-->
+    @*  <section class="section pt-0 ">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-12 mb-3">
+    <div>
+    <h4 class="display-6 text-center line-height-1">Meet our<br><span class="text-gold fw-bold">Team</span></h4>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="p-5 rounded container-box">
+    <div class="row single-item">
+    <div class="col-md-10 mx-auto" ng-repeat="TeamData in mergedteamData">
+    <div class="row">
+    <div class="col-md-3 col-sm-3 col-12 disflex my-auto">
+    <div class="team">
+    <div ng-bind-html="TeamData.trustedSliderImages"></div>
+    </div>
+    </div>
+    <div class="col-md-9 col-12 col-sm-9 my-auto pl-50">
+    <div class="teamleaders textcenter">
+    <h4 class="poppins-semibold">{{TeamData.Name}}</h4>
+    <h5 class="poppins-regular">{{TeamData.Position}}</h5>
+    </div>
+    <div class="teamleadersdetails mt-4">
+    <p class="poppins-regular">
+    {{TeamData.content}}
+    </p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    *@
+    <!--Meet our Team-->
+
+    <section class="section pt-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <div>
+                        <h4 class="display-6 text-center line-height-1">Meet our<br><span class="text-gold fw-bold">Team</span></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3 col-6" ng-repeat="TeamData in mergedteamData">
+                    <div class="card team-member px-2 pb-0 pt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" ng-click="openModal($index)">
+                        <div ng-bind-html="TeamData.trustedSliderImages"></div>
+                        <div class="card-body">
+                            <h5 class="card-title mb-0">{{TeamData.Name}}</h5>
+                            <p class="card-text">{{TeamData.Position}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!---old data ->
+
+
+
+    @*     <section class="section pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <div>
+                            <h4 class="display-6 text-center line-height-1">Meet our<br><span class="text-gold fw-bold">Team</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4" >
+                    <div class="col-md-3 col-6">
+                        <div class="card team-member px-2 pb-0 pt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <img src="~/images/madhu-lunawat.png" class="w-100"/>
+
+                            <div class="card-body">
+                                <h5 class="card-title mb-0">Madhu Lunawat</h5>
+                                <p class="card-text">Managing Director</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="card team-member px-2 pb-0 pt-2">
+                            <img src="~/images/madhu-lunawat.png" class="w-100" />
+                            <div class="card-body">
+                                <h5 class="card-title mb-0">Madhu Lunawat</h5>
+                                <p class="card-text">Managing Director</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="card team-member px-2 pb-0 pt-2">
+                            <img src="~/images/madhu-lunawat.png" class="w-100" />
+                            <div class="card-body">
+                                <h5 class="card-title mb-0">Madhu Lunawat</h5>
+                                <p class="card-text">Managing Director</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="card team-member px-2 pb-0 pt-2">
+                            <img src="~/images/madhu-lunawat.png" class="w-100" />
+                            <div class="card-body">
+                                <h5 class="card-title mb-0">Madhu Lunawat</h5>
+                                <p class="card-text">Managing Director</p>
+                            </div>
+                        </div>
+                    </div>
+                    @* <div class="col-md-3 team-member">
+                        <img src="https://cutt.ly/Hwn6Y0NL" alt="Team Member 1">
+                        <h3>Madhu Lunawat</h3>
+                        <p class="role">Designer</p>
+                    </div>
+                    <div class="col-md-3 team-member">
+                        <img src="https://cutt.ly/Hwn6Y0NL" alt="Team Member 1">
+                        <h3>Prakash Jain</h3>
+                        <p class="role">Designer</p>
+                    </div>
+                    <div class="col-md-3 team-member">
+                        <img src="https://cutt.ly/Hwn6Y0NL" alt="Team Member 1">
+                        <h3>Mandar Shendye </h3>
+                        <p class="role">Designer</p>
+                    </div>
+                    <div class="col-md-3 team-member">
+                        <img src="https://cutt.ly/Hwn6Y0NL" alt="Team Member 1">
+                        <h3>Sitla Thakur </h3>
+                        <p class="role">Designer</p>
+                    </div>
+
+
                 </div>
 
-              </div>
 
-            </div> -->
+            </div>
+        </section> *@
 
-            <div class="row">
-                <div class="col-12 mt-0"> <span class="copyright">Copyrights 2024 © The Wealth Company</span></div>
+            <!-- start Footer -->
+    <footer class="bg-gold mt-5">
+        <div class="container">
+            <div class="row border-bottom border-white py-5">
+                <div class="col-md-4 col-12">
+                    <p class="poppins-semibold">Get in Touch</p>
+                    <p>8014 Edith Blvd NE, Albuquerque, New York, United States</p>
+                    <p>(505) 792-2430</p>
+                    <p>demo@yourdomain.com</p>
+                </div>
+                <div class="col-md-4 col-12">
+                    <p class="poppins-semibold">Links</p>
+                    <ul>
+                        <li>Terms &amp; Conditions</li>
+                        <li>Privacy Policy</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-12">
+                    <p class="poppins-semibold">Opening Hours</p>
+                    <p>We always aim to provide a welcoming environment to deliver exceptional service.</p>
+                    <div>
+                        <div class="row mb-1">
+                            <div class="col-5 col-xl-4">
+                                <span class="fw-bold">Mon - Fri:</span>
+                            </div>
+                            <div class="col-7 col-xl-8">
+                                <span class="text-white">9am - 5pm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-5">
+                <div class="col-md-4">
+                    <p class="mb-0"><img src="~/images/logo-footer.png" width="150"></p>
+                </div>
+                <div class="col-md-4">
+                    <p class="mb-0 text-center">&copy; 2024. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="social-media-wrapper">
+                        <ul class="list-unstyled m-0 p-0 d-flex justify-content-center justify-content-sm-end">
+                            <li class="me-3">
+                                <a href="#!" class="link-dark link-opacity-75-hover">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="me-3">
+                                <a href="#!" class="link-dark link-opacity-75-hover">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+                                        <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="me-3">
+                                <a href="#!" class="link-dark link-opacity-75-hover">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#!" class="link-dark link-opacity-75-hover">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
-
-    <!--login Modal start -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <!-- end Footer -->
+    <!--team member popup-->
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content container-box bg-black">
+                <div class="modal-header border-0 py-2" style="z-index: 9999">
+                    <p class="mb-0 ms-auto">
+                        <a href="#" data-bs-dismiss="modal" aria-label="Close">
+                            <img src="~/images/close.png" width="15" />
+                        </a>
+                    </p>
+                </div>
+                <div class="modal-body px-4" style="margin-top: -30px">
+                    {{selectedTeamData.content}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--model popup login-->
+    <!--model popup login-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="text-end mt-2 me-2">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="container">
-                    <div class="card">
-                        <h2>Login</h2>
-                        <input type="text" id="username" name="username" placeholder="Username" required ng-model="userid" maxlength="15">
-                        <input class="pw" type="{{inputType}}" id="password" name="password" ng-keypress="handleKeyPress($event)" placeholder="Password" required ng-model="password" maxlength="20">
-                        <i class="fa fa-eye eye-o" ng-click="toggleInputType()" ng-if="inputType=='text'"></i>
-                        <i class="fa fa-eye-slash eye-c" ng-click="toggleInputType()" ng-if="inputType=='password'"></i>
-                        <button type="button" ng-click="Login()">Login</button>
 
-
-                        <div class="modal-footer">
-                            <h5 class="forpw" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal"> forgot password</h5>
-                        </div>
-
-                        <br /><br/>
-                        <div class="registration">
-                            <label><input type="radio" ng-model="selectedColor" value="wp" ng-click="register('wp')"> Partner</label>
-                            &nbsp; &nbsp;
-                            <label><input type="radio" ng-model="selectedColor" value="mf" ng-click="register('mf')"> Investor</label>
-                        </div>
+                <div class="card bg-black container-box">
+                    <div class="text-end">
+                        <button type="button" class="btn-close text-bg-warning" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <form>
+                        <div class="email-login">
+                            <label for="Username"> <b>Username</b></label>
+                            <input type="text" placeholder="Username" name="uname" required>
+                            <label for="psw"><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" required>
+                        </div>
+                        <button class="cta-btn">Log In</button>
+                        <a class="forget-pass mb-3" href="#">Forgot password?</a>
+                        <p class="or text-dark"><span>or</span></p>
+                        <div class="social-login">
+                            <button class="google-btn">
+                                <p class="btn-text text-black">Register as a Partner</p>
+                            </button>
+                            <button class="fb-btn">
+                                <p class="btn-text text-black">Register as a Client</p>
+                            </button>
+                        </div>
+
+
+                    </form>
                 </div>
+
             </div>
         </div>
     </div>
-    <!--login Modal End -->
 
-
-    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="text-end mt-2 me-2">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="card p-0">
-                            <h5>Reset password</h5>
-                            <input type="text"  name="" placeholder="Enter Mobile Number" required maxlength="12">
-                            <input class="pw" type="{{inputType}}" id="password" name="password" ng-keypress="handleKeyPress($event)" placeholder="Change Password" required ng-model="password" maxlength="20">
-                            <input class="pw" type="{{inputType}}" id="" name="password"  placeholder="Confirm Password" required ng-model="password" maxlength="20">
-                            <h6 class="text-danger small"> Please Enter Valid Mobile Number.</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <h6 class="forpw" data-bs-target="#exampleModal" data-bs-toggle="modal" data-bs-dismiss="modal">Back to login</h6>
-                    <button class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div>
-   
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <!-- JS FILES -->
-    @*     <script src="~/js/jquery.js"></script> *@
-    <script src="~/js/web/popper.min.js"></script>
-    <script src="~/js/web/swiper.min.js"></script>
-    <script src="~/js/web/fancybox.min.js"></script>
-    <script src="~/js/web/odometer.min.js"></script>
-    <script src="~/js/web/wow.min.js"></script>
-    @*  <script src="~/js/web/text-rotater.js"></script> *@
-    <script src="~/js/web/jquery.stellar.js"></script>
-    <script src="~/js/web/isotope.min.js"></script>
-    <script src="~/js/web/scripts.js"></script>
-
-    <script src="~/angularjs/toast/angular.min.js"></script>
-    <script src="~/angularjs/toast/angular-animate.min.js"></script>
-    <link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
-    <script src="~/angularjs/tosters/toaster.js"></script>
-
-    <script type="text/javascript">
-
-        angular.module('main', ['ngAnimate', 'toaster'])
-
-            .controller('myController', function ($scope, toaster, $window, $http, $interval) {
-
-                $scope.userid = '';
-                $scope.password = '';
-                $scope.selectedColor = '';
-                $scope.inputType = 'password';
-                $scope.Login = function () {
-                    if ($scope.userid == null || $scope.userid == undefined || $scope.userid == '') {
-
-                        toastr.error('Please Enter your UserName', 'Error!');
-
-                    }
-                    else if ($scope.password == null || $scope.password == undefined || $scope.password == '') {
-                        toastr.error('Enter Your Password', 'Error!');
-                        
-                    }
-                    else {
-
-                        var query = JSON.stringify({ // Data to send to the server
-                            userID: $scope.userid,
-                            password: $scope.password
-
-                        });
-                       
-                        $http({
-                            url: "/home/Login?userid=" + $scope.userid + "&password=" + $scope.password,//https://uattwcapi.wealthcompany.in/api/Admin/UserAuthenticationadmin",
-                            method: "POST",
-                            Headers: {},
-                            data: {}
-                        }).then(function (response) {
-                            if (response.data === 'true') {
-                                var result = '';
-                                //alert("sucess")
-                                window.location.assign('/Dashboard/Dashboard/index')
-                                // toastr.success('An OTP has been sent to ' + $scope.MobileNumber, 'Title Success!');
-                            }
-                            else {
-                                toastr.error('Invalid Username & Password ', 'Try Again!');
-                                $scope.userid = '';
-                                $scope.password = '';
-                              //  alert("Login faild!")
-                            }
-                        }).catch(function (error) {
-                            console.error('Error sending OTP:', error);
-                        });
-
-                    }     
-
-                }
-
-
-                $scope.handleKeyPress = function (event) {
-                    if (event.key === "Enter") {
-                        event.preventDefault();
-                        $scope.Login();
-                       // $scope.showAlert();
-                    }
-                };
-
-                $scope.toggleInputType = function () {
-                    $scope.inputType = ($scope.inputType === 'text') ? 'password' : 'text';
-                };
-
-                $scope.register = function (value) {
-                    if (value == 'wp') {
-                        window.location.assign('/WP_Registration/WPRegistration/index')
-                    }
-                    else {
-                        window.location.assign('/EKYC_MFJourney/home/loginview')
-                    }
-
-                }
-            });
-
-
-
-
+    <!-- Bootstrap core JS-->
+    <!--Running counter js-->
+    <script>
+        const counters = document.querySelectorAll(".counter");
+        counters.forEach((counter) => {
+            counter.innerText = "0";
+            const updateCounter = () => {
+                const target = +counter.getAttribute("data-target");
+                const count = +counter.innerText;
+                const increment = target / 200;
+                if (count < target) {
+                    counter.innerText = `${Math.ceil(count + increment)}`;
+                    setTimeout(updateCounter, 50);
+                } else counter.innerText = target;
+            };
+            updateCounter();
+        });
     </script>
+    <!--existing tab auto change-->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let currentTab = 0;
+            const tabs = document.querySelectorAll(".tab1");
+            const contents = document.querySelectorAll(".content-item1");
+            const tabCount = tabs.length;
+            const changeInterval = 3000; // Time in milliseconds
+
+            function showTab(index) {
+                // Remove 'active' class from all tabs and content items
+                tabs.forEach(tab => tab.classList.remove("active"));
+                contents.forEach(content => content.classList.remove("active"));
+
+                // Add 'active' class to the current tab and content item
+                tabs[index].classList.add("active");
+                contents[index].classList.add("active");
+            }
+
+            function autoChangeTab() {
+                currentTab = (currentTab + 1) % tabCount;
+                showTab(currentTab);
+            }
+
+            // Initialize the first tab and its content as active
+            showTab(currentTab);
+
+            // Set interval to auto change tabs
+            setInterval(autoChangeTab, changeInterval);
+        });
+    </script>
+    <!--how twc can assiste you js-->
+    <script>
+        // Store tab elements and content in variables
+        const tabs = [
+            { id: 'v-pills-home-tab', content: 'Evaluate your portfolio v/s Current market' },
+            { id: 'v-pills-profile-tab', content: 'Check your portfolio for risk and diversification' },
+            { id: 'v-pills-messages-tab', content: 'Get all your questions answered for free in a 1-1 call' }
+        ];
+
+        let intervalId;
+
+        // Function to switch tabs after a specified time
+        function autoSwitchTabs() {
+            let currentIndex = 0;
+            intervalId = setInterval(function () {
+                // Change the active tab programmatically
+                document.getElementById(tabs[currentIndex].id).click();
+                currentIndex = (currentIndex + 1) % tabs.length;
+            }, 3000); // 3000 milliseconds (3 seconds)
+        }
+
+        // Function to check screen width and call autoSwitchTabs if within specified ranges
+        function checkScreenWidth() {
+            const width = window.innerWidth;
+            if (width >= 350 && width <= 996) {
+                if (!intervalId) {
+                    autoSwitchTabs();
+                }
+            } else {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = checkScreenWidth;
+
+        // Add an event listener to check screen width on resize
+        window.onresize = checkScreenWidth;
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#myTab').tabCollapse();
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="assets/plugins/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/scripts.js"></script>
+    <!--j query cdn-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <!-- Slick Slider CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+    <!-- Slick Slider JS -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 
+    <!--slick slider cdn-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js" integrity="sha512-eP8DK17a+MOcKHXC5Yrqzd8WI5WKh6F1TIk5QZ/8Lbv+8ssblcz7oGC8ZmQ/ZSAPa7ZmsCU4e/hcovqR8jfJqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--Slick Slider js-->
+    <script>
+
+        $(document).ready(function () {
+            console.log("Initializing tabCollapse");
+            if (typeof $.fn.tabCollapse !== 'undefined') {
+                $('#myTab').tabCollapse();
+                console.log("tabCollapse initialized");
+            } else {
+                console.error("tabCollapse function not found");
+            }
+
+        });
+        var BaseURL = 'https://localhost:7094';
+        //  var BaseURL = "https://wealthcompany.in";
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </body>
-
-<!-- Mirrored from themezinho.net/hompark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jan 2024 12:05:55 GMT -->
 </html>
+
+<script src="~/landing_page/js/index.js"></script>

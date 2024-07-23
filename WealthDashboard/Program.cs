@@ -1,3 +1,4 @@
+using Microsoft.Extensions.FileProviders;
 using Serilog;
 using WealthDashboard.Configuration;
 using WealthDashboard.Models;
@@ -12,6 +13,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IInvestNowManager, InvestNowManager>();
 builder.Services.AddTransient<IOrderOthenticationManager, OrderOthenticationManager>();
 builder.Services.AddTransient<IPrimaryDetailsManager, PrimaryDetailsManager>();
+builder.Services.AddTransient<CommanModel>();
 //Added By MF_journey
 builder.Services.AddEkycServices();
 builder.Services.Configure<Appsetting>(builder.Configuration.GetSection("AppSetting"));
@@ -43,7 +45,11 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 app.UseSession();
-
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(@"D:\LandingPageImages\Sliders"),
+    RequestPath = "/LandingPageImages/Sliders"
+});
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapAreaControllerRoute(
