@@ -17,6 +17,8 @@
     <link href="~/landing_page/css/styles.css" rel="stylesheet" />
     @* <link href="~/css/styles.css" rel="stylesheet" /> *@
     <link href="~/landing_page/css/twc.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <link href="~/landing_page/css/responsive.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="~/plugins/slick/slick.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -501,20 +503,45 @@
                     <form>
                         <div class="email-login">
                             <label for="Username"> <b>Username</b></label>
-                            <input type="text" placeholder="Username" name="uname" required>
+                            <input type="text" placeholder="Username" name="uname"   ng-model="userid">
                             <label for="psw"><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="psw" required>
+                            <input type="password" placeholder="Enter Password" name="psw"   ng-model="password">
                         </div>
-                        <button class="cta-btn">Log In</button>
+                        <button class="cta-btn" ng-click="Login()">Log In</button>
                         <a class="forget-pass mb-3" href="#">Forgot password?</a>
                         <p class="or text-dark"><span>or</span></p>
                         <div class="social-login">
-                            <button class="google-btn">
+                            <button class="google-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
                                 <p class="btn-text text-black">Register as a Partner</p>
                             </button>
-                            <button class="fb-btn">
+                            <button class="fb-btn" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
                                 <p class="btn-text text-black">Register as a Client</p>
                             </button>
+                        </div>
+                        
+                        <div class="collapse" id="collapseExample1">
+                            <div class="card-body px-0">
+                                <div class="row">
+                                    <div class="col-md-12 col-12">
+                                        <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+                                        <label class="btn btn-secondary" for="option1">Individual</label>
+                                        <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+                                        <label class="btn btn-secondary" for="option2">Non Individual</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="collapse" id="collapseExample2">
+                            <div class="card-body px-0">
+                                <div class="row">
+                                    <div class="col-md-12 col-12">
+                                        <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+                                        <label class="btn btn-secondary" for="option1">Individual</label>
+                                        <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+                                        <label class="btn btn-secondary" for="option2">Non Individual</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 
@@ -524,9 +551,11 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JS-->
+   
     <!--Running counter js-->
+
+    <link href="~/angularjs/tosters/toaster.css" rel="stylesheet" />
+    <script src="~/angularjs/tosters/toaster.js"></script>
     <script>
         const counters = document.querySelectorAll(".counter");
         counters.forEach((counter) => {
@@ -543,6 +572,7 @@
             updateCounter();
         });
     </script>
+     
     <!--existing tab auto change-->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -638,6 +668,7 @@
 
     <!--slick slider cdn-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js" integrity="sha512-eP8DK17a+MOcKHXC5Yrqzd8WI5WKh6F1TIk5QZ/8Lbv+8ssblcz7oGC8ZmQ/ZSAPa7ZmsCU4e/hcovqR8jfJqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!--Slick Slider js-->
     <script>
 
@@ -654,7 +685,12 @@
         var BaseURL = 'https://localhost:7094';
         //  var BaseURL = "https://wealthcompany.in";
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+ 
+
+    
+   @*  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script> *@
 </body>
 </html>
 

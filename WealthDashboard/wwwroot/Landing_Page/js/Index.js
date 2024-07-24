@@ -355,4 +355,80 @@ app.controller('myCtrl', function ($scope, $http, $sce, $timeout) {
     };
 
     getData();
+
+
+
+    //-----------------------------------------------------------login code------------------------------------
+    $scope.userid = '';
+    $scope.password = '';
+    $scope.selectedColor = '';
+    $scope.inputType = 'password';
+    $scope.Login = function () {
+        if ($scope.userid == null || $scope.userid == undefined || $scope.userid == '') {
+
+            alert('Please Enter your UserName', 'Error!');
+
+        }
+        else if ($scope.password == null || $scope.password == undefined || $scope.password == '') {
+            alert('Enter Your Password', 'Error!');
+
+        }
+        else {
+
+            var query = JSON.stringify({ // Data to send to the server
+                userID: $scope.userid,
+                password: $scope.password
+
+            });
+
+            $http({
+                url: "/home/Login?userid=" + $scope.userid + "&password=" + $scope.password,//https://uattwcapi.wealthcompany.in/api/Admin/UserAuthenticationadmin",
+                method: "POST",
+                Headers: {},
+                data: {}
+            }).then(function (response) {
+                if (response.data === true || response.data === 'true') {
+                    var result = '';
+                    //alert("sucess")
+                    window.location.assign('/Dashboard/Dashboard/index')
+                    // toastr.success('An OTP has been sent to ' + $scope.MobileNumber, 'Title Success!');
+                }
+                else {
+                    alert('Invalid Username & Password ', 'Try Again!');
+                    $scope.userid = '';
+                    $scope.password = '';
+                    //  alert("Login faild!")
+                }
+            }).catch(function (error) {
+                console.log('Error sending OTP:', error);
+            });
+
+        }
+
+    }
+
+
+    $scope.handleKeyPress = function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            $scope.Login();
+            // $scope.showAlert();
+        }
+    };
+
+    $scope.toggleInputType = function () {
+        $scope.inputType = ($scope.inputType === 'text') ? 'password' : 'text';
+    };
+
+    $scope.register = function (value) {
+        if (value == 'wp') {
+            window.location.assign('/WP_Registration/WPRegistration/index')
+        }
+        else {
+            window.location.assign('/EKYC_MFJourney/home/loginview')
+        }
+
+    }
 });
+
+
