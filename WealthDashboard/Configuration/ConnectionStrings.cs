@@ -6,5 +6,6 @@
 
         public string WHDB1 { get; set; }
         public string WhdbEsign { get; set; }
+        public string TWC { get; set; } = string.Empty;
     }
 }
