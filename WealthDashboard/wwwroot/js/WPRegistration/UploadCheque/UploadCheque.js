@@ -135,14 +135,44 @@
 
                 var result = response;
 
-                if (result.data.code === 200) {
+                if (result.data.code === 200 &&
+                    ($scope.reverseJourny == false || $scope.reverseJourny == 'false'
+                        || $scope.reverseJourny == '' || $scope.reverseJourny == undefined || $scope.reverseJourny == null)) {
                     UpdateStatus();
 
+                }
+                else {
+                    DownloadPDF();
                 }
 
             })
 
            
+        }
+
+        function DownloadPDF() {
+
+            $http({
+                url: BaseURL + "DigioAPI/DwonloadPDF?userId=" + userId,
+                method: "Get",
+                headers: {},
+                data: {}
+            }).then(function (res) {
+                if (res.data.code == "200") {
+                    toastr.success(res.data.message, 'Title Success!');
+                    //toaster.success(res.data.message,'Title Success!');
+                    setTimeout(() => {
+                        window.location.assign('/Home/Index');
+                    }, 3000);
+
+                }
+                else {
+                    toastr.error('Something went wrong', 'PDF Download!');
+                    window.location.assign('/Home/Index');
+                }
+            }).catch(function (error) {
+                console.error('Error occurred:', error);
+            });
         }
         function UpdateStatus() {
 

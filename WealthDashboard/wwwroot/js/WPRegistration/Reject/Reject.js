@@ -488,6 +488,9 @@
                             if ((array.length - 1) == count && $scope.CancelCheque == true) {
                                 window.location.assign('/WP_Registration/WPRegistration/UploadChequeBankVerification');
                             }
+                            if ((array.length - 1) == count) {
+                                DownloadPDF();
+                            }
                             count = count + 1;
                         }
 
@@ -496,6 +499,31 @@
 
                 }
             }
+        }
+
+        function DownloadPDF() {
+
+            $http({
+                url: BaseURL + "DigioAPI/DwonloadPDF?userId=" + $scope.userId,
+                method: "Get",
+                headers: {},
+                data: {}
+            }).then(function (res) {
+                if (res.data.code == "200") {
+                    toastr.success(res.data.message, 'Title Success!');
+                    //toaster.success(res.data.message,'Title Success!');
+                    setTimeout(() => {
+                        window.location.assign('/Home/Index');
+                    }, 3000);
+
+                }
+                else {
+                    toastr.error('Something went wrong', 'PDF Download!');
+                    window.location.assign('/Home/Index');
+                }
+            }).catch(function (error) {
+                console.error('Error occurred:', error);
+            });
         }
         $scope.findItemIndex = function () {
             $scope.index = $scope.items.findIndex(function (element) {

@@ -19,7 +19,16 @@ app.controller('myCtrl', function ($scope, $http, $sce, $timeout) {
     $scope.imageHowtoHelpUrls = [];
     $scope.mergedHowtoHelpData = [];
     $scope.activeTabIndex = 0; 
+    $scope.ispatner = 0;
 
+
+    $scope.showbutton=function(val)
+    {
+        $scope.ispatner = val;
+    }
+    $scope.showpage = function (val) {
+        window.location.href = val
+    };
     function getData() {
         var url =   '/Home/MainManu';
         $http.get(url)
@@ -84,6 +93,7 @@ app.controller('myCtrl', function ($scope, $http, $sce, $timeout) {
     $scope.trustAsHtml = function (html) {
         return $sce.trustAsHtml(html);
     };
+
     function Content1() {
         var url =  '/Home/MainManuContent1';
         $http.get(url)

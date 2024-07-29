@@ -2,567 +2,677 @@
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap');
 
 @media (min-width:350px ) and (max-width: 492px) {
-  .collaboration-box .text {
-    width: 100%;
-    font-size: 18px;
-  }
-  .carousel-caption {
-    bottom: 0rem;
-  }
-  .carousel-caption h1{
-    font-size: 15px !important;
-  }
-  .carousel-caption p{
-    font-size: 12px;
-    margin: 0;
-  }
-  .outer .button {
-    width: 30%;
-  }
-  .outer .button .text {
-    font-size: 12px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-}
-.collaboration-box {
-  flex-direction: column;
-  gap: 5px;
-  padding: 22px 10px 10px 10px;
-}
-.collaboration-box .number {
-  font-size: 65px;
-  line-height: 46px;
-  width: 100%;
-  text-align: center;
-}
-.WealthHouse .p1 {
-  font-size: 16px;
-  width: 90%;
-  margin: auto;
-  margin-bottom: 5px;
-}
-.WealthHouse .p2 {
-  font-size: 14px;
-  line-height: 20px;
-}
-.section {
-  padding: 20px 30px 20px 30px;
-}
-.p-5 {
-  padding: 1rem !important;
-}
-.font-30 {
-  font-size: 16px;
-}
-.font-20 {
-  font-size: 16px;
-}
-.mdMessage:after {
-  /* Adjust these properties as needed to change the size */
-  content: "";
-  display: inline-block;
-  width: 20px;  /* Set desired width */
-  height: 20px; /* Set desired height */
-  background: url(../images/quote_right_icon.png) no-repeat center center;
-  background-size: contain; /* Ensures the image scales correctly */
-  margin-left: 10px;
-  position: relative;
-  top: 0.50em;
-}
-.mdMessage:before {
-  /* Adjust these properties as needed to change the size */
-  content: "";
-  display: inline-block;
-  width: 20px;  /* Set desired width */
-  height: 20px; /* Set desired height */
-  background: url(../images/quote_left_icon.png) no-repeat center center;
-  background-size: contain; /* Ensures the image scales correctly */
-  margin-right: 10px;
-}
-.mt27 {
-  margin-top: -17vh;
-}
-.evaluteLinks {color: #999999;padding:8px;font-size: 14px;}
-.evaluteLinks.active {color: #000!important;padding:8px;font-size: 14px;}
-.team {
-  width: 120px;
-  height: 120px;
-}
-.teamleaders h4{
-  font-size: 12px;
-}
-.teamleaders h5{
-  font-size: 10px;
-}
-.teamleadersdetails p{
-  margin: 0;
-  font-size: 12px;
-}
-.pl-50{
-  padding-left: 20px;
-}
-.disflex{
-  display: flex;
-justify-content: center;
-align-items: center;
-}
-.team img {
-  top: 12px;
-  left: 15px;
-}
-.textcenter {
-  text-align: center !important;
-  margin-top: 10px;
-}
+    .outer {
+        width: 137%;
+    }
+    .collaboration-box .text {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .carousel-caption {
+        bottom: 0rem;
+    }
+
+        .carousel-caption h1 {
+            font-size: 15px !important;
+        }
+
+        .carousel-caption p {
+            font-size: 12px;
+            margin: 0;
+        }
+
+    .outer .button {
+        width: 30%;
+    }
+
+        .outer .button .text {
+            font-size: 12px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+    .collaboration-box {
+        flex-direction: column;
+        gap: 5px;
+        padding: 22px 10px 10px 10px;
+    }
+
+        .collaboration-box .number {
+            font-size: 65px;
+            line-height: 46px;
+            width: 100%;
+            text-align: center;
+        }
+
+    .WealthHouse .p1 {
+        font-size: 16px;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 5px;
+    }
+
+    .WealthHouse .p2 {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .section {
+        padding: 20px 30px 20px 30px;
+    }
+
+    .p-5 {
+        padding: 1rem !important;
+    }
+
+    .mdMessage:after {
+        /* Adjust these properties as needed to change the size */
+        content: "";
+        display: inline-block;
+        width: 20px; /* Set desired width */
+        height: 20px; /* Set desired height */
+        background: url(../images/quote_right_icon.png) no-repeat center center;
+        background-size: contain; /* Ensures the image scales correctly */
+        margin-left: 10px;
+        position: relative;
+        top: 0.50em;
+    }
+
+    .mdMessage:before {
+        /* Adjust these properties as needed to change the size */
+        content: "";
+        display: inline-block;
+        width: 20px; /* Set desired width */
+        height: 20px; /* Set desired height */
+        background: url(../images/quote_left_icon.png) no-repeat center center;
+        background-size: contain; /* Ensures the image scales correctly */
+        margin-right: 10px;
+    }
+
+    .mt27 {
+        margin-top: -17vh;
+    }
+
+    .evaluteLinks {
+        color: #999999;
+        padding: 8px;
+    }
+
+        .evaluteLinks.active {
+            color: #000 !important;
+            padding: 8px;
+        }
+
+    .team {
+        width: 120px;
+        height: 120px;
+    }
+
+    .teamleaders h4 {
+        font-size: 12px;
+    }
+
+    .teamleaders h5 {
+        font-size: 10px;
+    }
+
+    .teamleadersdetails p {
+        margin: 0;
+        font-size: 12px;
+    }
+
+    .pl-50 {
+        padding-left: 20px;
+    }
+
+    .disflex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .team img {
+        top: 12px;
+        left: 15px;
+    }
+
+    .textcenter {
+        text-align: center !important;
+        margin-top: 10px;
+    }
 }
 
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (min-width:492px ) and (max-width: 576px) {
+    .outer {
+        width: 137%;
+    }
     .banner {
         height: 22vh; /* Full height */
         padding-left: 10px; /* Adjust padding as needed */
-      }
-      .banner-content button {
+    }
+
+    .banner-content button {
         padding: 3px 10px;
-      }
-      .banner button svg{
+    }
+
+    .banner button svg {
         display: none;
-      }
+    }
+
     .banner h1 {
         font-size: 16px;
-      }
-      .banner p {
-        font-size:13px;
-      }
-      .mfont-12{
+    }
+
+    .banner p {
+        font-size: 13px;
+    }
+
+    .mfont-12 {
         font-size: 10px;
-      }
-      .navbar-toggler {
-        color: rgb(255 255 255 / 55%);
-          background-color: #cba135;
-      }
-      .navbar-brand img{
-          width: 80px;
-      }
-      .collaboration-box {
-        padding: 15px 15px;
-        display: flex;
-        flex-direction: column;
-      }
-      .collaboration-box .number {
-        font-size: 60px;
-        width: 100%;
-        line-height: 40px;
-        text-align: center;
-      }
-      .collaboration-box .text {
-        width: 100%;
-        font-size: 18px;
-      }
-      .carousel-caption {
-        bottom: 2rem;
-      }
-      .carousel-caption h1{
-        font-size: 18px !important;
-      }
-      .carousel-caption p{
-        font-size: 14px;
-      }
-      .outer .button {
-        width: 30%;
-      }
-      .outer .button .text {
-        font-size: 12px;
-        padding-top: 0px;
-        padding-bottom: 0px;
-      }
-      .WealthHouse .p1 {
-        font-size: 18px;
-      }
-      .WealthHouse .p2 {
-        font-size: 14px;
-        line-height: 20px;
-      }
-      .font-30 {
-        font-size: 14px;
-        margin: 0;
-        }
-      .font-20{
-        font-size: 14px;
-      }
-      .mdMessage:after {
-        /* Adjust these properties as needed to change the size */
-        content: "";
-        display: inline-block;
-        width: 25px;  /* Set desired width */
-        height: 25px; /* Set desired height */
-        background: url(../images/quote_right_icon.png) no-repeat center center;
-        background-size: contain; /* Ensures the image scales correctly */
-        margin-left: 10px;
-        position: relative;
-        top: 0.50em;
-      }
-      .mdMessage:before {
-        /* Adjust these properties as needed to change the size */
-        content: "";
-        display: inline-block;
-        width: 25px;  /* Set desired width */
-        height: 25px; /* Set desired height */
-        background: url(../images/quote_left_icon.png) no-repeat center center;
-        background-size: contain; /* Ensures the image scales correctly */
-        margin-right: 10px;
-      }
-      .mt27 {
-        margin-top: -32vh;
-        width: 14vw !important;
-      }
-      .section {
-        padding: 0px 30px 0px 30px;
-      }
-      .p-5 {
-      padding: 1rem !important;
-      }
-      .evaluteLinks {color: #999999;padding: 8px;font-size: 14px;}
-    .evaluteLinks.active {color: #000!important;padding: 8px;font-size: 14px;}
-    .team img {
-      top: 12px;
-      left: 15px;
     }
-    .team {
-      width: 90px;
-      height: 90px;
-    }
-    .teamleaders h4{
-      font-size: 12px;
-    }
-    .teamleaders h5{
-      font-size: 10px;
-    }
-    .teamleadersdetails p{
-      margin: 0;
-      font-size: 12px;
-    }
-    .pl-50{
-      padding-left: 20px;
-    }
-    .disflex{
-      display: flex;
-    justify-content: center;
-    align-items: center;
-    }
-  }
-  
-  /* Small devices (landscape phones, 576px and up) */
-  @media (min-width: 576px) and (max-width: 767.98px) {
-    .banner {
-        height: 50vh; /* Full height */
-        padding-left: 20px; /* Adjust padding as needed */
-      }
-      .banner-content button {
-        padding: 5px 10px;
-      }
-    .banner h1 {
-        font-size: 30px;
-      }
-      .banner p {
-        font-size:20px;
-      }
-      .navbar-toggler {
+
+    .navbar-toggler {
         color: rgb(255 255 255 / 55%);
         background-color: #cba135;
     }
-    .navbar-brand img{
-        width: 100px;
+
+    .navbar-brand img {
+        width: 80px;
     }
-    .collaboration-box .number {
-      font-size: 100px;
-      width: 39%;
-      line-height: 100px;
-      text-align: center;
-    }
-    .collaboration-box .text {
-      font-size: 22px;
-      text-align: left;
-    }
-    .carousel-caption {
-      bottom: 1rem;
-    }
-    .carousel-caption h1{
-      font-size: 22px !important;
-    }
-    .carousel-caption p{
-      font-size: 16px;
-    }
-    .outer .button {
-      width: 25%;
-    }
-    .outer .button .text {
-      font-size: 15px;
-    }
-    .WealthHouse .p1 {
-      font-size: 18px;
-    }
-    .WealthHouse .p2 {
-      font-size: 14px;
-      line-height: 20px;
-    }
-    .font-30 {
-      font-size: 14px;
-      margin: 0;
-      }
-    .font-20{
-      font-size: 14px;
-    }
-    .mdMessage:after {
-      /* Adjust these properties as needed to change the size */
-      content: "";
-      display: inline-block;
-      width: 25px;  /* Set desired width */
-      height: 25px; /* Set desired height */
-      background: url(../images/quote_right_icon.png) no-repeat center center;
-      background-size: contain; /* Ensures the image scales correctly */
-      margin-left: 10px;
-      position: relative;
-      top: 0.50em;
-    }
-    .mdMessage:before {
-      /* Adjust these properties as needed to change the size */
-      content: "";
-      display: inline-block;
-      width: 25px;  /* Set desired width */
-      height: 25px; /* Set desired height */
-      background: url(../images/quote_left_icon.png) no-repeat center center;
-      background-size: contain; /* Ensures the image scales correctly */
-      margin-right: 10px;
-    }
-    .mt27 {
-      margin-top: -32vh;
-      width: 14vw !important;
-    }
-    .section {
-      padding: 0px 30px 0px 30px;
-     }
-    .p-5 {
-    padding: 1rem !important;
-    } 
-    .evaluteLinks {color: #999999;padding: 8px;font-size: 14px;}
-    .evaluteLinks.active {color: #000!important;padding: 8px;font-size: 14px;}
-    .team img {
-      top: 12px;
-      left: 15px;
-    }
-    .team {
-      width: 100px;
-      height: 100px;
-    }
-    .teamleaders h4{
-      font-size: 15px;
-    }
-    .teamleaders h5{
-      font-size: 13px;
-    }
-    .teamleadersdetails p{
-      margin: 0;
-      font-size: 15px;
-    }
-    .pl-50{
-      padding-left: 10px;
-    }
-  }
- 
-  
-  /* Medium devices (tablets, 768px and up) */
-  @media (min-width: 768px) and (max-width: 996px) {
-    .banner {
-        padding-left: 30px; /* Adjust padding as needed */
-      }
-    .banner h1 {
-        font-size: 38px;
-      }
-      .banner p {
-        font-size:28px;
-      }
-      .collaboration-box {
+
+    .collaboration-box {
+        padding: 15px 15px;
         display: flex;
-        gap: 20px;
         flex-direction: column;
-      }
-    .collaboration-box .text {
-      width: 100%;
-      font-size: 24px;
-      }
-      .collaboration-box .number {
-        font-size: 120px;
-        width: 100%;
-        line-height: 100px;
-        text-align: center;
-      }
-      .carousel-caption {
-        bottom: 4.25rem;
-      }
-      .carousel-caption h1{
-        font-size: 30px !important;
-      }
-      .carousel-caption p{
-        font-size: 22px;
-      }
-      .outer .button {
-        width: 30%;
-      }
-      .WealthHouse .p1 {
-        font-size: 24px;
-      }
-      .WealthHouse .p2 {
-        font-size: 17px;
-        line-height: 25px;
-      }
-      .font-30 {
-        font-size: 14px;
-        margin: 0;
+    }
+
+        .collaboration-box .number {
+            font-size: 60px;
+            width: 100%;
+            line-height: 40px;
+            text-align: center;
         }
-      .font-20{
+
+        .collaboration-box .text {
+            width: 100%;
+            font-size: 18px;
+        }
+
+    .carousel-caption {
+        bottom: 2rem;
+    }
+
+        .carousel-caption h1 {
+            font-size: 18px !important;
+        }
+
+        .carousel-caption p {
+            font-size: 14px;
+        }
+
+    .outer .button {
+        width: 30%;
+    }
+
+        .outer .button .text {
+            font-size: 12px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+    .WealthHouse .p1 {
+        font-size: 18px;
+    }
+
+    .WealthHouse .p2 {
         font-size: 14px;
-      }
-      .mdMessage:after {
+        line-height: 20px;
+    }
+
+    .mdMessage:after {
         /* Adjust these properties as needed to change the size */
         content: "";
         display: inline-block;
-        width: 25px;  /* Set desired width */
+        width: 25px; /* Set desired width */
         height: 25px; /* Set desired height */
         background: url(../images/quote_right_icon.png) no-repeat center center;
         background-size: contain; /* Ensures the image scales correctly */
         margin-left: 10px;
         position: relative;
         top: 0.50em;
-      }
-      .mdMessage:before {
+    }
+
+    .mdMessage:before {
         /* Adjust these properties as needed to change the size */
         content: "";
         display: inline-block;
-        width: 25px;  /* Set desired width */
+        width: 25px; /* Set desired width */
+        height: 25px; /* Set desired height */
+        background: url(../../images/quote_left_icon.png) no-repeat center center;
+        background-size: contain; /* Ensures the image scales correctly */
+        margin-right: 10px;
+    }
+
+    .mt27 {
+        margin-top: -32vh;
+        width: 14vw !important;
+    }
+
+    .section {
+        padding: 0px 30px 0px 30px;
+    }
+
+    .p-5 {
+        padding: 1rem !important;
+    }
+
+    .evaluteLinks {
+        color: #999999;
+        padding: 8px;
+    }
+
+        .evaluteLinks.active {
+            color: #000 !important;
+            padding: 8px;
+        }
+
+    .team img {
+        top: 12px;
+        left: 15px;
+    }
+
+    .team {
+        width: 90px;
+        height: 90px;
+    }
+
+    .teamleaders h4 {
+        font-size: 12px;
+    }
+
+    .teamleaders h5 {
+        font-size: 10px;
+    }
+
+    .teamleadersdetails p {
+        margin: 0;
+        font-size: 12px;
+    }
+
+    .pl-50 {
+        padding-left: 20px;
+    }
+
+    .disflex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .banner {
+        height: 50vh; /* Full height */
+        padding-left: 20px; /* Adjust padding as needed */
+    }
+
+    .banner-content button {
+        padding: 5px 10px;
+    }
+
+    .banner h1 {
+        font-size: 30px;
+    }
+
+    .banner p {
+        font-size: 20px;
+    }
+
+    .navbar-toggler {
+        color: rgb(255 255 255 / 55%);
+        background-color: #cba135;
+    }
+
+    .navbar-brand img {
+        width: 100px;
+    }
+
+    .collaboration-box .number {
+        font-size: 100px;
+        width: 39%;
+        line-height: 100px;
+        text-align: center;
+    }
+
+    .collaboration-box .text {
+        font-size: 22px;
+        text-align: left;
+    }
+
+    .carousel-caption {
+        bottom: 1rem;
+    }
+
+        .carousel-caption h1 {
+            font-size: 22px !important;
+        }
+
+        .carousel-caption p {
+            font-size: 16px;
+        }
+
+    .outer .button {
+        width: 25%;
+    }
+
+        .outer .button .text {
+            font-size: 15px;
+        }
+
+    .WealthHouse .p1 {
+        font-size: 18px;
+    }
+
+    .WealthHouse .p2 {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .mdMessage:after {
+        /* Adjust these properties as needed to change the size */
+        content: "";
+        display: inline-block;
+        width: 25px; /* Set desired width */
+        height: 25px; /* Set desired height */
+        background: url(../images/quote_right_icon.png) no-repeat center center;
+        background-size: contain; /* Ensures the image scales correctly */
+        margin-left: 10px;
+        position: relative;
+        top: 0.50em;
+    }
+
+    .mdMessage:before {
+        /* Adjust these properties as needed to change the size */
+        content: "";
+        display: inline-block;
+        width: 25px; /* Set desired width */
         height: 25px; /* Set desired height */
         background: url(../images/quote_left_icon.png) no-repeat center center;
         background-size: contain; /* Ensures the image scales correctly */
         margin-right: 10px;
-      }
-      .mt27 {
+    }
+
+    .mt27 {
+        margin-top: -32vh;
+        width: 14vw !important;
+    }
+
+    .section {
+        padding: 0px 30px 0px 30px;
+    }
+
+    .p-5 {
+        padding: 1rem !important;
+    }
+
+    .evaluteLinks {
+        color: #999999;
+        padding: 8px;
+    }
+
+        .evaluteLinks.active {
+            color: #000 !important;
+            padding: 8px;
+        }
+
+    .team img {
+        top: 12px;
+        left: 15px;
+    }
+
+    .team {
+        width: 100px;
+        height: 100px;
+    }
+
+    .teamleaders h4 {
+        font-size: 15px;
+    }
+
+    .teamleaders h5 {
+        font-size: 13px;
+    }
+
+    .teamleadersdetails p {
+        margin: 0;
+        font-size: 15px;
+    }
+
+    .pl-50 {
+        padding-left: 10px;
+    }
+}
+
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 996px) {
+    .banner {
+        padding-left: 30px; /* Adjust padding as needed */
+    }
+
+        .banner h1 {
+            font-size: 38px;
+        }
+
+        .banner p {
+            font-size: 28px;
+        }
+
+    .collaboration-box {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+        .collaboration-box .text {
+            width: 100%;
+            font-size: 24px;
+        }
+
+        .collaboration-box .number {
+            font-size: 120px;
+            width: 100%;
+            line-height: 100px;
+            text-align: center;
+        }
+
+    .carousel-caption {
+        bottom: 4.25rem;
+    }
+
+        .carousel-caption h1 {
+            font-size: 30px !important;
+        }
+
+        .carousel-caption p {
+            font-size: 22px;
+        }
+
+    .outer .button {
+        width: 30%;
+    }
+
+    .WealthHouse .p1 {
+        font-size: 24px;
+    }
+
+    .WealthHouse .p2 {
+        font-size: 17px;
+        line-height: 25px;
+    }
+
+    .mdMessage:after {
+        /* Adjust these properties as needed to change the size */
+        content: "";
+        display: inline-block;
+        width: 25px; /* Set desired width */
+        height: 25px; /* Set desired height */
+       
+        background: url(../../images/quote_right_icon.png)!important;
+        background-size: contain; /* Ensures the image scales correctly */
+        margin-left: 10px;
+        position: relative;
+        top: 0.50em;
+    }
+
+    .mdMessage:before {
+        /* Adjust these properties as needed to change the size */
+        content: "";
+        display: inline-block;
+        width: 25px; /* Set desired width */
+        height: 25px; /* Set desired height */
+        background: url(../images/quote_left_icon.png) no-repeat center center !important;
+        background-size: contain; /* Ensures the image scales correctly */
+        margin-right: 10px;
+    }
+
+    .mt27 {
         margin-top: 22vh;
         width: 18vw !important;
-      }
-      .evaluteLinks {color: #999999;padding: 10px;font-size: 14px;}
-      .evaluteLinks.active {color: #000!important;padding: 10px;font-size: 14px;}
-      .team {
+    }
+
+    .evaluteLinks {
+        color: #999999;
+        padding: 10px;
+    }
+
+        .evaluteLinks.active {
+            color: #000 !important;
+            padding: 10px;
+        }
+
+    .team {
         width: 150px;
         height: 150px;
-      }
-      .teamleaders h4{
+    }
+
+    .teamleaders h4 {
         font-size: 18px;
-      }
-      .teamleaders h5{
+    }
+
+    .teamleaders h5 {
         font-size: 16px;
-      }
-      .teamleadersdetails p{
+    }
+
+    .teamleadersdetails p {
         margin: 0;
         font-size: 16px;
-      }
-      .pl-50{
+    }
+
+    .pl-50 {
         padding-left: 50px;
-      }
-      .outer {
+    }
+
+    .outer {
         width: 80%;
-      }
-      .text {
-            text-align: start;
-            font-size: 18px;
-       }
-  }
-  
-  /* Large devices (desktops, 992px and up) */
-  @media (min-width: 996px) and (max-width: 1199.98px) {
+    }
+
+    .text {
+        text-align: start;
+        font-size: 18px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 996px) and (max-width: 1199.98px) {
     .navbar-expand-lg .navbar-nav .nav-link {
         padding-right: 10px;
-        padding-left:  10px;
+        padding-left: 10px;
     }
+
     .collaboration-box .text {
-      font-size: 20px;
+        font-size: 20px;
         text-align: left;
     }
+
     .collaboration-box .number {
-      font-size: 85px;
-      line-height: 90px;
+        font-size: 85px;
+        line-height: 90px;
     }
+
     .carousel-caption {
-      bottom: 6.25rem;
+        bottom: 6.25rem;
     }
-    .font-30 {
-      font-size: 16px;
-      margin: 0;
-      }
-    .font-20{
-      font-size: 16px;
-    }
+
     .mdMessage:after {
-      /* Adjust these properties as needed to change the size */
-      content: "";
-      display: inline-block;
-      width: 30px;  /* Set desired width */
-      height: 30px; /* Set desired height */
-      background: url(../images/quote_right_icon.png) no-repeat center center;
-      background-size: contain; /* Ensures the image scales correctly */
-      margin-left: 10px;
-      position: relative;
-      top: 0.50em;
+        /* Adjust these properties as needed to change the size */
+        content: "";
+        display: inline-block;
+        width: 30px; /* Set desired width */
+        height: 30px; /* Set desired height */
+        background: url(../images/quote_right_icon.png) no-repeat center center;
+        background-size: contain; /* Ensures the image scales correctly */
+        margin-left: 10px;
+        position: relative;
+        top: 0.50em;
     }
+
     .mdMessage:before {
-      /* Adjust these properties as needed to change the size */
-      content: "";
-      display: inline-block;
-      width: 30px;  /* Set desired width */
-      height: 30px; /* Set desired height */
-      background: url(../images/quote_left_icon.png) no-repeat center center;
-      background-size: contain; /* Ensures the image scales correctly */
-      margin-right: 10px;
+        /* Adjust these properties as needed to change the size */
+        content: "";
+        display: inline-block;
+        width: 30px; /* Set desired width */
+        height: 30px; /* Set desired height */
+        background: url(../images/quote_left_icon.png) no-repeat center center;
+        background-size: contain; /* Ensures the image scales correctly */
+        margin-right: 10px;
     }
+
     .mt27 {
-      margin-top: 22vh;
-      width: 20vw !important;
+        margin-top: 22vh;
+        width: 20vw !important;
     }
+
     .outer {
         width: 22%;
     }
-  }
-  
-  /* Extra large devices (large desktops, 1200px and up) */
-  @media (min-width: 1200px) and (max-width: 1399.98px) {
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
     .navbar-expand-lg .navbar-nav .nav-link {
         padding-right: 30px;
-        padding-left:  30px;
+        padding-left: 30px;
     }
+
     .collaboration-box .text {
-      font-size: 24px;
+        font-size: 24px;
         padding-left: 15px;
         text-align: left;
     }
+
     .collaboration-box .number {
-      font-size: 110px;
-      line-height: 100px;
+        font-size: 110px;
+        line-height: 100px;
     }
+
     .quote2 {
-      left: 31%;
+        left: 31%;
     }
-    .carousel-caption h1{
-      font-size: 34px !important;
+
+    .carousel-caption h1 {
+        font-size: 34px !important;
     }
-    .carousel-caption p{
-      font-size: 24px;
+
+    .carousel-caption p {
+        font-size: 24px;
     }
-    .font-30 {
-      font-size: 20px;
-    }
-    .font-20{
-      font-size: 20px;
-    }
+
+
     .mdMessage:after {
         content: "";
         display: inline-block;
@@ -574,6 +684,7 @@ align-items: center;
         position: relative;
         top: 0.5em;
     }
+
     .mdMessage:before {
         /* Adjust these properties as needed to change the size */
         content: "";
@@ -584,42 +695,45 @@ align-items: center;
         background-size: contain; /* Ensures the image scales correctly */
         margin-right: 10px;
     }
+
     .mt27 {
-      margin-top: 25vh;
-      width: 19vw !important;
+        margin-top: 25vh;
+        width: 19vw !important;
     }
+
     .outer {
-        width:18%;
+        width: 18%;
     }
-  }
-  
-  /* Extra extra large devices (larger desktops, 1400px and up) */
-  @media (min-width: 1400px) {
+}
+
+/* Extra extra large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
     .navbar-expand-lg .navbar-nav .nav-link {
         padding-right: 40px;
-        padding-left:  40px;
+        padding-left: 40px;
     }
+
     .collaboration-box .text {
-      font-size: 28px;
-      text-align: left;
+        font-size: 28px;
+        text-align: left;
     }
+
     .collaboration-box .number {
-      font-size: 100px;
+        font-size: 100px;
         line-height: 100px;
         text-align: center;
-  }
+    }
     /*banner*/
     .quote2 {
-      bottom: 12%;
-      left: 54%;
-  }
+        bottom: 12%;
+        left: 54%;
+    }
+
     .outer {
         width: 17%;
     }
-  
-  }
-  
+}
 
 
-  /*tab in mobile*/
-  
+
+/*tab in mobile*/
