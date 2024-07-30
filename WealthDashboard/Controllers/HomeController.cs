@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net;
@@ -26,7 +25,7 @@ namespace WealthDashboard.Controllers
         {
             return View();
         }
-       
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -58,9 +57,16 @@ namespace WealthDashboard.Controllers
                     UserData users = JsonConvert.DeserializeObject<UserData>(result.data);
                     if (result.statusCode == 200)
                     {
-                        HttpContext.Session.SetString("userData", result.data);
-
-                        return Ok(true);
+                        if (users.Status == 9)
+                        {
+                            return Ok(9);
+                        }
+                        else if (users.Status == 11)
+                        {
+                            HttpContext.Session.SetString("userData", result.data);
+                            return Ok(true);
+                        }
+                        else { return Ok(false); }
                     }
                     else
                     {
