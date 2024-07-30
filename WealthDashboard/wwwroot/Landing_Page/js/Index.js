@@ -397,7 +397,11 @@ app.controller('myCtrl', function ($scope, $http, $sce, $timeout) {
                 Headers: {},
                 data: {}
             }).then(function (response) {
-                if (response.data === true || response.data === 'true') {
+                if (response.data == 9) {
+
+                    alert('Your journey is in progress.', 'Try Again After  Sometime!');
+                }
+                else if (response.data === true || response.data === 'true') {
                     var result = '';
                     //alert("sucess")
                     window.location.assign('/Dashboard/Dashboard/index')
