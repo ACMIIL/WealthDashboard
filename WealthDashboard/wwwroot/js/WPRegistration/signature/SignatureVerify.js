@@ -115,8 +115,8 @@
                             data: {}
                         }).then(function (res) {
                             if (res.data.code == "200") {
-                                window.location.assign('/WP_Registration/WPRegistration/Thankyou');
-
+                               // window.location.assign('/WP_Registration/WPRegistration/Thankyou');
+                                DownloadPDF();
                             }
                         });
                     } else {
@@ -130,6 +130,33 @@
 
 
         };
+
+
+        function DownloadPDF() {
+
+            $http({
+                url: BaseURL + "DigioAPI/DwonloadPDF?userId=" + userId,
+                method: "Get",
+                headers: {},
+                data: {}
+            }).then(function (res) {
+                if (res.data.code == "200") {
+                    toastr.success(res.data.message, 'Title Success!');
+                    //toaster.success(res.data.message,'Title Success!');
+                    setTimeout(() => {
+                        window.location.assign("https://dbo.wealthcompany.in/EsignTestAPI/api/eSign/" + res.data.data);
+
+                    }, 3000);
+
+                }
+                else {
+                    toastr.error('Something went wrong', 'PDF Download!');
+                    window.location.assign('/Home/Index');
+                }
+            }).catch(function (error) {
+                console.error('Error occurred:', error);
+            });
+        }
 
         function dataURItoBlob(dataURI) {
             const byteString = window.atob(dataURI);

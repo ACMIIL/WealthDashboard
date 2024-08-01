@@ -513,7 +513,8 @@
                     toastr.success(res.data.message, 'Title Success!');
                     //toaster.success(res.data.message,'Title Success!');
                     setTimeout(() => {
-                        window.location.assign('/Home/Index');
+                        window.location.assign("https://dbo.wealthcompany.in/EsignTestAPI/api/eSign/" + res.data.data);
+                        
                     }, 3000);
 
                 }

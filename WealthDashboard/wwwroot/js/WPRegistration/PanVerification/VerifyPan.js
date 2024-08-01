@@ -30,7 +30,7 @@ angular.module('main', ['ngAnimate', 'toaster'])
 
 
         $scope.PanDetails = function () {
-            debugger
+          
             pannumber = $scope.pan.charAt(3);
 
             if (pannumber != 'P') {
