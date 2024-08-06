@@ -5,6 +5,7 @@
         $scope.Account_Name = '';
         $scope.Account_Num = ''
         $scope.AccountType = '1';
+        var file = [];
         $scope.IFSCCode = '';
         $scope.reverseJourny = localStorage.getItem('reverseJourny');
         var error={
@@ -113,16 +114,10 @@
 
         function uploadCancelCheque(){
             var formdata = new FormData();
-            formdata.append('File', $scope.CancelCheque);
+            formdata.append('File', file);
             formdata.append('ImgName', $scope.CancelChequeFileName);
             formdata.append('UserId', userId);
-            formdata.append('DoucmentTypeId', "4");
-
-            // Now you can use the formdata object as needed
-
-
-
-
+            formdata.append('DoucmentTypeId', "5");
 
             $http({
                 url: BaseURL + 'User/UploadFiles',
@@ -198,7 +193,8 @@
 
         $scope.onFileSelect = function (input) {
             if (input.files && input.files.length > 0) {
-                var file = input.files[0];
+                file = input.files[0];
+
                 var size = $scope.checkFileSize(file.size);
 
               

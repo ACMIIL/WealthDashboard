@@ -144,17 +144,17 @@
                     toastr.success(res.data.message, 'Title Success!');
                     //toaster.success(res.data.message,'Title Success!');
                     setTimeout(() => {
-                        window.location.assign("https://dbo.wealthcompany.in/EsignTestAPI/api/eSign/" + res.data.data);
+                        window.location.assign("https://dbo.wealthcompany.in/EsignTestWeb/esign/sign/" + res.data.data);
 
                     }, 3000);
 
                 }
                 else {
                     toastr.error('Something went wrong', 'PDF Download!');
-                    window.location.assign('/Home/Index');
+                   // window.location.assign('/Home/Index');
                 }
             }).catch(function (error) {
-                console.error('Error occurred:', error);
+                console.log('Error occurred:', error);
             });
         }
 

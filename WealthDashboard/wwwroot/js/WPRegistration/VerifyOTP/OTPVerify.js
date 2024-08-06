@@ -12,7 +12,7 @@
             toastr.success('An OTP has been sent to ' + $scope.MobileNumber, 'Title Success!');
         }
         $scope.ResendOTP = function () {
-             
+            $scope.startTimer(totalSeconds, prefix);
             var mobile = localStorage.getItem('Mnumber');
             $http({
                 url: BaseURL + "User/MobileSendOTP?parameter=" + mobile + "&browser=" + browser +"&Otptype=1",
