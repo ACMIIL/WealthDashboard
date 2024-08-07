@@ -5,17 +5,18 @@
         $scope.Account_Name = '';
         $scope.Account_Num = ''
         $scope.AccountType = '1';
+        var file = [];
         $scope.IFSCCode = '';
-
+        $scope.reverseJourny = localStorage.getItem('reverseJourny');
+        var error={
+            address: false, accountName: false, accountType: false, IFSCCode: false, account_Num:false,cheque:false
+        }
         var bankdetails = [];
         var Bankdata = [];
 
        
 
         $scope.CancelChequeFileName = '';
-
-
-       
             $scope.clickFileInput = function () {
             document.getElementById('fileInput').click();
         }
@@ -61,23 +62,28 @@
 
             $scope.SaveBankDetails = function () {
 
-                
+                error = {
+                    address: false, accountName: false, accountType: false, IFSCCode: false, account_Num: false, cheque: false
+                }
                 if ($scope.Account_Name == null || $scope.Account_Name == '' || $scope.Account_Name == undefined) {
 
                     toastr.error('Please Enter Account holder Name', 'Account Holder Name !');
-                    
+                    error.accountName = true;
                 }
                 if ($scope.Account_Num == null || $scope.Account_Num == '' || $scope.Account_Num == undefined) {
 
                     toastr.error('Please Enter Account Number', 'Account Number !');
+                    error.account_Num = true;
                 }
                 if ($scope.IFSCCode == null || $scope.IFSCCode == '' || $scope.IFSCCode == undefined) {
 
                     toastr.error('Please Enter IFSC Code', 'IFSC Code !');
+                    error.accountName = true;
                 }
                 if ($scope.CancelChequeFileName == null || $scope.CancelChequeFileName == '' || $scope.CancelChequeFileName == undefined) {
 
                     toastr.error('Please select cancel cheque', 'Cancel Cheque !');
+                    error.cheque = true;
                 }
 
                 Bankdata.BankAccountTypeId = $scope.AccountType;
@@ -108,16 +114,10 @@
 
         function uploadCancelCheque(){
             var formdata = new FormData();
-            formdata.append('File', $scope.CancelCheque);
+            formdata.append('File', file);
             formdata.append('ImgName', $scope.CancelChequeFileName);
             formdata.append('UserId', userId);
-            formdata.append('DoucmentTypeId', "4");
-
-            // Now you can use the formdata object as needed
-
-
-
-
+            formdata.append('DoucmentTypeId', "5");
 
             $http({
                 url: BaseURL + 'User/UploadFiles',
@@ -130,14 +130,44 @@
 
                 var result = response;
 
-                if (result.data.code === 200) {
+                if (result.data.code === 200 &&
+                    ($scope.reverseJourny == false || $scope.reverseJourny == 'false'
+                        || $scope.reverseJourny == '' || $scope.reverseJourny == undefined || $scope.reverseJourny == null)) {
                     UpdateStatus();
 
+                }
+                else {
+                    DownloadPDF();
                 }
 
             })
 
            
+        }
+
+        function DownloadPDF() {
+
+            $http({
+                url: BaseURL + "DigioAPI/DwonloadPDF?userId=" + userId,
+                method: "Get",
+                headers: {},
+                data: {}
+            }).then(function (res) {
+                if (res.data.code == "200") {
+                    toastr.success(res.data.message, 'Title Success!');
+                    //toaster.success(res.data.message,'Title Success!');
+                    setTimeout(() => {
+                        window.location.assign('/Home/Index');
+                    }, 3000);
+
+                }
+                else {
+                    toastr.error('Something went wrong', 'PDF Download!');
+                    window.location.assign('/Home/Index');
+                }
+            }).catch(function (error) {
+                console.error('Error occurred:', error);
+            });
         }
         function UpdateStatus() {
 
@@ -163,7 +193,8 @@
 
         $scope.onFileSelect = function (input) {
             if (input.files && input.files.length > 0) {
-                var file = input.files[0];
+                file = input.files[0];
+
                 var size = $scope.checkFileSize(file.size);
 
               

@@ -12,7 +12,7 @@
             toastr.success('An OTP has been sent to ' + $scope.MobileNumber, 'Title Success!');
         }
         $scope.ResendOTP = function () {
-             
+            $scope.startTimer(totalSeconds, prefix);
             var mobile = localStorage.getItem('Mnumber');
             $http({
                 url: BaseURL + "User/MobileSendOTP?parameter=" + mobile + "&browser=" + browser +"&Otptype=1",
@@ -49,8 +49,17 @@
 
                 if (response.data.code === 200) {
                     var agentSrno = response.data.data.agentSrno;
+                    var isreverse = response.data.data.reverseJourny;
                     localStorage.setItem('srno', agentSrno);
-                    Getuserstapes(userId);
+                    localStorage.setItem('reverseJourny', isreverse);
+                    if (isreverse) {
+                        window.location.href ='/WP_Registration/WPRegistration/ReviseJourney'
+                    }
+                    else {
+                        Getuserstapes(userId);
+                    }
+                   
+                   
                 }
                 else {
                    toastr.error('Please enter the valid OTP', 'OTP Verify !');

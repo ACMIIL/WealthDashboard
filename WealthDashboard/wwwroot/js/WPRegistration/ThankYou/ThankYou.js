@@ -60,12 +60,12 @@
         function DownloadPDF() {
 
             $http({
-                url: BaseURL + "PDF/GenerateMaRegistrationForm?UserID=" + $scope.userId,
-                method: "POST",
+                url: BaseURL + "DigioAPI/DwonloadPDF?userId=" + $scope.userId,
+                method: "Get",
                 headers: {},
                 data: {}
             }).then(function (res) {
-                if (res.data.message === "MA Registration PDF Genrated Successfully Please Check Genrated PDF file.") {
+                if (res.data.code == "200") {
                     toastr.success(res.data.message, 'Title Success!');
                     //toaster.success(res.data.message,'Title Success!');
                     setTimeout(() => {

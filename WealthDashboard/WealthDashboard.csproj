@@ -64,6 +64,9 @@
     <None Include="wwwroot\images\user-1.jpg" />
     <None Include="wwwroot\images\view.png" />
     <None Include="wwwroot\images\yellow.png" />
+    <None Include="wwwroot\Landing_Page\js\Index.js" />
+    <None Include="wwwroot\Landing_Page\js\scripts.js" />
+    <None Include="wwwroot\Landing_Page\js\site.js" />
   </ItemGroup>
 
   <ItemGroup>
