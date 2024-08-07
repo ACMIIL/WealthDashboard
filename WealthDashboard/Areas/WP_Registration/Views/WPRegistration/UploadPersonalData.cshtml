@@ -48,7 +48,7 @@
             <div class="container">
                 <header id="header" class="pb-5 mobile-top-padding-header ">
                     <div class="container">
-                        <div class="row">
+                        <div class="row d-block d-md-none">
                             <div class="col-md-2 col-6 mx-auto text-center ">
                                 <a href="index.html">
                                     <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
@@ -87,7 +87,7 @@
                                                                    maxlength="12"
                                                                    class="form-control floating-text-area UploadFileName" id="floatingInput"
                                                                    style="color: white;" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" placeholder="HERFK4578G">
-                                                            <label for="floatingInput" style="color: #c9a13f;">Aadhar No</label>
+                                                            <label for="floatingInput" style="color: #ffffff;">Aadhar No</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -95,7 +95,7 @@
                                                             <input autocomplete="off" type="text" ng-model="address1"
                                                                    class="form-control  floating-text-area" id="floatingInput"
                                                                    style="color: white;" placeholder="HERFK4578G" maxlength="40" ng-keyup="FindValue('add1')">
-                                                            <label for="floatingInput" style="color: #c9a13f;">Address 1</label>
+                                                            <label for="floatingInput" style="color: #ffffff;">Address 1</label>
                                                         </div>
                                                         <span ng-if="Address1Valid" style="color:rgb(206, 44, 44)" class="ps-2"> Continue in address2 field </span>
 
@@ -105,7 +105,7 @@
                                                             <input autocomplete="off" type="text" ng-model="email"
                                                                    class="form-control floating-text-area" id="floatingInput"
                                                                    style="color: white;" ng-keyup="checkEmail()" placeholder="HERFK4578G">
-                                                            <label for="floatingInput" style="color: #c9a13f;">Email</label>
+                                                            <label for="floatingInput" style="color: #ffffff;">Email</label>
                                                             <span ng-if="CheckEmailPattern" style="color:rgb(206, 44, 44)" class="ps-2"> Invalid Email </span>
                                                         </div>
                                                     </div>
@@ -115,7 +115,7 @@
                                                                    class="form-control  floating-text-area" id="floatingInput"
                                                                    style="color: white;" placeholder="HERFK4578G" maxlength="30" ng-keyup="FindValue('add2')">
 
-                                                            <label for="floatingInput" style="color: #c9a13f;">Address 2</label>
+                                                            <label for="floatingInput" style="color: #ffffff;">Address 2</label>
                                                         </div>
                                                         <span ng-if="Address2Valid" style="color:rgb(206, 44, 44)" class="ps-2"> Continue in address3 field </span>
                                                     </div>
@@ -124,7 +124,7 @@
                                                             <input autocomplete="off" type="text" ng-model="PinCodev" ng-change="GetCityCode(PinCodev)"
                                                                    class="form-control  floating-text-area" id="floatingInput"
                                                                    style="color: white;" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" placeholder="HERFK4578G" maxlength="7">
-                                                            <label for="floatingInput" style="color: #c9a13f;">Pincode</label>
+                                                            <label for="floatingInput" style="color: #ffffff;">Pincode</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -133,7 +133,7 @@
                                                                    class="form-control  floating-text-area" id="floatingInput"
                                                                    style="color: white;" placeholder="HERFK4578G" maxlength="40">
 
-                                                            <label for="floatingInput" style="color: #c9a13f;">Address 3</label>
+                                                            <label for="floatingInput" style="color: #ffffff;">Address 3</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 order-3">
@@ -142,7 +142,7 @@
                                                                    class="form-control  floating-text-area ChangeColor"
                                                                    style="color: white;" placeholder="HERFK4578G" ng-disabled="isDisabled" ng-keypress="validateInput($event)">
 
-                                                            <label for="floatingInput" style="color: #c9a13f;">City</label>
+                                                            <label for="floatingInput" style="color: #ffffff;">City</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -163,7 +163,7 @@
                                                             placeholder="31-12-1995">
 
                                                             <label for="floatingInput"
-                                                            style="color: #c9a13f;font-size: 16px;opacity: 1;">
+                                                            style="color: #ffffff;font-size: 16px;opacity: 1;">
                                                             Upload  Pan
                                                             </label>
 
@@ -182,7 +182,7 @@
                                                                    class="form-control  floating-text-area ChangeColor"
                                                                    style="color: white;" placeholder="HERFK4578G" ng-disabled="isDisabled" ng-keypress="validateInput($event)">
 
-                                                            <label for="floatingInput" style="color: #c9a13f;">State</label>
+                                                            <label for="floatingInput" style="color: #ffffff;">State</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -205,7 +205,7 @@
                                                             placeholder="31-12-1995">
 
                                                             <label for="floatingInput"
-                                                            style="color: #c9a13f;font-size: 16px;opacity: 1;">Upload  Aadhar </label>
+                                                            style="color: #ffffff;font-size: 16px;opacity: 1;">Upload  Aadhar </label>
                                                             <span ng-if="aadharsize" style="color: darkred;font-size:small;">
                                                             Oops! The
                                                             size limit for the image is 5 MB. Reduce the file size and try
@@ -220,7 +220,7 @@
                                                                    class="form-control  floating-text-area ChangeColor"
                                                                    style="color: white;" placeholder="HERFK4578G" ng-disabled="isDisabled" ng-keypress="validateInput($event)">
 
-                                                            <label for="floatingInput" style="color: #c9a13f;">Country</label>
+                                                            <label for="floatingInput" style="color: #ffffff;">Country</label>
                                                         </div>
                                                     </div>
                                                    

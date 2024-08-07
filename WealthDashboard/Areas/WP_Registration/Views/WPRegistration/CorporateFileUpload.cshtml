@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>TWP</title>
+    <title>TWC</title>
     <link rel="canonical" href="" />
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -32,22 +32,15 @@
     <link href="~/css/wpregistrationcss/style.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/bootstrap.css" rel="stylesheet" />
     <link href="~/css/wpregistrationcss/custom.css" rel="stylesheet" />
-
-   
-
-
-
 </head>
 <body>
-
     <div ng-app="main" ng-controller="myController">
-
         <section class="background-twc-banner">
             <div class="container">
-                <header id="header" class="pb-5">
+                <header id="header" class="pb-5 mobile-top-padding-header ">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 text-center mb-4">
+                        <div class="row d-md-none d-block">
+                            <div class="col-md-2 col-6 mx-auto text-center ">
                                 <a href="index.html">
                                     <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
                                 </a>
@@ -58,7 +51,7 @@
                 <div class="row">
                     <div class="col-md-12 mx-auto">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-5  d-none d-md-block">
                                 <div class="row">
                                     <div class="mx-auto">
                                         <img src="~/wpregimages/twc-mobile.png" class="img-fluid">
@@ -67,38 +60,42 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="row ">
-                                    <div class="col-md-12 ms-0 mx-auto card login-form">
-                                        <div class="row mx-auto mt-0 mb-2">
-                                            <img src="~/wpregimages/form-logo.png" alt="" title=""
-                                                 class="img-fluid text-center" style="width:55px;height: 31px;">
-                                        </div>
-                                        <div class="row mb-1">
-                                            <div class="form-title text-center">
-                                               Corporate Wealth Partner Details
+                                    <div class="col-md-12 ms-0">
+                                        <div class="mx-auto card login-form">
+                                            <div class="row mx-auto mt-0 mb-2">
+                                                <img src="~/wpregimages/form-logo.png" alt="" title=""
+                                                     class="img-fluid text-center" style="width:55px;height: 31px;">
                                             </div>
-                                            <div class="text-center">
-                                                Kindly download below form and fill up the form and send to us along with document list.
+                                            <div class="row mb-1">
+                                                <div class="form-title text-center">
+                                                    Corporate Wealth Partner Details
+                                                </div>
+                                                <div class="text-center">
+                                                    Kindly download below form and fill up the form and send to us along with document list.
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="card text-bg-primary">
-                                            <div class="card-header">
-                                                <strong>Document List</strong>
-                                            </div>
-                                            <div class="card-body">
-                                                <ol>
-                                                    <li>Company PAN card</li>
-                                                    <li>Company Light Bill</li>
-                                                    <li>Company MOA</li>
-                                                    <li>Company Director Consent Letter</li>
-                                                    <li>Company Stablish Certificate</li>
-                                                </ol>
-                                                <div>
-                                                    <button type="button" ng-click="DownloadPDF()" class="btn btn-primary">Download Form</button>
-                                                    <button type="button" class="btn btn-primary">Home</button>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <strong class="text-black">Document List</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <ol>
+                                                        <li class="text-black">Company PAN card</li>
+                                                        <li class="text-black">Company Light Bill</li>
+                                                        <li class="text-black">Company MOA</li>
+                                                        <li class="text-black">Company Director Consent Letter</li>
+                                                        <li class="text-black">Company Stablish Certificate</li>
+                                                    </ol>
+                                                    <div>
+                                                        <button type="button" ng-click="DownloadPDF()" class="btn btn-outline-light">Download Form</button>
+                                                        <button type="button" class="btn btn-outline-light">Home</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>

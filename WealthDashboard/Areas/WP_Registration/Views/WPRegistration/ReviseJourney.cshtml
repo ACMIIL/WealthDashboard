@@ -1,7 +1,4 @@
-﻿@{
-    Layout = "_WPLayout";
-}
-
+﻿
 @{
     Layout = "_WPLayout";
 }
@@ -85,11 +82,18 @@
                                         </div>
 
                                         <div class="row mb-3">
+ 
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-2">
+                                                    <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" ng-model="ARNNUMBER" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="8" placeholder="HERFK4578G" autocomplete="off">
+                                                    <label for="floatingInput" style="color: #ffffff">Enter ARN Number</label>
+ 
                                             <div class="row">
                                                 <div class="col-md-6" ng-if="ARN==true">
                                                     <div class="form-floating mb-2">
                                                         <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" ng-model="item.ARN" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="8" placeholder="HERFK4578G" autocomplete="off">
                                                         <label for="floatingInput" style="color: #c9a13f;">Enter ARN Number</label>
+ 
 
                                                     </div>
                                                     <div ng-if="isvalied">
@@ -113,8 +117,12 @@
                                                     @*     <div ng-if="((!arnFileName && fileType === 'arn')" style="color: darkred; font-size: small;">
                                                     Please Upload ARN File
                                                     </div> *@
-
-                                                    <!----------------->
+ 
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-2">
+                                                    <input type="text" class="form-control floating-text-area" autocomplete="off" ng-model="gstNo" id="floatingInput" style="color: white;" placeholder="HERFK4578G">
+                                                    <label for="floatingInput" style="color: #ffffff">Enter GST Number</label>
+ 
                                                 </div>
                                             </div>
                                           
@@ -139,11 +147,19 @@
                                                     <span ng-if="sizeError.GST" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
 
 
+ 
+                                                @*      <div class="form-floating mb-2">
+                                                <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
+                                                <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
+                                                <label for="floatingInput" style="color: #ffffff">Upload GST Number</label>
+                                                </div> *@
+ 
                                                     @*      <div class="form-floating mb-2">
                                                     <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
                                                     <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
                                                     <label for="floatingInput" style="color: #c9a13f;">Upload GST Number</label>
                                                     </div> *@
+ 
 
                                                     <!----------------->
                                                 </div>
@@ -158,8 +174,11 @@
                                             <div class="row" ng-if="PMS==true">
                                                 <div class="col-md-6" >
                                                     <div class="form-floating mb-3">
-                                                        <input type="text" class="form-control floating-text-area" autocomplete="off" ng-model="item.PMS" id="floatingInput" style="color: white;" placeholder="31-12-1995">
-                                                        <label for="floatingInput" style="color: #c9a13f;">Enter PMS Distribution Number</label>
+ 
+                                                        <input type="text" class="form-control floating-text-area" autocomplete="off" ng-model="PMSNo" id="floatingInput" style="color: white;" placeholder="31-12-1995">
+                                                        <label for="floatingInput" style="color: #ffffff">Enter PMS Distribution Number</label>
+ 
+                                                       
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6"  >
@@ -180,6 +199,26 @@
                                             <div class="row" ng-if="AadhaarFront==true">
                                                 <div class="col-md-6" >
 
+ 
+                                                <span ng-if="invalid" style="color: darkred; font-size: small;">User ID already exists </span>
+                                                <span ng-if="Characters" style="color: darkred; font-size: small;">Userid must be at least 5 characters</span>
+
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control floating-text-area" autocomplete="off" style="color: white;" ng-model="Passwords" ng-change="Pass(Passwords)" maxlength="15">
+                                                    <i ng-if="Passvalid" class="fa fa-check-circle fa-done"></i>
+                                                    <label for="floatingInput" style="color: #ffffff">Aadhar Number</label>
+                                                </div>
+                                                <span ng-if="Characterspass" style="color: darkred; font-size: small;">Password must be at least 5 characters</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-2">
+                                                    <span>
+                                                        <img src="~/wpregimages/upload-icon.png" class="date-icon" ng-click="clickFileInputgst()" style="cursor: pointer;">
+                                                        <input type="file" id="fileInputgst" accept="image/png,image/jpeg" autocomplete="off" style="display:none;" onchange="angular.element(this).scope().onFileSelect(this, 'gst')">
+                                                    </span>
+                                                    <input readonly type="text" class="floating-text-area UploadFileName" autocomplete="off" ng-model="gstFileName" style="color: white;">
+                                                    <label for="fileInputgst" class="l1">Upload GST Number</label>
+ 
                                                    
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control floating-text-area" autocomplete="off" style="color: white;" ng-model="item.Aadhar" ng-change="ValideAadhar()" maxlength="15" ng-keypress="allowNumbers($event)">
@@ -187,6 +226,7 @@
                                                         <label for="floatingInput" style="color: #c9a13f;">Aadhar Number</label>
                                                     </div>
                                                     <span ng-if="AadharError==false" style="color: darkred; font-size: small;">Aadhar Number in valid!</span>
+ 
                                                 </div>
                                                 <div class="col-md-6" >
                                                     <div class="form-floating mb-2">
@@ -200,15 +240,28 @@
                                                     <span ng-if="sizeError.Aadhar" style="color: darkred; font-size: small;">Oops! The size limit for the image is 5 MB. Reduce the file size and try again.</span>
 
 
+ 
+                                                @*      <div class="form-floating mb-2">
+                                                <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
+                                                <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
+                                                <label for="floatingInput" style="color: #ffffff">Upload GST Number</label>
+                                                </div> *@
+ 
                                                     @*      <div class="form-floating mb-2">
                                                     <span><img src="~/wpregimages/upload-icon.png" class="date-icon"></span>
                                                     <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" placeholder="31-12-1995">
                                                     <label for="floatingInput" style="color: #c9a13f;">Upload GST Number</label>
                                                     </div> *@
-
-                                                    <!----------------->
+ 
                                                 </div>
                                             </div>
+ 
+                                           @* Pan Dedials *@
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-2">
+                                                    <input type="text" class="form-control floating-text-area" id="floatingInput" style="color: white;" ng-model="ARNNUMBER" ng-keyup="change()" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" maxlength="8" placeholder="HERFK4578G" autocomplete="off">
+                                                    <label for="floatingInput" style="color: #ffffff">Enter Pan Number</label>
+ 
                                             <div class="row" ng-if="PanCard==true">
                                                 @* Pan Dedials *@
                                                 <div class="col-md-6">
@@ -227,6 +280,7 @@
                                                             Please Enter Pan
                                                             Number
                                                         </div>
+ 
 
                                                     </div>
                                                 </div>

@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>TWP</title>
+    <title>TWC</title>
     <link rel="canonical" href="" />
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -48,7 +48,7 @@
         <div class="container">
             <header id="header" class="pb-5 mobile-top-padding-header ">
                 <div class="container">
-                    <div class="row">
+                    <div class="row d-md-none d-block">
                         <div class="col-md-2 col-6 mx-auto text-center ">
                             <a href="index.html">
                                 <img src="~/wpregimages/twc-logo.png" alt="" title="" class="img-fluid">
@@ -79,7 +79,6 @@
                                                 <h5 class="form-title">Corporate Account</h5>
                                             </div>
                                         </div>
-
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-2">
@@ -87,7 +86,6 @@
                                                     <label for="floatingInput" style="color: #c9a13f;">Enter Mobile Number</label>
 
                                                 </div>
-                                                
                                             </div>
                                             <div class="col-md-6" ng-if="OTPboxhide">
                                                 <div class="form-floating mb-2">
@@ -101,38 +99,29 @@
                                                     <a ng-click="ResendOTP()" ng-show="resendOtp== true" style="color: floralwhite;">Resend OTP in</a>
                                                     <span class="golden">&nbsp;{{display}}&nbsp;</span> Sec
                                                 </label>
-                                            
                                             </div>
-
-
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-2">
-
                                                     <input type="text" class="form-control floating-text-area" id="floatingInput" style="color:white;" oninput="this.value = this.value.toUpperCase()" ng-model="email" ng-keyup="checkEmail()" placeholder="HERFK4578G" autocomplete="off">
                                                     <label for="floatingInput" style="color: #c9a13f;">Enter Email</label>
+                                                    <span ng-if="CheckEmailPattern" style="color:rgb(206, 44, 44)" class="mfs12"> Invalid Email </span>
                                                 </div>
                                                 <div>
-                                                  @*   <input type="text" ng-if="!data[0].Email" id="Mailid" class="form-control mobile-number-textarea ps-0" style="color: white;width:187px;" ng-keyup="checkEmail()" maxlength="30"> *@
-                                                   @*  <span ng-if="!data[0].Email" id="notVerify" style="color:rgb(206, 44, 44);" class="mfs12"> Email is not Verify </span>
+                                                    @*   <input type="text" ng-if="!data[0].Email" id="Mailid" class="form-control mobile-number-textarea ps-0" style="color: white;width:187px;" ng-keyup="checkEmail()" maxlength="30"> *@
+                                                    @*  <span ng-if="!data[0].Email" id="notVerify" style="color:rgb(206, 44, 44);" class="mfs12"> Email is not Verify </span>
                                                     <span ng-if="data[0].Email != null && data[0].Email != '' && data[0].Email != undefined" style="color:green" class="mfs12">Verified Email</span> *@
-                                                    <span ng-if="CheckEmailPattern" style="color:rgb(206, 44, 44)" class="mfs12"> Invalid Email </span>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-floating mb-2">
-
                                                     <input type="text" class="form-control floating-text-area" id="floatingInput" style="text-transform:uppercase;color:white;" ng-model="name" placeholder="HERFK4578G" autocomplete="off">
                                                     <label for="floatingInput" style="color: #c9a13f;">Enter Company Name</label>
                                                 </div>
-
                                             </div>
-
                                         </div>
                                         <div class="row mb-3 row mb-3 ms-2">
                                             <div class="col-md-12 text-center col-12 mt-2 mb-4">
-
                                                 <button ng-click="Next()" class="btn rounded btn-submit">Next</button>
-
                                             </div>
                                         </div>
                                     </div>
@@ -145,8 +134,8 @@
         </div>
 
     </section><!-- End Hero -->
-   
-           
+
+
 
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -295,14 +284,8 @@
         //     });
 
         // };
-
-
     </script>
-
-
-
 </body>
-
 </html>
 
 
