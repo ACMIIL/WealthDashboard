@@ -109,7 +109,7 @@
                 }).then(function (response) {
                     if (response.data.code == "200") {
                         $http({
-                            url: BaseURL + "User/UpdateUserStatus?userId=" + userId + "&status=9",
+                            url: BaseURL + "User/UpdateUserStatus?userId=" + userId + "&status=8",
                             method: "GET",
                             headers: {},
                             data: {}
@@ -143,10 +143,10 @@
                 if (res.data.code == "200") {
                     toastr.success(res.data.message, 'Title Success!');
                     //toaster.success(res.data.message,'Title Success!');
-                    setTimeout(() => {
+                  /*  setTimeout(() => {*/
                         window.location.assign("https://dbo.wealthcompany.in/EsignTestWeb/esign/sign/" + res.data.data);
 
-                    }, 3000);
+                    //}, 3000);
 
                 }
                 else {

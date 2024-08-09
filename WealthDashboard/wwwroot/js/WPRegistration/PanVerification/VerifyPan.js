@@ -23,14 +23,17 @@ angular.module('main', ['ngAnimate', 'toaster'])
         $scope.isPanFormateCorrect = false;
         $scope.panCorrectMessage = false;
         $scope.panMessage = '';
-        
+        $scope.formattedDate = '';
         var pannumber = '';
 
 
-
+      
 
         $scope.PanDetails = function () {
-          
+            //var formatDate = $scope.pandate
+            //var panDate = moment(formatDate).format('DD-MM-YYYY');
+             
+
             pannumber = $scope.pan.charAt(3);
 
             if (pannumber != 'P') {
@@ -42,7 +45,8 @@ angular.module('main', ['ngAnimate', 'toaster'])
 
             var inputDate = document.getElementById('mydate');
             $http({
-                url: BaseURL + "Account/GetCVLKRADetailsPan?userId=" + userId + "&PanNo=" + $scope.pan + "&DOB=" + inputDate.value.toString() + "&mob=" + localStorage.getItem('Mnumber'),
+                //url: BaseURL + "Account/GetCVLKRADetailsPan?userId=" + userId + "&PanNo=" + $scope.pan + "&DOB=" + inputDate.value.toString() + "&mob=" + localStorage.getItem('Mnumber'),
+                url: BaseURL + "Account/GetCVLKRADetailsPan?userId=" + userId + "&PanNo=" + $scope.pan + "&DOB=" + inputDate.value + "&mob=" + localStorage.getItem('Mnumber'),
                 method: "GET",
                 headers: {},
                 data: {}
@@ -229,8 +233,5 @@ angular.module('main', ['ngAnimate', 'toaster'])
 
 
     })
-
-
-
 
 

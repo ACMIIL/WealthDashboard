@@ -156,9 +156,8 @@
                 if (res.data.code == "200") {
                     toastr.success(res.data.message, 'Title Success!');
                     //toaster.success(res.data.message,'Title Success!');
-                    setTimeout(() => {
-                        window.location.assign('/Home/Index');
-                    }, 3000);
+                    window.location.assign("https://dbo.wealthcompany.in/EsignTestWeb/esign/sign/" + res.data.data);
+
 
                 }
                 else {
