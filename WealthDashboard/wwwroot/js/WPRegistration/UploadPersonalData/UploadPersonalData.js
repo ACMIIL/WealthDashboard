@@ -9,6 +9,7 @@
         $scope.address1 = ''
         $scope.address2 = ''
         $scope.address3 = ''
+        $scope.PincodeCharecter = false
         //   userId = '2EB4BBE3-5C47-4BFC-97CE-9B02EC931AAB'
         $scope.allowNumbers = function (event) {
             var charCode = event.which || event.keyCode;
@@ -41,7 +42,7 @@
             document.getElementById('fileInputpan').click();
         };
         $scope.clickFileInputaddhar = function () {
-            document.getElementById('fileInputaddhar').click();
+         document.getElementById('fileInputaddhar').click();
         };
         $scope.onFileSelect = function (input, type) {
             if (input.files && input.files.length > 0) {
@@ -60,40 +61,52 @@
             }
         };
         $scope.GetCityCode = function (value) {
-            if (value == '') {
-                $scope.city = '';
-                $scope.state = '';
-                $scope.Country = '';
-                $scope.isDisabled = false;
-            }
-            else {
-                $http({
-                    url: BaseURL + "Account/CityNameByPinCode?PinCode=" + value,
-                    method: "GET",
-                    headers: {}, // lowercase 'headers'
-                    data: {}
-                }).then(function (res) {
 
-                    if (res.data.code == "200") {
-                        if (res.data.data.message == 'Succeeded') {
-                            $scope.city = res.data.data.city;
-                            $scope.state = res.data.data.state;
-                            $scope.Country = res.data.data.country;
-                            $scope.isDisabled = true;
-                            var elements = document.getElementsByClassName('ChangeColor');
-                            for (var i = 0; i < elements.length; i++) {
-                                elements[i].style.backgroundColor = '#0E1D22';
+            if (value == '') {
+
+                $scope.PincodeCharecter = false
+            } else if (value.length < 6) {
+
+                $scope.PincodeCharecter = true
+            } else {
+                $scope.PincodeCharecter = false
+                if (value == '') {
+                    $scope.city = '';
+                    $scope.state = '';
+                    $scope.Country = '';
+                    $scope.isDisabled = false;
+                }
+                else {
+                    $http({
+                        url: BaseURL + "Account/CityNameByPinCode?PinCode=" + value,
+                        method: "GET",
+                        headers: {}, // lowercase 'headers'
+                        data: {}
+                    }).then(function (res) {
+
+                        if (res.data.code == "200") {
+                            if (res.data.data.message == 'Succeeded') {
+                                $scope.city = res.data.data.city;
+                                $scope.state = res.data.data.state;
+                                $scope.Country = res.data.data.country;
+                                $scope.isDisabled = true;
+                                var elements = document.getElementsByClassName('ChangeColor');
+                                for (var i = 0; i < elements.length; i++) {
+                                    elements[i].style.backgroundColor = '#0E1D22';
+                                }
+                            }
+                            else if (res.data.data.message == 'PinCodeNotMatch') {
+                                $scope.city = '';
+                                $scope.state = '';
+                                $scope.Country = '';
+                                $scope.isDisabled = false;
                             }
                         }
-                        else if (res.data.data.message == 'PinCodeNotMatch') {
-                            $scope.city = '';
-                            $scope.state = '';
-                            $scope.Country = '';
-                            $scope.isDisabled = false;
-                        }
-                    }
-                });
+                    });
+                }
+              
             }
+       
         };
 
         $scope.validateInput = function (event) {
@@ -155,8 +168,12 @@
 
         $scope.SubmitDetails = function () {
 
+            if ($scope.Characterspass == true) {
 
-            if ($scope.aadharNo == null || $scope.aadharNo == undefined || $scope.aadharNo == '') {
+                toastr.error('Please Enter valid adhar!', 'Error!');
+            }
+
+            else if ($scope.aadharNo == null || $scope.aadharNo == undefined || $scope.aadharNo == '') {
 
                 toastr.error('Aadhar Field  is Mandatory!', 'Error!');
             }
@@ -167,6 +184,10 @@
             else if ($scope.PinCodev == null || $scope.PinCodev == undefined || $scope.PinCodev == '') {
 
                 toastr.error('Pincode Field  is Mandatory!', 'Error!');
+            }
+            else if ($scope.PincodeCharecter ==  true) {
+
+                toastr.error('Please Enter valid pincode!', 'Error!');
             }
             else if ($scope.city == null || $scope.city == undefined || $scope.city == '') {
 
@@ -266,9 +287,22 @@
                     setTimeout(function () {
                         window.location.assign('/WP_Registration/WPRegistration/qrbankverification');
                     }, 2000);
-
                 }
             });
 
         }
+        $scope.Pass = function (Rigor) {
+            if (Rigor == '') {
+
+                $scope.Characterspass = false
+            } else if (Rigor.length < 12) {
+
+                $scope.Characterspass = true
+            } else {
+
+                $scope.Characterspass = false
+            }
+
+        }
+
     });
