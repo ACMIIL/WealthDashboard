@@ -12,7 +12,7 @@
         $scope.sendOTP = false;
         $scope.CheckOtp = false;
         $scope.VerifyEmailID = '';
-        var totalSeconds = 300;
+        var totalSeconds = 60;
         var prefix = '';
         function getdata() {
            // userId ='1BE51D13-BAD8-44A6-8842-C71C5E83E175'
@@ -179,7 +179,6 @@
                 seconds--;
             }, 1000);
 
-
             if (seconds === 0) {
                 document.getElementById('Minute').style.display = 'none';
                 $scope.sendOTP = false;
@@ -187,11 +186,6 @@
                 document.getElementById("Mailid").disabled = false; 
               
             }
-        };
-
-     
-
-       
-        
+        };      
        
     });

@@ -83,12 +83,13 @@
                                                 <div class="row mb-2">
                                                     <div class="col-md-6 order-0">
                                                         <div class="form-floating mb-2">
-                                                            <input autocomplete="off" type="text" ng-model="aadharNo"
+                                                            <input autocomplete="off" type="text" ng-model="aadharNo" ng-change="Pass(aadharNo)"
                                                                    maxlength="12"
                                                                    class="form-control floating-text-area UploadFileName" id="floatingInput"
                                                                    style="color: white;" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" placeholder="HERFK4578G">
                                                             <label for="floatingInput" style="color: #c9a13f;">Aadhar No</label>
                                                         </div>
+                                                        <span ng-if="Characterspass" style="color: darkred; font-size: small;">Enter valid addhar number</span>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-floating mb-2">
@@ -126,6 +127,8 @@
                                                                    style="color: white;" ng-keypress="allowNumbers($event)" ng-paste="preventPaste($event)" placeholder="HERFK4578G" maxlength="7">
                                                             <label for="floatingInput" style="color: #c9a13f;">Pincode</label>
                                                         </div>
+                                                        <span ng-if="PincodeCharecter" style="color: darkred; font-size: small;">Enter valid Pincode</span>
+                                                    
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-floating mb-2">
