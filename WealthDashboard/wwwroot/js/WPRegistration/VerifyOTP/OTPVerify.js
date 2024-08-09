@@ -50,10 +50,15 @@
                 if (response.data.code === 200) {
                     var agentSrno = response.data.data.agentSrno;
                     var isreverse = response.data.data.reverseJourny;
+                    var stage = response.data.data.status;
                     localStorage.setItem('srno', agentSrno);
                     localStorage.setItem('reverseJourny', isreverse);
-                    if (isreverse) {
+                    if (isreverse && stage === 10) {
                         window.location.href ='/WP_Registration/WPRegistration/ReviseJourney'
+                    }
+                    else if (stage === 8)
+                    {
+                        DownloadPDF();
                     }
                     else {
                         Getuserstapes(userId);
@@ -97,7 +102,7 @@
                         headers: {}, // lowercase 'headers'
                     }).then(function (response1) {
 
-                        if (status === 0 ) {
+                        if (status === 0) {
                             window.location.assign('/WP_Registration/WPRegistration/PanVerification');
                         } else if (status === 1) {
                             window.location.assign('/WP_Registration/WPRegistration/ARNdetails');
@@ -105,8 +110,8 @@
                             window.location.assign('/WP_Registration/WPRegistration/DigiLocker');
                         } else if (status === 3) {
                             window.location.href = "/WP_Registration/WPRegistration/PersonalDetails";
-                        } else if (status === 4 ) {
-                           // $location.path('/WP_Registration/WPRegistration/DigiLocker');
+                        } else if (status === 4) {
+                            // $location.path('/WP_Registration/WPRegistration/DigiLocker');
                             window.location.href = "/WP_Registration/WPRegistration/QRBankVerification";
                             //$location.path('/qrscanner');
                         } else if (status === 5) {
@@ -117,15 +122,23 @@
                             window.location.href = '/WP_Registration/WPRegistration/SignatureVerification'
                         }
                         else if (status === 8) {
-                            window.location.href = '/WP_Registration/WPRegistration/Thankyou'
+                            //window.location.href = '/WP_Registration/WPRegistration/Thankyou'
+                            DownloadPDF();
                         }
-                        else if (status === 9) {
-                            toastr.success('Your KYC has been completed, kindly login!', 'Title Success!');
+                        else if (status === 9)
+                        {
+                            toastr.success('Your KYC has been under processing...', 'Title Success!');
+                        }
+                        else if (status === 10) {
+                            toastr.success('Your KYC documents has been rejected...', 'Title Success!');
+                        }
+                        else if (status === 11) {
+                            toastr.success('Your KYC has been approved, Please login..', 'Title Success!');
 
                         
                         setTimeout(function () {
                             window.location.href = '/home/index'
-                        }, 5000);
+                        }, 3000);
                            
                         }
                     }).catch(function (error) {
@@ -189,5 +202,34 @@
                 }
             }
         };
+
+
+
+
+        function DownloadPDF() {
+          
+            $http({
+                url: BaseURL + "DigioAPI/DwonloadPDF?userId=" + userId,
+                method: "Get",
+                headers: {},
+                data: {}
+            }).then(function (res) {
+                if (res.data.code == "200") {
+                    toastr.success(res.data.message, 'Title Success!');
+                    //toaster.success(res.data.message,'Title Success!');
+                    /*  setTimeout(() => {*/
+                    window.location.assign("https://dbo.wealthcompany.in/EsignTestWeb/esign/sign/" + res.data.data);
+
+                    //}, 3000);
+
+                }
+                else {
+                    toastr.error('Something went wrong', 'PDF Download!');
+                    // window.location.assign('/Home/Index');
+                }
+            }).catch(function (error) {
+                console.log('Error occurred:', error);
+            });
+        }
    
     });
