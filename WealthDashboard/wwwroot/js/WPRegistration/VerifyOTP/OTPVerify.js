@@ -207,7 +207,8 @@
 
 
         function DownloadPDF() {
-          
+
+
             $http({
                 url: BaseURL + "DigioAPI/DwonloadPDF?userId=" + userId,
                 method: "Get",
