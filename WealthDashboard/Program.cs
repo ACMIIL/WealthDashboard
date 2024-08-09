@@ -57,10 +57,6 @@ app.UseEndpoints(endpoints =>
       areaName: "EKYC_MFJourney",
       pattern: "{area:exists}/{controller}/{action}/{id?}"
     );
-    //endpoints.MapControllerRoute(
-    //  name: "EKYC_MFJourney",
-    //  pattern: "{area:exists}/{controller}/{action}/{id?}"
-    //);
     endpoints.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
